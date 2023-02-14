@@ -13,7 +13,7 @@
   "devDependencies": {},
   "type": "module",
   "scripts": {
-    "test": "nodemon -L server.js"
+    "start": "nodemon -L server.js"
   },
   "repository": {
     "type": "git",
