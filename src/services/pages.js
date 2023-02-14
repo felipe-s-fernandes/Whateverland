@@ -1,70 +1,26 @@
-const pagesDB = [
-    {
-        id: "1",
-        name: "Erebonia",
-        start: `Texto inicial da página de Erebonia`,
-        history: `História de Erebonia`,
-        gallery: `Galeria de imagens de Erebonia`,
-    },
-    {
-        id: "2",
-        name: "Crossbell",
-        start: `Texto inicial da página de Crossbell`,
-        history: `História de Crossbell`,
-        gallery: `Galeria de imagens de Crossbell`,
-    },
-    {
-        id: "3",
-        name: "Calvard",
-        start: `Texto inicial da página de Calvard`,
-        history: `História de Calvard`,
-        gallery: `Galeria de imagens de Calvard`,
-    },
-];
+import pagesRepository from "../repositories/pages.js";
+const TAG = "Pages Service: ";
 
-const getStartContent = (_id) => {
-    let response = null;
-    pagesDB.forEach((page) => {
-        if (page.id === _id) {
-            response = page;
-        }
-    });
-    if (response !== null) {
-        console.log(response);
-        return response.start;
-    }
-};
+const getPageContent = (_id) => {
+    // Precisa calcular algo com os inputs?     Não
+    // Não precisa fazer nada
 
-const getHistoryContent = (_id) => {
-    let response = null;
-    pagesDB.forEach((page) => {
-        if (page.id === _id) {
-            response = page;
-        }
-    });
-    if (response) {
-        console.log(response);
-        return response.history;
-    }
-};
+    // Precisa pedir algo ao Bando de Dados?    Sim
+    try {
+        // Precisa filtrar/organizar?               Sim, está procurando um ID específico
+        const response = pagesRepository.getArticle(_id);
 
-const getGalleryContent = (_id) => {
-    let response = null;
-    pagesDB.forEach((page) => {
-        if (page.id === _id) {
-            response = page;
-        }
-    });
-    if (response) {
-        console.log(response);
-        return response.gallery;
+        // Precisa fazer algo internamente com esses dados?     Não
+        //Não precisa fazer nada, só retornar a informação
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
     }
 };
 
 const pagesServices = {
-    getStartContent: getStartContent,
-    getHistoryContent: getHistoryContent,
-    getGalleryContent: getGalleryContent,
+    getPageContent: getPageContent,
 };
 
 export default pagesServices;
