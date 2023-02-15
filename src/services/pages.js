@@ -8,7 +8,7 @@ const getPageContent = (_id) => {
     // Precisa pedir algo ao Bando de Dados?    Sim
     try {
         // Precisa filtrar/organizar?               Sim, está procurando um ID específico
-        const response = pagesRepository.getArticle(_id);
+        const response = pagesRepository.getArticle(Number(_id));
 
         // Precisa fazer algo internamente com esses dados?     Não
         //Não precisa fazer nada, só retornar a informação

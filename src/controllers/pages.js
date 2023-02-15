@@ -32,12 +32,12 @@ export const getPage = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = await pagesServices.getPageContent(id);
+        const serviceResponse = pagesServices.getPageContent(id);
 
         response.message = "Success";
         response.data = serviceResponse;
 
-        res.status(200).json(response);
+        res.status(200).send(response);
         console.timeEnd("getPage()");
     } catch (error) {
         console.log(TAG, "error caught");

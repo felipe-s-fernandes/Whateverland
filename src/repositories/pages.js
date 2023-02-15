@@ -1,33 +1,42 @@
+import database from "./database.js";
 const TAG = "Pages Repository: ";
-
-const pagesDB = [
-    {
-        id: "1",
-        name: "Erebonia",
-        start: `Texto inicial da página de Erebonia`,
-        history: `História de Erebonia`,
-        gallery: `Galeria de imagens de Erebonia`,
-    },
-    {
-        id: "2",
-        name: "Crossbell",
-        start: `Texto inicial da página de Crossbell`,
-        history: `História de Crossbell`,
-        gallery: `Galeria de imagens de Crossbell`,
-    },
-    {
-        id: "3",
-        name: "Calvard",
-        start: `Texto inicial da página de Calvard`,
-        history: `História de Calvard`,
-        gallery: `Galeria de imagens de Calvard`,
-    },
-];
 
 const getArticle = (_id) => {
     try {
-        const query = pagesDB.filter((page) => page.id === _id);
-        if (query.length > 0) return query[0];
+        const response = {
+            civilization: null,
+            startPage: null,
+            history: null,
+            gallery: null,
+        };
+
+        //Mock getCivilization;
+        const civilizationResponse = database.civilizations.filter(
+            (civilization) => civilization.civilization_id === _id
+        );
+
+        //Mock getStartPage;
+        const civilizationStartPage = database.start_pages.filter(
+            (start_page) =>
+                start_page.start_page_id === civilizationResponse.start_page_id
+        );
+
+        //Mock getHistory;
+        const civilizationHistory = database.history_events.filter(
+            (history_event) => history_event.civilization_id === _id
+        );
+
+        //Mock getGallery;
+        const civilizationGallery = database.gallery.filter(
+            (gallery_image) => gallery_image.civilization_id === _id
+        );
+
+        response.civilization = civilizationResponse;
+        response.startPage = civilizationStartPage;
+        response.history = civilizationHistory;
+        response.gallery = civilizationGallery;
+
+        if (response.civilization !== null) return response;
         throw new Error("Page not found");
     } catch (error) {
         console.log(TAG, "error caught");
