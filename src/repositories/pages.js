@@ -18,7 +18,8 @@ const getArticle = (_id) => {
         //Mock getStartPage;
         const civilizationStartPage = database.start_pages.filter(
             (start_page) =>
-                start_page.start_page_id === civilizationResponse.start_page_id
+                start_page.start_page_id ===
+                civilizationResponse[0].start_page_id
         );
 
         //Mock getHistory;
@@ -36,7 +37,7 @@ const getArticle = (_id) => {
         response.history = civilizationHistory;
         response.gallery = civilizationGallery;
 
-        if (response.civilization !== null) return response;
+        if (response.civilization.length > 0) return response;
         throw new Error("Page not found");
     } catch (error) {
         console.log(TAG, "error caught");
