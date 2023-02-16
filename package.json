@@ -13,7 +13,7 @@
   "devDependencies": {},
   "type": "module",
   "scripts": {
-    "start": "nodemon -L server.js"
+    "start": "npx nodemon server.js"
   },
   "repository": {
     "type": "git",

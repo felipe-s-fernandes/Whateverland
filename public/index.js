@@ -1,6 +1,11 @@
 const root = document.querySelector("#root");
 const explore = document.querySelector("#explore");
 
+// @Anderson Lima
+import { renderPage } from "./modules/pages/gallery/modules/galleryModules.js";
+import { imagens } from "./modules/pages/gallery/gallery.js";
+// Terminou @Anderson Lima
+
 explore.onclick = renderMainPage;
 
 function renderMainPage() {
@@ -76,17 +81,20 @@ function renderHistoryPage() {
 function renderGalleryPage() {
     root.innerHTML = "";
 
-    const pageTitle = document.createElement("h1");
-    pageTitle.innerText = "Galeria de imagens";
+    // @Anderson Lima
+    renderPage(imagens);
 
+    // Botão para página inicial
     const mainPage = createPageButton(
         "Whateverland",
         "return-button",
         renderMainPage
     );
 
-    root.appendChild(pageTitle);
+    // Colocando o botão da página inicial na página
     root.appendChild(mainPage);
+
+    // Terminou @Anderson Lima
     return;
 }
 
