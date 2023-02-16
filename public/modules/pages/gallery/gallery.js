@@ -1,23 +1,9 @@
 //@author {Anderson Lima}
 
-// import { createElement } from "../../modules.js";
-// import { createEventsBar, createEventCard } from "./modules/galleryModules.js";
-import { renderPage } from "./modules/galleryModules.js";
+// import { renderPage } from "./modules/galleryModules.js";
 
-// export function createElement(htmlElement, className) {
-//     const element = document.createElement(htmlElement);
-//     element.classList.add(className);
-//     return element;
-// }
 
-// export const imagens = [
-//     {
-//         nameImage: "Civilização Maia",
-//         fileName: "maias.js"
-//     }
-// ]
-
-const imagens = {
+export const imagens = {
     name: "Erebonia",
     files:
     [
@@ -30,8 +16,8 @@ const imagens = {
             fileName: "asteca.jpg"
         },
         {
-            nameImage: "Civilização Asteca",
-            fileName: "asteca.jpg"
+            nameImage: "Civilização Inca",
+            fileName: "incas.jpg"
         },
         {
             nameImage: "Civilização Asteca",
@@ -64,4 +50,4 @@ const imagens = {
     ]
 }
 
-renderPage(imagens);
+// renderPage(imagens);

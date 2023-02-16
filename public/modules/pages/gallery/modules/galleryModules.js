@@ -4,8 +4,6 @@ import { createElement } from "../../../modules.js";
 
 
 export function renderPage(images) {
-    const root = document.querySelector("#root");
-    root.innerHTML = "";
 
     // Criação de elementos HTML
     const contentBox = createElement("div", "contentBox");
@@ -16,16 +14,19 @@ export function renderPage(images) {
     const buttonLeft = createElement("img", "arrowButton");
     const buttonRight = createElement("img", "arrowButton");
 
-    // Conteúdo fixo da página HTML
-    
+    // ***Conteúdo fixo da página HTML***
+
     // Imagens dos itens fixos
-    buttonLeft.src = "./uploads/arrow-left.png";
-    buttonRight.src = "./uploads/arrow-right.png";
+    // buttonLeft.src = "./uploads/arrow-left.png";
+    buttonLeft.src = "./modules/pages/gallery/uploads/arrow-left.png";
+    buttonRight.src = "./modules/pages/gallery/uploads/arrow-right.png";
     
-    // Conteúdo variável
-    textTitle.innerHTML = `GALERIA DE IMAGEs DE ${images.name}`;
+    // ***Conteúdo variável***
 
+    // Título de conteúdo das imagens
+    textTitle.innerHTML = `GALERIA DE IMAGES DE ${images.name}`;
 
+    // Imagens do site
     images.files.forEach(element => {
         containerImages.appendChild(addImage(element));
     });
@@ -47,8 +48,8 @@ function addImage(uploadImage) {
     const image = createElement("img", "image");
     const figuraCaption = createElement("figcaption","textImage");  
 
-    image.src = `./uploads/${uploadImage.fileName}`;
-    figuraCaption.innerText = uploadImage.nameImage;  
+    image.src = `./modules/pages/gallery/uploads/${uploadImage.fileName}`;
+    figuraCaption.innerText = uploadImage.nameImage;
 
     figure.appendChild(image);
     figure.appendChild(figuraCaption);
