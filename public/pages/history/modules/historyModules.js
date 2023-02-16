@@ -1,4 +1,4 @@
-import { createElement } from "../../../modules.js";
+import { createElement } from "../../../modules/modules.js";
 
 //@author {Felipe Fernandes}
 export function createEventsBar(events) {
@@ -63,7 +63,7 @@ export function createEventCard(civilizationName, event) {
     const eventAside = createElement("aside", "eventAside");
     const eventFigure = createElement("figure", "eventFigure");
     const eventImage = createElement("img", "eventImage");
-    eventImage.src = `./uploads/${event.event_image}`;
+    eventImage.src = `../../../uploads/${event.event_image}`;
     eventImage.alt = event.event_image_label;
     eventFigure.appendChild(eventImage);
 
