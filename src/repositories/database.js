@@ -60,330 +60,36 @@ const database = {
                 "Tanques Achzen utilizados na guerra de outubro.",
             event_paragraph: "Parágrafo placeholder",
         },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
-        {
-            event: 124,
-            civilization_id: 1,
-            event_year: 1420,
-            event_title: "Guerra de outubro",
-            event_image: "erebonia.webp",
-            event_image_label:
-                "Tanques Achzen utilizados na guerra de outubro.",
-            event_paragraph: "Parágrafo placeholder",
-        },
     ],
     gallery: [
         {
             gallery_image_id: "galeria-img1.png",
+            gallery_image_title: "Civilização 1",
             civilization_id: 1,
         },
         {
             gallery_image_id: "galeria-img2.png",
+            gallery_image_title: "Civilização 1",
             civilization_id: 1,
         },
         {
             gallery_image_id: "galeria-img3.png",
+            gallery_image_title: "Civilização 1",
             civilization_id: 1,
         },
         {
             gallery_image_id: "galeria-img4.png",
+            gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },
         {
             gallery_image_id: "galeria-img5.png",
+            gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },
         {
             gallery_image_id: "galeria-img6.png",
+            gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },
     ],

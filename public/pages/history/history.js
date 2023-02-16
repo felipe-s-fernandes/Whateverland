@@ -35,6 +35,7 @@ export default async function RenderHistoryPage() {
     container.appendChild(eventsBar);
     container.appendChild(eventCard);
 
+    //Será substituído depois pelo botão verdadeiro
     const btn = document.createElement("button");
     btn.type = "button";
     btn.textContent = "<- VOLTAR AO MAPA";
