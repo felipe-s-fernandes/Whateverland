@@ -50,6 +50,13 @@ export default function createStartPage(startPages, civilizations) {
     const mainTitle = createElement("h2", "mainTitle");
     const mainText = createElement("p", "mainText");
 
+    /*     const dados = document.querySelectorAll(".info");
+    dados.forEach((dado) => {
+        const textarea = createElement("textarea", "editField");
+        textarea.innerText = dado.innerText;
+        dado.replaceWith(textarea);
+    })
+ */
     // Fixed content
     infoTitleOfcName.innerHTML = "Nome oficial";
     infoTitleLocal.innerHTML = "Localização";

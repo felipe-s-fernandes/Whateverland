@@ -63,7 +63,7 @@ header {
     justify-content: space-between;
     align-items: center;
 
-    border-radius: 0px 0px 25px 25px;
+    border-radius: 0px 0px 28px 28px;
     overflow: hidden;
 }
 
@@ -105,6 +105,7 @@ header {
 
 
 .smallSearchBar {
+    z-index: 0;
     display: flex;
     align-items: center;
     background-color: #a8a8a8;
@@ -118,11 +119,19 @@ header {
 .smallSearchBar input {
     margin: 3px;
     width: 100%;
+    background-color:  #a8a8a8;
+    border: none;
+    color: #e1e1e1;
+    margin-left: 20px;
+}
+
+.smallSearchBar input:focus, .smallSearchBar input:active {
+    border: none;
 }
 
 .smallSearchBar svg {
     background-color: #FFFFFF;
-    z-index: 1;
+    z-index: 5;
 
     margin: 5px;
     width: 56px;

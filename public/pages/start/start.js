@@ -7,7 +7,7 @@ import {
 import createStartPage from "./modules/startModules.js";
 
 //@author {Felipe Fernandes}
-export default async function RenderStartPage() {
+export default async function RenderStartPage(data) {
     const object = JSON.parse(localStorage.getItem("page"));
     console.log(object);
     const startPage = object.startPage[0];

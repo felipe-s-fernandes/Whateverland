@@ -4,6 +4,28 @@ import CreateEventStateChange from "../../modules/event-url.js";
 
 //Implementar rota de regiões
 
+async function fetchCivilizationsObject(regionId) {
+    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
+    const PORT = "8080"; //process.env.SERVER_PORT;
+
+    //Trazendo a resposta do backend para o frontend
+    const response = await fetch(
+        `http://${HOST}:${PORT}/civilizations/${regionId}`
+    );
+    const json = await response.json();
+    return json.data;
+}
+
+async function fetchRegionObject(regionId) {
+    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
+    const PORT = "8080"; //process.env.SERVER_PORT;
+
+    //Trazendo a resposta do backend para o frontend
+    const response = await fetch(`http://${HOST}:${PORT}/regions/${regionId}`);
+    const json = await response.json();
+    return json.data;
+}
+
 async function fetchPageObject(civilizationId) {
     const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
     const PORT = "8080"; //process.env.SERVER_PORT;
@@ -16,12 +38,13 @@ async function fetchPageObject(civilizationId) {
     return json.data;
 }
 
-export default async function RenderCivilizationsPage() {
-    const object = JSON.parse(localStorage.getItem("civilizations"));
-    const region = JSON.parse(localStorage.getItem("region"));
+export default async function RenderCivilizationsPage(regionId) {
+    const civilizationsObject = await fetchCivilizationsObject(regionId);
+    const civilizations = civilizationsObject[0];
 
-    const civilizations = object.civilizations;
-    console.log(object);
+    const regionObject = await fetchRegionObject(regionId);
+    const region = regionObject[0];
+
     const civNameArray = [];
     const civImgArray = [];
 
@@ -186,7 +209,7 @@ export default async function RenderCivilizationsPage() {
     td_civilName3.textContent = example.civilizations[i_civil + 2];
 
     //MODIFICAR
-    civilLogo1.dataset.id = 1;
+    civilLogo1.dataset.id = 2;
     civilLogo1.addEventListener("click", async () => {
         const object = await fetchPageObject(civilLogo1.dataset.id);
         localStorage.setItem("page", JSON.stringify(object));

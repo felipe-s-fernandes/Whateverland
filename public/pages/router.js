@@ -14,8 +14,8 @@ export default function getPagesRouter() {
         "/start": RenderStartPage,
         "/history": RenderHistoryPage,
         "/gallery": RenderGalleryPage,
-        getPage: function (url) {
-            return this[url]();
+        getPage: function (url, data) {
+            return this[url](data);
         },
     };
     return pagesRouter;
