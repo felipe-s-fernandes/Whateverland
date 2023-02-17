@@ -69,7 +69,7 @@ export default function createStartPage(startPages, civilizations) {
 
     // Excluir em breve
 
-    mainTitle.innerHTML = "O império de sangue e ferro";
+    mainTitle.innerHTML = object.title;
 
     // Element import
     imgDiv.appendChild(civilizationShield);

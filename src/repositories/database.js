@@ -33,7 +33,9 @@ const database = {
             capital: "Heimdallr",
             religion: "Igreja Septiana",
             government: "Monarquia constitucional (provável ditadura).",
-            paragraph: "The Erebonian Empire is an empire located in western Zemuria. It is bordered by to the east by Calvard and to the south by Liberl. It is represented by the emblem of a golden stallion. Erebonia features a wide range of climates and terrains due to its large size. Generally, the climate of the empire is temperate, with some parts of the Northern territories having a much milder climate. These northern areas featuring many mountain ranges such as the alpine Eisengard range and the mountains around Roer and leading to Nord. there are also mountainous and canyon like areas in the Lamare region. There are also coastal biomes stretching along the western edge of the empire, with many beaches and shores stretching from Ordis to the border with Liberl. There are two large forests of note, the Isthmia Great Forest in the West and the Vestia Great Forest, containing the Lunaria Nature Park in the East.Geographical sites of interest include the Road of Valley in Ymir, the Eisengard Range and The Calabria Hill Country in Nortia, Grand Granary near Celdic, Auroch's Canyon in Kreuzen, Agria Gorge, Tyrrhenian Plateau and Olbia Lowland in Sutherland, Avon Hill Country, Languedoc Canyon, Valla Ravine & Aragon Mountain Range, and Osgiliath Basin in Lamare.",
+            title: "O império de ferro",
+            paragraph:
+                "The Erebonian Empire is an empire located in western Zemuria. It is bordered by to the east by Calvard and to the south by Liberl. It is represented by the emblem of a golden stallion. Erebonia features a wide range of climates and terrains due to its large size.\n\nGenerally, the climate of the empire is temperate, with some parts of the Northern territories having a much milder climate. These northern areas featuring many mountain ranges such as the alpine Eisengard range and the mountains around Roer and leading to Nord. there are also mountainous and canyon like areas in the Lamare region. There are also coastal biomes stretching along the western edge of the empire, with many beaches and shores stretching from Ordis to the border with Liberl.\n\nThere are two large forests of note, the Isthmia Great Forest in the West and the Vestia Great Forest, containing the Lunaria Nature Park in the East.Geographical sites of interest include the Road of Valley in Ymir, the Eisengard Range and The Calabria Hill Country in Nortia, Grand Granary near Celdic, Auroch's Canyon in Kreuzen, Agria Gorge, Tyrrhenian Plateau and Olbia Lowland in Sutherland, Avon Hill Country, Languedoc Canyon, Valla Ravine & Aragon Mountain Range, and Osgiliath Basin in Lamare.",
             deleted: false,
         },
         {
@@ -43,6 +45,7 @@ const database = {
             capital: "Edith",
             religion: "Igreja Septiana",
             government: "República Federativa Democrática.",
+            title: "O império de ferro",
             paragraph: "Parágrafo placeholder",
             deleted: false,
         },
