@@ -1,0 +1,103 @@
+//author {Jônatas Gomes}
+import { createElement } from "../../modules.js";
+
+const root = document.querySelector("#root");
+
+let startPages = [
+    {
+        start_page_id: 456,
+        official_name: "Erebonia",
+        localization: "Região de Zenuria",
+        capital: "Heimdallr",
+        religion: "Igreja Septiana",
+        government: "Monarquia constitucional (provável ditadura)",
+        paragraph: "Parágrafo placeholder",
+        deleted: false,
+    }
+]
+
+let civilizations = [
+    {
+        civilization_id: 1,
+        region_id: 0,
+        start_page_id: 456,
+        civilization_name: "Erebonia",
+    }
+]
+
+const object = startPages[0];
+
+const object2 = civilizations[0];
+
+// Elements creation
+const cardDiv = createElement("div", "cardDiv");
+const asideContent = createElement("aside", "asideContent");
+const sectionAside = createElement("section", "sectionAside");
+const imgDiv = createElement("div", "imgDiv");
+const civilizationName = createElement("h1", "civilizationName");
+const civilizationShield = createElement("img", "civilizationShield");
+const infoArticle = createElement("article", "infoArticle");
+const infoTitleOfcName = createElement("h2", "infoTitleOfcName");
+const infoOfcName = createElement("p", "infoOfcName");
+const infoTitleLocal = createElement("h2", "infoTitleLocal");
+const infoLocal = createElement("p", "infoLocal");
+const infoTitleCapital = createElement("h2", "infoTitleCapital");
+const infoCapital = createElement("p", "infoCapital");
+const infoTitleReligion = createElement("h2", "infoTitleReligion");
+const infoReligion = createElement("p", "infoReligion");
+const infoTitleGov = createElement("h2", "infoTitleGov");
+const infoGov = createElement("p", "infoGov");
+const mainContent = createElement("main", "mainContent");
+const mainTitle = createElement("h2", "mainTitle")
+const mainText = createElement("p", "mainText");
+
+// Fixed content
+infoTitleOfcName.innerHTML = "Nome oficial";
+infoTitleLocal.innerHTML = "Localização";
+infoTitleCapital.innerHTML = "Capital";
+infoTitleReligion.innerHTML = "Religião";
+infoTitleGov.innerHTML = "Forma de Governo";
+
+
+infoOfcName.innerHTML = object.official_name;
+infoLocal.innerHTML = object.localization;
+infoCapital.innerHTML = object.capital;
+infoReligion.innerHTML = object.religion;
+infoGov.innerHTML = object.government;
+mainText.innerHTML = object.paragraph;
+
+
+civilizationShield.src = object2.civilization_image;
+civilizationName.innerHTML = object2.civilization_name;
+
+// Excluir em breve
+
+mainTitle.innerHTML = "O império de sangue e ferro";
+
+// Element import
+imgDiv.appendChild(civilizationShield);
+
+sectionAside.appendChild(civilizationName);
+sectionAside.appendChild(imgDiv);
+
+infoArticle.appendChild(infoTitleOfcName);
+infoArticle.appendChild(infoOfcName);
+infoArticle.appendChild(infoTitleLocal);
+infoArticle.appendChild(infoLocal);
+infoArticle.appendChild(infoTitleCapital);
+infoArticle.appendChild(infoCapital);
+infoArticle.appendChild(infoTitleReligion);
+infoArticle.appendChild(infoReligion);
+infoArticle.appendChild(infoTitleGov);
+infoArticle.appendChild(infoGov);
+
+asideContent.appendChild(sectionAside);
+asideContent.appendChild(infoArticle);
+
+mainContent.appendChild(mainTitle);
+mainContent.appendChild(mainText);
+
+cardDiv.appendChild(asideContent);
+cardDiv.appendChild(mainContent);
+
+root.appendChild(cardDiv);
