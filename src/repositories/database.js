@@ -81,22 +81,42 @@ const database = {
             civilization_id: 1,
         },
         {
-            gallery_image_id: "galeria-img3.png",
+            gallery_image_id: "galeria-img2.png",
             gallery_image_title: "Civilização 1",
             civilization_id: 1,
         },
         {
-            gallery_image_id: "galeria-img4.png",
+            gallery_image_id: "galeria-img1.png",
+            gallery_image_title: "Civilização 1",
+            civilization_id: 1,
+        },
+        {
+            gallery_image_id: "galeria-img1.png",
             gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },
         {
-            gallery_image_id: "galeria-img5.png",
+            gallery_image_id: "galeria-img2.png",
+            gallery_image_title: "Civilização 1",
+            civilization_id: 1,
+        },
+        {
+            gallery_image_id: "galeria-img2.png",
+            gallery_image_title: "Civilização 1",
+            civilization_id: 1,
+        },
+        {
+            gallery_image_id: "galeria-img2.png",
+            gallery_image_title: "Civilização 1",
+            civilization_id: 1,
+        },
+        {
+            gallery_image_id: "galeria-img2.png",
             gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },
         {
-            gallery_image_id: "galeria-img6.png",
+            gallery_image_id: "galeria-img2.png",
             gallery_image_title: "Civilização 2",
             civilization_id: 2,
         },

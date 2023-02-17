@@ -1,12 +1,10 @@
+// Esquecer esse código
+
 import CreateEventStateChange from "./event-url.js";
 
 export default function RenderGalleryPage() {
-    //const navbar = createNavBar();
-    //const backButton = createBackButton();
-
+    
     const div = document.createElement("div");
-
-    //div.appendChild(navbar);
 
     const h1 = document.createElement("h1");
     h1.textContent = "Doces";
