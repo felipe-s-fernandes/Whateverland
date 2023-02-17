@@ -1,3 +1,4 @@
+//@Autor {Felipe Fernandes}
 import RenderInitPage from "./init/initPage.js";
 import RenderMap from "./map/map.js";
 import RenderCivilizationsPage from "./civilizations/civilizations.js";
