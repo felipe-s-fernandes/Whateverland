@@ -1,20 +1,22 @@
 //@Autor {Anderson Lima}
 import { createElement } from "../../modules/modules.js";
 import CreateEventStateChange from "../../modules/event-url.js";
-// import { renderTextTitle, passPage } from "./modules/initPageModules.js";
+import { renderButtonExplore, renderLogo } from "./initPageModules.js";
 
 // Requisição ao servidor de banco de dados
 
 export default async function RenderInitPage() {
-    const buttonInit = createElement("button", "buttonInit");
-    buttonInit.innerHTML = "Explorar";
+
+    const buttonInit = renderButtonExplore();
+
     buttonInit.onclick = redirectToMap;
 
     const page = createElement("div", "divSite");
+    page.appendChild(renderLogo());
     page.appendChild(buttonInit);
 
     const container = document.createElement("div");
-    container.classList.add("container");
+    container.classList.add("containerPage");
     container.appendChild(page);
 
     const response = {
