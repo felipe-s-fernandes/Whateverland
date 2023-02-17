@@ -1,6 +1,7 @@
 //@author {Anderson Lima}
 import CreateEventStateChange from "../event-url.js";
 import renderPage from "./modules/galleryModules.js";
+import { createNavBar, createBackButton } from "../../modules/modules.js";
 
 async function fetchGalleryObject() {
     const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
@@ -21,14 +22,13 @@ export default async function RenderGalleryPage() {
 
     const container = document.createElement("div");
     container.classList.add("container");
-    container.appendChild(page);
 
-    //Será substituído depois pelo botão verdadeiro
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = "<- VOLTAR AO MAPA";
-    btn.onclick = redirectToPrincipal;
-    container.appendChild(btn);
+    const navBar = createNavBar("gallery");
+    const backButton = createBackButton();
+
+    container.appendChild(navBar);
+    container.appendChild(page);
+    container.appendChild(backButton);
 
     const response = {
         page: container,

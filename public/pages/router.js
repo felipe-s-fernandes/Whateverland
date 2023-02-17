@@ -1,6 +1,5 @@
 import RenderMainPage from "./main-page.js";
 import RenderStartPage from "./start-page.js";
-//import RenderHistoryPage from "./history-page.js";
 import RenderHistoryPage from "./history/history.js";
 import RenderGalleryPage from "./gallery/gallery.js";
 
