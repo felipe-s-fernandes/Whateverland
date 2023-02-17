@@ -4,31 +4,23 @@ import {
     createBackButton,
     createNavBar,
 } from "../../modules/modules.js";
-//import { config } from "dotenv";
-//config();
-
-//renderHistoryPage(object);
-
-/* async function fetchHistoryObject() {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/pages/1`);
-    const json = await response.json();
-    return json.data;
-} */
+import createStartPage from "./modules/startModules.js";
 
 //@author {Felipe Fernandes}
 export default async function RenderStartPage() {
     const object = JSON.parse(localStorage.getItem("page"));
+    console.log(object);
+    const startPage = object.startPage[0];
+    const civilization = object.civilization[0];
 
     const container = createElement("section", "container");
 
     const navBar = createNavBar("start");
+    const startPageDiv = createStartPage(startPage, civilization);
     const backButton = createBackButton();
 
     container.appendChild(navBar);
+    container.appendChild(startPageDiv);
     container.appendChild(backButton);
 
     //root.appendChild(container);
