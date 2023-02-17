@@ -1,5 +1,6 @@
 //@Autor {Anderson Lima}
 // coautor {Felipe Fernandes}
+
 import CreateEventStateChange from "../../modules/event-url.js";
 import renderPage from "./modules/galleryModules.js";
 import { renderTextTitle, passPage } from "./modules/galleryModules.js";
@@ -27,7 +28,7 @@ export default async function RenderGalleryPage() {
         page: container,
         object: null,
         addEvents: function () {
-            console.log("Adiciona eventos");
+            // console.log("Adiciona eventos");
             renderTextTitle(nome);
             passPage(images);
         },
