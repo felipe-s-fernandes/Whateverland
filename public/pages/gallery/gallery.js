@@ -1,6 +1,6 @@
 //@Autor {Anderson Lima}
 // coautor {Felipe Fernandes}
-import CreateEventStateChange from "../event-url.js";
+import CreateEventStateChange from "../../modules/event-url.js";
 import renderPage from "./modules/galleryModules.js";
 import { renderTextTitle, passPage } from "./modules/galleryModules.js";
 import { createNavBar, createBackButton } from "../../modules/modules.js";

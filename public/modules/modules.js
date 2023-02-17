@@ -1,5 +1,5 @@
 //@author {Felipe Fernandes}
-import CreateEventStateChange from "../pages/event-url.js";
+import CreateEventStateChange from "./event-url.js";
 
 export function createElement(htmlElement, className) {
     const element = document.createElement(htmlElement);

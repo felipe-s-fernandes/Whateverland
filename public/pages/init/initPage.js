@@ -1,6 +1,6 @@
 //@Autor {Anderson Lima}
 import { createElement } from "../../modules/modules.js";
-import CreateEventStateChange from "../event-url.js";
+import CreateEventStateChange from "../../modules/event-url.js";
 // import { renderTextTitle, passPage } from "./modules/initPageModules.js";
 
 // Requisição ao servidor de banco de dados

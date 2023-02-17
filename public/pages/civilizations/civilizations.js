@@ -1,5 +1,5 @@
 import { createElement } from "../../modules/modules.js";
-import CreateEventStateChange from "../event-url.js";
+import CreateEventStateChange from "../../modules/event-url.js";
 
 //Implementar rota de regiões
 

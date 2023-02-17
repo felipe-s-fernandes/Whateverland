@@ -1,6 +1,6 @@
 //@author {Felipe Fernandes}
 import { createElement } from "../../modules/modules.js";
-import CreateEventStateChange from "../event-url.js";
+import CreateEventStateChange from "../../modules/event-url.js";
 
 async function fetchCivilizationsObject() {
     const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
