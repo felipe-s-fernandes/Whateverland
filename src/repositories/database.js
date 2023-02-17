@@ -16,6 +16,14 @@ const database = {
             civilization_image: "calvard.webp",
             deleted: false,
         },
+        {
+            civilization_id: 3,
+            region_id: 0,
+            start_page_id: 458,
+            civilization_name: "Liberl",
+            civilization_image: "calvard.webp",
+            deleted: false,
+        },
     ],
     start_pages: [
         {

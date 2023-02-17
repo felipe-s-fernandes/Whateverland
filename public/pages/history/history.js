@@ -22,8 +22,8 @@ async function fetchHistoryObject() {
 
 //@author {Felipe Fernandes}
 export default async function RenderHistoryPage() {
-    const object = await fetchHistoryObject();
-
+    const object = JSON.parse(localStorage.getItem("page"));
+    console.log(object);
     const civilization = object.civilization[0];
     const history = object.history;
 

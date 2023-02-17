@@ -3,11 +3,12 @@ const root = document.querySelector("#root");
 //const objRotas = GeraObjComRotas();
 const pagesRoutes = getPagesRouter();
 
-console.log(pagesRoutes);
+window.global = root;
+//console.log(pagesRoutes);
 
 //inicia
 //const page = objRotas.getPage("/");
-const pageObject = await pagesRoutes.getPage("/");
+const pageObject = await pagesRoutes.getPage("/civilizations");
 console.log(pageObject);
 root.innerHTML = "";
 root.appendChild(pageObject.page);

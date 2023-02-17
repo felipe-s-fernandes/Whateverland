@@ -33,7 +33,7 @@ export const getCivilizations = async (req, res) => {
         const serviceResponse = civilzationsServices.getCivilizations(regionId);
 
         response.message = "Success";
-        response.data = serviceResponse;
+        response.data = serviceResponse.data;
 
         res.status(200).send(response);
         console.timeEnd("getCivilizations()");
