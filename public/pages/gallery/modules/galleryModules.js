@@ -74,6 +74,8 @@ export function passPage(array) {
         buttonLeft.style.display = "none";                
     }
 
+    buttonRight.style.display = "block";
+
     if (array.length - 1 <= lastElement) {
         buttonRight.style.display = "none";        
     }
