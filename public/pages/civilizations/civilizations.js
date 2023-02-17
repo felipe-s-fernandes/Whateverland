@@ -17,6 +17,8 @@ async function fetchPageObject(civilizationId) {
 
 export default async function RenderCivilizationsPage() {
     const object = JSON.parse(localStorage.getItem("civilizations"));
+    const region = JSON.parse(localStorage.getItem("region"));
+
     const civilizations = object.civilizations;
     console.log(object);
     const civNameArray = [];
@@ -26,38 +28,15 @@ export default async function RenderCivilizationsPage() {
         civNameArray.push(civilization.civilization_name);
         civImgArray.push("../../uploads/" + civilization.civilization_image);
     });
-    /*     civilizations: [
-        {
-            civilization_id: 1,
-            region_id: 0,
-            start_page_id: 456,
-            civilization_name: "Erebonia",
-            civilization_image: "erebonia.webp",
-            deleted: false,
- */
-
-    //region_name: "Zemuria",
-    //region_summary: "Resumo da região Zemuria",
 
     let example = {
-        nome: "Nome da região",
-        resumo: "Resumo da região",
-        brasao: "../../uploads/brasaobr.png",
+        nome: region.region_name,
+        resumo: region.region_summary,
+        brasao: "../../uploads/" + region.region_image,
+        //ajustar posteriormente
         territorio: "../../uploads/silbr.png",
         civilizations: civNameArray,
         logos: civImgArray,
-        /* civilizations: [
-            "Minas Gerais",
-            "São Paulo",
-            "Rio de Janeiro",
-            "Pernambuco",
-        ],
-        logos: [
-            "../../uploads/mg.png",
-            "../../uploads/sp.png",
-            "../../uploads/rj.png",
-            "../../uploads/pb.png",
-        ], */
     };
 
     const pageCiv = createElement("div", "pageCiv");
@@ -73,6 +52,10 @@ export default async function RenderCivilizationsPage() {
     const container_regionTitle = createElement("div", "container_regionTitle");
 
     const exit_civilPage = createElement("div", "exit_civilPage");
+    exit_civilPage.addEventListener("click", () => {
+        redirectToMap();
+    });
+
     const exitimg_civilPage = createElement("img", "exitimg_civilPage");
 
     pageCiv.appendChild(symbolBody);
@@ -222,5 +205,10 @@ export default async function RenderCivilizationsPage() {
 
 function redirectToStart() {
     const eventStateChange = CreateEventStateChange("/start");
+    window.dispatchEvent(eventStateChange);
+}
+
+function redirectToMap() {
+    const eventStateChange = CreateEventStateChange("/map");
     window.dispatchEvent(eventStateChange);
 }
