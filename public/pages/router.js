@@ -1,4 +1,5 @@
-import RenderMainPage from "./main-page.js";
+import RenderInitPage from "./init/initPage.js";
+import RenderMap from "./map/map.js";
 import RenderCivilizationsPage from "./civilizations/civilizations.js";
 import RenderStartPage from "./start/start.js";
 import RenderHistoryPage from "./history/history.js";
@@ -6,7 +7,8 @@ import RenderGalleryPage from "./gallery/gallery.js";
 
 export default function getPagesRouter() {
     const pagesRouter = {
-        "/": RenderMainPage,
+        "/": RenderInitPage,
+        "/map": RenderMap,
         "/civilizations": RenderCivilizationsPage,
         "/start": RenderStartPage,
         "/history": RenderHistoryPage,

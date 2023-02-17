@@ -3,16 +3,6 @@ import CreateEventStateChange from "../event-url.js";
 
 //Implementar rota de regiões
 
-async function fetchCivilizationsObject() {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/civilizations/0`);
-    const json = await response.json();
-    return json.data;
-}
-
 async function fetchPageObject(civilizationId) {
     const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
     const PORT = "8080"; //process.env.SERVER_PORT;
@@ -26,7 +16,7 @@ async function fetchPageObject(civilizationId) {
 }
 
 export default async function RenderCivilizationsPage() {
-    const object = await fetchCivilizationsObject();
+    const object = JSON.parse(localStorage.getItem("civilizations"));
     const civilizations = object.civilizations;
     console.log(object);
     const civNameArray = [];

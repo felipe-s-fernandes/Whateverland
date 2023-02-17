@@ -8,7 +8,7 @@ window.global = root;
 
 //inicia
 //const page = objRotas.getPage("/");
-const pageObject = await pagesRoutes.getPage("/civilizations");
+const pageObject = await pagesRoutes.getPage("/");
 console.log(pageObject);
 root.innerHTML = "";
 root.appendChild(pageObject.page);
