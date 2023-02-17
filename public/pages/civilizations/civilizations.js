@@ -231,6 +231,6 @@ export default async function RenderCivilizationsPage() {
 }
 
 function redirectToStart() {
-    const eventStateChange = CreateEventStateChange("/history");
+    const eventStateChange = CreateEventStateChange("/start");
     window.dispatchEvent(eventStateChange);
 }

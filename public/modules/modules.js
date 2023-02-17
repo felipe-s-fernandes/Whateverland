@@ -78,7 +78,7 @@ export function createNavBar(page) {
 }
 
 function redirectToPrincipal() {
-    const eventStateChange = CreateEventStateChange("/");
+    const eventStateChange = CreateEventStateChange("/civilizations");
     window.dispatchEvent(eventStateChange);
 }
 

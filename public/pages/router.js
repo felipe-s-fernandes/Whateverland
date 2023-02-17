@@ -1,6 +1,6 @@
 import RenderMainPage from "./main-page.js";
 import RenderCivilizationsPage from "./civilizations/civilizations.js";
-import RenderStartPage from "./start-page.js";
+import RenderStartPage from "./start/start.js";
 import RenderHistoryPage from "./history/history.js";
 import RenderGalleryPage from "./gallery/gallery.js";
 
