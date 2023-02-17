@@ -2,7 +2,7 @@
 
 import { createElement } from "../../../modules/modules.js";
 
-export default function renderPage(name, gallery) {
+export default function renderPage() {
     // Criação de elementos HTML
     const contentBox = createElement("div", "contentBox");
     const textTitle = createElement("h1", "textTitle");
@@ -23,19 +23,6 @@ export default function renderPage(name, gallery) {
     buttonRight.id = "right";
     containerImages.id = "containerImages";
     textTitle.id = "textTitle";
-
-
-    // ***Conteúdo variável***
-
-    // Título de conteúdo das imagens
-    
-    // textTitle.innerHTML = `GALERIA DE IMAGENS DE ${name}`;
-
-    // Imagens do site
-    // gallery.forEach((element) => {
-    //     containerImages.appendChild(addImage(element));
-    // });
-    // passPage(gallery);
     
     // Inseerção dos elementos fixos no HTML
     contentButtonsAndImages.appendChild(buttonLeft);
@@ -73,10 +60,6 @@ export function renderTextTitle(name) {
 export function passPage(array) {
     const containerImages = document.querySelector("#containerImages");
 
-    // array.forEach((element) => {
-    //     containerImages.appendChild(addImage(element));
-    // });
-
     const buttonLeft = document.querySelector("#left");
     const buttonRight = document.querySelector("#right");
 
@@ -100,14 +83,6 @@ export function passPage(array) {
     function displayElements(array) {
 
         containerImages.innerHTML = "";
-
-        // if (currentPage === 0) {
-        //     buttonLeft.style.display = "none";        
-        // }
-
-        // if (lastElement > array.length) {
-        //     buttonRight.style.display = "none";         
-        // }
 
         // Posições no array
         primaryElement = currentPage * maxImages;
@@ -141,10 +116,6 @@ export function passPage(array) {
     })
     
     buttonRight.addEventListener("click", () => {
-        
-        // if (currentPage === 0) {
-        //     buttonLeft.style.display = "none";                        
-        // }
         
         if (lastElement + maxImages > array.length - 1) {
             buttonRight.style.display = "none";
