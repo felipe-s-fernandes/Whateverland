@@ -1,7 +1,10 @@
 //@author {Felipe Fernandes}
-import { createElement } from "../../modules/modules.js";
+import {
+    createElement,
+    createBackButton,
+    createNavBar,
+} from "../../modules/modules.js";
 import { createEventsBar, createEventCard } from "./modules/historyModules.js";
-import CreateEventStateChange from "../event-url.js";
 //import { config } from "dotenv";
 //config();
 
@@ -32,15 +35,13 @@ export default async function RenderHistoryPage() {
         history[0]
     );
 
+    const navBar = createNavBar("history");
+    const backButton = createBackButton();
+
+    container.appendChild(navBar);
     container.appendChild(eventsBar);
     container.appendChild(eventCard);
-
-    //Será substituído depois pelo botão verdadeiro
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = "<- VOLTAR AO MAPA";
-    btn.onclick = redirectToPrincipal;
-    container.appendChild(btn);
+    container.appendChild(backButton);
 
     //root.appendChild(container);
     const response = {
@@ -52,11 +53,6 @@ export default async function RenderHistoryPage() {
     };
 
     return response;
-}
-
-function redirectToPrincipal() {
-    const eventStateChange = CreateEventStateChange("/");
-    window.dispatchEvent(eventStateChange);
 }
 
 //@author {Felipe Fernandes}
