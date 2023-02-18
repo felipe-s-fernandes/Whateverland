@@ -21,11 +21,11 @@ export const getPage = async (req, res) => {
     if (isNaN(id)) {
         console.log(TAG, "Parameter isNaN");
 
-        response.message = "Informe uma civilização válida!";
+        response.message = "Civilization id is not valid.";
         response.data = null;
-        response.error = "Informe uma civilização válida!";
+        response.error = "404: Not found";
 
-        res.status(400).json(response);
+        res.status(404).json(response);
         console.timeEnd("getPage()");
         return;
     }
