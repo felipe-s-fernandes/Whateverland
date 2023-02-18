@@ -141,10 +141,10 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const img_left = createElement("img", "img_left"); //botão esquerda
     td_buttonleft.appendChild(img_left);
-    img_left.src = "./images/left.png";
+    img_left.src = "../../uploads/left.png";
     const img_right = createElement("img", "img_right"); //botão direita
     td_buttonright.appendChild(img_right);
-    img_right.src = "./images/right.png";
+    img_right.src = "../../uploads/right.png";
 
     const civilLogo1 = createElement("img", "civilLogo1");
     td_civilLogo1.appendChild(civilLogo1);
@@ -171,25 +171,42 @@ export default async function RenderCivilizationsPage(regionId) {
     tr_names_civ.appendChild(td_names_v1);
 
     let i_civil = 0;
+    civilLogo1.dataset.id = i_civil + 1;
+    civilLogo2.dataset.id = i_civil + 2;
+    civilLogo3.dataset.id = i_civil + 3;
+    img_left.style.display = "none";
 
     td_buttonleft.addEventListener("click", function () {
-        if (i_civil > 0) {
-            i_civil--;
+        img_left.style.display = "none";
+        if (i_civil > 3) {
+            img_left.style.display = "block";
         }
+        if (i_civil > 0) {
+            i_civil = i_civil - 3;
+        }
+        img_right.style.display = "block";
         console.log(i_civil);
         console.log(example.civilizations[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
         td_civilName2.textContent = example.civilizations[i_civil + 1];
         td_civilName3.textContent = example.civilizations[i_civil + 2];
-        civilLogo1.src = example.logos[0];
-        civilLogo2.src = example.logos[1];
-        civilLogo3.src = example.logos[2];
+        civilLogo1.src = example.logos[i_civil];
+        civilLogo2.src = example.logos[i_civil + 1];
+        civilLogo3.src = example.logos[i_civil + 2];
+        civilLogo1.dataset.id = i_civil + 1;
+        civilLogo2.dataset.id = i_civil + 2;
+        civilLogo3.dataset.id = i_civil + 3;
     });
 
     td_buttonright.addEventListener("click", function () {
-        if (i_civil < 1) {
-            i_civil++;
+        img_right.style.display = "none";
+        if (i_civil < civNameArray.length - 6) {
+            img_right.style.display = "block";
         }
+        if (i_civil < civNameArray.length - 3) {
+            i_civil = i_civil + 3;
+        }
+        img_left.style.display = "block";
         console.log(i_civil);
         console.log(example.logos[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
@@ -198,6 +215,9 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo1.src = example.logos[i_civil];
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
+        civilLogo1.dataset.id = i_civil + 1;
+        civilLogo2.dataset.id = i_civil + 2;
+        civilLogo3.dataset.id = i_civil + 3;
     });
 
     civilLogo1.src = example.logos[0];
@@ -209,13 +229,25 @@ export default async function RenderCivilizationsPage(regionId) {
     td_civilName3.textContent = example.civilizations[i_civil + 2];
 
     //MODIFICAR
-    civilLogo1.dataset.id = 2;
     civilLogo1.addEventListener("click", async () => {
         const object = await fetchPageObject(civilLogo1.dataset.id);
         localStorage.setItem("page", JSON.stringify(object));
         redirectToStart();
     });
 
+    civilLogo2.addEventListener("click", async () => {
+        const object = await fetchPageObject(civilLogo2.dataset.id);
+        localStorage.setItem("page", JSON.stringify(object));
+        redirectToStart();
+    });
+
+    civilLogo3.addEventListener("click", async () => {
+        const object = await fetchPageObject(civilLogo3.dataset.id);
+        localStorage.setItem("page", JSON.stringify(object));
+        redirectToStart();
+    });
+
+    // Código de Felipe Fernandes
     const response = {
         page: pageCiv,
         object: null,
@@ -227,6 +259,7 @@ export default async function RenderCivilizationsPage(regionId) {
     return response;
 }
 
+// Código de Felipe Fernandes
 function redirectToStart() {
     const eventStateChange = CreateEventStateChange("/start");
     window.dispatchEvent(eventStateChange);
@@ -236,3 +269,94 @@ function redirectToMap() {
     const eventStateChange = CreateEventStateChange("/map");
     window.dispatchEvent(eventStateChange);
 }
+
+// export function passPage(array) {
+//     const containerImages = document.querySelector("#containerImages");
+
+//     const buttonLeft = document.querySelector("#left");
+//     const buttonRight = document.querySelector("#right");
+
+//     const maxImages = 3;
+
+//     let currentPage = 0;
+
+//     let primaryElement = currentPage * maxImages;
+//     let lastElement = primaryElement + maxImages - 1;
+
+//     if (currentPage == 0) {
+//         buttonLeft.style.display = "none";
+//     }
+
+//     buttonRight.style.display = "block";
+
+//     if (array.length - 1 <= lastElement) {
+//         buttonRight.style.display = "none";
+//     }
+
+//     displayElements(array);
+
+//     function displayElements(array) {
+
+//         containerImages.innerHTML = "";
+
+//         // Posições no array
+//         primaryElement = currentPage * maxImages;
+//         lastElement = primaryElement + maxImages - 1;
+
+//         // Percorrendo apenas os itens máximos por página
+//         for (let i = 0; i < array.length; i++) {
+//             const element = array[i];
+
+//             if (i >= primaryElement && i <= lastElement) {
+//                 containerImages.appendChild(addImage(element));
+//                 if (i == lastElement) {
+//                     i = array.length;
+//                 }
+//             }
+//         }
+//     }
+
+//     buttonLeft.addEventListener("click", () => {
+
+//         if (currentPage === 1) {
+//             buttonLeft.style.display = "none";
+//             buttonRight.style.display = "block";
+//         } else {
+//             buttonLeft.style.display = "block";
+//             buttonRight.style.display = "block";
+//         }
+//         currentPage--;
+//         console.log(currentPage);
+//         displayElements(array);
+//     })
+
+//     buttonRight.addEventListener("click", () => {
+
+//         if (lastElement + maxImages > array.length - 1) {
+//             buttonRight.style.display = "none";
+//             buttonLeft.style.display = "block";
+
+//         } else {
+//             buttonLeft.style.display = "block";
+//             buttonRight.style.display = "block";
+//         }
+
+//         currentPage++;
+//         console.log(lastElement);
+//         displayElements(array);
+//     })
+// }
+
+// function addImage(nameArchive, legend) {
+//     const figure = createElement("figure", "contentImage");
+//     const image = createElement("img", "image");
+//     const figuraCaption = createElement("figcaption", "textImage");
+
+//     image.src = `../../../uploads/${nameArchive}`;
+//     figuraCaption.innerText = legend;
+
+//     figure.appendChild(image);
+//     figure.appendChild(figuraCaption);
+
+//     return figure;
+// }
