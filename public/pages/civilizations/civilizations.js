@@ -40,10 +40,10 @@ async function fetchPageObject(civilizationId) {
 
 export default async function RenderCivilizationsPage(regionId) {
     const civilizationsObject = await fetchCivilizationsObject(regionId);
-    const civilizations = civilizationsObject[0];
+    const civilizations = civilizationsObject.civilizations;
 
     const regionObject = await fetchRegionObject(regionId);
-    const region = regionObject[0];
+    const region = regionObject.region;
 
     const civNameArray = [];
     const civImgArray = [];
@@ -269,94 +269,3 @@ function redirectToMap() {
     const eventStateChange = CreateEventStateChange("/map");
     window.dispatchEvent(eventStateChange);
 }
-
-// export function passPage(array) {
-//     const containerImages = document.querySelector("#containerImages");
-
-//     const buttonLeft = document.querySelector("#left");
-//     const buttonRight = document.querySelector("#right");
-
-//     const maxImages = 3;
-
-//     let currentPage = 0;
-
-//     let primaryElement = currentPage * maxImages;
-//     let lastElement = primaryElement + maxImages - 1;
-
-//     if (currentPage == 0) {
-//         buttonLeft.style.display = "none";
-//     }
-
-//     buttonRight.style.display = "block";
-
-//     if (array.length - 1 <= lastElement) {
-//         buttonRight.style.display = "none";
-//     }
-
-//     displayElements(array);
-
-//     function displayElements(array) {
-
-//         containerImages.innerHTML = "";
-
-//         // Posições no array
-//         primaryElement = currentPage * maxImages;
-//         lastElement = primaryElement + maxImages - 1;
-
-//         // Percorrendo apenas os itens máximos por página
-//         for (let i = 0; i < array.length; i++) {
-//             const element = array[i];
-
-//             if (i >= primaryElement && i <= lastElement) {
-//                 containerImages.appendChild(addImage(element));
-//                 if (i == lastElement) {
-//                     i = array.length;
-//                 }
-//             }
-//         }
-//     }
-
-//     buttonLeft.addEventListener("click", () => {
-
-//         if (currentPage === 1) {
-//             buttonLeft.style.display = "none";
-//             buttonRight.style.display = "block";
-//         } else {
-//             buttonLeft.style.display = "block";
-//             buttonRight.style.display = "block";
-//         }
-//         currentPage--;
-//         console.log(currentPage);
-//         displayElements(array);
-//     })
-
-//     buttonRight.addEventListener("click", () => {
-
-//         if (lastElement + maxImages > array.length - 1) {
-//             buttonRight.style.display = "none";
-//             buttonLeft.style.display = "block";
-
-//         } else {
-//             buttonLeft.style.display = "block";
-//             buttonRight.style.display = "block";
-//         }
-
-//         currentPage++;
-//         console.log(lastElement);
-//         displayElements(array);
-//     })
-// }
-
-// function addImage(nameArchive, legend) {
-//     const figure = createElement("figure", "contentImage");
-//     const image = createElement("img", "image");
-//     const figuraCaption = createElement("figcaption", "textImage");
-
-//     image.src = `../../../uploads/${nameArchive}`;
-//     figuraCaption.innerText = legend;
-
-//     figure.appendChild(image);
-//     figure.appendChild(figuraCaption);
-
-//     return figure;
-// }
