@@ -6,6 +6,7 @@ const getRegions = () => {
 
     try {
         const repoResponse = regionsRepository.getRegions();
+        // console.log(repoResponse);
         return repoResponse;
     } catch (error) {
         console.log(TAG, "error caught");

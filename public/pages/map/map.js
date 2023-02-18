@@ -7,8 +7,10 @@ async function fetchRegionsObject() {
     const PORT = "8080"; //process.env.SERVER_PORT;
 
     //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/regions`);
+    const response = await fetch(`http://${HOST}:${PORT}/regions/`);
     const json = await response.json();
+    console.log(json);
+    console.log(json.data);
     return json.data;
 }
 

@@ -32,7 +32,7 @@ async function fetchPageObject(civilizationId) {
 
     //Trazendo a resposta do backend para o frontend
     const response = await fetch(
-        `http://${HOST}:${PORT}/pages/${civilizationId}`
+        `http://${HOST}:${PORT}/civilizations/${civilizationId}`
     );
     const json = await response.json();
     return json.data;
