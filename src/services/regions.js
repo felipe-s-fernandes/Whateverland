@@ -3,20 +3,12 @@ const TAG = "Regions Service: ";
 
 const getRegions = () => {
     // Padronizar a resposta
-    const response = {
-        message: "",
-        data: null,
-        error: null,
-    };
 
     try {
         const repoResponse = regionsRepository.getRegions();
-        response.data = repoResponse;
-        response.message = "Regions retrieved successfully.";
-        return response;
+        return repoResponse;
     } catch (error) {
-        response.message = "Repository error";
-        response.error = error;
+        console.log(TAG, "error caught");
         throw error;
     }
 };

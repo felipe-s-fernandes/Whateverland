@@ -3,28 +3,35 @@ const TAG = "Civilizations Service: ";
 
 const getCivilizations = (regionId) => {
     // Padronizar a resposta
-    const response = {
-        message: "",
-        data: null,
-        error: null,
-    };
 
     try {
         const repoResponse = civilizationsRepository.getCivilizations(
             Number(regionId)
         );
-        response.data = repoResponse;
-        response.message = "Civilizations retrieved successfully.";
-        return response;
+        return repoResponse;
     } catch (error) {
-        response.message = "Repository error";
-        response.error = error;
+        console.log(TAG, "error caught");
         throw error;
     }
 };
 
+const getCivilizationById = (civilizationId) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = civilizationsRepository.getCivilizationById(
+            Number(civilizationId)
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+} 
+
 const civilizationsServices = {
     getCivilizations: getCivilizations,
+    getCivilizationById: getCivilizationById,
 };
 
 export default civilizationsServices;

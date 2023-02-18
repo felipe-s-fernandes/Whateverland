@@ -10,7 +10,7 @@ async function fetchCivilizationsObject(regionId) {
 
     //Trazendo a resposta do backend para o frontend
     const response = await fetch(
-        `http://${HOST}:${PORT}/civilizations/${regionId}`
+        `http://${HOST}:${PORT}/civilizations/by_region/${regionId}`
     );
     const json = await response.json();
     return json.data;

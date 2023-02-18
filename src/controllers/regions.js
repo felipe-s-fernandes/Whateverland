@@ -21,7 +21,7 @@ export const getRegions = async (req, res) => {
         response.message = "Success";
         response.data = serviceResponse.data;
 
-        res.status(200).send(response);
+        res.status(200).json(response);
         console.timeEnd("getRegions()");
     } catch (error) {
         console.log(TAG, "error caught");
@@ -66,7 +66,7 @@ export const getRegionById = async (req, res) => {
 
         response.message = `Region ${regionId} retrieved successfully.`;
         response.data = serviceResponse;
-        res.status(200).send(response);
+        res.status(200).json(response);
         console.timeEnd("getRegionById()");
     } catch (error) {
         console.log(TAG, "error caught");
