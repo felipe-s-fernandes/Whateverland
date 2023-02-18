@@ -1,7 +1,30 @@
+//@Autor {Ed Wilson}
 import { createElement } from "../../modules/modules.js";
 import CreateEventStateChange from "../../modules/event-url.js";
 
 //Implementar rota de regiões
+
+async function fetchCivilizationsObject(regionId) {
+    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
+    const PORT = "8080"; //process.env.SERVER_PORT;
+
+    //Trazendo a resposta do backend para o frontend
+    const response = await fetch(
+        `http://${HOST}:${PORT}/civilizations/${regionId}`
+    );
+    const json = await response.json();
+    return json.data;
+}
+
+async function fetchRegionObject(regionId) {
+    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
+    const PORT = "8080"; //process.env.SERVER_PORT;
+
+    //Trazendo a resposta do backend para o frontend
+    const response = await fetch(`http://${HOST}:${PORT}/regions/${regionId}`);
+    const json = await response.json();
+    return json.data;
+}
 
 async function fetchPageObject(civilizationId) {
     const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
@@ -15,12 +38,13 @@ async function fetchPageObject(civilizationId) {
     return json.data;
 }
 
-export default async function RenderCivilizationsPage() {
-    const object = JSON.parse(localStorage.getItem("civilizations"));
-    const region = JSON.parse(localStorage.getItem("region"));
+export default async function RenderCivilizationsPage(regionId) {
+    const civilizationsObject = await fetchCivilizationsObject(regionId);
+    const civilizations = civilizationsObject.civilizations;
 
-    const civilizations = object.civilizations;
-    console.log(object);
+    const regionObject = await fetchRegionObject(regionId);
+    const region = regionObject.region;
+
     const civNameArray = [];
     const civImgArray = [];
 
@@ -117,10 +141,10 @@ export default async function RenderCivilizationsPage() {
 
     const img_left = createElement("img", "img_left"); //botão esquerda
     td_buttonleft.appendChild(img_left);
-    img_left.src = "./images/left.png";
+    img_left.src = "../../uploads/left.png";
     const img_right = createElement("img", "img_right"); //botão direita
     td_buttonright.appendChild(img_right);
-    img_right.src = "./images/right.png";
+    img_right.src = "../../uploads/right.png";
 
     const civilLogo1 = createElement("img", "civilLogo1");
     td_civilLogo1.appendChild(civilLogo1);
@@ -147,25 +171,42 @@ export default async function RenderCivilizationsPage() {
     tr_names_civ.appendChild(td_names_v1);
 
     let i_civil = 0;
+    civilLogo1.dataset.id = i_civil + 1;
+    civilLogo2.dataset.id = i_civil + 2;
+    civilLogo3.dataset.id = i_civil + 3;
+    img_left.style.display = "none";
 
     td_buttonleft.addEventListener("click", function () {
-        if (i_civil > 0) {
-            i_civil--;
+        img_left.style.display = "none";
+        if (i_civil > 3) {
+            img_left.style.display = "block";
         }
+        if (i_civil > 0) {
+            i_civil = i_civil - 3;
+        }
+        img_right.style.display = "block";
         console.log(i_civil);
         console.log(example.civilizations[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
         td_civilName2.textContent = example.civilizations[i_civil + 1];
         td_civilName3.textContent = example.civilizations[i_civil + 2];
-        civilLogo1.src = example.logos[0];
-        civilLogo2.src = example.logos[1];
-        civilLogo3.src = example.logos[2];
+        civilLogo1.src = example.logos[i_civil];
+        civilLogo2.src = example.logos[i_civil + 1];
+        civilLogo3.src = example.logos[i_civil + 2];
+        civilLogo1.dataset.id = i_civil + 1;
+        civilLogo2.dataset.id = i_civil + 2;
+        civilLogo3.dataset.id = i_civil + 3;
     });
 
     td_buttonright.addEventListener("click", function () {
-        if (i_civil < 1) {
-            i_civil++;
+        img_right.style.display = "none";
+        if (i_civil < civNameArray.length - 6) {
+            img_right.style.display = "block";
         }
+        if (i_civil < civNameArray.length - 3) {
+            i_civil = i_civil + 3;
+        }
+        img_left.style.display = "block";
         console.log(i_civil);
         console.log(example.logos[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
@@ -174,6 +215,9 @@ export default async function RenderCivilizationsPage() {
         civilLogo1.src = example.logos[i_civil];
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
+        civilLogo1.dataset.id = i_civil + 1;
+        civilLogo2.dataset.id = i_civil + 2;
+        civilLogo3.dataset.id = i_civil + 3;
     });
 
     civilLogo1.src = example.logos[0];
@@ -185,13 +229,25 @@ export default async function RenderCivilizationsPage() {
     td_civilName3.textContent = example.civilizations[i_civil + 2];
 
     //MODIFICAR
-    civilLogo1.dataset.id = 1;
     civilLogo1.addEventListener("click", async () => {
         const object = await fetchPageObject(civilLogo1.dataset.id);
         localStorage.setItem("page", JSON.stringify(object));
         redirectToStart();
     });
 
+    civilLogo2.addEventListener("click", async () => {
+        const object = await fetchPageObject(civilLogo2.dataset.id);
+        localStorage.setItem("page", JSON.stringify(object));
+        redirectToStart();
+    });
+
+    civilLogo3.addEventListener("click", async () => {
+        const object = await fetchPageObject(civilLogo3.dataset.id);
+        localStorage.setItem("page", JSON.stringify(object));
+        redirectToStart();
+    });
+
+    // Código de Felipe Fernandes
     const response = {
         page: pageCiv,
         object: null,
@@ -203,6 +259,7 @@ export default async function RenderCivilizationsPage() {
     return response;
 }
 
+// Código de Felipe Fernandes
 function redirectToStart() {
     const eventStateChange = CreateEventStateChange("/start");
     window.dispatchEvent(eventStateChange);

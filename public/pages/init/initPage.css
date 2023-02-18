@@ -121,6 +121,11 @@
     color: #000000;
 }
 
+.buttonInit:hover {
+    background: #bcbcbc;
+    cursor: pointer;
+}
+
 .divLogoAndWelcome {
     display: flex;
     flex-direction: column;

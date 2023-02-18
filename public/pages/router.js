@@ -1,3 +1,4 @@
+//@Autor {Felipe Fernandes}
 import RenderInitPage from "./init/initPage.js";
 import RenderMap from "./map/map.js";
 import RenderCivilizationsPage from "./civilizations/civilizations.js";
@@ -13,8 +14,8 @@ export default function getPagesRouter() {
         "/start": RenderStartPage,
         "/history": RenderHistoryPage,
         "/gallery": RenderGalleryPage,
-        getPage: function (url) {
-            return this[url]();
+        getPage: function (url, data) {
+            return this[url](data);
         },
     };
     return pagesRouter;

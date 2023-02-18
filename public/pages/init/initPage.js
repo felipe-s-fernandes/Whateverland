@@ -1,15 +1,16 @@
 //@Autor {Anderson Lima}
 import { createElement } from "../../modules/modules.js";
-import CreateEventStateChange from "../../modules/event-url.js";
+import redirectTo from "../../modules/redirect.js";
 import { renderButtonExplore, renderLogo } from "./initPageModules.js";
 
 // Requisição ao servidor de banco de dados
 
-export default async function RenderInitPage() {
-
+export default async function RenderInitPage(data) {
     const buttonInit = renderButtonExplore();
 
-    buttonInit.onclick = redirectToMap;
+    buttonInit.onclick = () => {
+        redirectTo("/map");
+    };
 
     const page = createElement("div", "divSite");
     page.appendChild(renderLogo());
@@ -28,9 +29,4 @@ export default async function RenderInitPage() {
     };
 
     return response;
-}
-
-function redirectToMap() {
-    const eventStateChange = CreateEventStateChange("/map");
-    window.dispatchEvent(eventStateChange);
 }

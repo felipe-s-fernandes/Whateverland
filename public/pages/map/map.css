@@ -1,0 +1,4 @@
+.mapDiv path:hover {
+    cursor: pointer;
+    fill: white;
+}
