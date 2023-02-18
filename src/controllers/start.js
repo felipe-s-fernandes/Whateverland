@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import startServices from "../services/start.js";
 
 const TAG = "Start Controller: ";
@@ -38,7 +37,7 @@ const getStart = async (req, res) => {
         // Chama o método do Service
         const serviceResponse = startServices.getStart(civilizationId);
 
-        response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
+        response.message = `Start page for civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;
 
         res.status(200).send(response);
@@ -56,7 +55,7 @@ const getStart = async (req, res) => {
 };
 
 const startController = {
-    getStart: getStart
+    getStart: getStart,
 };
 
 export default startController;

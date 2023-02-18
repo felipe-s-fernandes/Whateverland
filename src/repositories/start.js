@@ -7,23 +7,25 @@ const TAG = "Start Repository: ";
 const getStart = (civilizationId) => {
     try {
         const response = {
-            civilization: null,
+            start_page: null,
         };
 
         //Mock getStart;
         const civilizationResponse = database.start_pages.filter(
-            (civilization) => civilization.start_page_id === civilizationId
+            (startPage) => startPage.civilization_id === civilizationId
         );
 
-        response.civilization = civilizationResponse;
+        response.start_page = civilizationResponse;
 
-        if (response.civilization.length > 0) return response;
-        throw new Error("Civilization not found");
+        if (response.start_page.length > 0) return response;
+        throw new Error(
+            `Start page for civilization with id ${civilizationId} not found.`
+        );
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;
     }
-}
+};
 
 const startRepository = {
     getStart: getStart,

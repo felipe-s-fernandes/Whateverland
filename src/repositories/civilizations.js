@@ -33,15 +33,17 @@ const getCivilizationById = (civilizationId) => {
             (civilization) => civilization.civilization_id === civilizationId
         );
 
+        console.log(civilizationResponse);
+
         response.civilization = civilizationResponse;
 
         if (response.civilization.length > 0) return response;
-        throw new Error("Civilizations not found");
+        throw new Error(`Civilization with id ${civilizationId} not found.`);
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;
     }
-}
+};
 
 const civilizationsRepository = {
     getCivilizations: getCivilizations,

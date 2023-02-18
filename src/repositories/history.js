@@ -7,23 +7,25 @@ const TAG = "History Repository: ";
 const getHistory = (civilizationId) => {
     try {
         const response = {
-            civilization: null,
+            history_events: null,
         };
 
         //Mock getHistory;
-        const civilizationResponse = database.history_events.filter(
-            (civilization) => civilization.civilization_id === civilizationId
+        const historyResponse = database.history_events.filter(
+            (historyEvent) => historyEvent.civilization_id === civilizationId
         );
 
-        response.civilization = civilizationResponse;
+        response.history_events = historyResponse;
 
-        if (response.civilization.length > 0) return response;
-        throw new Error("Civilizations not found");
+        if (response.history_events.length > 0) return response;
+        throw new Error(
+            `There are no history events for the civilization with id ${civilizationId}`
+        );
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;
     }
-}
+};
 
 const historyRepository = {
     getHistory: getHistory,

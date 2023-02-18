@@ -7,23 +7,21 @@ const TAG = "Gallery Repository: ";
 const getGallery = (civilizationId) => {
     try {
         const response = {
-            civilization: null,
+            gallery: null,
         };
 
         //Mock getGallery;
-        const civilizationResponse = database.gallery.filter(
-            (civilization) => civilization.civilization_id === civilizationId
+        const galleryResponse = database.gallery.filter(
+            (image) => image.civilization_id === civilizationId
         );
 
-        response.civilization = civilizationResponse;
-
-        if (response.civilization.length > 0) return response;
-        throw new Error("Civilizations not found");
+        response.gallery = galleryResponse;
+        return response;
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;
     }
-}
+};
 
 const galleryRepository = {
     getGallery: getGallery,

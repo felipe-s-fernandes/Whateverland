@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import galleryServices from "../services/gallery.js";
 
 const TAG = "Gallery Controller: ";
@@ -38,7 +37,7 @@ const getGallery = async (req, res) => {
         // Chama o método do Service
         const serviceResponse = galleryServices.getGallery(civilizationId);
 
-        response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
+        response.message = `Gallery for the civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;
 
         res.status(200).send(response);
@@ -56,7 +55,7 @@ const getGallery = async (req, res) => {
 };
 
 const galleryController = {
-    getGallery: getGallery
+    getGallery: getGallery,
 };
 
 export default galleryController;
