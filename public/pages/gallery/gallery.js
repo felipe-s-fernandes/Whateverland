@@ -1,18 +1,24 @@
 //@Autor {Anderson Lima}
 // coautor {Felipe Fernandes}
 
-import CreateEventStateChange from "../../modules/event-url.js";
 import renderPage from "./modules/galleryModules.js";
+import HTTPRequest from "../../modules/HTTPRequest.js";
 import { renderTextTitle, passPage } from "./modules/galleryModules.js";
 import { createNavBar, createBackButton } from "../../modules/modules.js";
 
-export default async function RenderGalleryPage() {
+export default async function RenderGalleryPage(civilizationId) {
     // Requisição ao banco de dados
-    const object = JSON.parse(localStorage.getItem("page"));
-    
+    const object = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
+
+    const civilizationObject = await HTTPRequest(
+        `/civilizations/${civilizationId}`,
+        "GET"
+    );
+    const civilization = civilizationObject.civilization[0];
+
     // Informações recebidas do banco de dados
     const images = object.gallery;
-    const nome = object.civilization[0].civilization_name;
+    const nome = civilization.civilization_name;
 
     // Renderização dos elementos estáticos do HTML
     const page = renderPage();
@@ -21,7 +27,7 @@ export default async function RenderGalleryPage() {
     const container = document.createElement("div");
     container.classList.add("container");
 
-    const navBar = createNavBar("gallery");
+    const navBar = await createNavBar("gallery", civilizationId);
     const backButton = createBackButton();
 
     container.appendChild(navBar);
@@ -34,7 +40,6 @@ export default async function RenderGalleryPage() {
     // testePage.appendChild(navBar);
     // testePage.appendChild(page);
     // testePage.appendChild(backButton);
-
 
     const response = {
         page: container,
@@ -49,9 +54,4 @@ export default async function RenderGalleryPage() {
     };
 
     return response;
-}
-
-function redirectToMain() {
-    const eventStateChange = CreateEventStateChange("/");
-    window.dispatchEvent(eventStateChange);
 }

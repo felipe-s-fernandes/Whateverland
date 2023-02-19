@@ -1,5 +1,6 @@
 //@author {Felipe Fernandes}
 import CreateEventStateChange from "./event-url.js";
+import redirectTo from "./redirect.js";
 
 export function createElement(htmlElement, className) {
     const element = document.createElement(htmlElement);
@@ -14,11 +15,13 @@ export function createBackButton() {
         '<svg width="23" height="21" viewBox="0 0 23 21" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0.860523 11.7917L17.5643 11.7917L9.89184 19.0121L11.8408 20.8334L22.8212 10.5L11.8408 0.166708L9.90556 1.98796L17.5643 9.20837L0.860523 9.20837V11.7917Z" fill="black"/></svg>';
 
     button.innerHTML = arrow + "<p>VOLTAR AO MAPA</p>";
-    button.onclick = redirectToMap;
+    button.onclick = () => {
+        redirectTo("/map");
+    };
     return button;
 }
 
-export function createNavBar(page) {
+export async function createNavBar(page, civilizationId) {
     const header = createElement("header", "header");
 
     const whateverlandLogo = createElement("h2");
@@ -30,15 +33,21 @@ export function createNavBar(page) {
 
     const startButton = createElement("button", "navButton");
     startButton.innerText = "INICIAL";
-    startButton.onclick = redirectToStart;
+    startButton.onclick = () => {
+        redirectTo("/start", civilizationId);
+    };
 
     const historyButton = createElement("button", "navButton");
     historyButton.innerText = "HISTÓRIA";
-    historyButton.onclick = redirectToHistory;
+    historyButton.onclick = () => {
+        redirectTo("/history", civilizationId);
+    };
 
     const galleryButton = createElement("button", "navButton");
     galleryButton.innerText = "GALERIA";
-    galleryButton.onclick = redirectToGallery;
+    galleryButton.onclick = () => {
+        redirectTo("/gallery", civilizationId);
+    };
 
     if (page === "start") {
         startButton.classList.add("clickedNavButton");

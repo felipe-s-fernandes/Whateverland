@@ -1,22 +1,13 @@
 //@author {Felipe Fernandes}
 import { createElement } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
-
-async function fetchRegionsObject() {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/regions/`);
-    const json = await response.json();
-    console.log(json);
-    console.log(json.data);
-    return json.data;
-}
+import HTTPRequest from "../../modules/HTTPRequest.js";
 
 export default async function RenderMap(data) {
-    const object = await fetchRegionsObject();
-    const regions = object.regions;
+    const regionsObject = await HTTPRequest("/regions", "GET");
+    const regions = regionsObject.regions;
+
+    console.log(regions);
 
     const container = createElement("section", "container");
     const mapDiv = await createMap(regions);
@@ -24,8 +15,8 @@ export default async function RenderMap(data) {
     console.log(mapDiv);
 
     mapDiv.addEventListener("click", async (event) => {
-        const region_id = event.target.dataset.region_id;
-        redirectTo("/civilizations", region_id);
+        const regionId = event.target.dataset.region_id;
+        redirectTo("/civilizations", regionId);
     });
 
     container.appendChild(mapDiv);

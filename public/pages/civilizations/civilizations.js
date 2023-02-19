@@ -1,49 +1,19 @@
 //@Autor {Ed Wilson}
 import { createElement } from "../../modules/modules.js";
-import CreateEventStateChange from "../../modules/event-url.js";
-
-//Implementar rota de regiões
-
-async function fetchCivilizationsObject(regionId) {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(
-        `http://${HOST}:${PORT}/civilizations/by_region/${regionId}`
-    );
-    const json = await response.json();
-    return json.data;
-}
-
-async function fetchRegionObject(regionId) {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/regions/${regionId}`);
-    const json = await response.json();
-    return json.data;
-}
-
-async function fetchPageObject(civilizationId) {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(
-        `http://${HOST}:${PORT}/civilizations/${civilizationId}`
-    );
-    const json = await response.json();
-    return json.data;
-}
+import HTTPRequest from "../../modules/HTTPRequest.js";
+import redirectTo from "../../modules/redirect.js";
 
 export default async function RenderCivilizationsPage(regionId) {
-    const civilizationsObject = await fetchCivilizationsObject(regionId);
+    const civilizationsObject = await HTTPRequest(
+        `/civilizations/by_region/${regionId}`,
+        "GET"
+    );
     const civilizations = civilizationsObject.civilizations;
 
-    const regionObject = await fetchRegionObject(regionId);
-    const region = regionObject.region;
+    const regionObject = await HTTPRequest(`/regions/${regionId}`, "GET");
+    const region = regionObject.region[0];
+
+    console.log(region);
 
     const civNameArray = [];
     const civImgArray = [];
@@ -77,7 +47,7 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const exit_civilPage = createElement("div", "exit_civilPage");
     exit_civilPage.addEventListener("click", () => {
-        redirectToMap();
+        redirectTo("/map");
     });
 
     const exitimg_civilPage = createElement("img", "exitimg_civilPage");
@@ -230,21 +200,18 @@ export default async function RenderCivilizationsPage(regionId) {
 
     //MODIFICAR
     civilLogo1.addEventListener("click", async () => {
-        const object = await fetchPageObject(civilLogo1.dataset.id);
-        localStorage.setItem("page", JSON.stringify(object));
-        redirectToStart();
+        const civilizationId = civilLogo1.dataset.id;
+        redirectTo("/start", civilizationId);
     });
 
     civilLogo2.addEventListener("click", async () => {
-        const object = await fetchPageObject(civilLogo2.dataset.id);
-        localStorage.setItem("page", JSON.stringify(object));
-        redirectToStart();
+        const civilizationId = civilLogo2.dataset.id;
+        redirectTo("/start", civilizationId);
     });
 
     civilLogo3.addEventListener("click", async () => {
-        const object = await fetchPageObject(civilLogo3.dataset.id);
-        localStorage.setItem("page", JSON.stringify(object));
-        redirectToStart();
+        const civilizationId = civilLogo3.dataset.id;
+        redirectTo("/start", civilizationId);
     });
 
     // Código de Felipe Fernandes
@@ -257,15 +224,4 @@ export default async function RenderCivilizationsPage(regionId) {
     };
 
     return response;
-}
-
-// Código de Felipe Fernandes
-function redirectToStart() {
-    const eventStateChange = CreateEventStateChange("/start");
-    window.dispatchEvent(eventStateChange);
-}
-
-function redirectToMap() {
-    const eventStateChange = CreateEventStateChange("/map");
-    window.dispatchEvent(eventStateChange);
 }

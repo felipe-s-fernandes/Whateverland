@@ -4,18 +4,23 @@ import {
     createBackButton,
     createNavBar,
 } from "../../modules/modules.js";
+import HTTPRequest from "../../modules/HTTPRequest.js";
 import createStartPage from "./modules/startModules.js";
 
 //@author {Felipe Fernandes}
-export default async function RenderStartPage(data) {
-    const object = JSON.parse(localStorage.getItem("page"));
-    console.log(object);
-    const startPage = object.startPage[0];
-    const civilization = object.civilization[0];
+export default async function RenderStartPage(civilizationId) {
+    const object = await HTTPRequest(`/start/${civilizationId}`, "GET");
+    const startPage = object.start_page[0];
+
+    const civilizationObject = await HTTPRequest(
+        `/civilizations/${civilizationId}`,
+        "GET"
+    );
+    const civilization = civilizationObject.civilization[0];
 
     const container = createElement("section", "container");
 
-    const navBar = createNavBar("start");
+    const navBar = await createNavBar("start", civilizationId);
     const startPageDiv = createStartPage(startPage, civilization);
     const backButton = createBackButton();
 
@@ -27,8 +32,8 @@ export default async function RenderStartPage(data) {
     const response = {
         page: container,
         object: object,
-        addEvents: function () {
-            console.log("Event listeners");
+        addEvents: () => {
+            console.log("eventos");
         },
     };
 
