@@ -21,6 +21,14 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
+    const registerButton = createElement("button", "registerButton");
+    registerButton.innerText = "Registre uma civilização";
+    registerButton.onclick = () => {
+        redirectTo("/register");
+    };
+
+    container.appendChild(registerButton);
+
     //root.appendChild(container);
     const response = {
         page: container,

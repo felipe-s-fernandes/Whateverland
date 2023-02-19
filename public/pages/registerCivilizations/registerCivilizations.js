@@ -1,8 +1,9 @@
 // @Autor { Anderson Lima }
 
 import { createElement } from "../../modules/modules.js";
+import HTTPRequest from "../../modules/HTTPRequest.js";
 
-// Renderização da página estática
+/* // Renderização da página estática
 renderStaticPage();
 // Criação do evento de formulário
 eventForm();
@@ -11,18 +12,19 @@ eventForm();
 reqRenderRegions();
 
 // Renderização inicial da tabela
-reqRenderTable();
-
+reqRenderTable(); */
 
 // ***Requisições***
 
 // Requisição GET para obter dados das regiões
-async function reqRenderRegions() {
+export default async function RenderRegisterCivilizations(data) {
     // Array de objetos com todas as regiões
     const regionObject = await HTTPRequest(`/regions`, "GET");
 
     // Array com o nome de todas as regiões
-    const arrayRegions = Object.values(regionObject).map(element => element.region_name);
+    const arrayRegions = Object.values(regionObject).map(
+        (element) => element.region_name
+    );
 
     // Inserindo o resultado da pesquisa em um select da página HTML
     regionsSelect(arrayRegions);
@@ -31,23 +33,23 @@ async function reqRenderRegions() {
 // Requisição GET para renderizar a tabela a tabela
 function reqRenderTable() {
     fetch("/usuarios")
-    .then(response => response.json())
-    .then(data => {
-        renderTable(data);
-    })
-    .catch(error => console.log(error));    
+        .then((response) => response.json())
+        .then((data) => {
+            renderTable(data);
+        })
+        .catch((error) => console.log(error));
 }
 
 // Requisição para cadastrar novo usuário
 function newUser(nameuser, regionSelect) {
     fetch("/usuarios", {
-        method: 'POST',
+        method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nome: nameuser, regions: regionSelect })
-    })
-    //body é o envio do objeto para realizar a requisição, para acesso no banckend o objeto tem que ser o mesmo 
+        body: JSON.stringify({ nome: nameuser, regions: regionSelect }),
+    });
+    //body é o envio do objeto para realizar a requisição, para acesso no banckend o objeto tem que ser o mesmo
 }
 
 // Exibição de usuário a ser editado no input
@@ -65,24 +67,25 @@ function userInput(obj) {
 // Edição de usuário
 function userEdit(id) {
     fetch(`/usuarios/${id}`, {
-        method: 'PATCH',
+        method: "PATCH",
         headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify({ nome: form.nome.value, regions: form.regions.value})
-    })
-    .catch(error => console.log(error));
+        body: JSON.stringify({
+            nome: form.nome.value,
+            regions: form.regions.value,
+        }),
+    }).catch((error) => console.log(error));
 }
 
 // Ação para remover um objeto
-function userDelete (id) {
+function userDelete(id) {
     fetch(`/usuarios/${id}`, {
-        method: 'DELETE',
+        method: "DELETE",
         headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .catch(error => console.log(error));
+            "Content-Type": "application/json",
+        },
+    }).catch((error) => console.log(error));
 
     reqRenderTable();
 }
@@ -95,18 +98,18 @@ let userId;
 // Formulário de preenchimento
 function eventForm() {
     const form = document.querySelector("#form");
-    
-    form.addEventListener("submit", e => {
+
+    form.addEventListener("submit", (e) => {
         const nomeUser = document.querySelector("#nome-input");
         const regionSelect = document.querySelector("#regions");
         const button = document.querySelector("#cadastrar");
         e.preventDefault();
-    
+
         if (button.value == "Cadastrar") {
             // Requisitando para o servidor cadastrar o novo usuário no banco de dados
             newUser(form.nome.value, form.regions.value);
         }
-        
+
         if (button.value == "Editar") {
             // Requisitando para o servidor editar um usuário no banco de dados
             userEdit(userId);
@@ -125,8 +128,7 @@ function renderStaticPage() {
 
     const page = createElement("div", "page");
 
-    page.innerHTML =
-    `
+    page.innerHTML = `
         <header>
             <h1>Front API</h1>
         </header>
@@ -160,15 +162,15 @@ function regionsSelect(array) {
     const regionSelect = document.querySelector("#regions");
 
     array.forEach((element) => {
-        regionSelect.appendChild(selectRegions(element));    
-    })
+        regionSelect.appendChild(selectRegions(element));
+    });
 
     function selectRegions(region) {
         const option = createElement("option", "option");
         option.value = region;
         option.innerHTML = region;
-    
-        return option; 
+
+        return option;
     }
 }
 
@@ -177,8 +179,7 @@ function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
     const tableBody = createElement("tbody", "table");
-    tableBody.innerHTML = 
-    `   <thead>
+    tableBody.innerHTML = `   <thead>
             <tr id="table-heading">
                 <td class="id-number">ID</td>
                 <td class="e-mail">NOME DA CIVILIZAÇÃO</td>
@@ -190,37 +191,36 @@ function renderTable(array) {
     `;
 
     table.appendChild(tableBody);
-    
+
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
-        
         const line = createElement("tr", "table");
-    
+
         const column1 = createElement("td", "table");
         const column2 = createElement("td", "table");
         const column3 = createElement("td", "table");
         const column4 = createElement("td", "table");
         const column5 = createElement("td", "table");
-    
-        line.appendChild(column1);       
-        line.appendChild(column2);       
-        line.appendChild(column3);       
-        line.appendChild(column4);       
+
+        line.appendChild(column1);
+        line.appendChild(column2);
+        line.appendChild(column3);
+        line.appendChild(column4);
         line.appendChild(column5);
-    
-        column1.innerHTML = `${i+1}`;
+
+        column1.innerHTML = `${i + 1}`;
         column2.innerHTML = `${array[i].nome}`;
         column3.innerHTML = `${array[i].regions}`;
         column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="./src/excluir.png" alt="Ícone de excluir">`;
-        
+
         // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", () => userInput(array[i]));
         column5.addEventListener("click", () => userDelete(array[i].id));
-        
+
         table.appendChild(line);
     }
-    
+
     return tableBody;
 }
 

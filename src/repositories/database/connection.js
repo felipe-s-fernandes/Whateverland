@@ -2,7 +2,7 @@
 
 import { client } from "./pool.js";
 
-export async function connectDb(query, arrayColumns) { 
+export async function connectDb(query, arrayColumns) {
     try {
         await client.query("BEGIN");
 
@@ -10,11 +10,12 @@ export async function connectDb(query, arrayColumns) {
         console.table(result.rows);
 
         await client.query("COMMIT");
-        
+
         return result.rows;
     } catch (error) {
         // Tem que tratar o erro aqui
-        console.log(error);
+        //console.log(error);
         await client.query("ROLLBACK");
+        throw error;
     }
 }
