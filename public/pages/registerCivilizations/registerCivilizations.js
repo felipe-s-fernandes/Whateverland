@@ -3,26 +3,44 @@
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
-/* // Renderização da página estática
-renderStaticPage();
-// Criação do evento de formulário
-eventForm();
+// Renderizzação total da página
+export default async function RenderRegisterCivilizations(data) {
 
-// Renderização das regiões para o select
-reqRenderRegions();
+    // Vai ter que refatorar esse código para não dá problema quando unir os arquivos
+    const container = document.createElement("div");
+    container.classList.add("container");
 
-// Renderização inicial da tabela
-reqRenderTable(); */
+    container.appendChild(renderStaticPage());
+        
+    const response = {
+        page: container,
+        object: null,
+        addEvents: function () {
+            console.log("Adiciona eventos");
+
+            // Criação do evento de formulário
+            eventForm();
+
+            // Renderização das regiões para o select
+            reqRenderRegions();
+
+            // Renderização inicial da tabela
+            reqRenderTable();
+        },
+    };
+
+    return response;
+}
 
 // ***Requisições***
 
-// Requisição GET para obter dados das regiões
-export default async function RenderRegisterCivilizations(data) {
+// Requisição de renderização das regiões
+async function reqRenderRegions() {
     // Array de objetos com todas as regiões
     const regionObject = await HTTPRequest(`/regions`, "GET");
 
     // Array com o nome de todas as regiões
-    const arrayRegions = Object.values(regionObject).map(
+    const arrayRegions = Object.values(regionObject.regions).map(
         (element) => element.region_name
     );
 
@@ -30,8 +48,13 @@ export default async function RenderRegisterCivilizations(data) {
     regionsSelect(arrayRegions);
 }
 
+
 // Requisição GET para renderizar a tabela a tabela
-function reqRenderTable() {
+async function reqRenderTable() {
+
+    // http://localhost:8080/civilizations/by_region/0
+    const regionObject = await HTTPRequest(`/civilizations/0`, "GET");
+
     fetch("/usuarios")
         .then((response) => response.json())
         .then((data) => {
@@ -92,6 +115,40 @@ function userDelete(id) {
 
 // **Renderização do HTML**
 
+// Renderização da página estática do HTML
+function renderStaticPage() {
+    const page = createElement("div", "page");
+
+    page.innerHTML = `
+        <header>
+            <h1>Front API</h1>
+        </header>
+        <main>
+            <div class="container">
+                <h2>FORMULÁRIO DE CADASTRO DE USUÁRIOS</h2>
+                <p>Para inserir usuários na lista, preencha os dados abaixo:</p>
+            </div>
+            <form id="form" class="input-box">
+                <input type="text" name="nome" id="nome-input" class="input-field" placeholder="Nome" autocomplete="off">
+                <select name="regions" id="regions">
+                    <option value=""></option>
+                </select>
+                <input type="submit" value="Cadastrar" id="cadastrar">
+            </form>
+            <section id="section-lista">
+                <div class="container">
+                    <h2>LISTA DE USUÁRIOS CADASTRADOS</h2>
+                    <p>Abaixo, você pode ver os usuários registrados, podendo editá-los ou removê-los.</p>
+                </div>
+                <table></table>
+            </section>
+        </main>
+    `;
+    return page;
+}
+
+// Renderização variável do HTML
+
 // Variável global para guardar as informações de ID que vem do banco de dados
 let userId;
 
@@ -122,42 +179,6 @@ function eventForm() {
     });
 }
 
-// Renderização da página estática do HTML
-function renderStaticPage() {
-    const root = document.querySelector("#root");
-
-    const page = createElement("div", "page");
-
-    page.innerHTML = `
-        <header>
-            <h1>Front API</h1>
-        </header>
-        <main>
-            <div class="container">
-                <h2>FORMULÁRIO DE CADASTRO DE USUÁRIOS</h2>
-                <p>Para inserir usuários na lista, preencha os dados abaixo:</p>
-            </div>
-            <form id="form" class="input-box">
-                <input type="text" name="nome" id="nome-input" class="input-field" placeholder="Nome" autocomplete="off">
-                <select name="regions" id="regions">
-                    <option value=""></option>
-                </select>
-                <input type="submit" value="Cadastrar" id="cadastrar">
-            </form>
-            <section id="section-lista">
-                <div class="container">
-                    <h2>LISTA DE USUÁRIOS CADASTRADOS</h2>
-                    <p>Abaixo, você pode ver os usuários registrados, podendo editá-los ou removê-los.</p>
-                </div>
-                <table></table>
-            </section>
-        </main>
-    `;
-
-    root.appendChild(page);
-}
-
-// Renderização variável do HTML
 function regionsSelect(array) {
     const regionSelect = document.querySelector("#regions");
 
@@ -223,10 +244,3 @@ function renderTable(array) {
 
     return tableBody;
 }
-
-// // Função de Felipe preciso importo lá em cima
-// function createElement(htmlElement, className) {
-//     const element = document.createElement(htmlElement);
-//     element.classList.add(className);
-//     return element;
-// }

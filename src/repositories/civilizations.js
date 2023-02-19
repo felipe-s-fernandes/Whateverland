@@ -1,4 +1,6 @@
 import database from "./database.js";
+// import { connectDb } from "./database/connection.js";
+// import { connectDb } from "./database/queries.js";
 const TAG = "Civilizations Repository: ";
 
 const getCivilizations = (regionId) => {
