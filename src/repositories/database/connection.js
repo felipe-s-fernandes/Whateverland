@@ -6,8 +6,8 @@ export async function connectDb(query, arrayColumns) {
     try {
         await client.query("BEGIN");
 
+        // const result = await client.query("SELECT * FROM public.civilizations");
         const result = await client.query(query, arrayColumns);
-        console.table(result.rows);
 
         await client.query("COMMIT");
 

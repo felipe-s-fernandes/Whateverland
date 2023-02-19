@@ -1,5 +1,5 @@
 import database from "./database.js";
-// import { connectDb } from "./database/connection.js";
+import { connectDb } from "./database/connection.js";
 // import { connectDb } from "./database/queries.js";
 const TAG = "Civilizations Repository: ";
 
@@ -10,10 +10,19 @@ const getCivilizations = (regionId) => {
         };
 
         //Mock getCivilizations;
-        const civilizationsResponse = database.civilizations.filter(
+        // const civilizationsResponse = database.civilizations.filter(
+        //     (civilization) => civilization.region_id === regionId
+        // );
+        // response.civilizations = civilizationsResponse;
+        
+        // Banco de dados real
+        const database = connectDb("SELECT * FROM civilizations");
+        const civilizationsResponse = database.filter(
             (civilization) => civilization.region_id === regionId
         );
-        // connectDb(query, arrayElements)
+        // Esse console não aparece Felipe, porque?
+        console.log(database);
+
 
         response.civilizations = civilizationsResponse;
 
@@ -32,6 +41,7 @@ const getCivilizationById = (civilizationId) => {
         };
 
         //Mock getCivilizationById;
+
         const civilizationResponse = database.civilizations.filter(
             (civilization) => civilization.civilization_id === civilizationId
         );

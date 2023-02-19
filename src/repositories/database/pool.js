@@ -1,11 +1,17 @@
 // Author: { Anderson Lima }
 
-const { Pool } = require("pg");
+import pg from "pg";
 
-export const client = new Pool({
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    database: process.env.PGDATABASE,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT,
+export const client = new pg.Pool({
+    user: "urqnqcoz", //process.env.PGUSER,
+    host: "babar.db.elephantsql.com", //process.env.PGHOST,
+    database: "urqnqcoz", //process.env.PGDATABASE,
+    password: "MYE_1gHFtLU5W-E79ldjHv-bNk4OzBD6", //process.env.PGPASSWORD,
+    port: "5432", //process.env.PGPORT,
 });
+
+// PGUSER=urqnqcoz
+// PGDATABASE=urqnqcoz
+// PGHOST=babar.db.elephantsql.com
+// PGPASSWORD=MYE_1gHFtLU5W-E79ldjHv-bNk4OzBD6
+// PGPORT=5432

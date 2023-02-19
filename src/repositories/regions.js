@@ -31,6 +31,12 @@ const getRegionById = (regionId) => {
             (region) => region.region_id === regionId
         );
 
+        // const database = connectDb("SELECT * FROM regions");
+        // const civilizationsResponse = database.filter(
+        //     (civilization) => civilization.region_id === regionId
+        // );
+        // console.log(database);
+
         response.region = regionsResponse;
 
         if (response.region.length > 0) return response;
