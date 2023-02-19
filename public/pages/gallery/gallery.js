@@ -7,9 +7,10 @@ import { renderTextTitle, passPage } from "./modules/galleryModules.js";
 import { createNavBar, createBackButton } from "../../modules/modules.js";
 
 export default async function RenderGalleryPage(civilizationId) {
-    // Requisição ao banco de dados
+    // Requisição ao banco de dados para obter a galeria de uma civilização
     const object = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
 
+    // Requisição ao banco de dados para obter o objeto que contém o nome da civilização
     const civilizationObject = await HTTPRequest(
         `/civilizations/${civilizationId}`,
         "GET"

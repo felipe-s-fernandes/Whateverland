@@ -1,3 +1,5 @@
+// Autor: { Anderson Lima }
+
 // const insertCar =
 // `
 //     INSERT INTO carrinho(id_carrinho, id_usuario, pedido_realizado)
@@ -40,5 +42,5 @@
 //     VALUES ($1, $2);
 // `;
 
-
+// Jonantas coloca tudo dentro de um objeto
 // module.exports = { listCar, insertCar, deleteCar, sumQtdProducts, sumValues, addProductCar };

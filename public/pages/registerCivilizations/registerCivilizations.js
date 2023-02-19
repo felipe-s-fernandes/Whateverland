@@ -1,18 +1,42 @@
 // @Autor { Anderson Lima }
 
+import { createElement } from "../../modules/modules.js";
+
 // Renderização da página estática
 renderStaticPage();
 // Criação do evento de formulário
 eventForm();
+
+// Renderização das regiões para o select
+reqRenderRegions();
+
 // Renderização inicial da tabela
 reqRenderTable();
 
-// Dados que deverão vir do bando de dados
-const array = ["Erebonia", "Thanoslandia", "FelipeLandia"];
-regionsSelect(array);
-
 
 // ***Requisições***
+
+// Requisição GET para obter dados das regiões
+async function reqRenderRegions() {
+    // Array de objetos com todas as regiões
+    const regionObject = await HTTPRequest(`/regions`, "GET");
+
+    // Array com o nome de todas as regiões
+    const arrayRegions = Object.values(regionObject).map(element => element.region_name);
+
+    // Inserindo o resultado da pesquisa em um select da página HTML
+    regionsSelect(arrayRegions);
+}
+
+// Requisição GET para renderizar a tabela a tabela
+function reqRenderTable() {
+    fetch("/usuarios")
+    .then(response => response.json())
+    .then(data => {
+        renderTable(data);
+    })
+    .catch(error => console.log(error));    
+}
 
 // Requisição para cadastrar novo usuário
 function newUser(nameuser, regionSelect) {
@@ -24,16 +48,6 @@ function newUser(nameuser, regionSelect) {
         body: JSON.stringify({ nome: nameuser, regions: regionSelect })
     })
     //body é o envio do objeto para realizar a requisição, para acesso no banckend o objeto tem que ser o mesmo 
-}
-
-// Requisição GET para renderizar a tabela a tabela
-function reqRenderTable() {
-    fetch("/usuarios")
-    .then(response => response.json())
-    .then(data => {
-        renderTable(data);
-    })
-    .catch(error => console.log(error));    
 }
 
 // Exibição de usuário a ser editado no input
@@ -73,7 +87,7 @@ function userDelete (id) {
     reqRenderTable();
 }
 
-// **Controles da página**
+// **Renderização do HTML**
 
 // Variável global para guardar as informações de ID que vem do banco de dados
 let userId;
@@ -104,8 +118,6 @@ function eventForm() {
         regionSelect.value = "";
     });
 }
-
-// **Renderização do HTML**
 
 // Renderização da página estática do HTML
 function renderStaticPage() {
@@ -202,6 +214,7 @@ function renderTable(array) {
         column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="./src/excluir.png" alt="Ícone de excluir">`;
         
+        // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", () => userInput(array[i]));
         column5.addEventListener("click", () => userDelete(array[i].id));
         
@@ -211,9 +224,9 @@ function renderTable(array) {
     return tableBody;
 }
 
-// Função de Felipe preciso importo lá em cima
-function createElement(htmlElement, className) {
-    const element = document.createElement(htmlElement);
-    element.classList.add(className);
-    return element;
-}
+// // Função de Felipe preciso importo lá em cima
+// function createElement(htmlElement, className) {
+//     const element = document.createElement(htmlElement);
+//     element.classList.add(className);
+//     return element;
+// }

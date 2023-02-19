@@ -1,10 +1,12 @@
-// Author: {Anderson Lima}
+// Author: { Anderson Lima }
 
-async function connectDb(query, arrayElements) { 
+import { client } from "./pool.js";
+
+export async function connectDb(query, arrayColumns) { 
     try {
         await client.query("BEGIN");
 
-        const result = await client.query(query, arrayElements);
+        const result = await client.query(query, arrayColumns);
         console.table(result.rows);
 
         await client.query("COMMIT");
@@ -16,5 +18,3 @@ async function connectDb(query, arrayElements) {
         await client.query("ROLLBACK");
     }
 }
-
-connectDb();
