@@ -11,6 +11,7 @@ const getCivilizations = (regionId) => {
         const civilizationsResponse = database.civilizations.filter(
             (civilization) => civilization.region_id === regionId
         );
+        // connectDb(query, arrayElements)
 
         response.civilizations = civilizationsResponse;
 
