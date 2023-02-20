@@ -18,6 +18,11 @@ const getRegionById = `
 const getHistory = `
     SELECT * FROM history_events where civilization_id = $1;
 `;
+
+const postCivilization = `
+    INSERT INTO civilizations (region_id, civilization_name)
+    VALUES ($1, $2);
+`;
 // Jonantas coloca tudo dentro de um objeto
 
 const query = {
@@ -26,6 +31,7 @@ const query = {
     getRegions: getRegions,
     getRegionById: getRegionById,
     getHistory: getHistory,
+    postCivilization: postCivilization,
 };
 
 export default query;

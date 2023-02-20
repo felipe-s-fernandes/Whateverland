@@ -106,6 +106,59 @@ const getCivilizationById = async (req, res) => {
     }
 };
 
+const postCivilization = async (req, res) => {
+    console.log(
+        TAG,
+        "getCivilizationById() from " + req.connection.remoteAddress
+    );
+    console.time("getCivilizationById()");
+    // Precisa tratar algum input? Sim
+
+    //fetch("http://localhost:8080/civilizations/:id")
+    const civilizationId = req.params.id;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("getCivilizationById()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse =
+            civilzationsServices.getCivilizationById(civilizationId);
+
+        response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("getCivilizations()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("getCivilizations()");
+    }
+};
+
 const civilizationsController = {
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,

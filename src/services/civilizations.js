@@ -29,9 +29,25 @@ const getCivilizationById = (civilizationId) => {
     }
 };
 
+const postCivilization = (regionId, civilizationName) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = civilizationsRepository.getCivilizationById(
+            Number(regionId),
+            civilizationName
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const civilizationsServices = {
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
+    postCivilization: postCivilization,
 };
 
 export default civilizationsServices;

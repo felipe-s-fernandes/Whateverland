@@ -59,9 +59,30 @@ const getCivilizationById = (civilizationId) => {
     }
 };
 
+const postCivilization = async (regionId, civilizationName) => {
+    try {
+        const response = {
+            civilizations: null,
+        };
+
+        const database = await connectDb(query.postCivilization, [
+            regionId,
+            civilizationName,
+        ]);
+        response.civilizations = database;
+        return response;
+        // if (response.civilizations.length > 0) return response;
+        // throw new Error("Civilizations not found");
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const civilizationsRepository = {
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
+    postCivilization: postCivilization,
 };
 
 export default civilizationsRepository;
