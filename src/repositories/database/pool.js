@@ -2,7 +2,7 @@
 
 import pg from "pg";
 
-export const client = new pg.Pool({
+export const pool = new pg.Pool({
     user: "urqnqcoz", //process.env.PGUSER,
     host: "babar.db.elephantsql.com", //process.env.PGHOST,
     database: "urqnqcoz", //process.env.PGDATABASE,

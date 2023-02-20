@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
 import { config } from "dotenv";
-// import { client } from "./src/repositories/database/pool.js";
-// client;
 config();
 
 // Importa o arquivo/módulo de rotas

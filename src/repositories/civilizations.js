@@ -16,12 +16,13 @@ const getCivilizations = (regionId) => {
         // response.civilizations = civilizationsResponse;
         
         // Banco de dados real
-        const database = connectDb("SELECT * FROM civilizations");
-        const civilizationsResponse = database.filter(
-            (civilization) => civilization.region_id === regionId
-        );
+        const database = connectDb("SELECT * FROM civilizations WHERE region_id=$1;", [regionId]);
+        
+        // const civilizationsResponse = database.filter(
+        //     (civilization) => civilization.region_id === regionId
+        // );
         // Esse console não aparece Felipe, porque?
-        console.log(database);
+        console.log("console3", database);
 
 
         response.civilizations = civilizationsResponse;
