@@ -9,7 +9,6 @@ const getArticle = (_id) => {
             history: null,
             gallery: null,
         };
-
         //Mock getCivilization;
         const civilizationResponse = database.civilizations.filter(
             (civilization) => civilization.civilization_id === _id

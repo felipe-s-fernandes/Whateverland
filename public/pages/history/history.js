@@ -4,28 +4,34 @@ import {
     createBackButton,
     createNavBar,
 } from "../../modules/modules.js";
+import HTTPRequest from "../../modules/HTTPRequest.js";
 import { createEventsBar, createEventCard } from "./modules/historyModules.js";
-//import { config } from "dotenv";
-//config();
-
-//renderHistoryPage(object);
-
-async function fetchHistoryObject() {
-    const HOST = "localhost"; //process.env.SERVER_HOSTNAME;
-    const PORT = "8080"; //process.env.SERVER_PORT;
-
-    //Trazendo a resposta do backend para o frontend
-    const response = await fetch(`http://${HOST}:${PORT}/pages/1`);
-    const json = await response.json();
-    return json.data;
-}
 
 //@author {Felipe Fernandes}
-export default async function RenderHistoryPage() {
-    const object = JSON.parse(localStorage.getItem("page"));
-    console.log(object);
-    const civilization = object.civilization[0];
-    const history = object.history;
+export default async function RenderHistoryPage(civilizationId) {
+    const object = await HTTPRequest(`/history/${civilizationId}`, "GET");
+    let history;
+    if (object === null) {
+        history = [
+            {
+                event: null,
+                civilization_id: civilizationId,
+                event_year: null,
+                event_title: "No title",
+                event_image: "",
+                event_image_label: "No image",
+                event_paragraph: "",
+            },
+        ];
+    } else {
+        history = object.history_events;
+    }
+
+    const civilizationObject = await HTTPRequest(
+        `/civilizations/${civilizationId}`,
+        "GET"
+    );
+    const civilization = civilizationObject.civilization[0];
 
     const container = createElement("section", "container");
 
@@ -35,7 +41,7 @@ export default async function RenderHistoryPage() {
         history[0]
     );
 
-    const navBar = createNavBar("history");
+    const navBar = await createNavBar("history", civilizationId);
     const backButton = createBackButton();
 
     container.appendChild(navBar);
@@ -46,9 +52,9 @@ export default async function RenderHistoryPage() {
     //root.appendChild(container);
     const response = {
         page: container,
-        object: object,
+        object: null,
         addEvents: function () {
-            addEventListeners(this.object);
+            addEventListeners(civilization, history);
         },
     };
 
@@ -56,10 +62,8 @@ export default async function RenderHistoryPage() {
 }
 
 //@author {Felipe Fernandes}
-function addEventListeners(object) {
+function addEventListeners(civilization, history) {
     const yearButtons = document.querySelectorAll(".yearButton");
-    const civilization = object.civilization[0];
-    const history = object.history;
 
     yearButtons.forEach((button) => {
         button.addEventListener("click", (event) => {

@@ -4,18 +4,42 @@ import {
     createBackButton,
     createNavBar,
 } from "../../modules/modules.js";
+import HTTPRequest from "../../modules/HTTPRequest.js";
 import createStartPage from "./modules/startModules.js";
 
 //@author {Felipe Fernandes}
-export default async function RenderStartPage() {
-    const object = JSON.parse(localStorage.getItem("page"));
-    console.log(object);
-    const startPage = object.startPage[0];
-    const civilization = object.civilization[0];
+export default async function RenderStartPage(civilizationId) {
+    let object = await HTTPRequest(`/start/${civilizationId}`, "GET");
+
+    if (object === null) {
+        object = {};
+        object.start_page = [
+            {
+                start_page_id: 0,
+                official_name: "default name",
+                localization: "default localization",
+                capital: "default capital",
+                religion: "default religion",
+                government: "default government",
+                paragraph: "default paragraph",
+                deleted: false,
+            },
+        ];
+    }
+
+    const startPage = object.start_page[0];
+
+    console.log(civilizationId);
+
+    const civilizationObject = await HTTPRequest(
+        `/civilizations/${civilizationId}`,
+        "GET"
+    );
+    const civilization = civilizationObject.civilization[0];
 
     const container = createElement("section", "container");
 
-    const navBar = createNavBar("start");
+    const navBar = await createNavBar("start", civilizationId);
     const startPageDiv = createStartPage(startPage, civilization);
     const backButton = createBackButton();
 
@@ -27,8 +51,8 @@ export default async function RenderStartPage() {
     const response = {
         page: container,
         object: object,
-        addEvents: function () {
-            console.log("Event listeners");
+        addEvents: () => {
+            console.log("eventos");
         },
     };
 

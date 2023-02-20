@@ -37,19 +37,26 @@ export default function createStartPage(startPages, civilizations) {
     const civilizationShield = createElement("img", "civilizationShield");
     const infoArticle = createElement("article", "infoArticle");
     const infoTitleOfcName = createElement("h2", "infoTitleOfcName");
-    const infoOfcName = createElement("p", "infoOfcName");
+    const infoOfcName = createElement("p", "info");
     const infoTitleLocal = createElement("h2", "infoTitleLocal");
-    const infoLocal = createElement("p", "infoLocal");
+    const infoLocal = createElement("p", "info");
     const infoTitleCapital = createElement("h2", "infoTitleCapital");
-    const infoCapital = createElement("p", "infoCapital");
+    const infoCapital = createElement("p", "info");
     const infoTitleReligion = createElement("h2", "infoTitleReligion");
-    const infoReligion = createElement("p", "infoReligion");
+    const infoReligion = createElement("p", "info");
     const infoTitleGov = createElement("h2", "infoTitleGov");
-    const infoGov = createElement("p", "infoGov");
+    const infoGov = createElement("p", "info");
     const mainContent = createElement("main", "mainContent");
     const mainTitle = createElement("h2", "mainTitle");
     const mainText = createElement("p", "mainText");
 
+    /*     const dados = document.querySelectorAll(".info");
+    dados.forEach((dado) => {
+        const textarea = createElement("textarea", "editField");
+        textarea.innerText = dado.innerText;
+        dado.replaceWith(textarea);
+    })
+ */
     // Fixed content
     infoTitleOfcName.innerHTML = "Nome oficial";
     infoTitleLocal.innerHTML = "Localização";
@@ -69,7 +76,7 @@ export default function createStartPage(startPages, civilizations) {
 
     // Excluir em breve
 
-    mainTitle.innerHTML = "O império de sangue e ferro";
+    mainTitle.innerHTML = object.title;
 
     // Element import
     imgDiv.appendChild(civilizationShield);

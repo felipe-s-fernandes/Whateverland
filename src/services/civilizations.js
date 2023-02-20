@@ -1,30 +1,53 @@
 import civilizationsRepository from "../repositories/civilizations.js";
 const TAG = "Civilizations Service: ";
 
-const getCivilizations = (regionId) => {
+const getCivilizations = async (regionId) => {
     // Padronizar a resposta
-    const response = {
-        message: "",
-        data: null,
-        error: null,
-    };
 
     try {
-        const repoResponse = civilizationsRepository.getCivilizations(
+        const repoResponse = await civilizationsRepository.getCivilizations(
             Number(regionId)
         );
-        response.data = repoResponse;
-        response.message = "Civilizations retrieved successfully.";
-        return response;
+        return repoResponse;
     } catch (error) {
-        response.message = "Repository error";
-        response.error = error;
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
+const getCivilizationById = async (civilizationId) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = await civilizationsRepository.getCivilizationById(
+            Number(civilizationId)
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
+const postCivilization = async (regionId, civilizationName) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = await civilizationsRepository.postCivilization(
+            Number(regionId),
+            civilizationName
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
         throw error;
     }
 };
 
 const civilizationsServices = {
     getCivilizations: getCivilizations,
+    getCivilizationById: getCivilizationById,
+    postCivilization: postCivilization,
 };
 
 export default civilizationsServices;

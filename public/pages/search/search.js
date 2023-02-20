@@ -1,24 +1,6 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //@author {Pedro Mendes}
-import {page} from "./modules/searchModules.js";
-page ();
+import { page } from "./modules/searchModules.js";
+page();
 
 // import { createElement } from "../../modules.js";
 // import { createEventsBar, createEventCard } from "./modules/searchModules.js";
