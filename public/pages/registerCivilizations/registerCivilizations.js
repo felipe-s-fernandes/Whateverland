@@ -39,43 +39,32 @@ async function reqRenderRegions() {
     // Array de objetos com todas as regiões
     const regionObject = await HTTPRequest(`/regions`, "GET");
 
-    // Array com o nome de todas as regiões
-    const arrayRegions = Object.values(regionObject.regions).map(
-        (element) => element.region_name
-    );
+    // Array de objetos com o nome de todas as regiões
+    const arrayRegionsAll = Object.values(regionObject.regions);
+
+    // Array com apenas o nome de todas as regiões
+    // const arrayRegions = Object.values(regionObject.regions).map(
+    //     (element) => element.region_name
+    // );
+    // console.log(arrayRegions);
 
     // Inserindo o resultado da pesquisa em um select da página HTML
-    regionsSelect(arrayRegions);
+    regionsSelect(arrayRegionsAll);
 }
 
 
 // Requisição GET para renderizar a tabela a tabela
 async function reqRenderTable() {
 
-    // http://localhost:8080/civilizations/by_region/0
+    // Eu preciso de todas as regiões aqui
     const regionObject = await HTTPRequest(`/civilizations/by_region/1`, "GET");
-    console.log(regionObject.civilizations);
 
     renderTable(regionObject.civilizations);
-
-    // fetch("/usuarios")
-    //     .then((response) => response.json())
-    //     .then((data) => {
-    //         renderTable(data);
-    //     })
-    //     .catch((error) => console.log(error));
 }
 
 // Requisição para cadastrar novo usuário
-function newUser(nameuser, regionSelect) {
-    fetch("/usuarios", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ nome: nameuser, regions: regionSelect }),
-    });
-    //body é o envio do objeto para realizar a requisição, para acesso no banckend o objeto tem que ser o mesmo
+function newCivilization(nameCivilization, regionSelect) {
+    HTTPRequest(`/civilizations/${array[i]}`, "POST", {civilization_name: nameCivilization, region_id: regionSelect});
 }
 
 // Exibição de usuário a ser editado no input
@@ -167,7 +156,8 @@ function eventForm() {
 
         if (button.value == "Cadastrar") {
             // Requisitando para o servidor cadastrar o novo usuário no banco de dados
-            newUser(form.nome.value, form.regions.value);
+            // console.log(form.regions.value);
+            newCivilization(form.nome.value, form.regions.value);
         }
 
         if (button.value == "Editar") {
@@ -189,10 +179,11 @@ function regionsSelect(array) {
         regionSelect.appendChild(selectRegions(element));
     });
 
-    function selectRegions(region) {
+    function selectRegions(ObjectRegion) {
         const option = createElement("option", "option");
-        option.value = region;
-        option.innerHTML = region;
+        // option.dataset.idRegion = ObjectRegion.region_id
+        option.value = ObjectRegion.region_id;
+        option.innerHTML = ObjectRegion.region_name;
 
         return option;
     }
