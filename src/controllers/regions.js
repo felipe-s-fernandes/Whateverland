@@ -16,7 +16,7 @@ export const getRegions = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = regionsServices.getRegions();
+        const serviceResponse = await regionsServices.getRegions();
 
         response.message = "Success";
         response.data = serviceResponse;
@@ -63,7 +63,7 @@ export const getRegionById = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = regionsServices.getRegionById(regionId);
+        const serviceResponse = await regionsServices.getRegionById(regionId);
 
         response.message = `Region ${regionId} retrieved successfully.`;
         response.data = serviceResponse;

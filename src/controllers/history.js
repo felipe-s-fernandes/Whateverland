@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import historyServices from "../services/history.js";
 
 const TAG = "History Controller: ";
@@ -36,9 +35,11 @@ const getHistory = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = historyServices.getHistory(civilizationId);
+        const serviceResponse = await historyServices.getHistory(
+            civilizationId
+        );
 
-        response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
+        response.message = `History events of civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;
 
         res.status(200).send(response);
@@ -56,7 +57,7 @@ const getHistory = async (req, res) => {
 };
 
 const historyController = {
-    getHistory: getHistory
+    getHistory: getHistory,
 };
 
 export default historyController;

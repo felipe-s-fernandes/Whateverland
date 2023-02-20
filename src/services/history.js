@@ -1,15 +1,14 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import historyRepository from "../repositories/history.js";
 const TAG = "History Service: ";
 
-const getHistory = (civilizationId) => {
+const getHistory = async (civilizationId) => {
     // Padronizar a resposta
 
     try {
-        const repoResponse = historyRepository.getHistory(
+        const repoResponse = await historyRepository.getHistory(
             Number(civilizationId)
         );
         return repoResponse;
@@ -17,7 +16,7 @@ const getHistory = (civilizationId) => {
         console.log(TAG, "error caught");
         throw error;
     }
-} 
+};
 
 const HistoryServices = {
     getHistory: getHistory,
