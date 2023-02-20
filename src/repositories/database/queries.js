@@ -13,8 +13,8 @@ const getCivilizationById = `
 `;
 
 const getStart = `
-    SELECT * FROM start_page WHERE civilization_id = $1;
-`
+    SELECT * FROM start_pages WHERE civilization_id = $1;
+`;
 
 // Jonantas coloca tudo dentro de um objeto
 
