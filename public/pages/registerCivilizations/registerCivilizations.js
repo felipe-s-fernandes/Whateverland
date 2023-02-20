@@ -239,7 +239,7 @@ function renderTable(array) {
                 "GET"
             );
             const civilizationId = object.civilization[0].civilization_id;
-            redirectTo("/start", civilizationId);
+            redirectTo("/edit", civilizationId);
         });
         // column4.addEventListener("click", () => userInput(array[i]));
         column5.addEventListener("click", () =>
