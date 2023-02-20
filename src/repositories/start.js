@@ -1,19 +1,23 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-import database from "./database.js";
+import { connectDb } from "./database/connection.js";
+import query from "./database/queries.js";
 const TAG = "Start Repository: ";
 
-const getStart = (civilizationId) => {
+const getStart = async (civilizationId) => {
     try {
         const response = {
             start_page: null,
         };
 
         //Mock getStart;
-        const civilizationResponse = database.start_pages.filter(
-            (startPage) => startPage.civilization_id === civilizationId
-        );
+        // const civilizationResponse = database.start_pages.filter(
+        //     (startPage) => startPage.civilization_id === civilizationId
+        // );
+
+        // Banco de dados real
+        const civilizationResponse = await connectDb(query.getStart, [civilizationId]);
 
         response.start_page = civilizationResponse;
 

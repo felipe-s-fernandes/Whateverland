@@ -86,8 +86,7 @@ const getCivilizationById = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse =
-            civilzationsServices.getCivilizationById(civilizationId);
+        const serviceResponse = await civilzationsServices.getCivilizationById(civilizationId);
 
         response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;

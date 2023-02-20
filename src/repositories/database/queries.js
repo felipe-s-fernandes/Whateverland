@@ -7,6 +7,15 @@ const getGallery = `
     SELECT * FROM gallery WHERE civilization_id = $1;
 `;
 
+// Vou mudar aqui ainda
+const getCivilizationById = `
+    SELECT * FROM civilizations WHERE civilization_id = $1;
+`;
+
+const getStart = `
+    SELECT * FROM start_pages WHERE civilization_id = $1;
+`;
+
 const getRegions = `
     SELECT * FROM regions;
 `;
@@ -32,6 +41,8 @@ const query = {
     getRegionById: getRegionById,
     getHistory: getHistory,
     postCivilization: postCivilization,
+    getCivilizationById: getCivilizationById,
+    getStart: getStart,
 };
 
 export default query;

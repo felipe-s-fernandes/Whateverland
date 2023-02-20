@@ -17,15 +17,9 @@ const getCivilizations = async (regionId) => {
         // response.civilizations = civilizationsResponse;
 
         // Banco de dados real
-        const database = await connectDb(query.getCivilizations, [regionId]);
+        const civilizationsResponse = await connectDb(query.getCivilizations, [regionId]);
 
-        // const civilizationsResponse = database.filter(
-        //     (civilization) => civilization.region_id === regionId
-        // );
-        // Esse console não aparece Felipe, porque?
-        console.log("console3", database);
-
-        response.civilizations = database;
+        response.civilizations = civilizationsResponse;
 
         if (response.civilizations.length > 0) return response;
         throw new Error("Civilizations not found");
@@ -35,17 +29,18 @@ const getCivilizations = async (regionId) => {
     }
 };
 
-const getCivilizationById = (civilizationId) => {
+const getCivilizationById = async (civilizationId) => {
     try {
         const response = {
             civilization: null,
         };
 
         //Mock getCivilizationById;
-
-        const civilizationResponse = database.civilizations.filter(
-            (civilization) => civilization.civilization_id === civilizationId
-        );
+        // const civilizationResponse = database.civilizations.filter(
+        //     (civilization) => civilization.civilization_id === civilizationId
+        // );
+        
+        const civilizationResponse = await connectDb(query.getCivilizationById, [civilizationId]);
 
         console.log(civilizationResponse);
 
