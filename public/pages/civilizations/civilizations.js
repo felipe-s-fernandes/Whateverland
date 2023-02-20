@@ -17,10 +17,12 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const civNameArray = [];
     const civImgArray = [];
+    const civIdArray = [];
 
     civilizations.forEach((civilization) => {
         civNameArray.push(civilization.civilization_name);
         civImgArray.push("../../uploads/" + civilization.civilization_image);
+        civIdArray.push(civilization.civilization_id);
     });
 
     let example = {
@@ -31,6 +33,7 @@ export default async function RenderCivilizationsPage(regionId) {
         territorio: "../../uploads/silbr.png",
         civilizations: civNameArray,
         logos: civImgArray,
+        id: civIdArray
     };
 
     const pageCiv = createElement("div", "pageCiv");
@@ -141,9 +144,9 @@ export default async function RenderCivilizationsPage(regionId) {
     tr_names_civ.appendChild(td_names_v1);
 
     let i_civil = 0;
-    civilLogo1.dataset.id = i_civil + 1;
-    civilLogo2.dataset.id = i_civil + 2;
-    civilLogo3.dataset.id = i_civil + 3;
+    civilLogo1.dataset.id = example.id[i_civil];
+    civilLogo2.dataset.id = example.id[(i_civil+1)];
+    civilLogo3.dataset.id = example.id[(i_civil+2)];
     img_left.style.display = "none";
 
     td_buttonleft.addEventListener("click", function () {
