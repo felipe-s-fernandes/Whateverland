@@ -35,7 +35,7 @@ const getStart = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = startServices.getStart(civilizationId);
+        const serviceResponse = await startServices.getStart(civilizationId);
 
         response.message = `Start page for civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;

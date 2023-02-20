@@ -5,11 +5,11 @@
 import startRepository from "../repositories/start.js";
 const TAG = "Start Service: ";
 
-const getStart = (civilizationId) => {
+const getStart = async (civilizationId) => {
     // Padronizar a resposta
 
     try {
-        const repoResponse = startRepository.getStart(
+        const repoResponse = await startRepository.getStart(
             Number(civilizationId)
         );
         return repoResponse;

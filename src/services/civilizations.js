@@ -15,11 +15,11 @@ const getCivilizations = async (regionId) => {
     }
 };
 
-const getCivilizationById = (civilizationId) => {
+const getCivilizationById = async (civilizationId) => {
     // Padronizar a resposta
 
     try {
-        const repoResponse = civilizationsRepository.getCivilizationById(
+        const repoResponse = await civilizationsRepository.getCivilizationById(
             Number(civilizationId)
         );
         return repoResponse;
