@@ -266,7 +266,6 @@ export default async function RenderCivilizationsPage(regionId) {
         redirectTo("/start", civilizationId);
     });
 
-
     // Código de Felipe Fernandes
     const response = {
         page: pageCiv,
