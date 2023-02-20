@@ -112,13 +112,10 @@ function renderStaticPage() {
     const page = createElement("div", "page");
 
     page.innerHTML = `
-        <header>
-            <h1>Front API</h1>
-        </header>
-        <main>
+        <div class="boxBigCard">
             <div class="container">
-                <h2>FORMULÁRIO DE CADASTRO DE USUÁRIOS</h2>
-                <p>Para inserir usuários na lista, preencha os dados abaixo:</p>
+                <h2>FORMULÁRIO DE CADASTRO DE CIVILIZAÇÕES</h2>
+                <p>Para inserir civilizações na lista, preencha os dados abaixo:</p>
             </div>
             <form id="form" class="input-box">
                 <input type="text" name="nome" id="nome-input" class="input-field" placeholder="Nome" autocomplete="off">
@@ -129,12 +126,12 @@ function renderStaticPage() {
             </form>
             <section id="section-lista">
                 <div class="container">
-                    <h2>LISTA DE USUÁRIOS CADASTRADOS</h2>
-                    <p>Abaixo, você pode ver os usuários registrados, podendo editá-los ou removê-los.</p>
+                    <h2>LISTA DE CIVILIZAÇÕES CADASTRADAS POR REGIÃO</h2>
+                    <p>Abaixo, você pode ver as civilizações registradas, podendo editá-las ou removê-las.</p>
                 </div>
                 <table></table>
             </section>
-        </main>
+        </div>
     `;
     return page;
 }
@@ -228,11 +225,13 @@ function renderTable(array) {
         column1.innerHTML = `${i + 1}`;
         column2.innerHTML = `${array[i].civilization_name}`;
         column3.innerHTML = `${array[i].region_id}`;
-        column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
+        // column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
+        column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="./src/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", () => HTTPRequest(`/civilizations/${array[i]}`, "GET"));
+        console.log(array[i]);
+        column4.addEventListener("click", () => HTTPRequest(`/civilizations/${array[i].civilization_id}`, "GET"));
         // column4.addEventListener("click", () => userInput(array[i]));
         column5.addEventListener("click", () => userDelete(array[i].civilization_id));
 
