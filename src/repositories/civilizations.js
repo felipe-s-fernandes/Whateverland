@@ -1,4 +1,3 @@
-import database from "./database.js";
 import { connectDb } from "./database/connection.js";
 import query from "./database/queries.js";
 
@@ -17,7 +16,9 @@ const getCivilizations = async (regionId) => {
         // response.civilizations = civilizationsResponse;
 
         // Banco de dados real
-        const civilizationsResponse = await connectDb(query.getCivilizations, [regionId]);
+        const civilizationsResponse = await connectDb(query.getCivilizations, [
+            regionId,
+        ]);
 
         response.civilizations = civilizationsResponse;
 
@@ -39,8 +40,11 @@ const getCivilizationById = async (civilizationId) => {
         // const civilizationResponse = database.civilizations.filter(
         //     (civilization) => civilization.civilization_id === civilizationId
         // );
-        
-        const civilizationResponse = await connectDb(query.getCivilizationById, [civilizationId]);
+
+        const civilizationResponse = await connectDb(
+            query.getCivilizationById,
+            [civilizationId]
+        );
 
         console.log(civilizationResponse);
 
@@ -57,17 +61,16 @@ const getCivilizationById = async (civilizationId) => {
 const postCivilization = async (regionId, civilizationName) => {
     try {
         const response = {
-            civilizations: null,
+            status: null,
         };
 
         const database = await connectDb(query.postCivilization, [
             regionId,
             civilizationName,
         ]);
-        response.civilizations = database;
+
+        response.status = database;
         return response;
-        // if (response.civilizations.length > 0) return response;
-        // throw new Error("Civilizations not found");
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;

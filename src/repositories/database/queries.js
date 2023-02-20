@@ -30,7 +30,8 @@ const getHistory = `
 
 const postCivilization = `
     INSERT INTO civilizations (region_id, civilization_name)
-    VALUES ($1, $2);
+    VALUES ($1, $2)
+    RETURNING civilization_id;
 `;
 // Jonantas coloca tudo dentro de um objeto
 
