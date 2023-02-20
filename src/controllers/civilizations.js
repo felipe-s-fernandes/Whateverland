@@ -32,7 +32,9 @@ const getCivilizations = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = civilzationsServices.getCivilizations(regionId);
+        const serviceResponse = await civilzationsServices.getCivilizations(
+            regionId
+        );
 
         response.message = "Success";
         response.data = serviceResponse;
@@ -52,7 +54,10 @@ const getCivilizations = async (req, res) => {
 };
 
 const getCivilizationById = async (req, res) => {
-    console.log(TAG, "getCivilizationById() from " + req.connection.remoteAddress);
+    console.log(
+        TAG,
+        "getCivilizationById() from " + req.connection.remoteAddress
+    );
     console.time("getCivilizationById()");
     // Precisa tratar algum input? Sim
 
@@ -81,7 +86,8 @@ const getCivilizationById = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = civilzationsServices.getCivilizationById(civilizationId);
+        const serviceResponse =
+            civilzationsServices.getCivilizationById(civilizationId);
 
         response.message = `Civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;
@@ -102,7 +108,7 @@ const getCivilizationById = async (req, res) => {
 
 const civilizationsController = {
     getCivilizations: getCivilizations,
-    getCivilizationById: getCivilizationById
+    getCivilizationById: getCivilizationById,
 };
 
 export default civilizationsController;

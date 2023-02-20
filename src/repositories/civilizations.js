@@ -1,9 +1,10 @@
 import database from "./database.js";
 import { connectDb } from "./database/connection.js";
-// import { connectDb } from "./database/queries.js";
+import query from "./database/queries.js";
+
 const TAG = "Civilizations Repository: ";
 
-const getCivilizations = (regionId) => {
+const getCivilizations = async (regionId) => {
     try {
         const response = {
             civilizations: null,
@@ -14,18 +15,17 @@ const getCivilizations = (regionId) => {
         //     (civilization) => civilization.region_id === regionId
         // );
         // response.civilizations = civilizationsResponse;
-        
+
         // Banco de dados real
-        const database = connectDb("SELECT * FROM civilizations WHERE region_id=$1;", [regionId]);
-        
+        const database = await connectDb(query.getCivilizations, [regionId]);
+
         // const civilizationsResponse = database.filter(
         //     (civilization) => civilization.region_id === regionId
         // );
         // Esse console não aparece Felipe, porque?
         console.log("console3", database);
 
-
-        response.civilizations = civilizationsResponse;
+        response.civilizations = database;
 
         if (response.civilizations.length > 0) return response;
         throw new Error("Civilizations not found");

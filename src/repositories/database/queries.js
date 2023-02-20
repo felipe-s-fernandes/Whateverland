@@ -1,5 +1,7 @@
 // Autor: { Anderson Lima }
-
+const getCivilizations = `
+    SELECT * FROM civilizations WHERE region_id = $1;
+`;
 // const insertCar =
 // `
 //     INSERT INTO carrinho(id_carrinho, id_usuario, pedido_realizado)
@@ -44,3 +46,8 @@
 
 // Jonantas coloca tudo dentro de um objeto
 // module.exports = { listCar, insertCar, deleteCar, sumQtdProducts, sumValues, addProductCar };
+const query = {
+    getCivilizations: getCivilizations,
+};
+
+export default query;
