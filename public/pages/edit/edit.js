@@ -1,4 +1,5 @@
 import { createBackButton, createElement } from "../../modules/modules.js";
+import { renderEditStaticPage } from "./edit_statuspage.js";
 
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "editContainer");
@@ -12,6 +13,7 @@ export default async function RenderEditPage(civilizationId) {
     // container.appendChild(historyEditTable);
     // container.appendChild(galleryEditTable);
 
+    renderEditStaticPage();
     const backButton = createBackButton();
     container.appendChild(backButton);
 
@@ -25,3 +27,4 @@ export default async function RenderEditPage(civilizationId) {
 
     return response;
 }
+
