@@ -89,6 +89,10 @@
     max-width: 100%;
 }
 
+.logoImage {
+    height: 150px;
+}
+
 .textImage {
     text-align: center;
 }

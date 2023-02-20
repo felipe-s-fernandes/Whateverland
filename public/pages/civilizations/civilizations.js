@@ -17,10 +17,12 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const civNameArray = [];
     const civImgArray = [];
+    const civIdArray = [];
 
     civilizations.forEach((civilization) => {
         civNameArray.push(civilization.civilization_name);
         civImgArray.push("../../uploads/" + civilization.civilization_image);
+        civIdArray.push(civilization.civilization_id);
     });
 
     let example = {
@@ -31,6 +33,7 @@ export default async function RenderCivilizationsPage(regionId) {
         territorio: "../../uploads/silbr.png",
         civilizations: civNameArray,
         logos: civImgArray,
+        id: civIdArray
     };
 
     const pageCiv = createElement("div", "pageCiv");
@@ -141,10 +144,36 @@ export default async function RenderCivilizationsPage(regionId) {
     tr_names_civ.appendChild(td_names_v1);
 
     let i_civil = 0;
-    civilLogo1.dataset.id = i_civil + 1;
-    civilLogo2.dataset.id = i_civil + 2;
-    civilLogo3.dataset.id = i_civil + 3;
+    civilLogo1.dataset.id = example.id[i_civil];
+    civilLogo2.dataset.id = example.id[(i_civil+1)];
+    civilLogo3.dataset.id = example.id[(i_civil+2)];
+
+    civilLogo1.src = example.logos[0];
+    civilLogo2.src = example.logos[1];
+    civilLogo3.src = example.logos[2];
+
+    td_civilName1.textContent = example.civilizations[i_civil];
+    td_civilName2.textContent = example.civilizations[i_civil + 1];
+    td_civilName3.textContent = example.civilizations[i_civil + 2];
+
     img_left.style.display = "none";
+
+     
+    if(i_civil >= example.id.length){
+
+        civilLogo1.style.opacity = "0";
+    }
+    
+    if(i_civil+1 >= example.id.length){
+
+        civilLogo2.style.opacity = "0";
+    }
+
+    if(i_civil+2 >= example.id.length){
+
+        civilLogo3.style.opacity = "0";
+    }
+
 
     td_buttonleft.addEventListener("click", function () {
         img_left.style.display = "none";
@@ -155,6 +184,9 @@ export default async function RenderCivilizationsPage(regionId) {
             i_civil = i_civil - 3;
         }
         img_right.style.display = "block";
+        civilLogo1.style.opacity = "1";
+        civilLogo2.style.opacity = "1";
+        civilLogo3.style.opacity = "1";
         console.log(i_civil);
         console.log(example.civilizations[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
@@ -163,9 +195,21 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo1.src = example.logos[i_civil];
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
-        civilLogo1.dataset.id = i_civil + 1;
-        civilLogo2.dataset.id = i_civil + 2;
-        civilLogo3.dataset.id = i_civil + 3;
+        civilLogo1.dataset.id = example.id[i_civil];
+        civilLogo2.dataset.id = example.id[(i_civil+1)];
+        civilLogo3.dataset.id = example.id[(i_civil+2)];
+
+        if(i_civil >= example.id.length){
+            civilLogo1.style.opacity = "0";
+        }
+        
+        if(i_civil+1 >= example.id.length){
+            civilLogo2.style.opacity = "0";
+        }
+    
+        if(i_civil+2 >= example.id.length){
+            civilLogo3.style.opacity = "0";
+        }
     });
 
     td_buttonright.addEventListener("click", function () {
@@ -177,6 +221,9 @@ export default async function RenderCivilizationsPage(regionId) {
             i_civil = i_civil + 3;
         }
         img_left.style.display = "block";
+        civilLogo1.style.opacity = "1";
+        civilLogo2.style.opacity = "1";
+        civilLogo3.style.opacity = "1";
         console.log(i_civil);
         console.log(example.logos[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
@@ -185,18 +232,23 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo1.src = example.logos[i_civil];
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
-        civilLogo1.dataset.id = i_civil + 1;
-        civilLogo2.dataset.id = i_civil + 2;
-        civilLogo3.dataset.id = i_civil + 3;
+        civilLogo1.dataset.id = example.id[i_civil];
+        civilLogo2.dataset.id = example.id[(i_civil+1)];
+        civilLogo3.dataset.id = example.id[(i_civil+2)];
+
+        if(i_civil >= example.id.length){
+            civilLogo1.style.opacity = "0";
+        }
+        
+        if(i_civil+1 >= example.id.length){
+            civilLogo2.style.opacity = "0";
+        }
+    
+        if(i_civil+2 >= example.id.length){
+            civilLogo3.style.opacity = "0";
+        }
     });
 
-    civilLogo1.src = example.logos[0];
-    civilLogo2.src = example.logos[1];
-    civilLogo3.src = example.logos[2];
-
-    td_civilName1.textContent = example.civilizations[i_civil];
-    td_civilName2.textContent = example.civilizations[i_civil + 1];
-    td_civilName3.textContent = example.civilizations[i_civil + 2];
 
     //MODIFICAR
     civilLogo1.addEventListener("click", async () => {

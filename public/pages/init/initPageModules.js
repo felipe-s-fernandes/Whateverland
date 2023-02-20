@@ -14,7 +14,7 @@ export function renderLogo() {
     const containerLogo = createElement("div", "containerLogo");
     const containerLogoAndWelcome = createElement("div", "divLogoAndWelcome");
     const welcome = createElement("span", "logo");
-    const logoImage = createElement("img", "logo");
+    const logoImage = createElement("img", "logoImage");
 
     welcome.innerHTML = "Bem-vindo a Whateverland!";
     logoImage.src = "../../uploads/logo.png";
