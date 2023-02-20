@@ -35,7 +35,9 @@ const getGallery = async (req, res) => {
 
     try {
         // Chama o método do Service
-        const serviceResponse = galleryServices.getGallery(civilizationId);
+        const serviceResponse = await galleryServices.getGallery(
+            civilizationId
+        );
 
         response.message = `Gallery for the civilization with id ${civilizationId} retrieved successfully.`;
         response.data = serviceResponse;

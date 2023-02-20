@@ -1,15 +1,14 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import galleryRepository from "../repositories/gallery.js";
 const TAG = "Gallery Service: ";
 
-const getGallery = (civilizationId) => {
+const getGallery = async (civilizationId) => {
     // Padronizar a resposta
 
     try {
-        const repoResponse = galleryRepository.getGallery(
+        const repoResponse = await galleryRepository.getGallery(
             Number(civilizationId)
         );
         return repoResponse;
@@ -17,7 +16,7 @@ const getGallery = (civilizationId) => {
         console.log(TAG, "error caught");
         throw error;
     }
-} 
+};
 
 const galleryServices = {
     getGallery: getGallery,
