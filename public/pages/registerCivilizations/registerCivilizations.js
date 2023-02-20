@@ -1,17 +1,18 @@
 // @Autor { Anderson Lima }
 
-import { createElement } from "../../modules/modules.js";
+import { createBackButton, createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
+import redirectTo from "../../modules/redirect.js";
 
 // Renderizzação total da página
 export default async function RenderRegisterCivilizations(data) {
-
     // Vai ter que refatorar esse código para não dá problema quando unir os arquivos
     const container = document.createElement("div");
     container.classList.add("container");
 
     container.appendChild(renderStaticPage());
-        
+    container.appendChild(createBackButton());
+
     const response = {
         page: container,
         object: null,
@@ -52,10 +53,8 @@ async function reqRenderRegions() {
     regionsSelect(arrayRegionsAll);
 }
 
-
 // Requisição GET para renderizar a tabela a tabela
 async function reqRenderTable() {
-
     // Eu preciso de todas as regiões aqui
     const regionObject = await HTTPRequest(`/civilizations/by_region/1`, "GET");
 
@@ -63,8 +62,11 @@ async function reqRenderTable() {
 }
 
 // Requisição para cadastrar novo usuário
-function newCivilization(nameCivilization, regionSelect) {
-    HTTPRequest(`/civilizations/${array[i]}`, "POST", {civilization_name: nameCivilization, region_id: regionSelect});
+async function newCivilization(nameCivilization, regionSelect) {
+    await HTTPRequest(`/civilizations/`, "POST", {
+        civilization_name: nameCivilization,
+        region_id: regionSelect,
+    });
 }
 
 // Exibição de usuário a ser editado no input
@@ -133,6 +135,7 @@ function renderStaticPage() {
             </section>
         </div>
     `;
+
     return page;
 }
 
@@ -145,7 +148,7 @@ let userId;
 function eventForm() {
     const form = document.querySelector("#form");
 
-    form.addEventListener("submit", (e) => {
+    form.addEventListener("submit", async (e) => {
         const nomeUser = document.querySelector("#nome-input");
         const regionSelect = document.querySelector("#regions");
         const button = document.querySelector("#cadastrar");
@@ -154,7 +157,7 @@ function eventForm() {
         if (button.value == "Cadastrar") {
             // Requisitando para o servidor cadastrar o novo usuário no banco de dados
             // console.log(form.regions.value);
-            newCivilization(form.nome.value, form.regions.value);
+            await newCivilization(form.nome.value, form.regions.value);
         }
 
         if (button.value == "Editar") {
@@ -191,8 +194,7 @@ function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
     const tableBody = createElement("tbody", "table");
-    tableBody.innerHTML = 
-    `
+    tableBody.innerHTML = `
         <thead>
             <tr id="table-heading">
                 <td class="id-number">ID</td>
@@ -231,9 +233,18 @@ function renderTable(array) {
 
         // Eventos de editar e deletar dados da tabela
         console.log(array[i]);
-        column4.addEventListener("click", () => HTTPRequest(`/civilizations/${array[i].civilization_id}`, "GET"));
+        column4.addEventListener("click", async () => {
+            const object = await HTTPRequest(
+                `/civilizations/${array[i].civilization_id}`,
+                "GET"
+            );
+            const civilizationId = object.civilization[0].civilization_id;
+            redirectTo("/start", civilizationId);
+        });
         // column4.addEventListener("click", () => userInput(array[i]));
-        column5.addEventListener("click", () => userDelete(array[i].civilization_id));
+        column5.addEventListener("click", () =>
+            userDelete(array[i].civilization_id)
+        );
 
         table.appendChild(line);
     }
