@@ -10,7 +10,9 @@ export default async function RenderRegisterCivilizations(data) {
     const container = document.createElement("div");
     container.classList.add("container");
 
+    // Renderização da página vazia
     container.appendChild(renderStaticPage());
+    // Renderização do botão de voltar
     container.appendChild(createBackButton());
 
     const response = {
@@ -43,22 +45,24 @@ async function reqRenderRegions() {
     // Array de objetos com o nome de todas as regiões
     const arrayRegionsAll = Object.values(regionObject.regions);
 
-    // Array com apenas o nome de todas as regiões
-    // const arrayRegions = Object.values(regionObject.regions).map(
-    //     (element) => element.region_name
-    // );
-    // console.log(arrayRegions);
-
     // Inserindo o resultado da pesquisa em um select da página HTML
     regionsSelect(arrayRegionsAll);
 }
 
 // Requisição GET para renderizar a tabela a tabela
 async function reqRenderTable() {
-    // Eu preciso de todas as regiões aqui
+    // Eu preciso de todas as regiões aqui Felipe
     const regionObject = await HTTPRequest(`/civilizations/by_region/1`, "GET");
+    console.log(regionObject);
 
     renderTable(regionObject.civilizations);
+}
+
+// Requisição para renderização de redirecionamento de edição da civilização
+async function redirectEditPage(idCivilization) {
+    const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
+    const civilizationId = object.civilization[0].civilization_id;
+    redirectTo("/edit", civilizationId);
 }
 
 // Requisição para cadastrar novo usuário
@@ -155,8 +159,7 @@ function eventForm() {
         e.preventDefault();
 
         if (button.value == "Cadastrar") {
-            // Requisitando para o servidor cadastrar o novo usuário no banco de dados
-            // console.log(form.regions.value);
+            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
             await newCivilization(form.nome.value, form.regions.value);
         }
 
@@ -229,22 +232,13 @@ function renderTable(array) {
         column3.innerHTML = `${array[i].region_id}`;
         // column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
         column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
-        column5.innerHTML = `<img src="./src/excluir.png" alt="Ícone de excluir">`;
+        column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
         console.log(array[i]);
-        column4.addEventListener("click", async () => {
-            const object = await HTTPRequest(
-                `/civilizations/${array[i].civilization_id}`,
-                "GET"
-            );
-            const civilizationId = object.civilization[0].civilization_id;
-            redirectTo("/edit", civilizationId);
-        });
+        column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id));
         // column4.addEventListener("click", () => userInput(array[i]));
-        column5.addEventListener("click", () =>
-            userDelete(array[i].civilization_id)
-        );
+        column5.addEventListener("click", () => userDelete(array[i].civilization_id));
 
         table.appendChild(line);
     }
