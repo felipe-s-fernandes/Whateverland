@@ -53,14 +53,17 @@ async function reqRenderRegions() {
 async function reqRenderTable() {
 
     // http://localhost:8080/civilizations/by_region/0
-    const regionObject = await HTTPRequest(`/civilizations/0`, "GET");
+    const regionObject = await HTTPRequest(`/civilizations/by_region/1`, "GET");
+    console.log(regionObject.civilizations);
 
-    fetch("/usuarios")
-        .then((response) => response.json())
-        .then((data) => {
-            renderTable(data);
-        })
-        .catch((error) => console.log(error));
+    renderTable(regionObject.civilizations);
+
+    // fetch("/usuarios")
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         renderTable(data);
+    //     })
+    //     .catch((error) => console.log(error));
 }
 
 // Requisição para cadastrar novo usuário
@@ -82,7 +85,7 @@ function userInput(obj) {
     const button = document.querySelector("#cadastrar");
 
     button.value = "Editar";
-    userId = obj.id;
+    userId = obj.civilization_id;
     nomeUser.value = obj.nome;
     regionSelect.value = obj.regions;
 }
@@ -200,7 +203,9 @@ function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
     const tableBody = createElement("tbody", "table");
-    tableBody.innerHTML = `   <thead>
+    tableBody.innerHTML = 
+    `
+        <thead>
             <tr id="table-heading">
                 <td class="id-number">ID</td>
                 <td class="e-mail">NOME DA CIVILIZAÇÃO</td>
@@ -230,14 +235,15 @@ function renderTable(array) {
         line.appendChild(column5);
 
         column1.innerHTML = `${i + 1}`;
-        column2.innerHTML = `${array[i].nome}`;
-        column3.innerHTML = `${array[i].regions}`;
+        column2.innerHTML = `${array[i].civilization_name}`;
+        column3.innerHTML = `${array[i].region_id}`;
         column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="./src/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", () => userInput(array[i]));
-        column5.addEventListener("click", () => userDelete(array[i].id));
+        column4.addEventListener("click", () => HTTPRequest(`/civilizations/${array[i]}`, "GET"));
+        // column4.addEventListener("click", () => userInput(array[i]));
+        column5.addEventListener("click", () => userDelete(array[i].civilization_id));
 
         table.appendChild(line);
     }
