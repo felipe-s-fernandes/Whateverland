@@ -7,4 +7,6 @@ import galleryController from "../controllers/gallery.js";
 
 galleryRouter.get("/:civilizationid", galleryController.getGallery);
 
+galleryRouter.post("/", galleryController.postGallery);
+
 export default galleryRouter;

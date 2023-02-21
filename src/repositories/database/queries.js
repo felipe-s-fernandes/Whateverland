@@ -70,9 +70,9 @@ const postHistoryEvents = `
 
 // Insere dados de uma imagem na galeria.
 const postGallery = `
-    INSERT INTO gallery (civilization_id, gallery_image_title)
-    VALUES ($1, $2)
-    RETURNING gallery_image_id;
+    INSERT INTO gallery (civilization_id, gallery_image_title, gallery_image_id)
+    VALUES ($1, $2, $3)
+    RETURNING image_unique_id;
 `;
 // Jonatas coloca tudo dentro de um objeto
 
