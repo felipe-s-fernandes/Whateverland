@@ -30,7 +30,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <div>
                         <h2 id="name_civilization">Dados da civilização</h2>
                         <label for="name_pg_start">Nome da civilização:</label>
-                        <input type="text" name="nome" id="name_pg_start" />
+                        <input type="text" name="nameCivilization" id="name_pg_start" />
                         <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
                     </div>
 
@@ -40,12 +40,17 @@ export function renderEditStaticCivilizationAndStart() {
                         <label for="img_pg_start">Imagem da civilização:</label>
                         <input type="text" name="logo" id="img_pg_start" />
 
-
                         <label for="titlename_pg_start">Título da civilização:</label>
                         <input type="text" name="titulo" id="titlename_pg_start" />
 
                         <label for="origin_pg_start">Nome Oficial da civilização:</label>
                         <input type="text" name="originName" id="origin_pg_start" />
+
+                        <label for="titlename_pg_start">Id da Região:</label>
+                        <input type="text" name="idregion" id="id_region_start" />
+
+                        <label for="titlename_pg_start">Nome da Região:</label>
+                        <input type="text" name="nameregion" id="name_region_start" />
 
                         <label for="cap_pg_start">Capital da civilização:</label>
                         <input type="text" name="capital" id="cap_pg_start" />
@@ -60,7 +65,7 @@ export function renderEditStaticCivilizationAndStart() {
                         <textarea type="text" name="desc" id="desc_pg_start"></textarea>
                     </div>
 
-                    <button type="button" class ="style_btn" id="edit">Salvar alterações</button>
+                    <button type="submit" class ="style_btn" id="edit">Salvar alterações</button>
                 </form>
             </div>
     `;
@@ -75,7 +80,7 @@ export function renderEditStaticHistory() {
     `
     <div class="boxBigCard">
         <h2>História</h2>
-        <button type="button" class ="style_btn" id="addHistory">Adicionar Evento</button>
+        <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
         <div class="boxBigCard" id="divHistory">
         </div>
         <div id="tableHistory"></div>
@@ -103,7 +108,7 @@ export function renderEditStaticGallery() {
                     <label for="img_gallery">Imagem:</label>
                     <input type="text" id="img_gallery" />
 
-                    <button type="button" id="include_gallery">Adicionar Imagem</button>
+                    <button type="submit" id="include_gallery">Adicionar Imagem</button>
                     <button type="button" id="cancel_gallery">Cancelar</button>
                 </form>
             </div>

@@ -9,6 +9,7 @@ import HTTPRequest from "../../modules/HTTPRequest.js";
 export async function reqRenderTableGallery(civilizationId) {
     // Eu preciso de todas as regiões aqui Felipe
     const galleryObject = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
+    console.log(galleryObject);
 
     renderTable(galleryObject.gallery);
 }

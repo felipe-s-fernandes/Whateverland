@@ -16,13 +16,31 @@ export async function reqRenderTableHistory(civilizationId) {
 }
 
 
-// Requisição para cadastrar novo usuário
-// async function newCivilization(nameCivilization, regionSelect) {
-//     await HTTPRequest(`/civilizations/`, "POST", {
-//         civilization_name: nameCivilization,
-//         region_id: regionSelect,
-//     });
-// }
+// renderInputHistory(idCivilization, "name_pg_history", "event_title", i);
+// renderInputHistory(idCivilization, "year_pg_history", "event_year", i);
+// renderInputHistory(idCivilization, "img_pg_history", "event_image", i);
+// renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
+// renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
+
+
+// Requisição para cadastrar novo evento
+async function newHistory(civilizationId, nameh, yearh, imgh, legh, desch) {
+    await HTTPRequest(`/history/${civilizationId}/`, "POST", {
+        civilization_id: civilizationId,
+        event_title: nameh,
+        event_year: yearh,
+        event_image: "0.png",
+        event_image_label: legh,
+        event_paragraph: desch
+
+        // historyObject.civilization_id,
+        // historyObject.event_year,
+        // historyObject.event_title,
+        // historyObject.event_image,
+        // historyObject.event_image_label,
+        // historyObject.event_paragraph,
+    });
+}
 
 
 /* function eventForm() {
@@ -52,7 +70,7 @@ export async function reqRenderTableHistory(civilizationId) {
     });
 } */
 
-export function addEvents() {
+export function addEventsHistory() {
     const buttonAddEvent = document.querySelector("#addHistory");
     buttonAddEvent.style.display = "block";
     buttonAddEvent.addEventListener("click", () => {
@@ -60,25 +78,25 @@ export function addEvents() {
         const page = document.querySelector("#divHistory");
         const inputsHistory =
         `
-        <form class="cadastre">
+        <form id="formhistory" class="cadastre">
             <h2>História</h2>
     
             <label for="name_pg_history">Título do evento:</label>
-            <input type="text" id="name_pg_history" />
+            <input type="text" name="nameh" id="name_pg_history" />
     
             <label for="year_pg_history">Ano do evento:</label>
-            <input type="text" id="year_pg_history" />
+            <input type="text" name="yearh" id="year_pg_history" />
     
             <label for="img_pg_history">Imagem do evento:</label>
-            <input type="text" id="img_pg_history" />
+            <input type="text" name="imgh" id="img_pg_history" />
     
             <label for="legend_pg_history">Legenda da imagem:</label>
-            <input type="text" id="legend_pg_history" />
+            <input type="text" name="legendh" id="legend_pg_history" />
     
             <label for="desc_pg_history">Descrição do evento:</label>
-            <textarea type="text" id="desc_pg_history"></textarea>
+            <textarea type="text" name="desch" id="desc_pg_history"></textarea>
     
-            <button type="button" class ="style_btn" id="include_hist">Incluir evento</button>
+            <button type="submit" class ="style_btn" id="include_hist">Incluir evento</button>
             <button type="button" class ="style_btn" id="cancel_add_hist">Cancelar</button>
         </form>
         `;
@@ -94,24 +112,39 @@ export function addEvents() {
 
 
 // Formulário de preenchimento
-function eventForm() {
-    const form = document.querySelector("#form");
+export function eventFormHistory(civilizationId) {
+    const form = document.querySelector("#formhistory");
 
     form.addEventListener("submit", async (e) => {
-        const nomeUser = document.querySelector("#nome-input");
-        const regionSelect = document.querySelector("#regions");
-        // const button = document.querySelector("#cadastrar");
+        // const nomeUser = document.querySelector("#nome-input");
+        // const regionSelect = document.querySelector("#regions");
+        const button = document.querySelector("#include_hist");
         e.preventDefault();
 
-        // if (button.value == "Cadastrar") {
-        // }
+        if (button.value == "Incluir evento") {
+            newHistory(
+                civilizationId,
+                form.nameh.value, 
+                form.yearh.value, 
+                form.imgh.value, 
+                form.legh.value, 
+                form.desch.value
+            );
+            // Colocar o negócio de sumir ou é aparecer o botão aqui
+            //Execute tal função
+        }
+        
+        if (button.value == "Editar") {
+            
+            //Execute tal função
+            // Colocar o negócio de sumir ou é aparecer o botão aqui
 
-        // if (button.value == "Editar") {
-        //     // Requisitando para o servidor editar um usuário no banco de dados
-        //     userEdit(userId);
-        //     // Sumir os dados do usuário nos inputs quando terminar edição
-        //     button.value = "Cadastrar";
-        // }
+
+            // // Requisitando para o servidor editar um usuário no banco de dados
+            // userEdit(userId);
+            // // Sumir os dados do usuário nos inputs quando terminar edição
+            // button.value = "Cadastrar";
+        }
 
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
         await newCivilization(form.nome.value, form.regions.value);
@@ -217,9 +250,6 @@ function redirectEditPage(idCivilization, i) {
         page.innerHTML = "";
         buttonAddEvent.style.display = "block";
     });
-
-
-    console.log(document.querySelector("#name_pg_history"));
 
     renderInputHistory(idCivilization, "name_pg_history", "event_title", i);
     renderInputHistory(idCivilization, "year_pg_history", "event_year", i);
