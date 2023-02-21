@@ -11,13 +11,10 @@ const getStart = async (civilizationId) => {
             start_page: null,
         };
 
-        //Mock getStart;
-        // const civilizationResponse = database.start_pages.filter(
-        //     (startPage) => startPage.civilization_id === civilizationId
-        // );
-
         // Banco de dados real
-        const civilizationResponse = await connectDb(query.getStart, [civilizationId]);
+        const civilizationResponse = await connectDb(query.getStart, [
+            civilizationId,
+        ]);
 
         response.start_page = civilizationResponse;
 
@@ -31,8 +28,50 @@ const getStart = async (civilizationId) => {
     }
 };
 
+const patchStart = async (startObject) => {
+    try {
+        const response = {
+            start_page_id: null,
+        };
+
+        // Banco de dados real
+        //Verifica a existência da civilização
+        await connectDb(query.getCivilizationById, [
+            startObject.civilizationId,
+        ]);
+
+        //Procura uma instância de página inicial de civilização no banco:
+        const getStartResponse = await connectDb(query.getStart, [
+            startObject.civilization_id,
+        ]);
+        console.log(getStartResponse);
+        response.start_page_id = getStartResponse[0].start_page_id;
+
+        // Caso não exista uma instância de página inicial, uma nova é criada:
+        if (getStartResponse.length < 1) {
+            await connectDb(query.postStart, [startObject.civilizationId]);
+        }
+
+        const patchStartResponse = await connectDb(query.patchStartPage, [
+            startObject.civilization_id,
+            startObject.official_name,
+            startObject.localization,
+            startObject.capital,
+            startObject.religion,
+            startObject.government,
+            startObject.title,
+            startObject.paragraph,
+        ]);
+
+        return patchStartResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
 const startRepository = {
     getStart: getStart,
+    patchStart: patchStart,
 };
 
 export default startRepository;

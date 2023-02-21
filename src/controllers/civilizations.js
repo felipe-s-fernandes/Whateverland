@@ -4,6 +4,43 @@ import civilzationsServices from "../services/civilizations.js";
 
 const TAG = "Civilizations Controller: ";
 
+const getAllCivilizations = async (req, res) => {
+    console.log(
+        TAG,
+        "getAllCivilizations() from " + req.connection.remoteAddress
+    );
+    console.time("getAllCivilizations()");
+    // Precisa tratar algum input? Não
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    try {
+        // Chama o método do Service
+        const serviceResponse =
+            await civilzationsServices.getAllCivilizations();
+
+        response.message = "Success";
+        response.data = serviceResponse;
+
+        res.status(200).json(response);
+        console.timeEnd("getAllCivilizations()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("getAllCivilizations()");
+    }
+};
+
 const getCivilizations = async (req, res) => {
     console.log(TAG, "getCivilizations() from " + req.connection.remoteAddress);
     console.time("getCivilizations()");
@@ -161,6 +198,7 @@ const postCivilization = async (req, res) => {
 };
 
 const civilizationsController = {
+    getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,

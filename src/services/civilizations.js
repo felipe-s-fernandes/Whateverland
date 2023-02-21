@@ -1,6 +1,17 @@
 import civilizationsRepository from "../repositories/civilizations.js";
 const TAG = "Civilizations Service: ";
 
+const getAllCivilizations = async () => {
+    try {
+        const repoResponse =
+            await civilizationsRepository.getAllCivilizations();
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const getCivilizations = async (regionId) => {
     // Padronizar a resposta
 
@@ -45,6 +56,7 @@ const postCivilization = async (regionId, civilizationName) => {
 };
 
 const civilizationsServices = {
+    getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
