@@ -1,5 +1,6 @@
 /* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
 
+
 .eventFigure {
     width: 100px;
 }
@@ -14,6 +15,7 @@
 } */
 
 .contentBox {
+    background-color: var(--primary-color);
     /* height: 90vh;
     width: 90vw; */
     margin-top: 40px;
@@ -32,7 +34,6 @@
     height: 559px;
     left: 114px;
     top: 84px; */
-    background: #FFFFFF;
     border: 2px solid #B2B2B2;
     box-shadow: 4px 0px 10px 4px rgba(0, 0, 0, 0.5);
     border-radius: 15px;

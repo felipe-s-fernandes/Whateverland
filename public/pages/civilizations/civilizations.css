@@ -1,14 +1,15 @@
 *{
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
 .pageCiv{
-    background-image: url("./images/nuvem.jpg");
+    background-image: var(--background-image);
     background-size: cover;
     display: flex;
-    width: 100%;
-    height: 740px;
+    width: 100vw;
+    height: 100vh;
     font-family: sans-serif;
 }
 
@@ -157,7 +158,7 @@ th,tr,td{
 
 @keyframes appeared0{
     0% {
-        transform: translateX(200px);
+        transform: translateX(150px);
         opacity: 0%;
     }
 

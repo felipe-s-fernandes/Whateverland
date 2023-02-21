@@ -1,21 +1,9 @@
 /* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
-* {
-    font-family: 'Roboto';
-}
 
-:root {
-    --main-bg-color: #3D3444;
-}
+*{
+    margin: 0px;
+    padding: 0px;
 
-body {
-    height: 100%;
-    background-color: var(--main-bg-color);
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .outerEventsBar {
