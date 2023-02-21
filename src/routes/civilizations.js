@@ -13,4 +13,6 @@ civilizationsRouter.post("/", civilizationsController.postCivilization);
 
 civilizationsRouter.patch("/edit", civilizationsController.patchCivilization);
 
+civilizationsRouter.delete("/:id", civilizationsController.deleteCivilization);
+
 export default civilizationsRouter;

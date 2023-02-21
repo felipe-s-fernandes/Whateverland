@@ -65,12 +65,25 @@ const patchCivilization = async (civilizationObject) => {
     }
 };
 
+const deleteCivilization = async (civilizationId) => {
+    try {
+        const repoResponse = await civilizationsRepository.deleteCivilization(
+            Number(civilizationId)
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const civilizationsServices = {
     getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
     patchCivilization: patchCivilization,
+    deleteCivilization: deleteCivilization,
 };
 
 export default civilizationsServices;
