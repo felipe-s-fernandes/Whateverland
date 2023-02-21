@@ -11,15 +11,9 @@ const getGallery = async (civilizationId) => {
             gallery: null,
         };
 
-        //Mock getGallery;
-        /* const galleryResponse = database.gallery.filter(
-            (image) => image.civilization_id === civilizationId
-        ); */
         const galleryResponse = await connectDb(query.getGallery, [
             civilizationId,
         ]);
-
-        console.log(galleryResponse);
 
         response.gallery = galleryResponse;
         return response;
@@ -52,9 +46,28 @@ const postGallery = async (galleryObject) => {
     }
 };
 
+const deleteGallery = async (imageId) => {
+    try {
+        const response = {
+            status: null,
+        };
+
+        const galleryResponse = await connectDb(query.deleteGalleryImage, [
+            imageId,
+        ]);
+
+        response.status = galleryResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const galleryRepository = {
     getGallery: getGallery,
     postGallery: postGallery,
+    deleteGallery: deleteGallery,
 };
 
 export default galleryRepository;

@@ -107,9 +107,45 @@ const postGallery = async (req, res) => {
     }
 };
 
+const deleteGallery = async (req, res) => {
+    console.log(TAG, "deleteGallery() from " + req.connection.remoteAddress);
+    console.time("deleteGallery()");
+    // Precisa tratar algum input? Não sei
+
+    const imageId = req.params.imageid;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await galleryServices.deleteGallery(imageId);
+
+        response.message = `Gallery entry with id ${imageId} deleted successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("deleteGallery()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("deleteGallery()");
+    }
+};
+
 const galleryController = {
     getGallery: getGallery,
     postGallery: postGallery,
+    deleteGallery: deleteGallery,
 };
 
 export default galleryController;
