@@ -31,7 +31,6 @@ export default async function RenderRegisterCivilizations(data) {
             reqRenderTable();
         },
     };
-
     return response;
 }
 
@@ -242,6 +241,5 @@ function renderTable(array) {
 
         table.appendChild(line);
     }
-
     return tableBody;
 }
