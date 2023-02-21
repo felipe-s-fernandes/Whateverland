@@ -33,7 +33,7 @@ const postHistory = async (historyObject) => {
             event: null,
         };
 
-        const historyResponse = await connectDb(query.postHistory, [
+        const historyResponse = await connectDb(query.postHistoryEvents, [
             historyObject.civilization_id,
             historyObject.event_year,
             historyObject.event_title,
@@ -60,8 +60,8 @@ const patchHistory = async (historyObject) => {
             historyObject.civilization_id,
         ]);
 
-        const historyResponse = await connectDb(query.patchHistoryPage, [
-            historyObject.civilization_id,
+        const historyResponse = await connectDb(query.patchHistoryEvents, [
+            historyObject.event,
             historyObject.event_year,
             historyObject.event_title,
             historyObject.event_image,

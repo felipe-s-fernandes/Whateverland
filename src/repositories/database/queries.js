@@ -33,7 +33,7 @@ SELECT * FROM start_pages WHERE civilization_id = $1;
 
 // Pega todos os dados da history page de uma civilização específica.
 const getHistory = `
-SELECT * FROM history_events WHERE civilization_id = $1;
+SELECT * FROM history_events WHERE civilization_id = $1 ORDER BY event_year;
 `;
 
 // Pega todas as imagens e seus dados de uma civilização específica.
@@ -81,14 +81,14 @@ const patchStartPage = `
 UPDATE start_pages
 SET official_name = $2, localization = $3, capital = $4, religion = $5, government = $6, title = $7, paragraph = $8
 WHERE civilization_id = $1
-RETURNIG start_page_id;
+RETURNING start_page_id;
 `;
 
 //Atualiza dados da history page de uma civilização específica.
 const patchHistoryEvents = `
 UPDATE history_events
 SET event_year = $2, event_title = $3, event_image = $4, event_image_label = $5, event_paragraph = $6
-WHERE civilization_id = $1
+WHERE event = $1
 RETURNING event;
 `;
 

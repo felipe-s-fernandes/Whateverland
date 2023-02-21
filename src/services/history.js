@@ -18,7 +18,7 @@ const getHistory = async (civilizationId) => {
 
 const postHistory = async (historyObject) => {
     try {
-        if (Number.isInteger(Number(historyObject.event_year))) {
+        if (!Number.isInteger(Number(historyObject.event_year))) {
             throw new Error("History event year must be an integer");
         }
         const repoResponse = await historyRepository.postHistory(historyObject);
@@ -31,7 +31,7 @@ const postHistory = async (historyObject) => {
 
 const patchHistory = async (historyObject) => {
     try {
-        if (Number.isInteger(Number(historyObject.event_year))) {
+        if (!Number.isInteger(Number(historyObject.event_year))) {
             throw new Error("History event year must be an integer");
         }
         const repoResponse = await historyRepository.patchHistory(
