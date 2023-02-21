@@ -1,21 +1,29 @@
 import { createBackButton, createElement } from "../../modules/modules.js";
-import { renderEditStaticPage } from "./edit_statuspage.js";
+import { renderEditStaticStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPage.js";
 
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "editContainer");
-    container.innerHTML = "Placeholder";
+    // container.innerHTML = "Placeholder";
 
-    // const startEditTable = createStartEditTable(civilizationId)
-    // const historyEditTable = createHistoryEditTable(civilizationId)
-    // const galleryEditTable = createGalleryEditTable(civilizationId)
+    // const startEditTable = renderEditStaticStart(civilizationId)
+    // const historyEditTable = renderEditStaticHistory(civilizationId)
+    // const galleryEditTable = renderEditStaticGallery(civilizationId)
 
-    // container.appendChild(startEditTable);
-    // container.appendChild(historyEditTable);
-    // container.appendChild(galleryEditTable);
+    
+    const startEditTable = renderEditStaticStart();
+    container.appendChild(startEditTable);
+    
+    const historyEditTable = renderEditStaticHistory();
+    container.appendChild(historyEditTable);
 
-    renderEditStaticPage();
+    const galleryEditTable = renderEditStaticGallery();
+    container.appendChild(galleryEditTable);
+    
     const backButton = createBackButton();
     container.appendChild(backButton);
+
+    
+    // container.appendChild(page);
 
     const response = {
         page: container,
