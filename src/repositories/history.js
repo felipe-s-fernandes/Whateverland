@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-import database from "./database.js";
 import { connectDb } from "./database/connection.js";
 import query from "./database/queries.js";
 const TAG = "History Repository: ";
@@ -12,10 +11,6 @@ const getHistory = async (civilizationId) => {
             history_events: null,
         };
 
-        //Mock getHistory;
-        /* const historyResponse = database.history_events.filter(
-            (historyEvent) => historyEvent.civilization_id === civilizationId
-        ); */
         const historyResponse = await connectDb(query.getHistory, [
             civilizationId,
         ]);
@@ -32,8 +27,60 @@ const getHistory = async (civilizationId) => {
     }
 };
 
+const postHistory = async (historyObject) => {
+    try {
+        const response = {
+            event: null,
+        };
+
+        const historyResponse = await connectDb(query.postHistory, [
+            historyObject.civilization_id,
+            historyObject.event_year,
+            historyObject.event_title,
+            historyObject.event_image,
+            historyObject.event_image_label,
+            historyObject.event_paragraph,
+        ]);
+
+        response.event = historyResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
+const patchHistory = async (historyObject) => {
+    try {
+        const response = {
+            event: null,
+        };
+
+        await connectDb(query.getCivilizationById, [
+            historyObject.civilization_id,
+        ]);
+
+        const historyResponse = await connectDb(query.patchHistoryPage, [
+            historyObject.civilization_id,
+            historyObject.event_year,
+            historyObject.event_title,
+            historyObject.event_image,
+            historyObject.event_image_label,
+            historyObject.event_paragraph,
+        ]);
+
+        response.event = historyResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const historyRepository = {
     getHistory: getHistory,
+    postHistory: postHistory,
+    patchHistory: patchHistory,
 };
 
 export default historyRepository;
