@@ -13,7 +13,8 @@ SELECT * FROM regions WHERE region_id = $1;
 
 // Pega todas as civilizações e seus dados de uma região específica.
 const getCivilizations = `
-    SELECT * FROM civilizations WHERE region_id = $1;
+    SELECT * FROM civilizations WHERE region_id = $1
+    ORDER BY civilization_id;
 `;
 
 // Pega todas as civilizações e seus dados.
@@ -162,7 +163,7 @@ const query = {
     patchGallery: patchGallery,
     delRegion: delRegion,
     delCivilization: delCivilization,
-    delHistoryEvent:delHistoryEvent,
+    delHistoryEvent: delHistoryEvent,
     delGalleryImage: delGalleryImage,
 };
 
