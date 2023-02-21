@@ -16,7 +16,7 @@ body {
 }
 
 .cardDiv {
-    background-color: white;
+    background-color: var(--primary-color);
     display: flex;
     max-width: 1200px;
     min-width: 643px;
@@ -28,7 +28,7 @@ body {
 }
 
 .asideContent {
-    color: #fff;
+    color: var(--primary-color);
     min-width: 25%;
     border-radius: 15px 0 0 15px;
 }
