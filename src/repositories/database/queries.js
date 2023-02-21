@@ -76,10 +76,18 @@ const postGallery = `
 `;
 // Jonatas coloca tudo dentro de um objeto
 
+// Atualiza nome de uma região específica.
+const patchRegion = `
+    UPDATE regions
+    SET region_name
+    WHERE region_id = $1
+    RETURNING region_id;
+`;
+
 // Atualiza nome e imagem de uma civilização específica.
 const patchCivilization = `
 UPDATE civilizations
-SET civilization_name = $2, civilization_image = $3
+SET region_id = $2, civilization_name = $3, civilization_image = $4
 WHERE civilization_id = $1
 RETURNING civilization_id;
 `;
@@ -147,6 +155,7 @@ const query = {
     postStartPage: postStartPage,
     postHistoryEvents: postHistoryEvents,
     postGallery: postGallery,
+    patchRegion: patchRegion,
     patchCivilization: patchCivilization,
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
