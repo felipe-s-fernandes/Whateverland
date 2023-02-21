@@ -133,7 +133,7 @@ const deleteCivilization = `
 // Deleta um event da history page.
 const deleteHistoryEvent = `
     DELETE FROM history_events
-    WHERE history_event_unique_id = $1;
+    WHERE event = $1;
 `;
 
 // Deleta uma imagem da galeria.
