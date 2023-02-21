@@ -86,11 +86,32 @@ const postCivilization = async (regionId, civilizationName) => {
     }
 };
 
+const patchCivilization = async (civilizationObject) => {
+    try {
+        const response = {
+            status: null,
+        };
+
+        const civilizationResponse = await connectDb(query.patchCivilization, [
+            civilizationObject.civilization_id,
+            civilizationObject.civilization_name,
+            civilizationObject.civilization_image,
+        ]);
+
+        response.status = civilizationResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const civilizationsRepository = {
     getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
+    patchCivilization: patchCivilization,
 };
 
 export default civilizationsRepository;

@@ -197,11 +197,66 @@ const postCivilization = async (req, res) => {
     }
 };
 
+const patchCivilization = async (req, res) => {
+    console.log(
+        TAG,
+        "patchCivilization() from " + req.connection.remoteAddress
+    );
+    console.time("patchCivilization()");
+    // Precisa tratar algum input? Não sei
+
+    const civilizationObject = req.body;
+    const civilizationId = civilizationObject.civilization_id;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("patchCivilization()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await civilzationsServices.patchCivilization(
+            civilizationObject
+        );
+
+        response.message = `Civilization with id ${civilizationId} edited successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("patchCivilization()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("patchCivilization()");
+    }
+};
+
 const civilizationsController = {
     getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
+    patchCivilization,
 };
 
 export default civilizationsController;

@@ -76,6 +76,14 @@ const postGallery = `
 `;
 // Jonatas coloca tudo dentro de um objeto
 
+// Atualiza nome e imagem de uma civilização específica.
+const patchCivilization = `
+UPDATE civilizations
+SET civilization_name = $2, civilization_image = $3
+WHERE civilization_id = $1
+RETURNING civilization_id;
+`;
+
 // Atualiza dados da start page de uma civilização específica.
 const patchStartPage = `
 UPDATE start_pages
@@ -114,6 +122,7 @@ const query = {
     postStartPage: postStartPage,
     postHistoryEvents: postHistoryEvents,
     postGallery: postGallery,
+    patchCivilization: patchCivilization,
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,

@@ -41,12 +41,22 @@ const getCivilizationById = async (civilizationId) => {
 };
 
 const postCivilization = async (regionId, civilizationName) => {
-    // Padronizar a resposta
-
     try {
         const repoResponse = await civilizationsRepository.postCivilization(
             Number(regionId),
             civilizationName
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
+const patchCivilization = async (civilizationObject) => {
+    try {
+        const repoResponse = await civilizationsRepository.patchCivilization(
+            civilizationObject
         );
         return repoResponse;
     } catch (error) {
@@ -60,6 +70,7 @@ const civilizationsServices = {
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
+    patchCivilization: patchCivilization,
 };
 
 export default civilizationsServices;
