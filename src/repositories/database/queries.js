@@ -104,7 +104,32 @@ RETURNING event;
 const patchGallery = `
     UPDATE gallery
     SET gallery_image_title = $3
-    WHERE civilization_id = $1 AND gallery_image_id = $2;
+    WHERE civilization_id = $1 AND image_unique_id = $2
+    RETURNING image_unique_id;
+`;
+
+// Deleta uma região.
+const delRegion = `
+    DELETE FROM regions
+    WHERE region_id = $1;
+`;
+
+// Deleta um civilização.
+const delCivilization = `
+    DELETE FROM civilizations
+    WHERE civilization_id = $1;
+`;
+
+// Deleta um event da history page.
+const delHistoryEvent = `
+    DELETE FROM history_events
+    WHERE history_event_unique_id = $1;
+`;
+
+// Deleta uma imagem da galeria.
+const delGalleryImage = `
+    DELETE FROM gallery
+    WHERE image_unique_id = $1;
 `;
 
 // Objeto com todas as constantes.
@@ -126,6 +151,10 @@ const query = {
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,
+    delRegion: delRegion,
+    delCivilization: delCivilization,
+    delHistoryEvent:delHistoryEvent,
+    delGalleryImage: delGalleryImage,
 };
 
 export default query;
