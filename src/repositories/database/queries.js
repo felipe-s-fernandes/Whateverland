@@ -55,6 +55,19 @@ VALUES ($1, $2)
 RETURNING civilization_id;
 `;
 
+// Insere dados da start page de uma civilização específica.
+const postStartPage = `
+    INSERT INTO start_pages (civilization_id)
+    VALUES ($1)
+    RETURNING start_page_id;
+`;
+
+const postHistoryEvents = `
+    INSERT INTO history_events (civilization_id, event_year, event_title, event_image, event_image_label, event_paragraph)
+    VALUES ($1, $2, $3, $4, $5, $6)
+    RETURNING event;
+`;
+
 // Insere dados de uma imagem na galeria.
 const postGallery = `
     INSERT INTO gallery (civilization_id, gallery_image_title)
@@ -67,16 +80,17 @@ const postGallery = `
 const patchStartPage = `
 UPDATE start_pages
 SET official_name = $2, localization = $3, capital = $4, religion = $5, government = $6, title = $7, paragraph = $8
-WHERE civilization_id = $1;
+WHERE civilization_id = $1
+RETURNIG start_page_id;
 `;
 
 //Atualiza dados da history page de uma civilização específica.
-const patchHistoryPage = `
-UPDATE history_pages
+const patchHistoryEvents = `
+UPDATE history_events
 SET event_year = $2, event_title = $3, event_image = $4, event_image_label = $5, event_paragraph = $6
-WHERE civilization_id = $1;
+WHERE civilization_id = $1
+RETURNING event;
 `;
-
 
 // Atualiza dados de uma imagem na galeria de uma civilização específica.
 const patchGallery = `
@@ -85,7 +99,7 @@ const patchGallery = `
     WHERE civilization_id = $1 AND gallery_image_id = $2;
 `;
 
-
+// Objeto com todas as constantes.
 const query = {
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
@@ -95,11 +109,13 @@ const query = {
     getRegionById: getRegionById,
     getHistory: getHistory,
     getStart: getStart,
-    postCivilization: postCivilization,
     postRegion: postRegion,
+    postCivilization: postCivilization,
+    postStartPage: postStartPage,
+    postHistoryEvents: postHistoryEvents,
     postGallery: postGallery,
     patchStartPage: patchStartPage,
-    patchHistoryPage: patchHistoryPage,
+    patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,
 };
 
