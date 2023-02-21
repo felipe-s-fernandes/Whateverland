@@ -7,4 +7,8 @@ import historyController from "../controllers/history.js";
 
 historyRouter.get("/:civilizationid", historyController.getHistory);
 
+historyRouter.post("/", historyController.postHistory);
+
+historyRouter.patch("/edit", historyController.patchHistory);
+
 export default historyRouter;

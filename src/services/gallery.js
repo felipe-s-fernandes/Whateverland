@@ -18,8 +18,21 @@ const getGallery = async (civilizationId) => {
     }
 };
 
+const postGallery = async (galleryObject) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = await galleryRepository.postGallery(galleryObject);
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const galleryServices = {
     getGallery: getGallery,
+    postGallery: postGallery,
 };
 
 export default galleryServices;

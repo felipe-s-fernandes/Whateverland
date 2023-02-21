@@ -7,4 +7,6 @@ import startController from "../controllers/start.js";
 
 startRouter.get("/:civilizationid", startController.getStart);
 
+startRouter.patch("/edit", startController.patchStart);
+
 export default startRouter;

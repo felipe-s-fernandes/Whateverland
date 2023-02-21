@@ -56,8 +56,112 @@ const getHistory = async (req, res) => {
     }
 };
 
+const postHistory = async (req, res) => {
+    console.log(TAG, "postHistory() from " + req.connection.remoteAddress);
+    console.time("postHistory()");
+    // Precisa tratar algum input? Não sei
+
+    const historyObject = req.body;
+    const civilizationId = historyObject.civilization_id;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("postHistory()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await historyServices.postHistory(
+            historyObject
+        );
+
+        response.message = `History event for civilization with id ${civilizationId} created successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("postHistory()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("postHistory()");
+    }
+};
+
+const patchHistory = async (req, res) => {
+    console.log(TAG, "patchHistory() from " + req.connection.remoteAddress);
+    console.time("patchHistory()");
+    // Precisa tratar algum input? Não sei
+
+    const historyObject = req.body;
+    const civilizationId = historyObject.civilization_id;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("patchHistory()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await historyServices.patchHistory(
+            historyObject
+        );
+
+        response.message = `History event for civilization with id ${civilizationId} edited successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("patchHistory()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("patchHistory()");
+    }
+};
+
 const historyController = {
     getHistory: getHistory,
+    postHistory: postHistory,
+    patchHistory: patchHistory,
 };
 
 export default historyController;

@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-
 import startRepository from "../repositories/start.js";
 const TAG = "Start Service: ";
 
@@ -17,10 +16,23 @@ const getStart = async (civilizationId) => {
         console.log(TAG, "error caught");
         throw error;
     }
-} 
+};
+
+const patchStart = async (startObject) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = await startRepository.patchStart(startObject);
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
 
 const startServices = {
     getStart: getStart,
+    patchStart: patchStart,
 };
 
 export default startServices;

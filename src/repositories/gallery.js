@@ -1,7 +1,6 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
-import database from "./database.js";
 import { connectDb } from "./database/connection.js";
 import query from "./database/queries.js";
 const TAG = "Gallery Repository: ";
@@ -30,8 +29,32 @@ const getGallery = async (civilizationId) => {
     }
 };
 
+const postGallery = async (galleryObject) => {
+    try {
+        const response = {
+            event: null,
+        };
+        await connectDb(query.getCivilizationById, [
+            galleryObject.civilization_id,
+        ]);
+
+        const galleryResponse = await connectDb(query.postGallery, [
+            galleryObject.civilization_id,
+            galleryObject.gallery_image_title,
+            galleryObject.gallery_image_id,
+        ]);
+
+        response.event = galleryResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const galleryRepository = {
     getGallery: getGallery,
+    postGallery: postGallery,
 };
 
 export default galleryRepository;

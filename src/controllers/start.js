@@ -54,8 +54,59 @@ const getStart = async (req, res) => {
     }
 };
 
+const patchStart = async (req, res) => {
+    console.log(TAG, "patchStart() from " + req.connection.remoteAddress);
+    console.time("patchStart()");
+    // Precisa tratar algum input? Não sei ainda
+    const civilizationId = req.body.civilization_id;
+    const startObject = req.body;
+
+    //fetch("http://localhost:8080/start/:id")
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("patchStart()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await startServices.patchStart(startObject);
+
+        response.message = `Start page for civilization with id ${civilizationId} edited successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("patchStart()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("patchStart()");
+    }
+};
+
 const startController = {
     getStart: getStart,
+    patchStart: patchStart,
 };
 
 export default startController;
