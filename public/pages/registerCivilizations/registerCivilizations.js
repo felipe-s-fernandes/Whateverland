@@ -40,19 +40,21 @@ export default async function RenderRegisterCivilizations(data) {
 async function reqRenderRegions() {
     // Array de objetos com todas as regiões
     const regionObject = await HTTPRequest(`/regions`, "GET");
+    // console.log(regionObject.regions);
 
     // Array de objetos com o nome de todas as regiões
-    const arrayRegionsAll = Object.values(regionObject.regions);
+    // const arrayRegionsAll = Object.values(regionObject.regions);
+    // console.log(arrayRegionsAll);
 
     // Inserindo o resultado da pesquisa em um select da página HTML
-    regionsSelect(arrayRegionsAll);
+    regionsSelect(regionObject.regions);
 }
 
 // Requisição GET para renderizar a tabela a tabela
 async function reqRenderTable() {
     // Eu preciso de todas as regiões aqui Felipe
     const regionObject = await HTTPRequest(`/civilizations/by_region/1`, "GET");
-    console.log(regionObject);
+    // console.log(regionObject);
 
     renderTable(regionObject.civilizations);
 }
@@ -154,20 +156,21 @@ function eventForm() {
     form.addEventListener("submit", async (e) => {
         const nomeUser = document.querySelector("#nome-input");
         const regionSelect = document.querySelector("#regions");
-        const button = document.querySelector("#cadastrar");
+        // const button = document.querySelector("#cadastrar");
         e.preventDefault();
 
-        if (button.value == "Cadastrar") {
-            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-            await newCivilization(form.nome.value, form.regions.value);
-        }
+        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+        await newCivilization(form.nome.value, form.regions.value);
 
-        if (button.value == "Editar") {
-            // Requisitando para o servidor editar um usuário no banco de dados
-            userEdit(userId);
-            // Sumir os dados do usuário nos inputs quando terminar edição
-            button.value = "Cadastrar";
-        }
+        // if (button.value == "Cadastrar") {
+        // }
+
+        // if (button.value == "Editar") {
+        //     // Requisitando para o servidor editar um usuário no banco de dados
+        //     userEdit(userId);
+        //     // Sumir os dados do usuário nos inputs quando terminar edição
+        //     button.value = "Cadastrar";
+        // }
         reqRenderTable();
         nomeUser.value = "";
         regionSelect.value = "";
@@ -234,7 +237,7 @@ function renderTable(array) {
         column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        console.log(array[i]);
+        // console.log(array[i]);
         column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id));
         // column4.addEventListener("click", () => userInput(array[i]));
         column5.addEventListener("click", () => userDelete(array[i].civilization_id));
