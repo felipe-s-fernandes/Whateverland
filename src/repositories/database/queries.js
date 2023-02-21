@@ -76,10 +76,18 @@ const postGallery = `
 `;
 // Jonatas coloca tudo dentro de um objeto
 
+// Atualiza nome de uma região específica.
+const patchRegion = `
+    UPDATE regions
+    SET region_name
+    WHERE region_id = $1
+    RETURNING region_id;
+`;
+
 // Atualiza nome e imagem de uma civilização específica.
 const patchCivilization = `
 UPDATE civilizations
-SET civilization_name = $2, civilization_image = $3
+SET region_id = $2, civilization_name = $3, civilization_image = $4
 WHERE civilization_id = $1
 RETURNING civilization_id;
 `;
@@ -104,7 +112,32 @@ RETURNING event;
 const patchGallery = `
     UPDATE gallery
     SET gallery_image_title = $3
-    WHERE civilization_id = $1 AND gallery_image_id = $2;
+    WHERE civilization_id = $1 AND image_unique_id = $2
+    RETURNING image_unique_id;
+`;
+
+// Deleta uma região.
+const delRegion = `
+    DELETE FROM regions
+    WHERE region_id = $1;
+`;
+
+// Deleta um civilização.
+const delCivilization = `
+    DELETE FROM civilizations
+    WHERE civilization_id = $1;
+`;
+
+// Deleta um event da history page.
+const delHistoryEvent = `
+    DELETE FROM history_events
+    WHERE history_event_unique_id = $1;
+`;
+
+// Deleta uma imagem da galeria.
+const delGalleryImage = `
+    DELETE FROM gallery
+    WHERE image_unique_id = $1;
 `;
 
 // Objeto com todas as constantes.
@@ -122,10 +155,15 @@ const query = {
     postStartPage: postStartPage,
     postHistoryEvents: postHistoryEvents,
     postGallery: postGallery,
+    patchRegion: patchRegion,
     patchCivilization: patchCivilization,
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,
+    delRegion: delRegion,
+    delCivilization: delCivilization,
+    delHistoryEvent:delHistoryEvent,
+    delGalleryImage: delGalleryImage,
 };
 
 export default query;
