@@ -1,5 +1,5 @@
-// @Autor { Ed Wilson }
-// @Coautor { Anderson Lima }
+// @Autor { Anderson Lima }
+// @Coautor { Ed Wilson }
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";

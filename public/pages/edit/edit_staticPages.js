@@ -9,53 +9,58 @@ export function renderEditStaticStartTitle() {
 
     page.innerHTML = 
     `
-            <div class="boxBigCard">
-                <h2 id="name_civilization">Dados da civilização</h2>
-                <label for="name_pg_start">Nome da civilização:</label>
-                <input type="text" name="nome" id="name_pg_start" />
-                <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
-            </div>
+        <div class="boxBigCard">
+            <h2 id="name_civilization">Dados da civilização</h2>
+            <label for="name_pg_start">Nome da civilização:</label>
+            <input type="text" name="nome" id="name_pg_start" />
+            <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
+        </div>
     `;
 
     return page;
 }
 
-export function renderEditStaticStart() {
+export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "page");
 
     page.innerHTML = 
     `
             <div class="boxBigCard">
-                <form class="cadastre">
-                    <h2>Página Inicial</h2>
+                <form class="cadastre" id="formEditCivilizationAndStartPage">
+                    <div>
+                        <h2 id="name_civilization">Dados da civilização</h2>
+                        <label for="name_pg_start">Nome da civilização:</label>
+                        <input type="text" name="nome" id="name_pg_start" />
+                        <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
+                    </div>
 
-                    <label for="img_pg_start">Imagem da civilização:</label>
-                    <input type="text" name="logo" id="img_pg_start" />
+                    <div>                        
+                        <h2>Página Inicial</h2>
+
+                        <label for="img_pg_start">Imagem da civilização:</label>
+                        <input type="text" name="logo" id="img_pg_start" />
 
 
-                    <label for="titlename_pg_start">Título da civilização:</label>
-                    <input type="text" name="titulo" id="titlename_pg_start" />
+                        <label for="titlename_pg_start">Título da civilização:</label>
+                        <input type="text" name="titulo" id="titlename_pg_start" />
 
-                    <label for="origin_pg_start">Nome Oficial da civilização:</label>
-                    <input type="text" name="originName" id="origin_pg_start" />
+                        <label for="origin_pg_start">Nome Oficial da civilização:</label>
+                        <input type="text" name="originName" id="origin_pg_start" />
 
-                    <label for="cap_pg_start">Capital da civilização:</label>
-                    <input type="text" name="capital" id="cap_pg_start" />
+                        <label for="cap_pg_start">Capital da civilização:</label>
+                        <input type="text" name="capital" id="cap_pg_start" />
 
-                    <label for="religion_pg_start">Religião da civilização:</label>
-                    <input type="text" name="religion" id="religion_pg_start" />
+                        <label for="religion_pg_start">Religião da civilização:</label>
+                        <input type="text" name="religion" id="religion_pg_start" />
 
-                    <label for="gov_pg_start">Governo da civilização:</label>
-                    <input type="text" name="governo" id="gov_pg_start" />
+                        <label for="gov_pg_start">Governo da civilização:</label>
+                        <input type="text" name="governo" id="gov_pg_start" />
 
-                    <label for="desc_pg_start">Descrição:</label>
-                    <textarea type="text" name="desc" id="desc_pg_start"></textarea>
+                        <label for="desc_pg_start">Descrição:</label>
+                        <textarea type="text" name="desc" id="desc_pg_start"></textarea>
+                    </div>
 
-                    <button type="button" class ="style_btn" id="include">Incluir civilização</button>
-                    <button type="button" class ="style_btn" id="edit">Editar civilização</button>
-                    <button type="button" class ="style_btn" id="delete">Deletar civilização</button>
-                    <button type="button" class ="style_btn" id="clean">Limpar alterações</button>
-
+                    <button type="button" class ="style_btn" id="edit">Salvar alterações</button>
                 </form>
             </div>
     `;
@@ -69,7 +74,7 @@ export function renderEditStaticHistory() {
     page.innerHTML = 
     `
     <div class="boxBigCard">
-    <h2>História</h2>
+        <h2>História</h2>
         <button type="button" class ="style_btn" id="addHistory">Adicionar Evento</button>
         <div class="boxBigCard" id="divHistory">
         </div>

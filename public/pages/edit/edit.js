@@ -1,5 +1,5 @@
 import { createBackButton, createElement } from "../../modules/modules.js";
-import { renderEditStaticStartTitle, renderEditStaticStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
+import { renderEditStaticCivilizationAndStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
 import { renderInputStart, renderInputCivilization } from "./edit_startPage.js";
 import { reqRenderTableGallery } from "./edit_gallery.js";
 import { reqRenderTableHistory, addEvents } from "./edit_history.js";
@@ -10,10 +10,10 @@ export default async function RenderEditPage(civilizationId) {
     const backButton = createBackButton();
     container.appendChild(backButton);
 
-    const startTitleEditTable = renderEditStaticStartTitle();
-    container.appendChild(startTitleEditTable);
-    
-    const startEditTable = renderEditStaticStart();
+    // const startTitleEditTable = renderEditStaticStartTitle();
+    // container.appendChild(startTitleEditTable);
+
+    const startEditTable = renderEditStaticCivilizationAndStart();
     container.appendChild(startEditTable);
     
     const historyEditTable = renderEditStaticHistory();
@@ -28,7 +28,7 @@ export default async function RenderEditPage(civilizationId) {
         addEvents: function () {
             console.log("Event listeners");
 
-            // Requisições para prenchimento de Inputs da página inicial
+            // Requisições para prenchimento de Inputs de nome da civilização e página inicial do artigo
             renderInputCivilization(civilizationId, "name_pg_start", "civilization_name");
             renderInputStart(civilizationId, "origin_pg_start", "official_name");
             renderInputStart(civilizationId, "cap_pg_start", "capital");
