@@ -1,8 +1,19 @@
 :root {
+    /* Cor do card grande */
     --primary-color: #ffffff;
+
+    /* Cor de sombra do card */
     --shadow-color-position: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    /* Borda arredondada do card grande */
     --border-radius-big-box: 15px;
-    --border-card: 2px solid #B2B2B2
+
+    /*  */
+    --border-card: 2px solid #B2B2B2 rgba(0, 0, 0, 0.25);
+
+    /* Começa a produzir daqui pra baixo as variáveis */
+
+
 }
 
 .backButton {
@@ -154,6 +165,7 @@ header {
 }
 
 /* Estilização geral */
+/* Começa a produzir daqui pra baixo Pedro */
 
 /* Card grande onde contém todas as informações */
 .boxBigCard {

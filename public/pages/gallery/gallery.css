@@ -79,7 +79,7 @@
 .contentImage {
     width:280px;
     height:200px;
-    background-color: white;
+    background-color: var(--primary-color);
     margin: 20px;
     text-align: center;
 
