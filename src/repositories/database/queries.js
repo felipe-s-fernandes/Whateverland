@@ -17,9 +17,10 @@ const getCivilizations = `
     ORDER BY civilization_id;
 `;
 
-// Pega todas as civilizações e seus dados.
+// Pega todas as civilizações, regiões e seus dados.
 const getAllCivilizations = `
     SELECT * FROM civilizations
+    INNER JOIN regions ON civilizations.region_id = regions.region_id
     ORDER BY civilization_id DESC;
 `;
 
