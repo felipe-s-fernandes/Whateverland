@@ -11,4 +11,6 @@ historyRouter.post("/", historyController.postHistory);
 
 historyRouter.patch("/edit", historyController.patchHistory);
 
+historyRouter.delete("/:eventid", historyController.deleteHistory);
+
 export default historyRouter;

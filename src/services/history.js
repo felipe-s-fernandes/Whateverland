@@ -44,10 +44,23 @@ const patchHistory = async (historyObject) => {
     }
 };
 
+const deleteHistory = async (eventId) => {
+    try {
+        const repoResponse = await historyRepository.deleteHistory(
+            Number(eventId)
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const HistoryServices = {
     getHistory: getHistory,
     postHistory: postHistory,
     patchHistory: patchHistory,
+    deleteHistory: deleteHistory,
 };
 
 export default HistoryServices;

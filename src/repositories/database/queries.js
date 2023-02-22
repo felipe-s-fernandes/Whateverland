@@ -19,7 +19,8 @@ const getCivilizations = `
 
 // Pega todas as civilizações e seus dados.
 const getAllCivilizations = `
-    SELECT * FROM civilizations;
+    SELECT * FROM civilizations
+    ORDER BY civilization_name;
 `;
 
 // (Anderson: Vou mudar aqui ainda) Pega todos os dados de uma civilização específica.
@@ -118,25 +119,25 @@ const patchGallery = `
 `;
 
 // Deleta uma região.
-const delRegion = `
+const deleteRegion = `
     DELETE FROM regions
     WHERE region_id = $1;
 `;
 
 // Deleta um civilização.
-const delCivilization = `
+const deleteCivilization = `
     DELETE FROM civilizations
     WHERE civilization_id = $1;
 `;
 
 // Deleta um event da history page.
-const delHistoryEvent = `
+const deleteHistoryEvent = `
     DELETE FROM history_events
-    WHERE history_event_unique_id = $1;
+    WHERE event = $1;
 `;
 
 // Deleta uma imagem da galeria.
-const delGalleryImage = `
+const deleteGalleryImage = `
     DELETE FROM gallery
     WHERE image_unique_id = $1;
 `;
@@ -161,10 +162,10 @@ const query = {
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,
-    delRegion: delRegion,
-    delCivilization: delCivilization,
-    delHistoryEvent: delHistoryEvent,
-    delGalleryImage: delGalleryImage,
+    deleteRegion: deleteRegion,
+    deleteCivilization: deleteCivilization,
+    deleteHistoryEvent: deleteHistoryEvent,
+    deleteGalleryImage: deleteGalleryImage,
 };
 
 export default query;

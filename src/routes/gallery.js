@@ -9,4 +9,6 @@ galleryRouter.get("/:civilizationid", galleryController.getGallery);
 
 galleryRouter.post("/", galleryController.postGallery);
 
+galleryRouter.delete("/:imageid", galleryController.deleteGallery);
+
 export default galleryRouter;

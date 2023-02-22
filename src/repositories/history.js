@@ -77,10 +77,29 @@ const patchHistory = async (historyObject) => {
     }
 };
 
+const deleteHistory = async (eventId) => {
+    try {
+        const response = {
+            status: null,
+        };
+
+        const historyResponse = await connectDb(query.deleteHistoryEvent, [
+            eventId,
+        ]);
+
+        response.status = historyResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const historyRepository = {
     getHistory: getHistory,
     postHistory: postHistory,
     patchHistory: patchHistory,
+    deleteHistory: deleteHistory,
 };
 
 export default historyRepository;

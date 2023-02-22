@@ -113,7 +113,6 @@ const patchHistory = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
-    const civilizationId = historyObject.civilization_id;
 
     // Padronizar a resposta
     const response = {
@@ -122,26 +121,13 @@ const patchHistory = async (req, res) => {
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
-    if (isNaN(civilizationId)) {
-        console.log(TAG, "Parameter isNaN");
-
-        response.message = "Civilization id is not valid.";
-        response.data = null;
-        response.error = "404: Not found";
-
-        res.status(404).json(response);
-        console.timeEnd("patchHistory()");
-        return;
-    }
-
     try {
         // Chama o método do Service
         const serviceResponse = await historyServices.patchHistory(
             historyObject
         );
 
-        response.message = `History event for civilization with id ${civilizationId} edited successfully.`;
+        response.message = `History event with id ${historyObject.event} edited successfully.`;
         response.data = serviceResponse;
 
         res.status(200).send(response);
@@ -158,10 +144,60 @@ const patchHistory = async (req, res) => {
     }
 };
 
+const deleteHistory = async (req, res) => {
+    console.log(TAG, "deleteHistory() from " + req.connection.remoteAddress);
+    console.time("deleteHistory()");
+    // Precisa tratar algum input? Sim
+
+    //fetch("http://localhost:8080/history/:id")
+    const eventId = req.params.eventid;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(eventId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Event id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("deleteHistory()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await historyServices.deleteHistory(eventId);
+
+        response.message = `History event with id ${eventId} deleted successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("deleteHistory()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("deleteHistory()");
+    }
+};
+
 const historyController = {
     getHistory: getHistory,
     postHistory: postHistory,
     patchHistory: patchHistory,
+    deleteHistory: deleteHistory,
 };
 
 export default historyController;
