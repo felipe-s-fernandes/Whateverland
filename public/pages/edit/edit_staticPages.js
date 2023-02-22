@@ -103,7 +103,7 @@ export function renderEditStaticGallery() {
                     <input type="text" id="civi_gallery name="civi_gallery" />
 
                     <label for="img_gallery">Imagem:</label>
-                    <input type="text" id="img_gallery" name="img_gallery" />
+                    <input type="file" id="img_gallery" name="img_gallery" />
 
                     <button type="submit" id="include_gallery">Adicionar Imagem</button>
                     <button type="button" id="cancel_gallery">Cancelar</button>
