@@ -48,7 +48,6 @@ export default async function RenderEditPage(civilizationId) {
             // Requisições para prenchimento da tabela de galeria
             reqRenderTableGallery(civilizationId);
             eventFormGallery(civilizationId);
-            // eventFormHistory(civilizationId);
         },
     };
 

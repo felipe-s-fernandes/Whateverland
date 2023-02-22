@@ -1,19 +1,19 @@
 import { createElement } from "../../modules/modules.js";
 
-export function renderEditStaticStartTitle() {
-    const page = createElement("div", "page");
+// export function renderEditStaticStartTitle() {
+//     const page = createElement("div", "page");
 
-    page.innerHTML = `
-        <div class="boxBigCard">
-            <h2 id="name_civilization">Dados da civilização</h2>
-            <label for="name_pg_start">Nome da civilização:</label>
-            <input type="text" name="nome" id="name_pg_start" />
-            <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
-        </div>
-    `;
+//     page.innerHTML = `
+//         <div class="boxBigCard">
+//             <h2 id="name_civilization">Dados da civilização</h2>
+//             <label for="name_pg_start">Nome da civilização:</label>
+//             <input type="text" name="nome" id="name_pg_start" />
+//             <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
+//         </div>
+//     `;
 
-    return page;
-}
+//     return page;
+// }
 
 export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "page");
@@ -23,15 +23,17 @@ export function renderEditStaticCivilizationAndStart() {
                 <form class="cadastre" id="formEditCivilizationAndStartPage">
                     <div>
                         <h2 id="name_civilization">Dados da civilização</h2>
+
                         <label for="name_pg_start">Nome da civilização:</label>
                         <input type="text" name="nameCivilization" id="name_pg_start" />
-                        <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
+
+                        <label for="img_pg_start">Imagem da civilização:</label>
+                        <input type="file" id="img_pg_adm" name="img_pg_adm" />
                     </div>
 
                     <div>                        
                         <h2>Página Inicial</h2>
 
-                        <label for="img_pg_start">Imagem da civilização:</label>
                         <input type="text" name="logo" id="img_pg_start" />
 
                         <label for="titlename_pg_start">Título da civilização:</label>
@@ -75,11 +77,10 @@ export function renderEditStaticHistory() {
     <div class="boxBigCard">
         <h2>História</h2>
         <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
-        <div class="boxBigCard" id="divHistory">
-        </div>
+        <div class="boxBigCard" id="divHistory"></div>
         <div id="tableHistory"></div>
     </div>
-    <div class="boxBigCard" id="resulthistory"> </div>
+    <div class="boxBigCard" id="resulthistory"></div>
     `;
 
     return page;
@@ -108,7 +109,7 @@ export function renderEditStaticGallery() {
 
             <table id="tableGallery"></table>
         </div>
-        <div class="boxBigCard" id="resultgallery"> </div>
+        <div class="boxBigCard" id="resultgallery"></div>
     `;
 
     return page;
