@@ -2,6 +2,7 @@
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
+import imgPostRequest from "../../modules/imgPostRequest.js";
 
 
 // ***Requisições***
@@ -15,13 +16,9 @@ export async function reqRenderTableGallery(civilizationId) {
     renderTable(galleryObject.gallery);
 }
 
-export async function newImageGallery(civilizationId, imageTitle, imageId) {
+export async function newImageGallery(formData) {
     // Eu preciso de todas as regiões aqui Felipe
-    const newGalleryObject = await HTTPRequest(`/gallery/`, "POST", {
-        civilization_id: civilizationId,
-        gallery_image_title: imageTitle,
-        gallery_image_id: imageId
-    });
+    const newGalleryObject = await imgPostRequest(`/gallery/`, "POST", formData);
     console.log(newGalleryObject);
 
     // renderTable(galleryObject.gallery);
@@ -40,8 +37,31 @@ export function eventFormGallery(civilizationId) {
         e.preventDefault();
 
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        // await newCivilization(form.civi_gallery.value, form.img_gallery.value);
-        await newImageGallery(civilizationId, form.civi_gallery.value, form.img_gallery.value);
+        // await newImageGallery(civilizationId, form.civi_gallery.value, form.img_gallery.value);
+        
+        
+        
+        // Zona de edição
+        
+        const formData = new FormData();
+        const file = document.querySelector("#img_gallery");
+        
+        // Adiciona a imagem ao FormData
+        formData.append("file", file.files[0]);
+        
+        // Adiciona as 4 strings ao FormData
+        formData.append("civilization_id", civilizationId);
+        formData.append("gallery_image_title", form.civi_gallery.value);
+        
+        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+        await newImageGallery(formData);
+        
+        // galleryObject.civilization_id,
+        // galleryObject.gallery_image_title,
+        // galleryObject.gallery_image_id,
+
+        // Zona de edição
+
 
         reqRenderTableGallery(civilizationId);
         nomeUser.value = "";
