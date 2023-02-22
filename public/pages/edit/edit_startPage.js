@@ -1,6 +1,7 @@
 // @autor { Anderson Lima }
 
 import HTTPRequest from "../../modules/HTTPRequest.js";
+import imgRequest from "../../modules/imgRequest.js";
 
 let editIdRegion;
 
@@ -38,7 +39,7 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
 // }
 
 async function editImageCivilization(formData) {
-    await imgPatchRequest(`/civilizations/edit`, "PATCH", formData);
+    await imgRequest(`/civilizations/edit`, "PATCH", formData);
 }
 
 async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc ) {

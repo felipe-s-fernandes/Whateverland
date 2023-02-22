@@ -2,7 +2,7 @@
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
-import imgPostRequest from "../../modules/imgPostRequest.js";
+import imgRequest from "../../modules/imgRequest.js";
 
 
 // ***Requisições***
@@ -18,7 +18,7 @@ export async function reqRenderTableGallery(civilizationId) {
 
 export async function newImageGallery(formData) {
     // Eu preciso de todas as regiões aqui Felipe
-    const newGalleryObject = await imgPostRequest(`/gallery/`, "POST", formData);
+    const newGalleryObject = await imgRequest(`/gallery/`, "POST", formData);
     console.log(newGalleryObject);
 
     // renderTable(galleryObject.gallery);
