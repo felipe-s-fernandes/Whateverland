@@ -94,11 +94,30 @@ const patchCivilization = async (civilizationObject) => {
 
         const civilizationResponse = await connectDb(query.patchCivilization, [
             civilizationObject.civilization_id,
+            civilizationObject.region_id,
             civilizationObject.civilization_name,
             civilizationObject.civilization_image,
         ]);
 
         response.status = civilizationResponse;
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
+const deleteCivilization = async (civilizationId) => {
+    try {
+        const response = {
+            status: null,
+        };
+
+        const database = await connectDb(query.deleteCivilization, [
+            civilizationId,
+        ]);
+
+        response.status = database;
         return response;
     } catch (error) {
         console.log(TAG, "error caught");
@@ -112,6 +131,7 @@ const civilizationsRepository = {
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
     patchCivilization: patchCivilization,
+    deleteCivilization: deleteCivilization,
 };
 
 export default civilizationsRepository;

@@ -131,7 +131,7 @@ const getCivilizationById = async (req, res) => {
         response.data = serviceResponse;
 
         res.status(200).send(response);
-        console.timeEnd("getCivilizations()");
+        console.timeEnd("getCivilizationById()");
     } catch (error) {
         console.log(TAG, "error caught");
 
@@ -140,7 +140,7 @@ const getCivilizationById = async (req, res) => {
         response.error = `${error}`;
 
         res.status(500).json(response);
-        console.timeEnd("getCivilizations()");
+        console.timeEnd("getCivilizationById()");
     }
 };
 
@@ -206,6 +206,13 @@ const patchCivilization = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const civilizationObject = req.body;
+
+    if (!req.file || req.file.size === 0) {
+        civilizationObject.civilization_image = null;
+    } else {
+        civilizationObject.civilization_image = req.file.filename;
+    }
+
     const civilizationId = civilizationObject.civilization_id;
 
     // Padronizar a resposta
@@ -251,12 +258,66 @@ const patchCivilization = async (req, res) => {
     }
 };
 
+const deleteCivilization = async (req, res) => {
+    console.log(
+        TAG,
+        "deleteCivilization() from " + req.connection.remoteAddress
+    );
+    console.time("deleteCivilization()");
+    // Precisa tratar algum input? Sim
+
+    const civilizationId = req.params.id;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    //Verifica se foi informado um ID válido
+    if (isNaN(civilizationId)) {
+        console.log(TAG, "Parameter isNaN");
+
+        response.message = "Civilization id is not valid.";
+        response.data = null;
+        response.error = "404: Not found";
+
+        res.status(404).json(response);
+        console.timeEnd("deleteCivilization()");
+        return;
+    }
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await civilzationsServices.deleteCivilization(
+            civilizationId
+        );
+
+        response.message = `Civilization with id ${civilizationId} deleted successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("deleteCivilization()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("deleteCivilization()");
+    }
+};
+
 const civilizationsController = {
     getAllCivilizations: getAllCivilizations,
     getCivilizations: getCivilizations,
     getCivilizationById: getCivilizationById,
     postCivilization: postCivilization,
-    patchCivilization,
+    patchCivilization: patchCivilization,
+    deleteCivilization: deleteCivilization,
 };
 
 export default civilizationsController;

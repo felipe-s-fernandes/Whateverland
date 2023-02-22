@@ -1,43 +1,39 @@
+// @autor { Ed Wilson }
+// Coautor { Anderson Lima }
+
 import { createElement } from "../../modules/modules.js";
 
-// const startEditTable = createStartEditTable(civilizationId)
-// const historyEditTable = createHistoryEditTable(civilizationId)
-// const galleryEditTable = createGalleryEditTable(civilizationId)
-
-export function renderEditStaticStartTitle() {
+export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "page");
 
     page.innerHTML = 
     `
-            <div class="boxBigCard">
-                <h2 id="name_civilization">Dados da civilização</h2>
-                <label for="name_pg_start">Nome da civilização:</label>
-                <input type="text" name="nome" id="name_pg_start" />
-                <img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
-            </div>
-    `;
+        <div class="boxBigCard">
+            <form class="cadastre" id="formEditCivilizationAndStartPage">
+                <div>
+                    <h2 id="name_civilization">Dados da civilização</h2>
 
-    return page;
-}
-
-export function renderEditStaticStart() {
-    const page = createElement("div", "page");
-
-    page.innerHTML = 
-    `
-            <div class="boxBigCard">
-                <form class="cadastre">
-                    <h2>Página Inicial</h2>
+                    <label for="name_pg_start">Nome da civilização:</label>
+                    <input type="text" name="nameCivilization" id="name_pg_start" />
 
                     <label for="img_pg_start">Imagem da civilização:</label>
-                    <input type="text" name="logo" id="img_pg_start" />
+                    <input type="file" id="img_pg_adm" name="img_pg_adm" />
+                </div>
 
+                <div>                        
+                    <h2>Página Inicial</h2>
 
                     <label for="titlename_pg_start">Título da civilização:</label>
                     <input type="text" name="titulo" id="titlename_pg_start" />
 
                     <label for="origin_pg_start">Nome Oficial da civilização:</label>
                     <input type="text" name="originName" id="origin_pg_start" />
+
+                    <label for="titlename_pg_start">Id da Região:</label>
+                    <input type="text" name="idregion" id="id_region_start" />
+
+                    <label for="titlename_pg_start">Nome da Região:</label>
+                    <input type="text" name="nameregion" id="name_region_start" />
 
                     <label for="cap_pg_start">Capital da civilização:</label>
                     <input type="text" name="capital" id="cap_pg_start" />
@@ -50,14 +46,12 @@ export function renderEditStaticStart() {
 
                     <label for="desc_pg_start">Descrição:</label>
                     <textarea type="text" name="desc" id="desc_pg_start"></textarea>
+                </div>
 
-                    <button type="button" class ="style_btn" id="include">Incluir civilização</button>
-                    <button type="button" class ="style_btn" id="edit">Editar civilização</button>
-                    <button type="button" class ="style_btn" id="delete">Deletar civilização</button>
-                    <button type="button" class ="style_btn" id="clean">Limpar alterações</button>
-
-                </form>
-            </div>
+                <button type="submit" class ="style_btn" id="edit">Salvar alterações</button>
+            </form>
+        </div>
+        <div class="boxBigCard" id="resultstart"></div>
     `;
 
     return page;
@@ -66,16 +60,25 @@ export function renderEditStaticStart() {
 export function renderEditStaticHistory() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
     <div class="boxBigCard">
-    <h2>História</h2>
-        <button type="button" class ="style_btn" id="addHistory">Adicionar Evento</button>
-        <div class="boxBigCard" id="divHistory">
-        </div>
-        <div id="tableHistory"></div>
+        <h2>História</h2>
+        <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
+        <div class="boxBigCard" id="divHistory"></div>
+        <table>
+            <thead>
+                <tr id="table-heading">
+                    <td class="id-number">Id</td>
+                    <td class="e-mail">Ano do evento</td>
+                    <td class="nome">Descrição do evento</td>
+                    <td class="nome">Editar</td>
+                    <td class="nome">Deletar</td>
+                </tr>
+            </thead>
+            <tbody id="tableHistory"></tbody>
+        </table>
     </div>
-
+    <div class="boxBigCard" id="resulthistory"></div>
     `;
 
     return page;
@@ -84,27 +87,34 @@ export function renderEditStaticHistory() {
 export function renderEditStaticGallery() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
         <div class="boxBigCard">
         <h2>Galeria</h2>
             <div class="boxBigCard">
-                <form class="cadastre">
+                <form class="cadastre" id="formGallery">
                     <h3>Adicionar nova imagem</h3>
 
                     <label for="civi_gallery">Legenda da imagem:</label>
-                    <input type="text" id="civi_gallery" />
+                    <input type="text" id="civi_gallery" name="civi_gallery" />
 
                     <label for="img_gallery">Imagem:</label>
-                    <input type="text" id="img_gallery" />
+                    <input type="file" id="img_gallery" name="img_gallery" />
 
-                    <button type="button" id="include_gallery">Adicionar Imagem</button>
-                    <button type="button" id="cancel_gallery">Cancelar</button>
+                    <button type="submit" id="include_gallery">Adicionar Imagem</button>
                 </form>
             </div>
-
-            <table id="tableGallery"></table>
+            <table>
+                <thead>
+                    <tr id="table-heading">
+                        <td class="id-number">Legenda</td>
+                        <td class="id-number">Unique ID</td>
+                        <td class="e-mail">Deletar</td>
+                    </tr>
+                </thead>
+                <tbody id="tableGallery"></tbody>
+            </table>
         </div>
+        <div class="boxBigCard" id="resultgallery"></div>
     `;
 
     return page;

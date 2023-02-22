@@ -13,12 +13,15 @@ SELECT * FROM regions WHERE region_id = $1;
 
 // Pega todas as civilizações e seus dados de uma região específica.
 const getCivilizations = `
-    SELECT * FROM civilizations WHERE region_id = $1;
+    SELECT * FROM civilizations WHERE region_id = $1
+    ORDER BY civilization_id;
 `;
 
-// Pega todas as civilizações e seus dados.
+// Pega todas as civilizações, regiões e seus dados.
 const getAllCivilizations = `
-    SELECT * FROM civilizations;
+    SELECT * FROM civilizations
+    INNER JOIN regions ON civilizations.region_id = regions.region_id
+    ORDER BY civilization_id DESC;
 `;
 
 // (Anderson: Vou mudar aqui ainda) Pega todos os dados de uma civilização específica.
@@ -76,10 +79,18 @@ const postGallery = `
 `;
 // Jonatas coloca tudo dentro de um objeto
 
+// Atualiza nome de uma região específica.
+const patchRegion = `
+    UPDATE regions
+    SET region_name
+    WHERE region_id = $1
+    RETURNING region_id;
+`;
+
 // Atualiza nome e imagem de uma civilização específica.
 const patchCivilization = `
 UPDATE civilizations
-SET civilization_name = $2, civilization_image = $3
+SET region_id = $2, civilization_name = $3, civilization_image = COALESCE($4, civilization_image)
 WHERE civilization_id = $1
 RETURNING civilization_id;
 `;
@@ -95,7 +106,7 @@ RETURNING start_page_id;
 //Atualiza dados da history page de uma civilização específica.
 const patchHistoryEvents = `
 UPDATE history_events
-SET event_year = $2, event_title = $3, event_image = $4, event_image_label = $5, event_paragraph = $6
+SET event_year = $2, event_title = $3, event_image = COALESCE($4, event_image), event_image_label = $5, event_paragraph = $6
 WHERE event = $1
 RETURNING event;
 `;
@@ -104,7 +115,32 @@ RETURNING event;
 const patchGallery = `
     UPDATE gallery
     SET gallery_image_title = $3
-    WHERE civilization_id = $1 AND gallery_image_id = $2;
+    WHERE civilization_id = $1 AND image_unique_id = $2
+    RETURNING image_unique_id;
+`;
+
+// Deleta uma região.
+const deleteRegion = `
+    DELETE FROM regions
+    WHERE region_id = $1;
+`;
+
+// Deleta um civilização.
+const deleteCivilization = `
+    DELETE FROM civilizations
+    WHERE civilization_id = $1;
+`;
+
+// Deleta um event da history page.
+const deleteHistoryEvent = `
+    DELETE FROM history_events
+    WHERE event = $1;
+`;
+
+// Deleta uma imagem da galeria.
+const deleteGalleryImage = `
+    DELETE FROM gallery
+    WHERE image_unique_id = $1;
 `;
 
 // Objeto com todas as constantes.
@@ -122,10 +158,15 @@ const query = {
     postStartPage: postStartPage,
     postHistoryEvents: postHistoryEvents,
     postGallery: postGallery,
+    patchRegion: patchRegion,
     patchCivilization: patchCivilization,
     patchStartPage: patchStartPage,
     patchHistoryEvents: patchHistoryEvents,
     patchGallery: patchGallery,
+    deleteRegion: deleteRegion,
+    deleteCivilization: deleteCivilization,
+    deleteHistoryEvent: deleteHistoryEvent,
+    deleteGalleryImage: deleteGalleryImage,
 };
 
 export default query;

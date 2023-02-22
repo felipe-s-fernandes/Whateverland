@@ -45,11 +45,11 @@ const patchStart = async (startObject) => {
             startObject.civilization_id,
         ]);
         console.log(getStartResponse);
-        response.start_page_id = getStartResponse[0].start_page_id;
+        response.start_page_id = getStartResponse.start_page_id;
 
         // Caso não exista uma instância de página inicial, uma nova é criada:
         if (getStartResponse.length < 1) {
-            await connectDb(query.postStart, [startObject.civilizationId]);
+            await connectDb(query.postStartPage, [startObject.civilization_id]);
         }
 
         const patchStartResponse = await connectDb(query.patchStartPage, [
