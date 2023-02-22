@@ -1,22 +1,5 @@
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
-// function eventForm() {
-//     const form = document.querySelector("#formEditCivilizationAndStartPage");
-
-//     form.addEventListener("submit", async (e) => {
-//         const nomeUser = document.querySelector("#nome-input");
-//         const regionSelect = document.querySelector("#regions");
-//         // const button = document.querySelector("#cadastrar");
-//         e.preventDefault();
-
-//         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-//         await newCivilization(form.nome.value, form.regions.value);
-//         reqRenderTable();
-//         nomeUser.value = "";
-//         regionSelect.value = "";
-//     });
-// }
-
 let editIdRegion;
 
 export async function renderInputCivilization(idCivilization, idHTML, objectProperty) {
@@ -43,11 +26,12 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
 
 async function editCivilization(idCivilization, nameCivilization, imageCivilization) {
     console.log(editIdRegion);
+    console.log(idCivilization, nameCivilization, imageCivilization);
     await HTTPRequest(`/civilizations/edit`, "PATCH", {
         civilization_id: idCivilization,
         region_id: editIdRegion,
         civilization_name: nameCivilization,
-        civilization_image: imageCivilization
+        civilization_image: "img.png"
     });
 }
 

@@ -1,9 +1,5 @@
 import { createElement } from "../../modules/modules.js";
 
-// const startEditTable = createStartEditTable(civilizationId)
-// const historyEditTable = createHistoryEditTable(civilizationId)
-// const galleryEditTable = createGalleryEditTable(civilizationId)
-
 export function renderEditStaticStartTitle() {
     const page = createElement("div", "page");
 
@@ -68,6 +64,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <button type="submit" class ="style_btn" id="edit">Salvar alterações</button>
                 </form>
             </div>
+            <div class="boxBigCard" id="resultstart"></div>
     `;
 
     return page;
@@ -85,7 +82,7 @@ export function renderEditStaticHistory() {
         </div>
         <div id="tableHistory"></div>
     </div>
-
+    <div class="boxBigCard" id="resulthistory"> </div>
     `;
 
     return page;
@@ -99,14 +96,14 @@ export function renderEditStaticGallery() {
         <div class="boxBigCard">
         <h2>Galeria</h2>
             <div class="boxBigCard">
-                <form class="cadastre">
+                <form class="cadastre" id="formGallery">
                     <h3>Adicionar nova imagem</h3>
 
                     <label for="civi_gallery">Legenda da imagem:</label>
-                    <input type="text" id="civi_gallery" />
+                    <input type="text" id="civi_gallery name="civi_gallery" />
 
                     <label for="img_gallery">Imagem:</label>
-                    <input type="text" id="img_gallery" />
+                    <input type="text" id="img_gallery" name="img_gallery" />
 
                     <button type="submit" id="include_gallery">Adicionar Imagem</button>
                     <button type="button" id="cancel_gallery">Cancelar</button>
@@ -115,6 +112,7 @@ export function renderEditStaticGallery() {
 
             <table id="tableGallery"></table>
         </div>
+        <div class="boxBigCard" id="resultgallery"> </div>
     `;
 
     return page;

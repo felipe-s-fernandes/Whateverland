@@ -1,30 +1,50 @@
-// @Autor { Anderson Lima }
-// @Coautor { Ed Wilson }
+// @Autor { Ed Wilson }
+// @Coautor { Anderson Lima }
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
-// ***Requisições***
-
-// Requisição GET para renderizar a tabela a tabela
-export async function reqRenderTableHistory(civilizationId) {
-
-    const historyObject = await HTTPRequest(`/history/${civilizationId}`, "GET");
-    console.log(historyObject);
-
-    renderTable(historyObject.history_events);
-}
-
+// Variável global para guardar momentaneamente o id do evento
 let eventId;
 
-// renderInputHistory(idCivilization, "name_pg_history", "event_title", i);
-// renderInputHistory(idCivilization, "year_pg_history", "event_year", i);
-// renderInputHistory(idCivilization, "img_pg_history", "event_image", i);
-// renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
-// renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
+// ***Requisições***
+
+// Requisição GET para renderizar a tabela com todos os eventos
+export async function reqRenderTableHistory(civilizationId) {
+    const historyObject = await HTTPRequest(`/history/${civilizationId}`, "GET");
+    console.log(historyObject);
+    if(historyObject !== null){
+    await renderTable(historyObject.history_events);
+    }
+}
+
+// Função de requisição de preenchimento dos inputs
+export async function renderInputHistory(idCivilization, idHTML, objectProperty, i) {
+    const input = document.querySelector(`#${idHTML}`);
+
+    const object = await HTTPRequest(`/history/${idCivilization}`, "GET");
+    const objectValue = object.history_events[i][objectProperty];
+
+    eventId = object.history_events[i].event;
+
+    input.value = objectValue;
+}
+
+// Requisição DELETE para excluir evento de história
+export async function reqDeleteEvent(event, civilizationId) {
+
+    console.log(civilizationId);
+    console.log(event);
+
+    await HTTPRequest(`/history/${event}`, "DELETE");
+
+    const table = document.querySelector("#tableHistory");
+    table.innerHTML = "";
+    await reqRenderTableHistory(civilizationId);
+}
 
 
-// Requisição para cadastrar novo evento
+// Requisição para cadastrar novo evento de história
 async function newHistory(civilizationId, nameh, yearh, imgh, legh, desch) {
     await HTTPRequest(`/history/`, "POST", {
         civilization_id: civilizationId,
@@ -47,34 +67,6 @@ async function editHistory(nameh, yearh, imgh, legh, desch) {
         event_paragraph: desch
     });
 }
-
-
-/* function eventForm() {
-    const form = document.querySelector("#form");
-
-    form.addEventListener("submit", async (e) => {
-        const nomeUser = document.querySelector("#nome-input");
-        const regionSelect = document.querySelector("#regions");
-        // const button = document.querySelector("#cadastrar");
-        e.preventDefault();
-
-        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        await newCivilization(form.nome.value, form.regions.value);
-
-        // if (button.value == "Cadastrar") {
-        // }
-
-        // if (button.value == "Editar") {
-        //     // Requisitando para o servidor editar um usuário no banco de dados
-        //     userEdit(userId);
-        //     // Sumir os dados do usuário nos inputs quando terminar edição
-        //     button.value = "Cadastrar";
-        // }
-        reqRenderTable();
-        nomeUser.value = "";
-        regionSelect.value = "";
-    });
-} */
 
 export function addEventsHistory(civilizationId) {
     const buttonAddEvent = document.querySelector("#addHistory");
@@ -140,7 +132,8 @@ export async function eventFormHistory(civilizationId) {
             form.legendh.value, 
             form.desch.value
         );
-        reqRenderTableHistory(civilizationId);
+        await reqRenderTableHistory(civilizationId);
+        
     });
 }
 
@@ -163,32 +156,14 @@ export function eventEditFormHistory(civilizationId) {
             form.legendedith.value, 
             form.descedith.value
         );
-
-            // historyObject.event,
-            // historyObject.event_year,
-            // historyObject.event_title,
-            // historyObject.event_image,
-            // historyObject.event_image_label,
-            // historyObject.event_paragraph,
-
-        // await newHistory(
-        //     civilizationId,
-        //     form.nameh.value, 
-        //     form.yearh.value, 
-        //     form.imgh.value, 
-        //     form.legendh.value, 
-        //     form.desch.value
-        // );
-        reqRenderTableHistory(civilizationId);
+        await reqRenderTableHistory(civilizationId);
     });
 }
 
 
 // Renderização da tabela que recebe o array de dados
 function renderTable(array) {
-    console.log("chegou");
     const table = document.querySelector("#tableHistory");
-    console.log(table);
     table.innerHTML = "";
     const tableBody = createElement("tbody", "table");
     tableBody.innerHTML = `
@@ -221,18 +196,15 @@ function renderTable(array) {
         line.appendChild(column4);
         line.appendChild(column5);
 
-        column1.innerHTML = `${i + 1}`;
+        column1.innerHTML = `${array[i].event}`;
         column2.innerHTML = `${array[i].event_year}`;
         column3.innerHTML = `${array[i].event_title}`;
-        // column4.innerHTML = `<img src="./src/lapis.png" alt="Ícone de editar">`;
         column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        // console.log(array[i]);
-        column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id, i));
-        // column4.addEventListener("click", () => userInput(array[i]));
-        // column5.addEventListener("click", () => userDelete(array[i].civilization_id));
+        column4.addEventListener("click", async () => redirectEditPage(array[i].civilization_id, i));
+        column5.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
 
         table.appendChild(line);
         console.log(array.length + "-" + i);
@@ -285,17 +257,4 @@ function redirectEditPage(idCivilization, i) {
     renderInputHistory(idCivilization, "img_pg_history", "event_image", i);
     renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
     renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
-}
-
-export async function renderInputHistory(idCivilization, idHTML, objectProperty, i) {
-    const input = document.querySelector(`#${idHTML}`);
-
-    const object = await HTTPRequest(`/history/${idCivilization}`, "GET");
-    console.log(i);
-    console.log(object.history_events);
-    const objectValue = object.history_events[i][objectProperty];
-    eventId = object.history_events[i].event;
-    console.log(objectValue);
-
-    input.value = objectValue;
 }
