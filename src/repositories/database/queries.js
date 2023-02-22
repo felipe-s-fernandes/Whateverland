@@ -20,7 +20,7 @@ const getCivilizations = `
 // Pega todas as civilizações e seus dados.
 const getAllCivilizations = `
     SELECT * FROM civilizations
-    ORDER BY civilization_name;
+    ORDER BY civilization_id DESC;
 `;
 
 // (Anderson: Vou mudar aqui ainda) Pega todos os dados de uma civilização específica.
