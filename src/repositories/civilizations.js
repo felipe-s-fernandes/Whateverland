@@ -94,6 +94,7 @@ const patchCivilization = async (civilizationObject) => {
 
         const civilizationResponse = await connectDb(query.patchCivilization, [
             civilizationObject.civilization_id,
+            civilizationObject.region_id,
             civilizationObject.civilization_name,
             civilizationObject.civilization_image,
         ]);
