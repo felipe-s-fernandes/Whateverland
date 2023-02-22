@@ -1,4 +1,3 @@
-import database from "./database.js";
 import query from "./database/queries.js";
 import { connectDb } from "./database/connection.js";
 const TAG = "Regions Repository: ";

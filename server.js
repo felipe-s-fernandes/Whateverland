@@ -11,8 +11,8 @@ const HOSTNAME = process.env.SERVER_HOSTNAME;
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 app.use(express.static("./public"));
 
 // Utiliza o 'router.js' como middleware

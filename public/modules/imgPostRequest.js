@@ -1,4 +1,4 @@
-export default async function imgPatchRequest(url, method, formData) {
+export default async function imgPostRequest(url, method, formData) {
     const HOST_PORT = window.location.host;
 
     const object = {

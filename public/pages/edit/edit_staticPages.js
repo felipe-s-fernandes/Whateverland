@@ -3,8 +3,7 @@ import { createElement } from "../../modules/modules.js";
 export function renderEditStaticStartTitle() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
         <div class="boxBigCard">
             <h2 id="name_civilization">Dados da civilização</h2>
             <label for="name_pg_start">Nome da civilização:</label>
@@ -19,8 +18,7 @@ export function renderEditStaticStartTitle() {
 export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
             <div class="boxBigCard">
                 <form class="cadastre" id="formEditCivilizationAndStartPage">
                     <div>
@@ -73,8 +71,7 @@ export function renderEditStaticCivilizationAndStart() {
 export function renderEditStaticHistory() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
     <div class="boxBigCard">
         <h2>História</h2>
         <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
@@ -91,8 +88,7 @@ export function renderEditStaticHistory() {
 export function renderEditStaticGallery() {
     const page = createElement("div", "page");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
         <div class="boxBigCard">
         <h2>Galeria</h2>
             <div class="boxBigCard">
@@ -100,7 +96,7 @@ export function renderEditStaticGallery() {
                     <h3>Adicionar nova imagem</h3>
 
                     <label for="civi_gallery">Legenda da imagem:</label>
-                    <input type="text" id="civi_gallery name="civi_gallery" />
+                    <input type="text" id="civi_gallery" name="civi_gallery" />
 
                     <label for="img_gallery">Imagem:</label>
                     <input type="file" id="img_gallery" name="img_gallery" />
