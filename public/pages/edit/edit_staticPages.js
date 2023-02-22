@@ -50,8 +50,8 @@ export function renderEditStaticCivilizationAndStart() {
 
                 <button type="submit" class ="style_btn" id="edit">Salvar alterações</button>
             </form>
+            <div id="resultstart"></div>
         </div>
-        <div class="boxBigCard" id="resultstart"></div>
     `;
 
     return page;
@@ -64,21 +64,21 @@ export function renderEditStaticHistory() {
     <div class="boxBigCard">
         <h2>História</h2>
         <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
-        <div class="boxBigCard" id="divHistory"></div>
+        <div id="divHistory"></div>
         <table>
             <thead>
                 <tr id="table-heading">
                     <td class="id-number">Id</td>
                     <td class="e-mail">Ano do evento</td>
-                    <td class="nome">Descrição do evento</td>
+                    <td class="nome">Título do evento</td>
                     <td class="nome">Editar</td>
                     <td class="nome">Deletar</td>
                 </tr>
             </thead>
             <tbody id="tableHistory"></tbody>
         </table>
+        <div id="resulthistory"></div>
     </div>
-    <div class="boxBigCard" id="resulthistory"></div>
     `;
 
     return page;
@@ -90,7 +90,7 @@ export function renderEditStaticGallery() {
     page.innerHTML = `
         <div class="boxBigCard">
         <h2>Galeria</h2>
-            <div class="boxBigCard">
+            <div>
                 <form class="cadastre" id="formGallery">
                     <h3>Adicionar nova imagem</h3>
 
@@ -113,9 +113,54 @@ export function renderEditStaticGallery() {
                 </thead>
                 <tbody id="tableGallery"></tbody>
             </table>
+            <div id="resultgallery"></div>
         </div>
-        <div class="boxBigCard" id="resultgallery"></div>
     `;
 
     return page;
 }
+
+export const inputsAddHistory = `
+<form id="formhistory" class="cadastre">
+    <label for="name_pg_history">Título do evento:</label>
+    <input type="text" name="nameh" id="name_pg_history" />
+
+    <label for="year_pg_history">Ano do evento:</label>
+    <input type="text" name="yearh" id="year_pg_history" />
+
+    <label for="img_pg_history">Imagem do evento:</label>
+    <input type="text" name="imgh" id="img_pg_history" />
+
+    <label for="legend_pg_history">Legenda da imagem:</label>
+    <input type="text" name="legendh" id="legend_pg_history" />
+
+    <label for="desc_pg_history">Descrição do evento:</label>
+    <textarea type="text" name="desch" id="desc_pg_history"></textarea>
+
+    <button type="submit" class ="style_btn" id="include_hist">Incluir evento</button>
+    <button type="button" class ="style_btn" id="cancel_add_hist">Cancelar</button>
+</form>
+`;
+
+
+export const inputsEditHistory = `
+<form class="cadastre" id="formEditHistory">
+    <label for="name_pg_history">Título do evento:</label>
+    <input type="text" name="nameedith" id="name_pg_history" />
+
+    <label for="year_pg_history">Ano do evento:</label>
+    <input type="text" name="yearedith" id="year_pg_history" />
+
+    <label for="img_pg_history">Imagem do evento:</label>
+    <input type="text" name="imgedith" id="img_pg_history" />
+
+    <label for="legend_pg_history">Legenda da imagem:</label>
+    <input type="text" name="legendedith" id="legend_pg_history" />
+
+    <label for="desc_pg_history">Descrição do evento:</label>
+    <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
+
+    <button type="submit" class ="style_btn" id="edit_hist">Editar evento</button>
+    <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
+</form>
+`;
