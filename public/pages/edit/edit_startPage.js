@@ -1,23 +1,6 @@
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
-// function eventForm() {
-//     const form = document.querySelector("#formEditCivilizationAndStartPage");
-
-//     form.addEventListener("submit", async (e) => {
-//         const nomeUser = document.querySelector("#nome-input");
-//         const regionSelect = document.querySelector("#regions");
-//         // const button = document.querySelector("#cadastrar");
-//         e.preventDefault();
-
-//         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-//         await newCivilization(form.nome.value, form.regions.value);
-//         reqRenderTable();
-//         nomeUser.value = "";
-//         regionSelect.value = "";
-//     });
-// }
-
-let editIdCivilization;
+let editIdRegion;
 
 export async function renderInputCivilization(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
@@ -26,7 +9,8 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
 
     const objectValue = object.civilization[0][objectProperty];
 
-    editIdCivilization = idCivilization;
+    editIdRegion = object.civilization[0].region_id;
+
     input.value = objectValue;
 }
 
@@ -40,11 +24,22 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     input.value = objectValue;
 }
 
-async function editCivilization(cname, coriname, ctitle, ccap, creligion, cgov, cdesc ) {
-    await HTTPRequest(`/civilizations/`, "PATCH", {
-        civilization_id: editIdCivilization,
-        civilization_name: cname,
+async function editCivilization(idCivilization, nameCivilization, imageCivilization) {
+    console.log(editIdRegion);
+    console.log(idCivilization, nameCivilization, imageCivilization);
+    await HTTPRequest(`/civilizations/edit`, "PATCH", {
+        civilization_id: idCivilization,
+        region_id: editIdRegion,
+        civilization_name: nameCivilization,
+        civilization_image: "img.png"
+    });
+}
+
+async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc ) {
+    await HTTPRequest(`/start/edit`, "PATCH", {
+        civilization_id: idCivilization,
         official_name: coriname,
+        localization: clocalization,
         capital: ccap,
         religion: creligion,
         government: cgov,
@@ -53,7 +48,7 @@ async function editCivilization(cname, coriname, ctitle, ccap, creligion, cgov, 
     });
 }
 
-function eventFormCivilizationAndStartPage() {
+export function eventFormCivilizationAndStartPage(idCivilization) {
     const form = document.querySelector("#formEditCivilizationAndStartPage");
 
     form.addEventListener("submit", async (e) => {
@@ -65,22 +60,17 @@ function eventFormCivilizationAndStartPage() {
         const civil_gov = document.querySelector("#gov_pg_start");
         const civil_desc = document.querySelector("#desc_pg_start");
 
-
-        //<input type="text" name="nome" id="name_pg_start" />
-        //<img id="img_pg_adm" src="img.png" alt="Civilization logo"/>
-        //<input type="text" name="logo" id="img_pg_start" />
-        //<input type="text" name="titulo" id="titlename_pg_start" />
-        //<input type="text" name="originName" id="origin_pg_start" />
-        //<input type="text" name="capital" id="cap_pg_start" />
-        //<input type="text" name="religion" id="religion_pg_start" />
-        //<input type="text" name="governo" id="gov_pg_start" />
-        //<textarea type="text" name="desc" id="desc_pg_start"></textarea>
-        //<button type="button" class ="style_btn" id="edit">Salvar alterações</button>
-
         e.preventDefault();
 
         await editCivilization(
-            form.nome.value,
+            idCivilization,
+            form.nameCivilization.value,
+            idCivilization  
+        );
+
+        await editStartPage(
+            idCivilization,
+            form.nameregion.value,
             form.originName.value,
             form.titulo.value,
             form.capital.value,
@@ -89,27 +79,12 @@ function eventFormCivilizationAndStartPage() {
             form.desc.value
         );
 
-        civil_name.value = "";
-        civil_origin_name.value = "";
-        civil_title.value = "";
-        civil_capital.value = "";
-        civil_religion.value = "";
-        civil_gov.value = "";
-        civil_desc.value = "";
+        // civil_name.value = "";
+        // civil_origin_name.value = "";
+        // civil_title.value = "";
+        // civil_capital.value = "";
+        // civil_religion.value = "";
+        // civil_gov.value = "";
+        // civil_desc.value = "";
     });
 }
-
-// async function editCivilizationAndStartPage(
-//     name,
-//     originName,
-//     titulo,
-//     capital,
-//     religion,
-//     governo,
-//     desc
-//     ) {
-//     await HTTPRequest(`/civilizations/`, "PATCH", {
-//         civilization_name: nameCivilization,
-//         region_id: regionSelect,
-//     });
-// }

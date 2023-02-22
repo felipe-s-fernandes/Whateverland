@@ -3,29 +3,35 @@
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
+
 // ***Requisições***
 
 // Requisição GET para renderizar a tabela a tabela
 export async function reqRenderTableGallery(civilizationId) {
     // Eu preciso de todas as regiões aqui Felipe
     const galleryObject = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
+    console.log(galleryObject);
 
     renderTable(galleryObject.gallery);
 }
 
+export async function newImageGallery(civilizationId, imageTitle, imageId) {
+    // Eu preciso de todas as regiões aqui Felipe
+    const newGalleryObject = await HTTPRequest(`/gallery/`, "POST", {
+        civilization_id: civilizationId,
+        gallery_image_title: imageTitle,
+        gallery_image_id: imageId
+    });
+    console.log(newGalleryObject);
 
-// Requisição para cadastrar novo usuário
-// async function newCivilization(nameCivilization, regionSelect) {
-//     await HTTPRequest(`/civilizations/`, "POST", {
-//         civilization_name: nameCivilization,
-//         region_id: regionSelect,
-//     });
-// }
+    // renderTable(galleryObject.gallery);
+}
+
 
 
 // Formulário de preenchimento
-function eventForm() {
-    const form = document.querySelector("#form");
+export function eventFormGallery(civilizationId) {
+    const form = document.querySelector("#formGallery");
 
     form.addEventListener("submit", async (e) => {
         const nomeUser = document.querySelector("#nome-input");
@@ -34,9 +40,10 @@ function eventForm() {
         e.preventDefault();
 
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        await newCivilization(form.nome.value, form.regions.value);
+        // await newCivilization(form.civi_gallery.value, form.img_gallery.value);
+        await newImageGallery(civilizationId, form.civi_gallery.value, form.img_gallery.value);
 
-        reqRenderTable();
+        reqRenderTableGallery(civilizationId);
         nomeUser.value = "";
         regionSelect.value = "";
     });
