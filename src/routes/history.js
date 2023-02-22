@@ -1,15 +1,19 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
-
+import upload from "./multer.js";
 import express from "express";
 const historyRouter = express.Router();
 import historyController from "../controllers/history.js";
 
 historyRouter.get("/:civilizationid", historyController.getHistory);
 
-historyRouter.post("/", historyController.postHistory);
+historyRouter.post("/", upload.single("file"), historyController.postHistory);
 
-historyRouter.patch("/edit", historyController.patchHistory);
+historyRouter.patch(
+    "/edit",
+    upload.single("file"),
+    historyController.patchHistory
+);
 
 historyRouter.delete("/:eventid", historyController.deleteHistory);
 
