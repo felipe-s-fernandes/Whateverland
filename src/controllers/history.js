@@ -62,6 +62,13 @@ const postHistory = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
+
+    if (!req.file || req.file.size === 0) {
+        historyObject.event_image = "default_event_image.png";
+    } else {
+        historyObject.event_image = req.file.filename;
+    }
+
     const civilizationId = historyObject.civilization_id;
 
     // Padronizar a resposta
@@ -113,6 +120,12 @@ const patchHistory = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
+
+    if (!req.file || req.file.size === 0) {
+        historyObject.event_image = null;
+    } else {
+        historyObject.event_image = req.file.filename;
+    }
 
     // Padronizar a resposta
     const response = {

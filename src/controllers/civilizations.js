@@ -206,6 +206,13 @@ const patchCivilization = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const civilizationObject = req.body;
+
+    if (!req.file || req.file.size === 0) {
+        civilizationObject.civilization_image = null;
+    } else {
+        civilizationObject.civilization_image = req.file.filename;
+    }
+
     const civilizationId = civilizationObject.civilization_id;
 
     // Padronizar a resposta

@@ -89,7 +89,7 @@ const patchRegion = `
 // Atualiza nome e imagem de uma civilização específica.
 const patchCivilization = `
 UPDATE civilizations
-SET region_id = $2, civilization_name = $3, civilization_image = $4
+SET region_id = $2, civilization_name = $3, civilization_image = COALESCE($4, civilization_image)
 WHERE civilization_id = $1
 RETURNING civilization_id;
 `;
@@ -105,7 +105,7 @@ RETURNING start_page_id;
 //Atualiza dados da history page de uma civilização específica.
 const patchHistoryEvents = `
 UPDATE history_events
-SET event_year = $2, event_title = $3, event_image = $4, event_image_label = $5, event_paragraph = $6
+SET event_year = $2, event_title = $3, event_image = COALESCE($4, event_image), event_image_label = $5, event_paragraph = $6
 WHERE event = $1
 RETURNING event;
 `;
