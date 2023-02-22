@@ -1,3 +1,5 @@
+// @Autor { Anderson Lima }
+
 import { createBackButton, createElement } from "../../modules/modules.js";
 import { renderEditStaticCivilizationAndStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
 import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage } from "./edit_startPage.js";

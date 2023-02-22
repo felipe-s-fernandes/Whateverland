@@ -1,3 +1,5 @@
+// @Autor { Felipe Fernandes }
+
 export default async function imgRequest(url, method, formData) {
     const HOST_PORT = window.location.host;
 

@@ -9,21 +9,19 @@ import imgRequest from "../../modules/imgRequest.js";
 
 // Requisição GET para renderizar a tabela a tabela
 export async function reqRenderTableGallery(civilizationId) {
-    // Eu preciso de todas as regiões aqui Felipe
     const galleryObject = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
-    console.log(galleryObject);
 
-    renderTable(galleryObject.gallery);
+    await renderTable(galleryObject.gallery);
 }
 
-export async function newImageGallery(formData) {
-    // Eu preciso de todas as regiões aqui Felipe
-    const newGalleryObject = await imgRequest(`/gallery/`, "POST", formData);
-    console.log(newGalleryObject);
+export async function reqDeleteImage(civilizationId) {
 
-    // renderTable(galleryObject.gallery);
+    await HTTPRequest(`/gallery/${civilizationId}`, "DELETE");
+
+    const table = document.querySelector("#tableGallery");
+    table.innerHTML = "";
+    await reqRenderTableGallery(civilizationId);
 }
-
 
 
 // Formulário de preenchimento
@@ -31,7 +29,7 @@ export function eventFormGallery(civilizationId) {
     const form = document.querySelector("#formGallery");
 
     form.addEventListener("submit", async (e) => {
-        const nomeUser = document.querySelector("#nome-input");
+        const imageLegend = document.querySelector("#civi_gallery");
         const regionSelect = document.querySelector("#regions");
         // const button = document.querySelector("#cadastrar");
         e.preventDefault();
@@ -54,7 +52,7 @@ export function eventFormGallery(civilizationId) {
         formData.append("gallery_image_title", form.civi_gallery.value);
         
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        await newImageGallery(formData);
+        await imgRequest(`/gallery/`, "POST", formData);
         
         // galleryObject.civilization_id,
         // galleryObject.gallery_image_title,
@@ -64,28 +62,26 @@ export function eventFormGallery(civilizationId) {
 
 
         reqRenderTableGallery(civilizationId);
-        nomeUser.value = "";
-        regionSelect.value = "";
+        imageLegend.value = "";
     });
 }
 
 
 // Renderização da tabela que recebe o array de dados
-function renderTable(array) {
-    const table = document.querySelector("#tableGallery");
-    table.innerHTML = "";
-    const tableBody = createElement("tbody", "table");
-    tableBody.innerHTML = `
-        <thead>
-            <tr id="table-heading">
-                <td class="id-number">Legenda</td>
-                <td class="e-mail">Upload de Imagem</td>
-                <td class="nome">Deletar</td>
-            </tr>
-        </thead>
-    `;
+async function renderTable(array) {
+    const tableBody = document.querySelector("#tableGallery");
+    tableBody.innerHTML = "";
+    // const tableBody = createElement("tbody", "table");
+    // tableBody.innerHTML = `
+    //     <thead>
+    //         <tr id="table-heading">
+    //             <td class="id-number">Legenda</td>
+    //             <td class="e-mail">Deletar</td>
+    //         </tr>
+    //     </thead>
+    // `;
 
-    table.appendChild(tableBody);
+    // table.appendChild(tableBody);
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
@@ -106,10 +102,10 @@ function renderTable(array) {
         // Eventos de editar e deletar dados da tabela
         // console.log(array[i]);
         // column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id));
-        // // column2.addEventListener("click", () => userInput(array[i]));
-        // column3.addEventListener("click", () => userDelete(array[i].civilization_id));
+        // column2.addEventListener("click", () => userInput(array[i]));
+        column3.addEventListener("click", async () => reqDeleteImage(array[i].image_unique_id));
 
-        table.appendChild(line);
+        tableBody.appendChild(line);
     }
     return tableBody;
 }

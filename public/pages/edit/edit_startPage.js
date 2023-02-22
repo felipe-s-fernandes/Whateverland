@@ -3,7 +3,6 @@
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import imgRequest from "../../modules/imgRequest.js";
 
-let editIdRegion;
 
 export async function renderInputCivilization(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
@@ -11,8 +10,6 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
     const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
 
     const objectValue = object.civilization[0][objectProperty];
-
-    editIdRegion = object.civilization[0].region_id;
 
     input.value = objectValue;
 }
@@ -26,17 +23,6 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
 
     input.value = objectValue;
 }
-
-// async function editCivilization(idCivilization, nameCivilization, imageCivilization) {
-//     console.log(editIdRegion);
-//     console.log(idCivilization, nameCivilization, imageCivilization);
-//     await HTTPRequest(`/civilizations/edit`, "PATCH", {
-//         civilization_id: idCivilization,
-//         region_id: editIdRegion,
-//         civilization_name: nameCivilization,
-//         civilization_image: imageCivilization
-//     });
-// }
 
 async function editImageCivilization(formData) {
     await imgRequest(`/civilizations/edit`, "PATCH", formData);
@@ -75,7 +61,10 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
         formData.append("file", file.files[0]);
 
         formData.append("civilization_id", idCivilization);
-        formData.append("region_id", editIdRegion);
+
+        const regionId = document.querySelector("#id_region_start").value
+        formData.append("region_id", regionId);
+
         formData.append("civilization_name", form.nameCivilization.value);
         
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados

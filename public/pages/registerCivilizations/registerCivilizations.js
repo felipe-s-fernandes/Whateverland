@@ -187,7 +187,7 @@ function renderTable(array) {
 
         column1.innerHTML = `${array[i].civilization_id}`;
         column2.innerHTML = `${array[i].civilization_name}`;
-        column3.innerHTML = `${array[i].region_id}`;
+        column3.innerHTML = `${array[i].region_name}`;
         column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 

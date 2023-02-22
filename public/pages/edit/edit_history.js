@@ -1,5 +1,5 @@
-// @Autor { Ed Wilson }
-// @Coautor { Anderson Lima }
+// @Autor { Anderson Lima }
+// @Coautor { Ed Wilson }
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
@@ -163,22 +163,8 @@ export function eventEditFormHistory(civilizationId) {
 
 // Renderização da tabela que recebe o array de dados
 function renderTable(array) {
-    const table = document.querySelector("#tableHistory");
-    table.innerHTML = "";
-    const tableBody = createElement("tbody", "table");
-    tableBody.innerHTML = `
-        <thead>
-            <tr id="table-heading">
-                <td class="id-number">Id</td>
-                <td class="e-mail">Ano do evento</td>
-                <td class="nome">Descrição do evento</td>
-                <td class="nome">Editar</td>
-                <td class="nome">Deletar</td>
-            </tr>
-        </thead>
-    `;
-
-    table.appendChild(tableBody);
+    const tableBody = document.querySelector("#tableHistory");
+    tableBody.innerHTML = "";
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
@@ -206,8 +192,7 @@ function renderTable(array) {
         column4.addEventListener("click", async () => redirectEditPage(array[i].civilization_id, i));
         column5.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
 
-        table.appendChild(line);
-        console.log(array.length + "-" + i);
+        tableBody.appendChild(line);
     }
 
     return tableBody;
