@@ -2,7 +2,7 @@ import { createBackButton, createElement } from "../../modules/modules.js";
 import { renderEditStaticCivilizationAndStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
 import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage } from "./edit_startPage.js";
 import { reqRenderTableGallery } from "./edit_gallery.js";
-import { reqRenderTableHistory, addEventsHistory, eventFormHistory } from "./edit_history.js";
+import { reqRenderTableHistory, addEventsHistory } from "./edit_history.js";
 
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "editContainer");
@@ -43,7 +43,8 @@ export default async function RenderEditPage(civilizationId) {
             // Requisições para prenchimento dos Inputs da página história
             addEventsHistory(civilizationId);
             reqRenderTableHistory(civilizationId);
-            eventFormHistory(civilizationId);
+            addEventsHistory(civilizationId);
+            // eventEditFormHistory(civilizationId);
 
             // Requisições para prenchimento da tabela de galeria
             reqRenderTableGallery(civilizationId);
