@@ -42,7 +42,7 @@ export default async function RenderCivilizationsPage(regionId) {
     const symbolMap = createElement("img", "symbolMap");
     const symbolimg = createElement("img", "symbolimg");
     const regionBody = createElement("div", "regionBody");
-    const regionResum = createElement("div", "regionResum");
+    const regionResum = createElement("div", "c");
     const regionTitle = createElement("h1", "regionTitle");
     const regionText = createElement("p", "regionText");
     const regionResumTitle = createElement("h2", "regionResumTitle");

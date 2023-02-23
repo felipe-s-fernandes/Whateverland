@@ -1,13 +1,18 @@
 table {
     width: 100%;
-
     margin-top: 50px;
     text-align: center;
 }
 
+#container {
+    background-color: var(--main-bg-color);
+    height: 100vh;
+    width: 100vw;
+}
+
 #table-heading {
-    background-color: #14BC39;
-    color: #FFFFFF;
+    background-color: var(--main-bg-color);
+    color: #ffffff;
 }
 
 tr {
@@ -19,11 +24,19 @@ td {
     text-align: center;
     vertical-align: middle;
     border: 1px solid white;
+    background: rgba(81, 73, 87, 0.138);
+
 }
 
-.editar img, .excluir img {
+.editarImg,
+.excluirImg {
     width: 30px;
     height: 30px;
+ 
+}
+.editarImg:hover,
+.excluirImg:hover {
+
     cursor: pointer;
 }
 
@@ -33,5 +46,79 @@ td {
 }
 
 tr:nth-child(even) {
-    background: #BDE3C6;
+    background: rgba(81, 73, 87, 1);
+}
+
+.TitleForm {
+    color: #000000;
+    margin: 10px;
+}
+
+.cadastrar {
+    height: 30px;
+    width: 90px;
+    color: rgb(255, 255, 255);
+    border-color: var(--primary-color);
+    background-color: var(--main-bg-color);
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.registerContainer {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 90%;
+    min-height: 500px;
+    width: 95%;
+    max-width: 1200px;
+    background: var(--primary-color);
+    border: var(--border-card);
+    box-shadow: var(--shadow-color-position);
+    border-radius: var(--border-radius-big-box);
+    border: 2px solid #B2B2B2;
+}
+
+.cadastrar:hover {
+    color: rgb(0, 0, 0);
+    background-color: var(--primary-color);
+    border-color: var(--main-bg-color);
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}
+
+#regions {
+    text-align: center;
+    background-color: #ffffff;
+    width: 128px;
+    height: 30px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    border: 1px black solid;
+}
+
+.input-field {
+    text-align: center;
+    background-color: #ffffff;
+    width: 122px;
+    height: 30px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px black solid;
+
+}
+
+.input-box {
+    margin: 30px;
+}
+
+#section-lista {
+    width: 800px;
+    display: table-cell;
 }

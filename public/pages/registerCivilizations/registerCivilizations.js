@@ -8,6 +8,8 @@ import redirectTo from "../../modules/redirect.js";
 export default async function RenderRegisterCivilizations(data) {
     const container = document.createElement("div");
     container.classList.add("container");
+    container.id = "container";
+
 
     // Renderização da página vazia
     container.appendChild(renderStaticPage());
@@ -80,22 +82,22 @@ function renderStaticPage() {
     const page = createElement("div", "page");
 
     page.innerHTML = `
-        <div class="boxBigCard">
+        <div class="registerContainer">
             <div class="container">
-                <h2>FORMULÁRIO DE CADASTRO DE CIVILIZAÇÕES</h2>
+                <h2 class="TitleForm">FORMULÁRIO DE CADASTRO DE CIVILIZAÇÕES</h2>
                 <p>Para inserir civilizações na lista, preencha os dados abaixo:</p>
             </div>
             <form id="form" class="input-box">
-                <input type="text" name="nome" id="name-input" class="input-field" placeholder="Nome" autocomplete="off">
+                <input type="text" name="nome" id="name-input" class="input-field" placeholder="Nome:" autocomplete="off">
                 <select name="regions" id="regions">
                     <option value=""></option>
                 </select>
-                <input type="submit" value="Cadastrar" id="cadastrar">
+                </br><input type="submit" value="Cadastrar" id="cadastrar" class="cadastrar"></br>
             </form>
             <section id="section-lista">
                 <div class="container">
-                    <h2>LISTA DE CIVILIZAÇÕES CADASTRADAS POR REGIÃO</h2>
-                    <p>Abaixo, você pode ver as civilizações registradas, podendo editá-las ou removê-las.</p>
+                    <h2 class="TitleForm">LISTA DE CIVILIZAÇÕES CADASTRADAS POR REGIÃO</h2>
+                    <p>Abaixo, você pode ver, editar ou remover as civilizações registradas.</p>
                 </div>
                 <table></table>
             </section>
@@ -153,7 +155,7 @@ function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
     const tableBody = createElement("tbody", "table");
-    
+
     // Título da tabela
     tableBody.innerHTML = `
         <thead>
@@ -188,8 +190,8 @@ function renderTable(array) {
         column1.innerHTML = `${array[i].civilization_id}`;
         column2.innerHTML = `${array[i].civilization_name}`;
         column3.innerHTML = `${array[i].region_name}`;
-        column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
-        column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
+        column4.innerHTML = `<img class="editarImg" src="../../uploads/lapis.png" alt="Ícone de editar">`;
+        column5.innerHTML = `<img class="excluirImg" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id));

@@ -29,7 +29,8 @@ export default function createStartPage(startPages, civilizations) {
     const object2 = civilizations;
 
     // Elements creation
-    const cardDiv = createElement("div", "cardDiv");
+    const cardDiv = createElement("div", "containerInformation");
+    cardDiv.id = "containerInformation";
     const asideContent = createElement("aside", "asideContent");
     const sectionAside = createElement("section", "sectionAside");
     const imgDiv = createElement("div", "imgDiv");
