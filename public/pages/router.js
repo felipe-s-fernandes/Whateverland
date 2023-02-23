@@ -7,6 +7,7 @@ import RenderHistoryPage from "./history/history.js";
 import RenderGalleryPage from "./gallery/gallery.js";
 import RenderRegisterCivilizations from "./registerCivilizations/registerCivilizations.js";
 import RenderEditPage from "./edit/edit.js";
+import RenderLoginPage from "./login/login.js";
 
 export default function getPagesRouter() {
     const pagesRouter = {
@@ -17,6 +18,7 @@ export default function getPagesRouter() {
         "/history": RenderHistoryPage,
         "/gallery": RenderGalleryPage,
         "/register": RenderRegisterCivilizations,
+        "/login": RenderLoginPage,
         "/edit": RenderEditPage,
         getPage: function (url, data) {
             return this[url](data);

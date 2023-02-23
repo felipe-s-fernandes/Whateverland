@@ -21,13 +21,28 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
-    const registerButton = createElement("button", "registerButton");
-    registerButton.innerText = "Registre uma civilização";
-    registerButton.onclick = () => {
-        redirectTo("/register");
-    };
+    const loginButton = createElement("button", "loginButton");
+    if (document.cookie.includes("session")) {
+        const registerButton = createElement("button", "registerButton");
+        registerButton.innerText = "Registre uma civilização";
+        registerButton.onclick = () => {
+            redirectTo("/register");
+        };
+        container.appendChild(registerButton);
 
-    container.appendChild(registerButton);
+        loginButton.innerText = "Logout";
+        loginButton.onclick = async () => {
+            await HTTPRequest("/login", "DELETE");
+            redirectTo("/map");
+        };
+    } else {
+        loginButton.innerText = "Login";
+        loginButton.onclick = () => {
+            redirectTo("/login");
+        };
+    }
+
+    container.appendChild(loginButton);
 
     //root.appendChild(container);
     const response = {
