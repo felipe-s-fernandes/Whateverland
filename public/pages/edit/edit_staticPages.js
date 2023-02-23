@@ -67,6 +67,28 @@ export function renderEditStaticHistory() {
         <h2>História</h2>
         <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
         <div id="divHistory"></div>
+
+
+        <form id="formHistory2" class="cadastre">
+            <label for="name_pg_history">Título do evento:</label>
+            <input type="text" name="nameh" id="name_pg_history" />
+
+            <label for="year_pg_history">Ano do evento:</label>
+            <input type="text" name="yearh" id="year_pg_history" />
+
+            <label for="img_pg_history">Imagem do evento:</label>
+            <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" />
+
+            <label for="legend_pg_history">Legenda da imagem:</label>
+            <input type="text" name="legendh" id="legend_pg_history" />
+
+            <label for="desc_pg_history">Descrição do evento:</label>
+            <textarea type="text" name="desch" id="desc_pg_history"></textarea>
+
+            <button type="submit" class ="style_btn" id="buttonHistory">Adicionar</button>
+        </form>
+
+
         <table>
             <thead>
                 <tr id="table-heading">

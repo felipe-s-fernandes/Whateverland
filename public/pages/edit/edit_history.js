@@ -3,7 +3,7 @@
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
-import { inputsAddHistory, inputsEditHistory } from "./edit_staticPages.js";
+// import { inputsAddHistory, inputsEditHistory } from "./edit_staticPages.js";
 import imgRequest from "../../modules/imgRequest.js";
 
 // Variável global para guardar momentaneamente o id do evento
@@ -13,11 +13,17 @@ let eventId;
 
 // Requisição GET para renderizar a tabela com todos os eventos
 export async function reqRenderTableHistory(civilizationId) {
+
+    console.log(civilizationId);
     const historyObject = await HTTPRequest(`/history/${civilizationId}`, "GET");
-    console.log(historyObject);
-    if(historyObject !== null){
-        renderTable(historyObject.history_events);
+    
+    if (historyObject == null) {
+        return;        
     }
+    
+    console.log(historyObject);
+
+    renderTable(historyObject.history_events);
 }
 
 // Função de requisição de preenchimento dos inputs
@@ -47,164 +53,80 @@ export async function reqDeleteEvent(event, civilizationId) {
     await reqRenderTableHistory(civilizationId);
 }
 
-// Requisição para cadastrar novo evento de história
-// async function newHistory(civilizationId, nameh, yearh, imgh, legh, desch) {
-//     await HTTPRequest(`/history/`, "POST", {
-//         civilization_id: civilizationId,
-//         event_title: nameh,
-//         event_year: yearh,
-//         event_image: "0.png",
-//         event_image_label: legh,
-//         event_paragraph: desch
-//     });
-// }
-
-
-// Requisição para edição da história
-// async function editHistory(nameh, yearh, imgh, legh, desch) {
-//     console.log(nameh, yearh, imgh, legh, desch);
-//     await HTTPRequest(`/history/edit`, "PATCH", {
-//         event: eventId,
-//         event_title: nameh,
-//         event_year: yearh,
-//         event_image: "0.png",
-//         event_image_label: legh,
-//         event_paragraph: desch
-//     });
-// }
-
-
 // ***Eventos***
 
-// Evento de formulário de preenchimento de uma nova história
 export function eventFormHistory(civilizationId) {
-    const form = document.querySelector("#formHistory");
-
-    form.addEventListener("submit", async (e) => {
-        // const nomeUser = document.querySelector("#nome-input");
-        // const regionSelect = document.querySelector("#regions");
-        
-        e.preventDefault();
-
-        console.log(form.yearh.value);
-
-        // Upload da imagem
-        const formData = new FormData();
-        const file = document.querySelector("#img_pg_history");
-        
-        // Parassagem de parâmetros para o Multer
-        formData.append("file", file.files[0]);
-        formData.append("civilization_id", civilizationId);
-        formData.append("event_title", form.nameh.value);
-        formData.append("event_year", form.yearh.value);
-        formData.append("event_image_label", form.legendh.value);
-        formData.append("event_paragraph", form.desch.value);
-
-        // const regionId = document.querySelector("#id_region_start").value
-        await imgRequest(`/history/`, "POST", formData);
-
-        // Renderização da tabela
-        await reqRenderTableHistory(civilizationId);
-
-        // Exibindo botão para adição de história
-        const buttonAddEvent = document.querySelector("#addHistory");
-        buttonAddEvent.style.display = "block";
-
-        // Fechamento do painel de edição
-        const panelDinamic = document.querySelector("#divHistory");
-        panelDinamic.innerHTML = "";
-
-    });
-}
-
-
-// Evento de formulário para editar uma história
-export function eventEditFormHistory(civilizationId) {
-    const form = document.querySelector("#formEditHistory");
-    console.log(form);
+    const form = document.querySelector("#formHistory2");
+    const button = document.querySelector("#buttonHistory");
+    console.dir(button);
+    console.log(button.innerText);
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         
-        // Upload da imagem
-        const formData = new FormData();
-        const file = document.querySelector("#img_pg_history");
+        if (button.innerText == "Adicionar") {
+            // Upload da imagem
+            const formData = new FormData();
+            const file = document.querySelector("#img_pg_history");
+            
+            console.log(form.nameh.value);
+
+            // Parassagem de parâmetros para o Multer
+            formData.append("file", file.files[0]);
+            formData.append("civilization_id", civilizationId);
+            formData.append("event_title", form.nameh.value);
+            formData.append("event_year", form.yearh.value);
+            formData.append("event_image_label", form.legendh.value);
+            formData.append("event_paragraph", form.desch.value);
+            
+            await imgRequest(`/history/`, "POST", formData);
+
+            const inputs = form.querySelectorAll("input");
+            console.log(inputs);
+        }
         
-        // Passagem de parâmetros para o Multer
-        formData.append("file", file.files[0]);
-        formData.append("event", eventId);
-        formData.append("event_title", form.nameedith.value);
-        formData.append("event_year", form.yearedith.value);
-        formData.append("event_image_label", form.legendedith.value);
-        formData.append("event_paragraph", form.descedith.value);
-
-        await imgRequest(`/history/edit`, "PATCH", formData);
-
+        if (button.innerText == "Editar") {
+            // Upload da imagem
+            const formData = new FormData();
+            const file = document.querySelector("#img_pg_history");
+            
+            // Passagem de parâmetros para o Multer
+            formData.append("file", file.files[0]);
+            formData.append("event", eventId);
+            formData.append("event_title", form.nameh.value);
+            formData.append("event_year", form.yearh.value);
+            formData.append("event_image_label", form.legendh.value);
+            formData.append("event_paragraph", form.desch.value);
+            
+            await imgRequest(`/history/edit`, "PATCH", formData);
+            
+            button.innerText = "Adicionar";
+        }
         // Renderização da tabela
         await reqRenderTableHistory(civilizationId);
 
-        // Exibindo botão para adição de história
-        const buttonAddEvent = document.querySelector("#addHistory");
-        buttonAddEvent.style.display = "block";
-
-        // Fechamento do painel de edição
-        const panelDinamic = document.querySelector("#divHistory");
-        panelDinamic.innerHTML = "";
+        // Colocar os códigos que limpam os campos
+        const inputs = form.querySelectorAll("input");
+        console.log(inputs);
     });
 }
 
 
 // ***Renderizações dinâmicas na página***
 
-// Renderização para adição de evento
-export function addEventsHistory(civilizationId) {
-    const buttonAddEvent = document.querySelector("#addHistory");
-    // buttonAddEvent.style.display = "block";
-
-    // Botão de adicionar evento para abrir o painel de adição
-    buttonAddEvent.addEventListener("click", () => {
-        buttonAddEvent.style.display = "none";
-
-        const page = document.querySelector("#divHistory");
-        page.innerHTML = inputsAddHistory;
-        
-        eventFormHistory(civilizationId);
-
-        const buttonCancel = document.querySelector("#cancel_add_hist");
-        buttonCancel.addEventListener('click', () => {
-            buttonAddEvent.style.display = "block";
-            page.innerHTML = "";
-        });
-    })    
-}
-
 // Criação de painel de edição de evento histórico
 function editEventsHistory(idCivilization, i) {
-    const page = document.querySelector("#divHistory");
-    // const tableHistory = document.querySelector("#tableHistory");
-    const buttonAddEvent = document.querySelector("#addHistory");
-    buttonAddEvent.style.display = "none";
+    const button = document.querySelector("#buttonHistory");
+    button.innerText = "Editar";
 
-    page.innerHTML = inputsEditHistory;
-    
-    
     // Requisições do banco de dados as informações do evento a ser editado
     renderInputHistory(idCivilization, "name_pg_history", "event_title", i);
     renderInputHistory(idCivilization, "year_pg_history", "event_year", i);
     renderInputHistory(idCivilization, "img_pg_history", "event_image", i);
     renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
     renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
-    eventEditFormHistory(idCivilization);
-    
-    // Botão para o usuário cancelar a adição do evento
-    const buttonCancel = document.querySelector("#cancel_edit_hist");
-    buttonCancel.addEventListener('click', () => {
-        page.innerHTML = "";
-        buttonAddEvent.style.display = "block";
-    });
+    eventFormHistory(idCivilization);
 }
-
-
 
 // Renderização da tabela que recebe o array de dados
 function renderTable(array) {
