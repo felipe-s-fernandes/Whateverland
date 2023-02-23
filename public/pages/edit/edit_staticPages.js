@@ -17,7 +17,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <input type="text" name="nameCivilization" id="name_pg_start" />
 
                     <label for="img_pg_start">Imagem da civilização:</label>
-                    <input type="file" id="img_pg_adm" name="img_pg_adm" />
+                    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_adm" name="img_pg_adm" />
                 </div>
 
                 <div>                        
@@ -98,7 +98,7 @@ export function renderEditStaticGallery() {
                     <input type="text" id="civi_gallery" name="civi_gallery" />
 
                     <label for="img_gallery">Imagem:</label>
-                    <input type="file" id="img_gallery" name="img_gallery" />
+                    <input type="file"  accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" />
 
                     <button type="submit" id="include_gallery">Adicionar Imagem</button>
                 </form>
@@ -129,7 +129,7 @@ export const inputsAddHistory = `
     <input type="text" name="yearh" id="year_pg_history" />
 
     <label for="img_pg_history">Imagem do evento:</label>
-    <input type="file" name="imgh" id="img_pg_history" />
+    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" name="imgh" id="img_pg_history" />
 
     <label for="legend_pg_history">Legenda da imagem:</label>
     <input type="text" name="legendh" id="legend_pg_history" />
@@ -152,7 +152,7 @@ export const inputsEditHistory = `
     <input type="text" name="yearedith" id="year_pg_history" />
 
     <label for="img_pg_history">Imagem do evento:</label>
-    <input type="file" name="imgedith" id="img_pg_history" />
+    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_history" />
 
     <label for="legend_pg_history">Legenda da imagem:</label>
     <input type="text" name="legendedith" id="legend_pg_history" />
