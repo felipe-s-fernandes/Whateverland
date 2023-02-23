@@ -16,6 +16,8 @@ export function renderEditStaticCivilizationAndStart() {
                     <label for="name_pg_start">Nome da civilização:</label>
                     <input type="text" name="nameCivilization" id="name_pg_start" />
 
+                    <img src="" alt="Imagem não encontrada" id="imageCivilization">
+
                     <label for="img_pg_start">Imagem da civilização:</label>
                     <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_adm" name="img_pg_adm" />
                 </div>
