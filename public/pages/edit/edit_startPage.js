@@ -2,8 +2,9 @@
 
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import imgRequest from "../../modules/imgRequest.js";
+import { createElement } from "../../modules/modules.js";
 
-
+// Requisição padrão para renderização dos inputs do dados da civilização
 export async function renderInputCivilization(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
 
@@ -14,6 +15,20 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
     input.value = objectValue;
 }
 
+// Requisição padrão para renderização das imagens da civilização
+export async function renderInputImageCivilization(idCivilization, idHTML, objectProperty) {
+    const input = document.querySelector(`#${idHTML}`);
+
+    const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
+
+    const objectValue = object.civilization[0][objectProperty];
+
+    console.log(objectValue);
+
+    input.src = "../../uploads/" + objectValue;
+}
+
+// Requisição padrão para inptus da página inicial do artigo
 export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
 
@@ -24,10 +39,40 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     input.value = objectValue;
 }
 
+// Requisição de renderização das regiões
+export async function reqRenderRegions() {
+    // Array de objetos com todas as regiões
+    const regionObject = await HTTPRequest(`/regions`, "GET");
+
+    // Inserindo o resultado da pesquisa em um select da página HTML
+    regionsSelect(regionObject.regions);
+}
+
+// Select com todas as regiões
+function regionsSelect(array) {
+    const regionSelect = document.querySelector("#id_region_start");
+
+    // Inserindo todas as regiões em um select
+    array.forEach((element) => {
+        regionSelect.appendChild(selectRegions(element));
+    });
+
+    // Criação do elemento select HTML com todas as regiões
+    function selectRegions(ObjectRegion) {
+        const option = createElement("option", "option");
+        option.value = ObjectRegion.region_id;
+        option.innerHTML = ObjectRegion.region_name;
+
+        return option;
+    }
+}
+
+// Requisição para edição de imagem da civilização
 async function editImageCivilization(formData) {
     await imgRequest(`/civilizations/edit`, "PATCH", formData);
 }
 
+// Requisição para página inicial da civilização
 async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc ) {
     await HTTPRequest(`/start/edit`, "PATCH", {
         civilization_id: idCivilization,
