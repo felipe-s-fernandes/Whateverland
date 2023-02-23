@@ -15,6 +15,19 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
     input.value = objectValue;
 }
 
+// Requisição padrão para renderização das imagens da civilização
+export async function renderInputImageCivilization(idCivilization, idHTML, objectProperty) {
+    const input = document.querySelector(`#${idHTML}`);
+
+    const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
+
+    const objectValue = object.civilization[0][objectProperty];
+
+    console.log(objectValue);
+
+    input.src = "../../uploads/" + objectValue;
+}
+
 // Requisição padrão para inptus da página inicial do artigo
 export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
