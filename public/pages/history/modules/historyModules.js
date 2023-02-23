@@ -2,7 +2,8 @@ import { createElement } from "../../../modules/modules.js";
 
 //@author {Felipe Fernandes}
 export function createEventsBar(events) {
-    const outerEventsBar = createElement("div", "outerEventsBar");
+    const outerEventsBar = createElement("div", "containerInformation");
+    outerEventsBar.id = "outerEventsBar";
     const innerEventsBar = createElement("div", "innerEventsBar");
 
     events.forEach((event, index) => {
@@ -48,7 +49,8 @@ export function createEventsBar(events) {
 
 //@author {Felipe Fernandes}
 export function createEventCard(civilizationName, event) {
-    const eventCard = createElement("div", "eventCard");
+    const eventCard = createElement("div", "containerInformation");
+    eventCard.id = "eventCard";
 
     const cardTitle = document.createElement("p", "eventCardTitle");
     cardTitle.innerText =

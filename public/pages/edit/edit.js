@@ -7,7 +7,7 @@ import { reqRenderTableGallery, eventFormGallery } from "./edit_gallery.js";
 import { reqRenderTableHistory, addEventsHistory } from "./edit_history.js";
 
 export default async function RenderEditPage(civilizationId) {
-    const container = createElement("div", "editContainer");
+    const container = createElement("div", "containerInformation");
 
     const backButton = createBackButton();
     container.appendChild(backButton);

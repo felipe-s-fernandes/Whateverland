@@ -9,11 +9,35 @@
     --border-radius-big-box: 15px;
 
     /*  */
-    --border-card: 2px solid #B2B2B2 rgba(0, 0, 0, 0.25);
+    --border-card: 2px solid #B2B2B2;
+    
+    /*Cor Principal*/
+    --main-bg-color: #3D3444;
+
 
     /* Começa a produzir daqui pra baixo as variáveis */
 
+}
+* {
+    font-family: 'Roboto';
+}
 
+body {
+    height: 100%;
+    background-color: var(--main-bg-color);
+}
+
+.containerInformation {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 90%;
+    width: 95%;
+    max-width: 1200px;
+    background: var(--primary-color);
+    border: var(--border-card);
+    box-shadow: var(--shadow-color-position);
+    border-radius: var(--border-radius-big-box);
+    border: 2px solid #B2B2B2;
 }
 
 .backButton {
@@ -97,14 +121,14 @@ header {
     width: 100%;
     min-width: 100px;
     border: none;
-    
+
     font-size: 1.1em;
     font-weight: 600;
     line-height: 50px;
     vertical-align: middle;
     text-align: center;
     letter-spacing: 0.2em;
-    
+
 
 }
 
@@ -112,6 +136,7 @@ header {
     color: var(--primary-color);
     background-color: rgba(61, 52, 68, 0.9);
 }
+
 .navButton:hover {
     background-color: #d6d6d6;
     cursor: pointer;
@@ -137,13 +162,14 @@ header {
 .smallSearchBar input {
     margin: 3px;
     width: 100%;
-    background-color:  #a8a8a8;
+    background-color: #a8a8a8;
     border: none;
     color: #e1e1e1;
     margin-left: 20px;
 }
 
-.smallSearchBar input:focus, .smallSearchBar input:active {
+.smallSearchBar input:focus,
+.smallSearchBar input:active {
     border: none;
 }
 
@@ -158,7 +184,8 @@ header {
     border: none;
     box-shadow: var(--shadow-color-position);
     overflow: hidden;
-} 
+}
+
 .smallSearchBar svg:hover {
     cursor: pointer;
     background-color: #d6d6d6;
@@ -168,24 +195,3 @@ header {
 /* Começa a produzir daqui pra baixo Pedro */
 
 /* Card grande onde contém todas as informações */
-.boxBigCard {
-    /* display: flex; */
-    /* flex-direction: column; */
-    box-sizing: border-box;
-    padding: 10px;
-
-    height: 90%;
-    max-width: 1200px;
-    width: 95%;
-
-    /* box-sizing: border-box; */
-    /* position: absolute;
-    width: 1203px;
-    height: 559px;
-    left: 114px;
-    top: 84px; */
-    background: var(--primary-color);
-    border: var(--border-card);
-    box-shadow: var(--shadow-color-position);
-    border-radius: var(--border-radius-big-box);
-}
