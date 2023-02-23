@@ -73,6 +73,7 @@ export function renderEditStaticHistory() {
             <input type="text" name="yearh" id="year_pg_history" />
 
             <label for="img_pg_history">Imagem do evento:</label>
+            <img src="" alt="Imagem não encontrada" id="imageEvent">
             <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" />
 
             <label for="legend_pg_history">Legenda da imagem:</label>

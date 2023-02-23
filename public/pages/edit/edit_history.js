@@ -3,7 +3,6 @@
 
 import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
-// import { inputsAddHistory, inputsEditHistory } from "./edit_staticPages.js";
 import imgRequest from "../../modules/imgRequest.js";
 
 // Variável global para guardar momentaneamente o id do evento
@@ -40,6 +39,20 @@ export async function renderInputHistory(idCivilization, idHTML, objectProperty,
     input.value = objectValue;
 }
 
+// Função de requisição de preenchimento dos inputs
+export async function renderInputImageEventHistory(idCivilization, idHTML, objectProperty, i) {
+    const input = document.querySelector(`#${idHTML}`);
+
+    const object = await HTTPRequest(`/history/${idCivilization}`, "GET");
+    const objectValue = object.history_events[i][objectProperty];
+
+    eventId = object.history_events[i].event;
+    console.log(eventId);
+    
+    console.log(objectValue);
+    input.src = "../../uploads/" + objectValue;
+}
+
 // Requisição DELETE para excluir evento de história
 export async function reqDeleteEvent(event, civilizationId) {
 
@@ -52,6 +65,9 @@ export async function reqDeleteEvent(event, civilizationId) {
     table.innerHTML = "";
     await reqRenderTableHistory(civilizationId);
 }
+
+// Requisição padrão para renderização das imagens dos eventos da civilização
+
 
 // ***Eventos***
 
@@ -125,6 +141,7 @@ function editEventsHistory(idCivilization, i) {
     renderInputHistory(idCivilization, "img_pg_history", "event_image", i);
     renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
     renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
+    renderInputImageEventHistory(idCivilization, "imageEvent", "event_image", i);
     eventFormHistory(idCivilization);
 }
 

@@ -115,12 +115,6 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
         await editImageCivilization(formData);
 
-        // await editCivilization(
-        //     idCivilization,
-        //     form.nameCivilization.value,
-        //     idCivilization  
-        // );
-
         await editStartPage(
             idCivilization,
             form.nameregion.value,
@@ -132,14 +126,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
             form.desc.value
         );
 
-        
-
-        // civil_name.value = "";
-        // civil_origin_name.value = "";
-        // civil_title.value = "";
-        // civil_capital.value = "";
-        // civil_religion.value = "";
-        // civil_gov.value = "";
-        // civil_desc.value = "";
+        // Renderização da imagem
+        renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
     });
 }
