@@ -17,17 +17,22 @@ export async function reqRenderTableGallery(civilizationId) {
 }
 
 export async function reqDeleteImage(imageId, civilizationId) {
+    const result = document.querySelector("#resultgallery");
     await HTTPRequest(`/gallery/${imageId}`, "DELETE");
 
     const table = document.querySelector("#tableGallery");
     table.innerHTML = "";
     await reqRenderTableGallery(civilizationId);
+    
+    result.textContent = "A imagem foi excluida!";
+    console.log("Imagem excluida!");
+    
 }
 
 // Formulário de preenchimento
 export function eventFormGallery(civilizationId) {
     const form = document.querySelector("#formGallery");
-
+    const result = document.querySelector("#resultgallery");
     form.addEventListener("submit", async (e) => {
         
         e.preventDefault();
@@ -42,14 +47,19 @@ export function eventFormGallery(civilizationId) {
         formData.append("civilization_id", civilizationId);
         formData.append("gallery_image_title", form.civi_gallery.value);
 
+        if(form.civi_gallery.value == ""){
+            result.textContent = "Adicione uma legenda para a imagem!";
+        }else{
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
         await imgRequest(`/gallery/`, "POST", formData);
+        result.textContent = "A imagem foi inserida com sucesso!";
+        console.log("A imagem foi inserida!");
 
-        // Renderização da tabela
         reqRenderTableGallery(civilizationId);
-
         const imageLegend = document.querySelector("#civi_gallery");
         imageLegend.value = "";
+        }
+
     });
 }
 

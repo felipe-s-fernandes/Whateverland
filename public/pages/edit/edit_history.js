@@ -36,16 +36,17 @@ export async function renderInputHistory(idCivilization, idHTML, objectProperty,
 
 // Requisição DELETE para excluir evento de história
 export async function reqDeleteEvent(event, civilizationId) {
-
-    console.log(civilizationId);
-    console.log(event);
+    const result = document.querySelector("#resulthistory");
 
     await HTTPRequest(`/history/${event}`, "DELETE");
 
     const table = document.querySelector("#tableHistory");
     table.innerHTML = "";
     await reqRenderTableHistory(civilizationId);
+    result.textContent = "O evento foi excluido!";
+    console.log("Dados do evento excluidos!");
 }
+
 
 // Requisição para cadastrar novo evento de história
 // async function newHistory(civilizationId, nameh, yearh, imgh, legh, desch) {
@@ -79,7 +80,7 @@ export async function reqDeleteEvent(event, civilizationId) {
 // Evento de formulário de preenchimento de uma nova história
 export function eventFormHistory(civilizationId) {
     const form = document.querySelector("#formHistory");
-
+    const result = document.querySelector("#resulthistory");
     form.addEventListener("submit", async (e) => {
         // const nomeUser = document.querySelector("#nome-input");
         // const regionSelect = document.querySelector("#regions");
@@ -100,6 +101,13 @@ export function eventFormHistory(civilizationId) {
         formData.append("event_image_label", form.legendh.value);
         formData.append("event_paragraph", form.desch.value);
 
+        if(isNaN(form.yearh.value) || form.yearh.value == ""){
+            result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
+        }else if(form.yearh.value <= 0){
+            result.textContent = 'Preencha o campo "Ano do evento" com valores positivos!';
+        }else if(form.nameh.value == ""){
+            result.textContent = 'Adicione um nome ao evento!';
+        }else{
         // const regionId = document.querySelector("#id_region_start").value
         await imgRequest(`/history/`, "POST", formData);
 
@@ -113,7 +121,7 @@ export function eventFormHistory(civilizationId) {
         // Fechamento do painel de edição
         const panelDinamic = document.querySelector("#divHistory");
         panelDinamic.innerHTML = "";
-
+        }
     });
 }
 
@@ -121,6 +129,7 @@ export function eventFormHistory(civilizationId) {
 // Evento de formulário para editar uma história
 export function eventEditFormHistory(civilizationId) {
     const form = document.querySelector("#formEditHistory");
+    const result = document.querySelector("#resulthistory");
     console.log(form);
 
     form.addEventListener("submit", async (e) => {
@@ -138,6 +147,14 @@ export function eventEditFormHistory(civilizationId) {
         formData.append("event_image_label", form.legendedith.value);
         formData.append("event_paragraph", form.descedith.value);
 
+
+        if(isNaN(form.yearedith.value) || form.yearedith.value == ""){
+            result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
+        }else if(form.yearedith.value <= 0){
+            result.textContent = 'Preencha o campo "Ano do evento" com valores positivos!';
+        }else if(form.nameedith.value == ""){
+            result.textContent = 'Adicione um nome ao evento!';
+        }else{
         await imgRequest(`/history/edit`, "PATCH", formData);
 
         // Renderização da tabela
@@ -150,6 +167,8 @@ export function eventEditFormHistory(civilizationId) {
         // Fechamento do painel de edição
         const panelDinamic = document.querySelector("#divHistory");
         panelDinamic.innerHTML = "";
+
+        }
     });
 }
 
