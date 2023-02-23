@@ -1,6 +1,7 @@
 import express from "express";
 const civilizationsRouter = express.Router();
 import upload from "./multer.js";
+import authenticate from "../../middleware/authenticate.js";
 import civilizationsController from "../controllers/civilizations.js";
 
 civilizationsRouter.get(
@@ -18,6 +19,11 @@ civilizationsRouter.patch(
     civilizationsController.patchCivilization
 );
 
-civilizationsRouter.delete("/:id", civilizationsController.deleteCivilization);
+//Rota privilegiada (fase de testes)
+civilizationsRouter.delete(
+    "/:id",
+    //authenticate,
+    civilizationsController.deleteCivilization
+);
 
 export default civilizationsRouter;

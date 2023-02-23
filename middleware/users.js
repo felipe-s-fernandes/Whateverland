@@ -10,16 +10,28 @@ async function cadastroManual(username, plainTextPassword = "123") {
     pool.query("INSERT INTO users (username, passwordHash) VALUES ($1, $2)", [username, passwordHash]);
 } */
 import jwtLib from "jsonwebtoken";
+import bcrypt from "bcrypt";
 import { connectDb } from "./database/connection.js";
 
 async function login(username, plainTextPassword) {
-    const dbPasswordHash = await pool.query(
+    /* const dbPasswordHash = await 
+     pool.query(
         "SELECT passwordHash FROM users WHERE username = $1",
+        [username]
+    ); */
+
+    //repo
+    const dbPasswordHash = await connectDb(
+        `
+        SELECT password_hash from admins WHERE username = $1;
+    `,
         [username]
     );
 
+    //service
     const result = await bcrypt.compare(plainTextPassword, dbPasswordHash);
 
+    //controller
     if (result) {
         const jwt = jwtLib.sign({ username }, "minha senha aqui"); // process.env.JWTSECRET
         res.cookie("session", jwt);
