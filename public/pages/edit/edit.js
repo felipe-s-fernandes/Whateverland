@@ -2,7 +2,7 @@
 
 import { createBackButton, createElement } from "../../modules/modules.js";
 import { renderEditStaticCivilizationAndStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
-import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage } from "./edit_startPage.js";
+import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage, reqRenderRegions } from "./edit_startPage.js";
 import { reqRenderTableGallery, eventFormGallery } from "./edit_gallery.js";
 import { reqRenderTableHistory, addEventsHistory } from "./edit_history.js";
 
@@ -31,6 +31,7 @@ export default async function RenderEditPage(civilizationId) {
             console.log("Event listeners");
 
             // Requisições para prenchimento de Inputs de nome da civilização e página inicial do artigo
+            reqRenderRegions();
             renderInputCivilization(civilizationId, "name_pg_start", "civilization_name");
             renderInputCivilization(civilizationId, "id_region_start", "region_id");
             renderInputStart(civilizationId, "origin_pg_start", "official_name");
