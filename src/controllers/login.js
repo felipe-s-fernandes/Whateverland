@@ -56,8 +56,34 @@ const postSession = async (req, res) => {
     }
 };
 
+const deleteSession = (req, res) => {
+    console.log(TAG, "deleteSession() from " + req.connection.remoteAddress);
+    console.time("deleteSession()");
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    try {
+        res.clearCookie("session");
+        response.message = "Cookie cleared successfully.";
+        response.data = true;
+        res.status(200).json(response);
+        console.timeEnd("deleteSession()");
+    } catch (error) {
+        response.message = "Internal server error.";
+        response.error = "Error";
+        res.status(500).json(response);
+        console.timeEnd("deleteSession()");
+    }
+};
+
 const loginController = {
     postSession: postSession,
+    deleteSession: deleteSession,
 };
 
 export default loginController;
