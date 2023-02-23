@@ -30,7 +30,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <input type="text" name="originName" id="origin_pg_start" />
 
                     <label for="titlename_pg_start">Id da Região:</label>
-                    <input type="text" name="idregion" id="id_region_start" />
+                    <select name="idregion" id="id_region_start"></select>
 
                     <label for="titlename_pg_start">Nome da Região:</label>
                     <input type="text" name="nameregion" id="name_region_start" />
@@ -164,3 +164,28 @@ export const inputsEditHistory = `
     <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
 </form>
 `;
+
+// export function inputsHistory(idHTML, buttonName) {
+//     const pageContent =`
+//         <form class="cadastre" id="formEditHistory">
+//             <label for="name_pg_history">Título do evento:</label>
+//             <input type="text" name="nameedith" id="name_pg_history" />
+
+//             <label for="year_pg_history">Ano do evento:</label>
+//             <input type="text" name="yearedith" id="year_pg_history" />
+
+//             <label for="img_pg_history">Imagem do evento:</label>
+//             <input type="file" name="imgedith" id="img_pg_history" />
+
+//             <label for="legend_pg_history">Legenda da imagem:</label>
+//             <input type="text" name="legendedith" id="legend_pg_history" />
+
+//             <label for="desc_pg_history">Descrição do evento:</label>
+//             <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
+
+//             <button type="submit" class ="style_btn" id="${idHTML}">${buttonName}</button>
+//             <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
+//         </form>
+//     `;
+//     return pageContent;        
+// }

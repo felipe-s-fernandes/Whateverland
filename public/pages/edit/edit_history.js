@@ -130,7 +130,7 @@ export function eventEditFormHistory(civilizationId) {
         const formData = new FormData();
         const file = document.querySelector("#img_pg_history");
         
-        // Parassagem de parâmetros para o Multer
+        // Passagem de parâmetros para o Multer
         formData.append("file", file.files[0]);
         formData.append("event", eventId);
         formData.append("event_title", form.nameedith.value);
