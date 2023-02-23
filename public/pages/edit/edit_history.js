@@ -71,7 +71,7 @@ export async function reqDeleteEvent(event, civilizationId) {
 
 // ***Eventos***
 
-export function eventFormHistory(civilizationId) {
+export function eventFormHistory(civilizationId, i) {
     const form = document.querySelector("#formHistory2");
     const button = document.querySelector("#buttonHistory");
     console.dir(button);
@@ -120,10 +120,10 @@ export function eventFormHistory(civilizationId) {
         }
         // Renderização da tabela
         await reqRenderTableHistory(civilizationId);
-
-        // Colocar os códigos que limpam os campos
-        const inputs = form.querySelectorAll("input");
-        console.log(inputs);
+        
+        // Limpa todos os campos do formulário de história
+        const inputs = form.querySelectorAll('input[type="text"]');
+        inputs.forEach(element => element.value = "");
     });
 }
 
@@ -142,7 +142,7 @@ function editEventsHistory(idCivilization, i) {
     renderInputHistory(idCivilization, "legend_pg_history", "event_image_label", i);
     renderInputHistory(idCivilization, "desc_pg_history", "event_paragraph", i);
     renderInputImageEventHistory(idCivilization, "imageEvent", "event_image", i);
-    eventFormHistory(idCivilization);
+    // eventFormHistory(idCivilization, i);
 }
 
 // Renderização da tabela que recebe o array de dados
