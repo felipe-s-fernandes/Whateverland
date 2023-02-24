@@ -52,7 +52,7 @@ export function createEventCard(civilizationName, event) {
     const eventCard = createElement("div", "containerInformation");
     eventCard.id = "eventCard";
 
-    const cardTitle = document.createElement("p", "eventCardTitle");
+    const cardTitle = createElement("p", "eventCardTitle");
     cardTitle.innerText =
         `eventos históricos de ${civilizationName}`.toUpperCase();
 
