@@ -28,6 +28,22 @@ export async function renderInputImageCivilization(idCivilization, idHTML, objec
     input.src = "../../uploads/" + objectValue;
 }
 
+// Pré-visualização da imagem inserida pelo usuário
+export function previewImageCivilization(idHTMLImage) {
+    const imgPreview = document.querySelector(`#${idHTMLImage}`);
+    const inputFile = document.querySelector("#img_pg_adm");
+
+    inputFile.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            imgPreview.src = reader.result;
+            // inputImg.src = "../../uploads/" + reader.result;
+        }
+    })
+}
+
 // Requisição padrão para inptus da página inicial do artigo
 export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
@@ -115,12 +131,6 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
         await editImageCivilization(formData);
 
-        // await editCivilization(
-        //     idCivilization,
-        //     form.nameCivilization.value,
-        //     idCivilization  
-        // );
-
         await editStartPage(
             idCivilization,
             form.nameregion.value,
@@ -132,14 +142,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
             form.desc.value
         );
 
-        
-
-        // civil_name.value = "";
-        // civil_origin_name.value = "";
-        // civil_title.value = "";
-        // civil_capital.value = "";
-        // civil_religion.value = "";
-        // civil_gov.value = "";
-        // civil_desc.value = "";
+        // Renderização da imagem prévia de visualização
+        // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
     });
 }

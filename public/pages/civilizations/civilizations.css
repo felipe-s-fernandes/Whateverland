@@ -1,11 +1,12 @@
 
 .pageCiv{
     display: flex;
-    width: 95vw;
+    width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
+    margin-right: 400px;
+    /* overflow: hidden; */
 }
 
 .symbolBody{
@@ -15,39 +16,28 @@
 
 .regionCivilizationsGeneral {
     width: 90%;
+    box-shadow: var(--shadow-color-position);
+    border-radius: 25px;
 }
 
 .regionBody{
-    position: absolute;
-    right: 0px;
-    height: 90vh;
-    width: 450px;
-    background-color: var(--main-bg-color);    
+    box-shadow: var(--shadow-color-position);
+    background-color: var(--main-bg-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
     border-radius: 30px 0px 0px 30px;
-    /* border: var(--border-card); */
-    box-shadow: var(--shadow-color-position);
-
-
-    animation-name: appeared0;
-    animation-duration: 3s;
-    /* background-color: #504a5c;
-    width: 35%;
+    position: fixed;
+    /* top: 0; */
+    right: -400px;
+    width: 400px;
     height: 90%;
-    margin-top: 50px;
-    border-bottom-left-radius: 5%;
-    border-top-left-radius: 5%;
-    box-shadow: 1px 4px 10px 0 black;
+    visibility: hidden;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
     animation-name: appeared0;
-    animation-duration: 1s; */
 }
-
-
-
-
 
 .c{
     background-color: var(--primary-color);
@@ -177,8 +167,9 @@ th,tr,td{
     border-radius: 100%;
     position: absolute;
     left: 20px;
-    animation-name: appeared0;
-    animation-duration: 3s;
+    cursor: pointer;
+    /* animation-name: appeared0;
+    animation-duration: 3s; */
 
 }
 
@@ -208,9 +199,12 @@ th,tr,td{
 
 @keyframes appeared0{
     0% {
-        transform: translateX(100%);
+        /* transform: translateX(0); */
+        visibility: visible;
     }
     100%{
+        transform: translateX(-400px);
+        visibility: visible;
     }
 }
 

@@ -70,7 +70,7 @@ function addEventListeners(civilization, history) {
             removeButtonsClass(yearButtons);
 
             button.classList.add("clickedYearButton");
-            const eventCard = document.querySelector(".eventCard");
+            const eventCard = document.querySelector("#eventCard");
             const eventId = Number(event.target.dataset.event_id);
 
             const clickedHistory = history.filter(
@@ -81,6 +81,7 @@ function addEventListeners(civilization, history) {
                 civilization.civilization_name,
                 clickedHistory[0]
             );
+            console.log(newEventCard);
 
             eventCard.replaceWith(newEventCard);
         });

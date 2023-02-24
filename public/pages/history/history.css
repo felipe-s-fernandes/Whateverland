@@ -10,10 +10,10 @@
 }
 
 #outerEventsBar {
-    padding: 10px;
     display: flex;
     align-items: center;
     overflow: hidden;
+    border-radius: 50px;
 }
 
 .innerEventsBar {
@@ -94,7 +94,7 @@
     background-color: rgba(61, 52, 68, 0.9);
 }
 .yearButton:hover {
-    background-color: #d6d6d6;
+    background-color: #8a818b;
     cursor: pointer;
 }
 

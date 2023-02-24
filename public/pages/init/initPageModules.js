@@ -5,7 +5,8 @@ import { createElement } from "../../../modules/modules.js";
 
 export function renderButtonExplore() {
     const buttonInit = createElement("button", "buttonInit");
-    buttonInit.innerHTML = "Explorar";
+    buttonInit.classList.add("backButton");
+    buttonInit.innerHTML = "EXPLORAR";
 
     return buttonInit;
 }

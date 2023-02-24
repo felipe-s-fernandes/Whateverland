@@ -6,8 +6,7 @@ import { createElement } from "../../modules/modules.js";
 export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "containerEdit1");
 
-    page.innerHTML = 
-    `
+    page.innerHTML = `
         <div class="containerEdit2">
             <form class="containerEdit7" id="formEditCivilizationAndStartPage" >
                 <div class="divForm">
@@ -19,7 +18,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
 
                     <label class="labelEdit" for="img_pg_start">Imagem da civilização:</label>
-                    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_adm" name="img_pg_adm" />
+                    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
                 </div>
 
                 <div class="containerEdit6">                        
@@ -65,9 +64,6 @@ export function renderEditStaticHistory() {
     page.innerHTML = `
     <div class="containerEdit4">
         <h2 class="titleEdit">História</h2>
-        <button type="submit" class ="btn-edit" id="addHistory">Adicionar Evento</button>
-        <div id="divHistory"></div>
-
 
         <form id="formHistory2" class="cadastre">
             <label class="labelEdit" for="name_pg_history">Título do evento:</label>
@@ -77,6 +73,7 @@ export function renderEditStaticHistory() {
             <input class="InputEdit" type="text" name="yearh" id="year_pg_history" />
 
             <label class="labelEdit" for="img_pg_history">Imagem do evento:</label>
+            <img class="labelEdit" src="" alt="Imagem não encontrada" id="imageEvent">
             <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" />
 
             <label class="labelEdit" for="legend_pg_history">Legenda da imagem:</label>
@@ -95,6 +92,7 @@ export function renderEditStaticHistory() {
                     <td class="id-number">Id</td>
                     <td class="e-mail">Ano do evento</td>
                     <td class="nome">Título do evento</td>
+                    <td class="nome">Imagem do evento</td>
                     <td class="nome">Editar</td>
                     <td class="nome">Deletar</td>
                 </tr>
@@ -104,7 +102,6 @@ export function renderEditStaticHistory() {
         <div id="resulthistory"></div>
     </div>
     `;
-
     return page;
 }
 
@@ -140,54 +137,52 @@ export function renderEditStaticGallery() {
             <div id="resultgallery"></div>
         </div>
     `;
-
     return page;
 }
 
-export const inputsAddHistory = `
-<form id="formHistory" class="containerEdit">
-    <label class="labelEdit" for="name_pg_history">Título do evento:</label>
-    <input class="InputEdit" type="text" name="nameh" id="name_pg_history" />
+// export const inputsAddHistory = `
+// <form id="formHistory" class="containerEdit">
+//     <label class="labelEdit" for="name_pg_history">Título do evento:</label>
+//     <input class="InputEdit" type="text" name="nameh" id="name_pg_history" />
 
-    <label class="labelEdit" for="year_pg_history">Ano do evento:</label>
-    <input class="InputEdit" type="text" name="yearh" id="year_pg_history" />
+//     <label class="labelEdit" for="year_pg_history">Ano do evento:</label>
+//     <input class="InputEdit" type="text" name="yearh" id="year_pg_history" />
 
-    <label class="labelEdit" for="img_pg_history">Imagem do evento:</label>
-    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" name="imgh" id="img_pg_history" />
+//     <label class="labelEdit" for="img_pg_history">Imagem do evento:</label>
+//     <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" name="imgh" id="img_pg_history" />
 
-    <label class="labelEdit" for="legend_pg_history">Legenda da imagem:</label>
-    <input class="InputEdit" type="text" name="legendh" id="legend_pg_history" />
+//     <label class="labelEdit" for="legend_pg_history">Legenda da imagem:</label>
+//     <input class="InputEdit" type="text" name="legendh" id="legend_pg_history" />
 
-    <label class="labelEdit" for="desc_pg_history">Descrição do evento:</label>
-    <textarea class="InputEdit" type="text" name="desch" id="desc_pg_history"></textarea>
+//     <label class="labelEdit" for="desc_pg_history">Descrição do evento:</label>
+//     <textarea class="InputEdit" type="text" name="desch" id="desc_pg_history"></textarea>
 
-    <button type="submit" class ="btn-edit" id="include_hist">Incluir evento</button>
-    <button type="button" class ="btn-edit" id="cancel_add_hist">Cancelar</button>
-</form>
-`;
+//     <button type="submit" class ="btn-edit" id="include_hist">Incluir evento</button>
+//     <button type="button" class ="btn-edit" id="cancel_add_hist">Cancelar</button>
+// </form>
+// `;
 
+// export const inputsEditHistory = `
+// <form class="containerEdit" id="formEditHistory">
+//     <label for="name_pg_history">Título do evento:</label>
+//     <input type="text" name="nameedith" id="name_pg_history" />
 
-export const inputsEditHistory = `
-<form class="containerEdit" id="formEditHistory">
-    <label for="name_pg_history">Título do evento:</label>
-    <input type="text" name="nameedith" id="name_pg_history" />
+//     <label for="year_pg_history">Ano do evento:</label>
+//     <input type="text" name="yearedith" id="year_pg_history" />
 
-    <label for="year_pg_history">Ano do evento:</label>
-    <input type="text" name="yearedith" id="year_pg_history" />
+//     <label for="img_pg_history">Imagem do evento:</label>
+//     <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_history" />
 
-    <label for="img_pg_history">Imagem do evento:</label>
-    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_history" />
+//     <label for="legend_pg_history">Legenda da imagem:</label>
+//     <input type="text" name="legendedith" id="legend_pg_history" />
 
-    <label for="legend_pg_history">Legenda da imagem:</label>
-    <input type="text" name="legendedith" id="legend_pg_history" />
+//     <label for="desc_pg_history">Descrição do evento:</label>
+//     <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
 
-    <label for="desc_pg_history">Descrição do evento:</label>
-    <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
-
-    <button type="submit" class ="style_btn" id="edit_hist">Editar evento</button>
-    <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
-</form>
-`;
+//     <button type="submit" class ="style_btn" id="edit_hist">Editar evento</button>
+//     <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
+// </form>
+// `;
 
 // export function inputsHistory(idHTML, buttonName) {
 //     const pageContent =`
@@ -211,5 +206,5 @@ export const inputsEditHistory = `
 //             <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
 //         </form>
 //     `;
-//     return pageContent;        
+//     return pageContent;
 // }
