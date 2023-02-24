@@ -18,7 +18,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <img class="labelEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
 
                     <label class="labelEdit" for="img_pg_start">Imagem da civilização:</label>
-                    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_adm" name="img_pg_adm" />
+                    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
                 </div>
 
                 <div class="containerEdit6">                        
