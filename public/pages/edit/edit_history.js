@@ -44,6 +44,7 @@ function inputRender(object, idHTML, objectProperty) {
 
 // Requisição DELETE para excluir evento de história
 export async function reqDeleteEvent(event, civilizationId) {
+    const result = document.querySelector("#resulthistory");
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Adicionar";
 
@@ -58,10 +59,13 @@ export async function reqDeleteEvent(event, civilizationId) {
     image.src = "";
 
     await HTTPRequest(`/history/${event}`, "DELETE");
+    result.textContent = "O evento foi excluido!";
 
     const table = document.querySelector("#tableHistory");
     table.innerHTML = "";
     await reqRenderTableHistory(civilizationId);
+    result.textContent = "O evento foi excluido!";
+    console.log("Dados do evento excluidos!");
 }
 
 // Requisição padrão para renderização das imagens dos eventos da civilização
@@ -72,6 +76,7 @@ export async function reqDeleteEvent(event, civilizationId) {
 export function eventFormHistory(civilizationId) {
     const form = document.querySelector("#formHistory2");
     const button = document.querySelector("#buttonHistory");
+    const result = document.querySelector("#resulthistory");
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
@@ -98,7 +103,28 @@ export function eventFormHistory(civilizationId) {
             // historyObject.event_image_label,
             // historyObject.event_paragraph,
             
-            await imgRequest(`/history/`, "POST", formData);
+            if(isNaN(form.yearh.value) || form.yearh.value == ""){
+                result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
+            }else if(form.yearh.value <= 0){
+                result.textContent = 'Preencha o campo "Ano do evento" com valores positivos!';
+            }else if(form.nameh.value == ""){
+                result.textContent = 'Adicione um nome ao evento!';
+            }else{
+                await imgRequest(`/history/`, "POST", formData);
+                
+                result.textContent = 'Evento "'+form.nameh.value+'" adicionado com sucesso!';
+                // Limpa todos os campos do formulário de história
+                const inputs = form.querySelectorAll('input[type="text"]');
+                inputs.forEach(element => element.value = "");
+        
+                const textArea = form.querySelector("textarea");
+                textArea.value = "";
+        
+                const image = form.querySelector("img");
+                image.src = "";
+
+                await reqRenderTableHistory(civilizationId);
+            }
         }
         
         if (button.innerText == "Editar") {
@@ -115,22 +141,34 @@ export function eventFormHistory(civilizationId) {
             formData.append("event_image_label", form.legendh.value);
             formData.append("event_paragraph", form.desch.value);
             
-            await imgRequest(`/history/edit`, "PATCH", formData);
             
-            button.innerText = "Adicionar";
+            if(isNaN(form.yearh.value) || form.yearh.value == ""){
+                result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
+            }else if(form.yearh.value <= 0){
+                result.textContent = 'Preencha o campo "Ano do evento" com valores positivos!';
+            }else if(form.nameh.value == ""){
+                result.textContent = 'Adicione um nome ao evento!';
+            }else{
+                await imgRequest(`/history/edit`, "PATCH", formData);
+
+                result.textContent = 'Evento "'+form.nameh.value+'" alterado com sucesso!';
+
+                // Limpa todos os campos do formulário de história
+                const inputs = form.querySelectorAll('input[type="text"]');
+                inputs.forEach(element => element.value = "");
+        
+                const textArea = form.querySelector("textarea");
+                textArea.value = "";
+        
+                const image = form.querySelector("img");
+                image.src = "";
+                button.innerText = "Adicionar";
+                await reqRenderTableHistory(civilizationId);
+  
+            }
         }
         // Renderização da tabela
         await reqRenderTableHistory(civilizationId);
-        
-        // Limpa todos os campos do formulário de história
-        const inputs = form.querySelectorAll('input[type="text"]');
-        inputs.forEach(element => element.value = "");
-
-        const textArea = form.querySelector("textarea");
-        textArea.value = "";
-
-        const image = form.querySelector("img");
-        image.src = "";
     });
 }
 
