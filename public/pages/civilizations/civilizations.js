@@ -65,7 +65,7 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const pageCiv = createElement("div", "pageCiv");
     // const symbolBody = createElement("div", "symbolBody");
-    const symbolContainer = createElement("div", "symbolContainer");
+    // const symbolContainer = createElement("div", "symbolContainer");
     // const symbolMap = createElement("img", "symbolMap");
     // const symbolimg = createElement("img", "symbolimg");
     const regionBody = createElement("div", "regionBody");
@@ -83,8 +83,8 @@ export default async function RenderCivilizationsPage(regionId) {
     const exitimg_civilPage = createElement("img", "exitimg_civilPage");
 
     // pageCiv.appendChild(symbolBody);
-    pageCiv.appendChild(regionBody);
     pageCiv.appendChild(createMap(region));
+    pageCiv.appendChild(regionBody);
     // pageCiv.appendChild(regionSelect);
 
     // symbolBody.appendChild(symbolContainer);
@@ -93,8 +93,24 @@ export default async function RenderCivilizationsPage(regionId) {
     // symbolMap.src = example.territorio;
     // symbolimg.src = example.brasao;
 
+    // regionBody.classList.toggle('show');
     regionBody.appendChild(container_regionTitle);
     regionBody.appendChild(regionResum);
+    
+    // window.addEventListener('popstate', () => {
+    //     regionBody.classList.add('show');
+    //     // const sidebar = regionBody;
+    // });
+
+    // window.addEventListener('popstate', function(event) {
+    //     // const sidebar = document.querySelector('.sidebar');
+    //     regionBody.classList.add('show');
+    // });
+      
+    // window.addEventListener('hashchange', function(event) {
+    // // const sidebar = document.querySelector('.sidebar');
+    // regionBody.classList.add('show');
+    // });
 
     container_regionTitle.appendChild(exit_civilPage);
     container_regionTitle.appendChild(regionTitle);
@@ -300,6 +316,9 @@ export default async function RenderCivilizationsPage(regionId) {
         page: pageCiv,
         object: null,
         addEvents: function () {
+            // Efeito de a sidebar aparecer na lateral
+            
+
             // console.log(regionId);
             const regionSelect2 = document.querySelector(`#region${regionId}`);
             regionSelect2.style.fill = "white";
