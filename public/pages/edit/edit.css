@@ -1,3 +1,124 @@
-/* .editContainer{
-    ba
-} */
+.titleEdit {
+    margin-right: auto;
+    font-size: 20px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.containerEditMain {
+    padding: 20px;
+    background-color: white;
+    width: 55%;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    height: auto;
+    border-radius: 15px;
+    flex-direction: column;
+    box-sizing: border-box;
+
+}
+
+
+.labelEdit {
+    display:inline-block ;
+    margin-right: 10px;
+ }
+
+.InputEdit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    border-radius: 5px;
+    border: 2px solid black;
+    margin-left: 10px;
+}
+
+.containerEdit {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+    background: var(--primary-color);
+    border: var(--border-card);
+    box-shadow: var(--shadow-color-position);
+    border-radius: var(--border-radius-big-box);
+    border: 2px solid #ffffff;
+}
+
+.containerEdit2 {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: 90%;
+}
+
+.containerEdit3 {
+
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+    background-color: rgb(255, 255, 255);
+
+}
+
+.containerEdit4 {
+    background-color: rgb(255, 255, 255);
+}
+
+.containerEdit5 {
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+    background-color: rgb(255, 255, 255);
+}
+
+.containerEdit6 {
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+    background-color: rgb(255, 255, 255);
+}
+.btn-edit{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 8px;
+    margin-right: auto;
+    color: var(--primary-color);
+    border-radius: var(--border-radius-big-box);
+    background-color: var(--main-bg-color);
+    width: 140px;
+    height: 40px;
+    box-shadow: var(--shadow-color-position);
+}
+.btn-edit:hover{
+    background-color: var(--primary-color);
+    color: var(--main-bg-color);
+    box-shadow: var(--shadow-color-position);
+    cursor: pointer;
+    
+}
+.editTable {
+    margin-left: 15px;
+    width: 100%;
+    margin-top: 50px;
+    text-align: center;
+}
+.editTable-heading {
+    background-color: var(--main-bg-color);
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.editTable td {
+    text-align: center;
+    vertical-align: middle;
+    background: rgba(81, 73, 87, 0.138);
+
+}
+.editTable tr:nth-child(even) {
+    background: rgba(81, 73, 87, 1);
+    color: var(--primary-color);
+}

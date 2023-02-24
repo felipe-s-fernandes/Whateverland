@@ -23,21 +23,18 @@ function createLoginForm() {
     const form = createElement("div", "pg_login");
     form.innerHTML = `
     <div class="pg_login">
-        <div class="login">
-            <h1>Login</h1>
+        <div class="containerInformation" id="login">
+            <h1 class="TitleLogin">LOGIN</h1>
             <div class="container_mail">
-                <label for="email">Usuário:</label>
-                <input type="text" id="email" />
+                <input type="text" id="email" class="mainInput" placeholder="usuário"/>
             </div>
 
             <div class="container_passwd">
-                <label for="senha">Senha:</label>
-                <input type="text" id="senha" />
+                <input type="password" id="senha" class="mainInput" placeHolder="senha" />
             </div>
 
             <div class="container_btn">
-                <button type="button" id="enter">Entrar</button>
-                <button type="button" id="register">Registrar</button>
+                <button type="button" id="enter">ENTRAR</button>
             </div>
         </div>
     `;

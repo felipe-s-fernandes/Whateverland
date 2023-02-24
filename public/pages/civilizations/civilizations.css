@@ -1,10 +1,11 @@
 
 .pageCiv{
-    background-image: url("./images/nuvem.jpg");
-    background-size: cover;
     display: flex;
-    width: 100vw;
+    width: 95vw;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .symbolBody{
@@ -12,18 +13,41 @@
     height: 75%;
 }
 
+.regionCivilizationsGeneral {
+    width: 90%;
+}
+
 .regionBody{
     position: absolute;
-    left:65%;
-    background-color: #504a5c;
+    right: 0px;
+    height: 90vh;
+    width: 450px;
+    background-color: var(--main-bg-color);    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 30px 0px 0px 30px;
+    /* border: var(--border-card); */
+    box-shadow: var(--shadow-color-position);
+
+
+    animation-name: appeared0;
+    animation-duration: 3s;
+    /* background-color: #504a5c;
     width: 35%;
-    height: 100%;
+    height: 90%;
+    margin-top: 50px;
     border-bottom-left-radius: 5%;
     border-top-left-radius: 5%;
     box-shadow: 1px 4px 10px 0 black;
     animation-name: appeared0;
-    animation-duration: 2s;
+    animation-duration: 1s; */
 }
+
+
+
+
 
 .c{
     background-color: var(--primary-color);
@@ -32,7 +56,7 @@
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
     padding: 5%;
-    margin: 15px;
+    /* margin: 15px; */
     box-shadow: 1px 4px 10px 0 black;
 }
 
@@ -48,6 +72,20 @@
     color: rgb(255, 255, 255);
     text-transform: uppercase;
     text-align: center;
+}
+
+.regionCivilizationsGeneral th, tr, td {
+    border: none;
+    border-color: none;
+    vertical-align: middle;
+    /* color: red; */
+}
+
+.regionCivilizationsGeneral > th, tr, td {
+    border: none;
+    border-color: none;
+    vertical-align: middle;
+    /* color: red; */
 }
 
 .symbolMap{
@@ -75,7 +113,7 @@
 }
 
 .regionTitle{
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-size: 30px;
     text-align: center;
     letter-spacing: 3px;
@@ -108,7 +146,7 @@ th,tr,td{
 
 .thead_civ{
     background-color: rgb(36, 33, 41);
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 .civilTitle{
@@ -130,13 +168,17 @@ th,tr,td{
     cursor: pointer;
 }
 
-.exit_civilPage{
+.exit_civilPage {
     width: 45px;
     height: 45px;
     background-color: rgb(255, 255, 255);
     padding: 10px;
-    margin: 20px 0px 0px 20px;
+    /* margin: 20px 0px 0px 20px; */
     border-radius: 100%;
+    position: absolute;
+    left: 20px;
+    animation-name: appeared0;
+    animation-duration: 3s;
 
 }
 
@@ -154,11 +196,9 @@ th,tr,td{
 
 .container_regionTitle{
     display: flex;
-    align-items: center;
-}
-
-.regionTitle{
-    margin-left: 120px;
+    position: relative;
+    justify-content: center;
+    width: 100%;
 }
 
 .exitimg_civilPage{
@@ -171,5 +211,13 @@ th,tr,td{
         transform: translateX(100%);
     }
     100%{
+    }
+}
+
+@keyframes test{
+    100%{
+    }
+    0% {
+        transform: translateX(100%);
     }
 }
