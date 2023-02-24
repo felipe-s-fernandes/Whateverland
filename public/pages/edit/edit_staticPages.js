@@ -65,10 +65,6 @@ export function renderEditStaticHistory() {
     page.innerHTML = `
     <div class="boxBigCard">
         <h2>História</h2>
-        <button type="submit" class ="style_btn" id="addHistory">Adicionar Evento</button>
-        <div id="divHistory"></div>
-
-
         <form id="formHistory2" class="cadastre">
             <label for="name_pg_history">Título do evento:</label>
             <input type="text" name="nameh" id="name_pg_history" />
@@ -77,6 +73,7 @@ export function renderEditStaticHistory() {
             <input type="text" name="yearh" id="year_pg_history" />
 
             <label for="img_pg_history">Imagem do evento:</label>
+            <img src="" alt="Imagem não encontrada" id="imageEvent">
             <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" />
 
             <label for="legend_pg_history">Legenda da imagem:</label>
@@ -87,8 +84,6 @@ export function renderEditStaticHistory() {
 
             <button type="submit" class ="style_btn" id="buttonHistory">Adicionar</button>
         </form>
-
-
         <table>
             <thead>
                 <tr id="table-heading">
@@ -104,7 +99,6 @@ export function renderEditStaticHistory() {
         <div id="resulthistory"></div>
     </div>
     `;
-
     return page;
 }
 
@@ -140,76 +134,5 @@ export function renderEditStaticGallery() {
             <div id="resultgallery"></div>
         </div>
     `;
-
     return page;
 }
-
-export const inputsAddHistory = `
-<form id="formHistory" class="cadastre">
-    <label for="name_pg_history">Título do evento:</label>
-    <input type="text" name="nameh" id="name_pg_history" />
-
-    <label for="year_pg_history">Ano do evento:</label>
-    <input type="text" name="yearh" id="year_pg_history" />
-
-    <label for="img_pg_history">Imagem do evento:</label>
-    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" name="imgh" id="img_pg_history" />
-
-    <label for="legend_pg_history">Legenda da imagem:</label>
-    <input type="text" name="legendh" id="legend_pg_history" />
-
-    <label for="desc_pg_history">Descrição do evento:</label>
-    <textarea type="text" name="desch" id="desc_pg_history"></textarea>
-
-    <button type="submit" class ="style_btn" id="include_hist">Incluir evento</button>
-    <button type="button" class ="style_btn" id="cancel_add_hist">Cancelar</button>
-</form>
-`;
-
-
-export const inputsEditHistory = `
-<form class="cadastre" id="formEditHistory">
-    <label for="name_pg_history">Título do evento:</label>
-    <input type="text" name="nameedith" id="name_pg_history" />
-
-    <label for="year_pg_history">Ano do evento:</label>
-    <input type="text" name="yearedith" id="year_pg_history" />
-
-    <label for="img_pg_history">Imagem do evento:</label>
-    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_history" />
-
-    <label for="legend_pg_history">Legenda da imagem:</label>
-    <input type="text" name="legendedith" id="legend_pg_history" />
-
-    <label for="desc_pg_history">Descrição do evento:</label>
-    <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
-
-    <button type="submit" class ="style_btn" id="edit_hist">Editar evento</button>
-    <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
-</form>
-`;
-
-// export function inputsHistory(idHTML, buttonName) {
-//     const pageContent =`
-//         <form class="cadastre" id="formEditHistory">
-//             <label for="name_pg_history">Título do evento:</label>
-//             <input type="text" name="nameedith" id="name_pg_history" />
-
-//             <label for="year_pg_history">Ano do evento:</label>
-//             <input type="text" name="yearedith" id="year_pg_history" />
-
-//             <label for="img_pg_history">Imagem do evento:</label>
-//             <input type="file" name="imgedith" id="img_pg_history" />
-
-//             <label for="legend_pg_history">Legenda da imagem:</label>
-//             <input type="text" name="legendedith" id="legend_pg_history" />
-
-//             <label for="desc_pg_history">Descrição do evento:</label>
-//             <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
-
-//             <button type="submit" class ="style_btn" id="${idHTML}">${buttonName}</button>
-//             <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
-//         </form>
-//     `;
-//     return pageContent;        
-// }
