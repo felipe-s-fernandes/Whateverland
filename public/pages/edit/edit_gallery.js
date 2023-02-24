@@ -17,6 +17,7 @@ export async function reqRenderTableGallery(civilizationId) {
 }
 
 export async function reqDeleteImage(imageId, civilizationId) {
+    const result = document.querySelector("#resultgallery");
     await HTTPRequest(`/gallery/${imageId}`, "DELETE");
 
     const table = document.querySelector("#tableGallery");
@@ -27,7 +28,7 @@ export async function reqDeleteImage(imageId, civilizationId) {
 // Formulário de preenchimento
 export function eventFormGallery(civilizationId) {
     const form = document.querySelector("#formGallery");
-
+    const result = document.querySelector("#resultgallery");
     form.addEventListener("submit", async (e) => {
         
         e.preventDefault();
