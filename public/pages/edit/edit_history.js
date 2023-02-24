@@ -44,6 +44,7 @@ function inputRender(object, idHTML, objectProperty) {
 
 // Requisição DELETE para excluir evento de história
 export async function reqDeleteEvent(event, civilizationId) {
+    console.log(event);
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Adicionar";
 
