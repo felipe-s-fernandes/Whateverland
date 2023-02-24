@@ -69,11 +69,17 @@ function regionsSelect(array) {
 
 // Requisição para edição de imagem da civilização
 async function editImageCivilization(formData) {
+    const result = document.querySelector("#resultstart");
+    
     await imgRequest(`/civilizations/edit`, "PATCH", formData);
+    result.textContent = "Os dados da civilização foram alterados com sucesso!";
+    console.log("Dados da civilização (nome e imagem) alterados!");
+    
 }
 
 // Requisição para página inicial da civilização
 async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc ) {
+    const result = document.querySelector("#resultstart");
     await HTTPRequest(`/start/edit`, "PATCH", {
         civilization_id: idCivilization,
         official_name: coriname,
@@ -84,11 +90,13 @@ async function editStartPage(idCivilization, clocalization, coriname, ctitle, cc
         title: ctitle,
         paragraph: cdesc
     });
+    result.textContent = "Os dados da civilização foram alterados com sucesso!";
+    console.log("Dados da civilização alterados! (informações gerais)");
 }
 
 export function eventFormCivilizationAndStartPage(idCivilization) {
     const form = document.querySelector("#formEditCivilizationAndStartPage");
-
+    const result = document.querySelector("#resultstart");
     form.addEventListener("submit", async (e) => {
         // const civil_name = document.querySelector("#name_pg_start");
         // const civil_origin_name = document.querySelector("#origin_pg_start");
@@ -113,20 +121,25 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
         formData.append("civilization_name", form.nameCivilization.value);
         
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        await editImageCivilization(formData);
+        if(form.nameCivilization.value == ""){
+            result.textContent = 'Preencha o campo "Nome da civilização!"';
+        }else{
+            await editImageCivilization(formData);
 
-        await editStartPage(
-            idCivilization,
-            form.nameregion.value,
-            form.originName.value,
-            form.titulo.value,
-            form.capital.value,
-            form.religion.value,
-            form.governo.value,
-            form.desc.value
-        );
+            await editStartPage(
+                idCivilization,
+                form.nameregion.value,
+                form.originName.value,
+                form.titulo.value,
+                form.capital.value,
+                form.religion.value,
+                form.governo.value,
+                form.desc.value
+            );
 
-        // Renderização da imagem
-        renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
+            result.textContent = "Os dados da civilização foram alterados com sucesso!";
+            // Renderização da imagem
+            renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
+        }
     });
 }
