@@ -13,6 +13,8 @@ export async function reqRenderTableGallery(civilizationId) {
         "GET"
     );
 
+    console.log(galleryObject);
+
     await renderTable(galleryObject.gallery);
 }
 
@@ -71,7 +73,7 @@ async function renderTable(array) {
         line.appendChild(column3);
 
         column1.innerHTML = `${array[i].gallery_image_title}`;
-        column2.innerHTML = `${array[i].image_unique_id}`;
+        column2.innerHTML = `<img src="../../uploads/${array[i].gallery_image_id}" alt="Prévia da imagem">`;
         column3.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela

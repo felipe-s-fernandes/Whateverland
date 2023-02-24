@@ -92,6 +92,7 @@ export function renderEditStaticHistory() {
                     <td class="id-number">Id</td>
                     <td class="e-mail">Ano do evento</td>
                     <td class="nome">Título do evento</td>
+                    <td class="nome">Imagem do evento</td>
                     <td class="nome">Editar</td>
                     <td class="nome">Deletar</td>
                 </tr>
