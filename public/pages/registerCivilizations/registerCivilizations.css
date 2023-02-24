@@ -1,4 +1,4 @@
-table {
+.registerTable {
     width: 100%;
     margin-top: 50px;
     text-align: center;
@@ -12,20 +12,25 @@ table {
 
 #table-heading {
     background-color: var(--main-bg-color);
-    color: #ffffff;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
-tr {
+.registerTable tr {
     height: 50px;
     width: 100%;
 }
 
-td {
+.registerTable td {
     text-align: center;
     vertical-align: middle;
-    border: 1px solid white;
     background: rgba(81, 73, 87, 0.138);
 
+}
+
+.registerTable tr:nth-child(even) {
+    background: rgba(81, 73, 87, 1);
+    color: var(--primary-color);
 }
 
 .editarImg,
@@ -36,7 +41,6 @@ td {
 }
 .editarImg:hover,
 .excluirImg:hover {
-
     cursor: pointer;
 }
 
@@ -45,77 +49,61 @@ td {
     border-right: 0px;
 }
 
-tr:nth-child(even) {
-    background: rgba(81, 73, 87, 1);
-}
 
 .TitleForm {
     color: #000000;
     margin: 10px;
 }
 
+.input-box {
+    margin: 30px;
+}
+
+#username-input {
+    display: inline-block;
+    margin-left: 6%;
+    margin-right: 2%;
+}
+
+#regions {
+    display: inline-block;
+}
+
 .cadastrar {
-    height: 30px;
-    width: 90px;
-    color: rgb(255, 255, 255);
-    border-color: var(--primary-color);
+    height: 40px;
+    width: 140px;
+    color: var(--primary-color);
+    border-color: none;
+    border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
     display: flex;
+    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
     justify-content: center;
+
+}
+
+.cadastrar:hover {
+    background-color: var(--primary-color);
+    color: var(--main-bg-color);
+    box-shadow: var(--shadow-color-position);
+    cursor: pointer;
 }
 
 .registerContainer {
     margin-top: 50px;
     margin-bottom: 50px;
-    height: 90%;
-    min-height: 500px;
+    height: 70vh;   
     width: 95%;
     max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
-    border: 2px solid #B2B2B2;
-}
-
-.cadastrar:hover {
-    color: rgb(0, 0, 0);
-    background-color: var(--primary-color);
-    border-color: var(--main-bg-color);
-    margin-left: auto;
-    margin-right: auto;
-    cursor: pointer;
-}
-
-#regions {
-    text-align: center;
-    background-color: #ffffff;
-    width: 128px;
-    height: 30px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5px;
-    border: 1px black solid;
-}
-
-.input-field {
-    text-align: center;
-    background-color: #ffffff;
-    width: 122px;
-    height: 30px;
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px black solid;
-
-}
-
-.input-box {
-    margin: 30px;
+    border: var(--border-card);
+    overflow: auto;
 }
 
 #section-lista {

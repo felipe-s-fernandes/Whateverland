@@ -88,8 +88,8 @@ function renderStaticPage() {
                 <p>Para inserir civilizações na lista, preencha os dados abaixo:</p>
             </div>
             <form id="form" class="input-box">
-                <input type="text" name="nome" id="name-input" class="input-field" placeholder="Nome:" autocomplete="off">
-                <select name="regions" id="regions">
+                <input type="text" name="nome" id="username-input" class="mainInput" placeholder="Nome:" autocomplete="off">
+                <select name="regions" id="regions" class="mainSelect" >
                     <option value=""></option>
                 </select>
                 </br><input type="submit" value="Cadastrar" id="cadastrar" class="cadastrar"></br>
@@ -99,7 +99,7 @@ function renderStaticPage() {
                     <h2 class="TitleForm">LISTA DE CIVILIZAÇÕES CADASTRADAS POR REGIÃO</h2>
                     <p>Abaixo, você pode ver, editar ou remover as civilizações registradas.</p>
                 </div>
-                <table></table>
+                <table class="registerTable" ></table>
             </section>
         </div>
     `;

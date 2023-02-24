@@ -21,9 +21,9 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
-    const loginButton = createElement("button", "loginButton");
+    const loginButton = createElement("button", "backButton");
     if (document.cookie.includes("session")) {
-        const registerButton = createElement("button", "registerButton");
+        const registerButton = createElement("button", "backButton");
         registerButton.innerText = "Registre uma civilização";
         registerButton.onclick = () => {
             redirectTo("/register");
