@@ -20,11 +20,10 @@
 
 }
 
-
 .labelEdit {
-    display:inline-block ;
+    display: flex;
     margin-right: 10px;
- }
+}
 
 .InputEdit {
     display: flex;
@@ -55,33 +54,7 @@
     height: 90%;
 }
 
-.containerEdit3 {
-
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-
-}
-
-.containerEdit4 {
-    background-color: rgb(255, 255, 255);
-}
-
-.containerEdit5 {
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-}
-
-.containerEdit6 {
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-}
-.btn-edit{
+.btn-edit {
     align-items: center;
     justify-content: center;
     display: flex;
@@ -94,31 +67,86 @@
     height: 40px;
     box-shadow: var(--shadow-color-position);
 }
-.btn-edit:hover{
+
+.btn-edit:hover {
     background-color: var(--primary-color);
     color: var(--main-bg-color);
     box-shadow: var(--shadow-color-position);
     cursor: pointer;
-    
+
 }
+
 .editTable {
     margin-left: 15px;
-    width: 100%;
+    width: 95%;
     margin-top: 50px;
     text-align: center;
 }
+
 .editTable-heading {
     background-color: var(--main-bg-color);
     color: var(--primary-color);
     font-weight: bold;
 }
+
 .editTable td {
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
 
 }
+
 .editTable tr:nth-child(even) {
     background: rgba(81, 73, 87, 1);
     color: var(--primary-color);
+}
+
+.imgEdit {
+    width: 250px;
+    height: 250px;
+}
+
+.InputDesc {
+    margin-left: 5px;
+    width: 585px;
+    height: 89px;
+    border: 2px solid black;
+    border-radius: var(--border-radius-big-box);
+}
+
+.divForm {
+    border: 2px solid black;
+    border-radius: var(--border-radius-big-box);
+    padding-bottom: 15px;
+    height: 90%;
+    width: 95%;
+    margin-bottom:3% ;
+
+}
+
+.containerEdit6 {
+    border: 2px solid black;
+    border-radius: var(--border-radius-big-box);
+    padding-bottom: 15px;
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+}
+
+.containerEdit3 {
+    border: 2px solid black;
+    border-radius: var(--border-radius-big-box);
+    padding-bottom: 15px;
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
+}
+
+.containerEdit5 {
+    border: 2px solid black;
+    border-radius: var(--border-radius-big-box);
+    padding-bottom: 15px;
+    height: 90%;
+    width: 95%;
+    max-width: 1800px;
 }

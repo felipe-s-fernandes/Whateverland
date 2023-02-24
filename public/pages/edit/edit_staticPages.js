@@ -16,7 +16,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <label class="labelEdit" for="name_pg_start">Nome da civilização:</label>
                     <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br></br>
 
-                    <img class="labelEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
+                    <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
 
                     <label class="labelEdit" for="img_pg_start">Imagem da civilização:</label>
                     <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_adm" name="img_pg_adm" />
@@ -47,7 +47,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <input class="InputEdit" type="text" name="governo" id="gov_pg_start" /></br>
 
                     <label class="labelEdit" for="desc_pg_start">Descrição:</label>
-                    <textarea class="InputEdit" type="text" name="desc" id="desc_pg_start"></textarea></br>
+                    <textarea class="InputDesc" type="text" name="desc" id="desc_pg_start"></textarea></br>
                 </div>
 
                 <button type="submit" class ="btn-edit" id="edit">Salvar alterações</button>
@@ -122,7 +122,7 @@ export function renderEditStaticGallery() {
                     <input type="text" id="civi_gallery" name="civi_gallery" />
 
                     <label class="labelEdit" for="img_gallery">Imagem:</label>
-                    <input type="file"  accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" />
+                    <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" />
 
                     <button class ="btn-edit" type="submit" id="include_gallery">Adicionar Imagem</button>
                 </form>
