@@ -229,6 +229,8 @@ header {
     margin-right: auto;
     border-radius: var(--border-radius-big-box);
     border: none;
+
+    font-size: 15px;
 }
 
 /* width */
