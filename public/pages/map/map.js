@@ -24,19 +24,19 @@ export default async function RenderMap(data) {
     const loginButton = createElement("button", "backButton");
     if (document.cookie.includes("session")) {
         const registerButton = createElement("button", "backButton");
-        registerButton.innerText = "Registre uma civilização";
+        registerButton.innerText = "EDITOR DE ARTIGOS";
         registerButton.onclick = () => {
             redirectTo("/register");
         };
         container.appendChild(registerButton);
 
-        loginButton.innerText = "Logout";
+        loginButton.innerText = "LOGOUT";
         loginButton.onclick = async () => {
             await HTTPRequest("/login", "DELETE");
             redirectTo("/map");
         };
     } else {
-        loginButton.innerText = "Login";
+        loginButton.innerText = "LOGIN";
         loginButton.onclick = () => {
             redirectTo("/login");
         };

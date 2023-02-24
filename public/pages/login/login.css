@@ -1,4 +1,4 @@
-.pg_login, .pg_register{
+.pg_login, .pg_register, .loginPage{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -79,7 +79,6 @@
 
 #senha{
     margin-bottom: 30px;
-
 }
 
 #backmap{
