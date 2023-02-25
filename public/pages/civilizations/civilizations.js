@@ -58,8 +58,8 @@ export default async function RenderCivilizationsPage(regionId) {
         return map;
     }
 
-    // const regionSelect = createElement("div", "regionSelect");
-    // regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
+    const regionSelect = createElement("div", "regionSelect");
+    regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
 
     // const map = createMap(allRegions);
 
@@ -83,9 +83,9 @@ export default async function RenderCivilizationsPage(regionId) {
     const exitimg_civilPage = createElement("img", "exitimg_civilPage");
 
     // pageCiv.appendChild(symbolBody);
-    pageCiv.appendChild(createMap(region));
+    // pageCiv.appendChild(createMap(region));
     pageCiv.appendChild(regionBody);
-    // pageCiv.appendChild(regionSelect);
+    pageCiv.appendChild(regionSelect);
 
     // symbolBody.appendChild(symbolContainer);
     // symbolContainer.appendChild(symbolMap);
@@ -320,8 +320,8 @@ export default async function RenderCivilizationsPage(regionId) {
             
 
             // console.log(regionId);
-            const regionSelect2 = document.querySelector(`#region${regionId}`);
-            regionSelect2.style.fill = "white";
+            // const regionSelect2 = document.querySelector(`#region${regionId}`);
+            // regionSelect2.style.fill = "white";
             // console.log(regionSelect2);
             // console.log("Evento civilizations page");
         },

@@ -1,27 +1,38 @@
-
+/* Conteinar da página */
 .pageCiv{
     display: flex;
     width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    margin-right: 400px;
-    /* overflow: hidden; */
+    animation-name: moveMap;
+    animation-duration: 2s;
 }
 
-.symbolBody{
+.regionSelect {
+    position: fixed;
+    animation-name: moveMap;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+/* .symbolBody{
     width: 1000px;
     height: 75%;
-}
+} */
 
 .regionCivilizationsGeneral {
     width: 90%;
-    box-shadow: var(--shadow-color-position);
+    /* box-shadow: var(--shadow-color-position); */
     border-radius: 25px;
+    /* border: var(--border-card); */
+    box-shadow: 1px 4px 10px 0 black;
 }
 
+/* Sidebar */
 .regionBody{
     box-shadow: var(--shadow-color-position);
+    box-shadow: 1px 4px 10px 0 black;
     background-color: var(--main-bg-color);
     display: flex;
     flex-direction: column;
@@ -36,7 +47,7 @@
     visibility: hidden;
     animation-duration: 1s;
     animation-fill-mode: forwards;
-    animation-name: appeared0;
+    animation-name: showSidebar;
 }
 
 .c{
@@ -68,6 +79,8 @@
     border: none;
     border-color: none;
     vertical-align: middle;
+    /* border: var(--border-card);
+    box-shadow: 1px 4px 10px 0 black; */
     /* color: red; */
 }
 
@@ -78,21 +91,21 @@
     /* color: red; */
 }
 
-.symbolMap{
+/* .symbolMap{
     position: relative;
     left: 100px;
     top: 50px;
     width: 600px;
     height: 600px;
-}
+} */
 
-.symbolimg{
+/* .symbolimg{
     position: relative;
     left: -350px;
     top: -150px;
     width: 300px;
     height: 300px;
-}
+} */
 
 .regionResumTitle{
     border-bottom: 1px solid black;
@@ -158,6 +171,7 @@
     cursor: pointer;
 }
 
+/* Botão X para fechar o card */
 .exit_civilPage {
     width: 45px;
     height: 45px;
@@ -168,7 +182,7 @@
     position: absolute;
     left: 20px;
     cursor: pointer;
-    /* animation-name: appeared0;
+    /* animation-name: showSidebar;
     animation-duration: 3s; */
 
 }
@@ -197,7 +211,8 @@
     height: 25px;
 }
 
-@keyframes appeared0{
+
+@keyframes showSidebar{
     0% {
         /* transform: translateX(0); */
         visibility: visible;
@@ -208,10 +223,10 @@
     }
 }
 
-@keyframes test{
-    100%{
+@keyframes moveMap{
+    0%{
     }
-    0% {
-        transform: translateX(100%);
+    100% {
+        margin-right: 400px;
     }
 }
