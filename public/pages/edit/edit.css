@@ -70,6 +70,10 @@
     text-align: center;
 }
 
+.buttonTable {
+    height: 30px;
+}
+
 .containerInformationEdit {
     /* height: 90%; */
     width: 1200px;
@@ -119,7 +123,7 @@
 
 .editTable {
     /* margin-left: 15px; */
-    max-width: 95%;
+    width: 100%;
     /* margin-top: 50px; */
     text-align: center;
 }
@@ -140,6 +144,7 @@
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
+    padding: 5px;
 
 }
 
@@ -189,6 +194,8 @@
 }
 .divFormStartEdit{
     display: flex;
+    width: 100%;
+    height: 100%;
     flex-direction: column;
     flex: 2;
 }
@@ -198,4 +205,94 @@
     display: flex;
     flex-direction: column;
     width: 400px;
+}
+
+.editTable th, tr, td{
+    width: 100px;
+    height: 100px;
+}
+/* 
+
+.editTable img{
+    width: 100px;
+    height: 100px;
+} */
+
+.imagePreviewHistory {
+    width: 100px;
+    height: 100px;
+}
+
+.formdivh2{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+#formHistory2{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.formedit_H{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#formgallery, .cadastre{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divformgallery{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+#civi_gallery{
+    width: 400px;
+}
+
+.buttontable_H{
+    cursor: pointer;
+}
+
+
+.InputFormEdit {
+    background-color: var(--input-color);
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    height: 40px;
+    padding-left: 8px;
+}
+
+.container_eventH{
+    display: flex;
+    gap: 25px;
+}
+
+.yearevent{
+    flex: 1;
+}
+
+.nameevent{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.descevent{
+    display: flex;
+    flex-direction: column;
+}
+
+.container_result{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
