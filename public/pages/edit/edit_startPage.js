@@ -28,6 +28,22 @@ export async function renderInputImageCivilization(idCivilization, idHTML, objec
     input.src = "../../uploads/" + objectValue;
 }
 
+// Pré-visualização da imagem inserida pelo usuário
+export function previewImageCivilization(idHTMLImage) {
+    const imgPreview = document.querySelector(`#${idHTMLImage}`);
+    const inputFile = document.querySelector("#img_pg_adm");
+
+    inputFile.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            imgPreview.src = reader.result;
+            // inputImg.src = "../../uploads/" + reader.result;
+        }
+    })
+}
+
 // Requisição padrão para inptus da página inicial do artigo
 export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
@@ -137,9 +153,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                 form.desc.value
             );
 
-            result.textContent = "Os dados da civilização foram alterados com sucesso!";
-            // Renderização da imagem
-            renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
-        }
+        // Renderização da imagem prévia de visualização
+        // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
     });
 }

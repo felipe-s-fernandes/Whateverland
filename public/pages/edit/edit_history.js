@@ -44,7 +44,7 @@ function inputRender(object, idHTML, objectProperty) {
 
 // Requisição DELETE para excluir evento de história
 export async function reqDeleteEvent(event, civilizationId) {
-    const result = document.querySelector("#resulthistory");
+    console.log(event);
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Adicionar";
 
@@ -215,22 +215,25 @@ function renderTable(array) {
         const column3 = createElement("td", "table");
         const column4 = createElement("td", "table");
         const column5 = createElement("td", "table");
+        const column6 = createElement("td", "table");
 
         line.appendChild(column1);
         line.appendChild(column2);
         line.appendChild(column3);
         line.appendChild(column4);
         line.appendChild(column5);
+        line.appendChild(column6);
 
         column1.innerHTML = `${array[i].event}`;
         column2.innerHTML = `${array[i].event_year}`;
         column3.innerHTML = `${array[i].event_title}`;
-        column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
-        column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
+        column4.innerHTML = `<img src="../../uploads/${array[i].event_image}" alt="Prévia de imagem do evento">`;
+        column5.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
+        column6.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", async () => editEventsHistory(array[i]));
-        column5.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
+        column5.addEventListener("click", async () => editEventsHistory(array[i]));
+        column6.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
 
         tableBody.appendChild(line);
     }
