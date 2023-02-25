@@ -1,8 +1,26 @@
 .titleEdit {
     font-size: 20px;
     border-bottom: 3px solid #000000;
-    margin-bottom: 5px;
+    margin-bottom: 25px;
 
+}
+
+#containerFormEditStartPage {
+    display: flex;
+    gap: 20px;
+}
+
+#formCivilization {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+#formCivilizationImage {
+    display: flex;
+    flex: 2;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .containerEditMain {
@@ -22,24 +40,38 @@
 
 .labelEdit {
     display: flex;
+    margin-bottom: 5px;
 }
 
 .InputEdit {
-    justify-content: center;
+    /* justify-content: center; */
     /* width: 300px; */
-    border-radius: 5px;
-    border: 2px solid black;
+    /* border-radius: 5px; */
+    /* border: 2px solid black; */
+    /* font-size: 15px; */
+    /* border-radius: 15px; */
+    /* text-align: center; */
+
+    /* width: 300px; */
+    /* border-radius: 5px; */
+    /* border: 2px solid black; */
+    /* font-size: 15px; */
+    /* border-radius: 15px; */
+    /* text-align: center; */
+    background-color: var(--input-color);
+    border: none;
     font-size: 15px;
     border-radius: 15px;
-    text-align: center;
-    /* align-items: center; */
-    /* background-color: var(--input-color); */
-    /* border: none; */
     /* display: flex; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: 300px; */
+    height: 40px;
+    text-align: center;
 }
 
 .containerInformationEdit {
-    height: 90%;
+    /* height: 90%; */
     width: 1200px;
     max-width: 1800px;
     background: var(--primary-color);
@@ -122,11 +154,13 @@
 }
 
 .InputDesc {
-    /* margin-left: 5px; */
-    /* width: 585px; */
-    height: 89px;
-    border: 2px solid black;
+    height: 100px;
     border-radius: var(--border-radius-big-box);
+    background-color: var(--input-color);
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 8px;
 }
 
 .configImgEdit{
@@ -138,6 +172,13 @@
     height: 150px;
 }
 .divFormStartEdit{
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+}
+
+.divFormCivilizationEdit {
+    flex: 1;
     display: flex;
     flex-direction: column;
 }

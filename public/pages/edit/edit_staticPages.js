@@ -7,50 +7,56 @@ export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "containerInformationEdit");
 
     page.innerHTML = `
-        <div>
-            <form id="formEditCivilizationAndStartPage" >
-                <div class="divForm">
-                    <h2 id="name_civilization" class="titleEdit">Dados da civilização</h2>
+        
+        <form id="formEditCivilizationAndStartPage" >
+            <h2 id="name_civilization" class="titleEdit">Dados da civilização</h2>
+            <div id="containerFormEditStartPage">
+                <div class="divFormCivilizationEdit">
+                    <div id="formCivilization">
+                        <label class="labelEdit"  for="name_pg_start">Nome da civilização</label>
+                        <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br>
 
-                    <label class="labelEdit"  for="name_pg_start">Nome da civilização:</label>
-                    <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br>
+                        <label class="labelEdit" for="titlename_pg_start">Nome da região</label>
+                        <select class="InputEdit" name="idregion" id="id_region_start"></select></br>
+                    </div>
 
-                    <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
+                    <div id="formCivilizationImage">
+                        <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
+                        
+                        <div>
+                            <label class="labelEdit" for="img_pg_start">Imagem da civilização</label>
+                            <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
+                        </div>
 
-                    <label class="labelEdit" for="img_pg_start">Imagem da civilização:</label>
-                    <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
+                    </div>
                 </div>
-
                 <div class="divFormStartEdit">                        
-                    <label class="labelEdit" for="titlename_pg_start">Título da civilização:</label>
+                    <label class="labelEdit" for="titlename_pg_start">Título da civilização</label>
                     <input class="InputEdit"  type="text" name="titulo" id="titlename_pg_start" /></br>
 
-                    <label class="labelEdit" for="origin_pg_start">Nome Oficial da civilização:</label>
+                    <label class="labelEdit" for="origin_pg_start">Nome Oficial da civilização</label>
                     <input class="InputEdit" type="text" name="originName" id="origin_pg_start" /></br>
 
-                    <label class="labelEdit" for="titlename_pg_start">Id da Região:</label>
-                    <select class="InputEdit" name="idregion" id="id_region_start"></select></br>
 
-                    <label class="labelEdit" for="titlename_pg_start">Nome da Região:</label>
+                    <label class="labelEdit" for="titlename_pg_start">Nome da Região</label>
                     <input class="InputEdit" type="text" name="nameregion" id="name_region_start" /></br>
 
-                    <label class="labelEdit" for="cap_pg_start">Capital da civilização:</label>
+                    <label class="labelEdit" for="cap_pg_start">Capital da civilização</label>
                     <input class="InputEdit" type="text" name="capital" id="cap_pg_start" /></br>
 
-                    <label class="labelEdit" for="religion_pg_start">Religião da civilização:</label>
+                    <label class="labelEdit" for="religion_pg_start">Religião da civilização</label>
                     <input class="InputEdit" type="text" name="religion" id="religion_pg_start" /></br>
 
-                    <label class="labelEdit" for="gov_pg_start">Governo da civilização:</label>
+                    <label class="labelEdit" for="gov_pg_start">Governo da civilização</label>
                     <input class="InputEdit" type="text" name="governo" id="gov_pg_start" /></br>
 
-                    <label class="labelEdit" for="desc_pg_start">Descrição:</label>
+                    <label class="labelEdit" for="desc_pg_start">Descrição</label>
                     <textarea class="InputDesc" type="text" name="desc" id="desc_pg_start"></textarea></br>
                 </div>
-
-                <button type="submit" class ="btn-edit" id="edit">Salvar alterações</button>
-            </form>
-            <div id="resultstart"></div>
-        </div>
+            </div>
+            <button type="submit" class ="btn-edit" id="edit">Salvar alterações</button>
+        </form>
+        <div id="resultstart"></div>
     `;
 
     return page;
