@@ -21,12 +21,13 @@ export function renderEditStaticCivilizationAndStart() {
                     </div>
 
                     <div id="formCivilizationImage">
-                        <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
+                        <label class="labelEdit" for="img_pg_start">Imagem da civilização</label>
                         
-                        <div>
-                            <label class="labelEdit" for="img_pg_start">Imagem da civilização</label>
-                            <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
+                        <div class="imgEdit">
+                            <img src="" alt="Imagem não encontrada" id="imageCivilization">
                         </div>
+
+                        <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
 
                     </div>
                 </div>

@@ -13,12 +13,12 @@
 #formCivilization {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    /* flex: 1; */
 }
 
 #formCivilizationImage {
     display: flex;
-    flex: 2;
+    /* flex: 3; */
     flex-direction: column;
     justify-content: space-around;
 }
@@ -149,8 +149,24 @@
 }
 
 .imgEdit {
-    width: 250px;
+    /* width: 250px; */
     height: 250px;
+    width: 100%;
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--input-color);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.imgEdit img {
+    height: 100%;
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .InputDesc {
@@ -178,7 +194,8 @@
 }
 
 .divFormCivilizationEdit {
-    flex: 1;
+    /* flex: 1; */
     display: flex;
     flex-direction: column;
+    width: 400px;
 }
