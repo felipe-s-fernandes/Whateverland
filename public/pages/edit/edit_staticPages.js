@@ -4,16 +4,16 @@
 import { createElement } from "../../modules/modules.js";
 
 export function renderEditStaticCivilizationAndStart() {
-    const page = createElement("div", "containerEdit1");
+    const page = createElement("div", "containerInformationEdit");
 
     page.innerHTML = `
-        <div class="containerEdit2">
-            <form class="containerEdit7" id="formEditCivilizationAndStartPage" >
+        <div>
+            <form id="formEditCivilizationAndStartPage" >
                 <div class="divForm">
                     <h2 id="name_civilization" class="titleEdit">Dados da civilização</h2>
 
-                    <label class="labelEdit" for="name_pg_start">Nome da civilização:</label>
-                    <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br></br>
+                    <label class="labelEdit"  for="name_pg_start">Nome da civilização:</label>
+                    <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br>
 
                     <img class="imgEdit" src="" alt="Imagem não encontrada" id="imageCivilization">
 
@@ -21,11 +21,9 @@ export function renderEditStaticCivilizationAndStart() {
                     <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" id="img_pg_adm" name="img_pg_adm" />
                 </div>
 
-                <div class="containerEdit6">                        
-                    <h2 class="titleEdit">Página Inicial</h2>
-
+                <div class="divFormStartEdit">                        
                     <label class="labelEdit" for="titlename_pg_start">Título da civilização:</label>
-                    <input class="InputEdit" type="text" name="titulo" id="titlename_pg_start" /></br>
+                    <input class="InputEdit"  type="text" name="titulo" id="titlename_pg_start" /></br>
 
                     <label class="labelEdit" for="origin_pg_start">Nome Oficial da civilização:</label>
                     <input class="InputEdit" type="text" name="originName" id="origin_pg_start" /></br>
@@ -59,14 +57,14 @@ export function renderEditStaticCivilizationAndStart() {
 }
 
 export function renderEditStaticHistory() {
-    const page = createElement("div", "containerEdit3");
+    const page = createElement("div", "containerInformationEdit");
 
     page.innerHTML = `
-    <div class="containerEdit4">
+    <div>
         <h2 class="titleEdit">História</h2>
 
         <form id="formHistory2" class="cadastre">
-            <label class="labelEdit" for="name_pg_history">Título do evento:</label>
+            <label class="labelEdit"  for="name_pg_history">Título do evento:</label>
             <input class="InputEdit" type="text" name="nameh" id="name_pg_history" /><br>
 
             <label class="labelEdit" for="year_pg_history">Ano do evento:</label>
@@ -80,7 +78,7 @@ export function renderEditStaticHistory() {
             <input class="InputEdit" type="text" name="legendh" id="legend_pg_history" />
 
             <label class="labelEdit" for="desc_pg_history">Descrição do evento:</label>
-            <textarea class="InputEdit" type="text" name="desch" id="desc_pg_history"></textarea>
+            <textarea class="InputDesc" type="text" name="desch" id="desc_pg_history"></textarea>
 
             <button type="submit" class ="btn-edit" id="buttonHistory">Adicionar</button>
         </form>
@@ -109,11 +107,11 @@ export function renderEditStaticGallery() {
     const page = createElement("div", "page");
 
     page.innerHTML = `
-        <div class="containerEdit5">
+        <div class="containerInformationEdit">
         <h2 class="titleEdit">Galeria</h2>
             <div>
                 <form class="cadastre" id="formGallery">
-                    <h3>Adicionar nova imagem</h3>
+                    <h3 >Adicionar nova imagem</h3>
 
                     <label class="labelEdit" for="civi_gallery">Legenda da imagem:</label>
                     <input type="text" id="civi_gallery" name="civi_gallery" />
@@ -139,72 +137,3 @@ export function renderEditStaticGallery() {
     `;
     return page;
 }
-
-// export const inputsAddHistory = `
-// <form id="formHistory" class="containerEdit">
-//     <label class="labelEdit" for="name_pg_history">Título do evento:</label>
-//     <input class="InputEdit" type="text" name="nameh" id="name_pg_history" />
-
-//     <label class="labelEdit" for="year_pg_history">Ano do evento:</label>
-//     <input class="InputEdit" type="text" name="yearh" id="year_pg_history" />
-
-//     <label class="labelEdit" for="img_pg_history">Imagem do evento:</label>
-//     <input class="InputEdit" type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" name="imgh" id="img_pg_history" />
-
-//     <label class="labelEdit" for="legend_pg_history">Legenda da imagem:</label>
-//     <input class="InputEdit" type="text" name="legendh" id="legend_pg_history" />
-
-//     <label class="labelEdit" for="desc_pg_history">Descrição do evento:</label>
-//     <textarea class="InputEdit" type="text" name="desch" id="desc_pg_history"></textarea>
-
-//     <button type="submit" class ="btn-edit" id="include_hist">Incluir evento</button>
-//     <button type="button" class ="btn-edit" id="cancel_add_hist">Cancelar</button>
-// </form>
-// `;
-
-// export const inputsEditHistory = `
-// <form class="containerEdit" id="formEditHistory">
-//     <label for="name_pg_history">Título do evento:</label>
-//     <input type="text" name="nameedith" id="name_pg_history" />
-
-//     <label for="year_pg_history">Ano do evento:</label>
-//     <input type="text" name="yearedith" id="year_pg_history" />
-
-//     <label for="img_pg_history">Imagem do evento:</label>
-//     <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_pg_history" />
-
-//     <label for="legend_pg_history">Legenda da imagem:</label>
-//     <input type="text" name="legendedith" id="legend_pg_history" />
-
-//     <label for="desc_pg_history">Descrição do evento:</label>
-//     <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
-
-//     <button type="submit" class ="style_btn" id="edit_hist">Editar evento</button>
-//     <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
-// </form>
-// `;
-
-// export function inputsHistory(idHTML, buttonName) {
-//     const pageContent =`
-//         <form class="cadastre" id="formEditHistory">
-//             <label for="name_pg_history">Título do evento:</label>
-//             <input type="text" name="nameedith" id="name_pg_history" />
-
-//             <label for="year_pg_history">Ano do evento:</label>
-//             <input type="text" name="yearedith" id="year_pg_history" />
-
-//             <label for="img_pg_history">Imagem do evento:</label>
-//             <input type="file" name="imgedith" id="img_pg_history" />
-
-//             <label for="legend_pg_history">Legenda da imagem:</label>
-//             <input type="text" name="legendedith" id="legend_pg_history" />
-
-//             <label for="desc_pg_history">Descrição do evento:</label>
-//             <textarea type="text" name="descedith" id="desc_pg_history"></textarea>
-
-//             <button type="submit" class ="style_btn" id="${idHTML}">${buttonName}</button>
-//             <button type="button" class ="style_btn" id="cancel_edit_hist">Cancelar alterações</button>
-//         </form>
-//     `;
-//     return pageContent;
-// }

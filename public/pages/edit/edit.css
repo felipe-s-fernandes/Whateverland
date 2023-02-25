@@ -1,8 +1,8 @@
 .titleEdit {
-    margin-right: auto;
     font-size: 20px;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    border-bottom: 3px solid #000000;
+    margin-bottom: 5px;
+
 }
 
 .containerEditMain {
@@ -10,9 +10,9 @@
     background-color: white;
     width: 55%;
     display: flex;
-    margin-right: auto;
+    /* margin-right: auto;
     margin-left: auto;
-    margin-top: 15px;
+    margin-top: 15px; */
     height: auto;
     border-radius: 15px;
     flex-direction: column;
@@ -22,44 +22,53 @@
 
 .labelEdit {
     display: flex;
-    margin-right: 10px;
 }
 
 .InputEdit {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    width: 300px;
+    /* width: 300px; */
     border-radius: 5px;
     border: 2px solid black;
-    margin-left: 10px;
+    font-size: 15px;
+    border-radius: 15px;
+    text-align: center;
+    /* align-items: center; */
+    /* background-color: var(--input-color); */
+    /* border: none; */
+    /* display: flex; */
 }
 
-.containerEdit {
-    margin-top: 50px;
-    margin-bottom: 50px;
+.containerInformationEdit {
     height: 90%;
-    width: 95%;
+    width: 1200px;
     max-width: 1800px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
-    border: 2px solid #ffffff;
+    border: var(--border-card);
+    padding: 25px;
+    min-width: 800px;
+    
+    /* display: flex; */
+    /* margin-top: 50px; */
+    /* margin-bottom: 50px; */
 }
 
-.containerEdit2 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 90%;
+.containerEditPages {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
 .btn-edit {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin: 8px;
-    margin-right: auto;
+    /* margin: 8px;
+    margin-right: auto; */
     color: var(--primary-color);
     border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
@@ -77,9 +86,9 @@
 }
 
 .editTable {
-    margin-left: 15px;
-    width: 95%;
-    margin-top: 50px;
+    /* margin-left: 15px; */
+    max-width: 95%;
+    /* margin-top: 50px; */
     text-align: center;
 }
 
@@ -88,8 +97,14 @@
     color: var(--primary-color);
     font-weight: bold;
 }
+.labelEdit1{
+    border-bottom: 3px solid #000000;
+
+}
 
 .editTable td {
+    width: 120px;
+    height: 25px;
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
@@ -107,46 +122,22 @@
 }
 
 .InputDesc {
-    margin-left: 5px;
-    width: 585px;
+    /* margin-left: 5px; */
+    /* width: 585px; */
     height: 89px;
     border: 2px solid black;
     border-radius: var(--border-radius-big-box);
 }
 
-.divForm {
-    border: 2px solid black;
-    border-radius: var(--border-radius-big-box);
-    padding-bottom: 15px;
-    height: 90%;
-    width: 95%;
-    margin-bottom:3% ;
-
+.configImgEdit{
+    width: 50px;
+    height: 50px;
 }
-
-.containerEdit6 {
-    border: 2px solid black;
-    border-radius: var(--border-radius-big-box);
-    padding-bottom: 15px;
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
+#tableHistory td tr{
+    width: 150px;
+    height: 150px;
 }
-
-.containerEdit3 {
-    border: 2px solid black;
-    border-radius: var(--border-radius-big-box);
-    padding-bottom: 15px;
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-}
-
-.containerEdit5 {
-    border: 2px solid black;
-    border-radius: var(--border-radius-big-box);
-    padding-bottom: 15px;
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
+.divFormStartEdit{
+    display: flex;
+    flex-direction: column;
 }
