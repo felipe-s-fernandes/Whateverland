@@ -236,25 +236,22 @@ function renderTable(array) {
         const column3 = createElement("td", "table");
         const column4 = createElement("td", "table");
         const column5 = createElement("td", "table");
-        const column6 = createElement("td", "table");
-
+        
         line.appendChild(column1);
         line.appendChild(column2);
         line.appendChild(column3);
         line.appendChild(column4);
         line.appendChild(column5);
-        line.appendChild(column6);
 
-        column1.innerHTML = `${array[i].event}`;
-        column2.innerHTML = `${array[i].event_year}`;
-        column3.innerHTML = `${array[i].event_title}`;
-        column4.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Prévia de imagem do evento">`;
-        column5.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
-        column6.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
+        column1.innerHTML = `${array[i].event_year}`;
+        column2.innerHTML = `${array[i].event_title}`;
+        column3.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Prévia de imagem do evento">`;
+        column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
+        column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column5.addEventListener("click", async () => editEventsHistory(array[i]));
-        column6.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
+        column4.addEventListener("click", async () => editEventsHistory(array[i]));
+        column5.addEventListener("click", async () => reqDeleteEvent(array[i].event, array[i].civilization_id));
 
         tableBody.appendChild(line);
     }

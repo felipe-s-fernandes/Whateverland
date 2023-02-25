@@ -111,7 +111,6 @@ export function renderEditStaticHistory() {
         <table class="editTable">
             <thead>
                 <tr id="table-heading">
-                    <td class="id-number">Id</td>
                     <td class="e-mail">Ano do evento</td>
                     <td class="nome">Título do evento</td>
                     <td class="nome">Imagem do evento</td>
