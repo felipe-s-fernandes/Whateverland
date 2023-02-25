@@ -10,7 +10,6 @@ export default async function RenderRegisterCivilizations(data) {
     container.classList.add("container");
     container.id = "container";
 
-
     // Renderização da página vazia
     container.appendChild(renderStaticPage());
     // Renderização do botão de voltar
@@ -74,7 +73,6 @@ async function deleteCivilization(idCivilization) {
     reqRenderTable();
 }
 
-
 // **Renderização do HTML**
 
 // Renderização da página estática do HTML
@@ -88,9 +86,9 @@ function renderStaticPage() {
                 <p>Para inserir civilizações na lista, preencha os dados abaixo:</p>
             </div>
             <form id="form" class="input-box">
-                <input type="text" name="nome" id="username-input" class="mainInput" placeholder="Nome:" autocomplete="off">
+                <input type="text" name="nome" id="username-input" class="mainInput" placeholder="insira o nome da civilização" autocomplete="off">
                 <select name="regions" id="regions" class="mainSelect" >
-                    <option value=""></option>
+                    <option value="" selected disabled >- escolha uma região -</option>
                 </select>
                 </br><input type="submit" value="Cadastrar" id="cadastrar" class="cadastrar"></br>
             </form>
@@ -194,8 +192,12 @@ function renderTable(array) {
         column5.innerHTML = `<img class="excluirImg" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", () => redirectEditPage(array[i].civilization_id));
-        column5.addEventListener("click", () => deleteCivilization(array[i].civilization_id));
+        column4.addEventListener("click", () =>
+            redirectEditPage(array[i].civilization_id)
+        );
+        column5.addEventListener("click", () =>
+            deleteCivilization(array[i].civilization_id)
+        );
 
         table.appendChild(line);
     }

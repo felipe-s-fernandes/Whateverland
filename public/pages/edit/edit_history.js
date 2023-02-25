@@ -23,6 +23,21 @@ export async function reqRenderTableHistory(civilizationId) {
 }
 
 
+// Pré-visualização da imagem inserida pelo usuário
+export function previewImageEventHistory(idHTMLImage) {
+    const imgPreview = document.querySelector(`#${idHTMLImage}`);
+    const inputFile = document.querySelector("#img_pg_history");
+
+    inputFile.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            imgPreview.src = reader.result;
+            // inputImg.src = "../../uploads/" + reader.result;
+        }
+    })
+}
 // Função de requisição de preenchimento dos inputs
 // export async function renderInputImageEventHistory(idCivilization, idHTML, objectProperty, i) {
 //     const input = document.querySelector(`#${idHTML}`);
@@ -46,7 +61,7 @@ function inputRender(object, idHTML, objectProperty) {
 export async function reqDeleteEvent(event, civilizationId) {
     const result = document.querySelector("#resulthistory");
     const button = document.querySelector("#buttonHistory");
-    button.innerText = "Adicionar";
+    button.innerText = "Adicionar Evento";
 
     const form = document.querySelector("#formHistory2");
     const inputs = form.querySelectorAll('input[type="text"]');
@@ -81,7 +96,7 @@ export function eventFormHistory(civilizationId) {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         
-        if (button.innerText == "Adicionar") {
+        if (button.innerText == "Adicionar Evento") {
             // Upload da imagem
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
@@ -127,7 +142,7 @@ export function eventFormHistory(civilizationId) {
             }
         }
         
-        if (button.innerText == "Editar") {
+        if (button.innerText == "Editar Evento") {
             // Upload da imagem
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
@@ -143,12 +158,18 @@ export function eventFormHistory(civilizationId) {
             
             
             if(isNaN(form.yearh.value) || form.yearh.value == ""){
+
                 result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
+
             }else if(form.yearh.value <= 0){
+
                 result.textContent = 'Preencha o campo "Ano do evento" com valores positivos!';
+
             }else if(form.nameh.value == ""){
+
                 result.textContent = 'Adicione um nome ao evento!';
             }else{
+
                 await imgRequest(`/history/edit`, "PATCH", formData);
 
                 result.textContent = 'Evento "'+form.nameh.value+'" alterado com sucesso!';
@@ -162,7 +183,7 @@ export function eventFormHistory(civilizationId) {
         
                 const image = form.querySelector("img");
                 image.src = "";
-                button.innerText = "Adicionar";
+                button.innerText = "Adicionar Evento";
                 await reqRenderTableHistory(civilizationId);
   
             }
@@ -178,7 +199,7 @@ export function eventFormHistory(civilizationId) {
 // Alimentação dos inputs na página
 async function editEventsHistory(object) {
     const button = document.querySelector("#buttonHistory");
-    button.innerText = "Editar";
+    button.innerText = "Editar Evento";
 
     const image = document.querySelector("#imageEvent");
     image.src = "../../uploads/" + object.event_image;
@@ -215,18 +236,18 @@ function renderTable(array) {
         const column3 = createElement("td", "table");
         const column4 = createElement("td", "table");
         const column5 = createElement("td", "table");
-
+        
         line.appendChild(column1);
         line.appendChild(column2);
         line.appendChild(column3);
         line.appendChild(column4);
         line.appendChild(column5);
 
-        column1.innerHTML = `${array[i].event}`;
-        column2.innerHTML = `${array[i].event_year}`;
-        column3.innerHTML = `${array[i].event_title}`;
-        column4.innerHTML = `<img src="../../uploads/lapis.png" alt="Ícone de editar">`;
-        column5.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
+        column1.innerHTML = `${array[i].event_year}`;
+        column2.innerHTML = `${array[i].event_title}`;
+        column3.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Prévia de imagem do evento">`;
+        column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
+        column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", async () => editEventsHistory(array[i]));

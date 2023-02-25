@@ -2,12 +2,12 @@
 
 import { createBackButton, createElement } from "../../modules/modules.js";
 import { renderEditStaticCivilizationAndStart, renderEditStaticHistory, renderEditStaticGallery } from "./edit_staticPages.js";
-import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage, reqRenderRegions, renderInputImageCivilization } from "./edit_startPage.js";
+import { renderInputStart, renderInputCivilization, eventFormCivilizationAndStartPage, reqRenderRegions, renderInputImageCivilization, previewImageCivilization } from "./edit_startPage.js";
 import { reqRenderTableGallery, eventFormGallery } from "./edit_gallery.js";
-import { reqRenderTableHistory, eventFormHistory } from "./edit_history.js";
+import { reqRenderTableHistory, eventFormHistory, previewImageEventHistory } from "./edit_history.js";
 
 export default async function RenderEditPage(civilizationId) {
-    const container = createElement("div", "containerEditMain");
+    const container = createElement("div", "containerEditPages");
 
     const backButton = createBackButton();
     container.appendChild(backButton);
@@ -35,6 +35,8 @@ export default async function RenderEditPage(civilizationId) {
             renderInputCivilization(civilizationId, "name_pg_start", "civilization_name");
             renderInputCivilization(civilizationId, "id_region_start", "region_id");
             renderInputImageCivilization(civilizationId, "imageCivilization", "civilization_image");
+            previewImageCivilization("imageCivilization");
+            
             renderInputStart(civilizationId, "origin_pg_start", "official_name");
             renderInputStart(civilizationId, "cap_pg_start", "capital");
             renderInputStart(civilizationId, "religion_pg_start", "religion");
@@ -47,6 +49,7 @@ export default async function RenderEditPage(civilizationId) {
             // Requisições para prenchimento dos Inputs da página história
             reqRenderTableHistory(civilizationId);
             eventFormHistory(civilizationId);
+            previewImageEventHistory("imageEvent");
 
             // Requisições para prenchimento da tabela de galeria
             reqRenderTableGallery(civilizationId);

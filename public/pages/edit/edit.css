@@ -1,8 +1,26 @@
 .titleEdit {
-    margin-right: auto;
     font-size: 20px;
-    margin-top: 30px;
-    margin-bottom: 15px;
+    border-bottom: 3px solid #000000;
+    margin-bottom: 25px;
+
+}
+
+#containerFormEditStartPage {
+    display: flex;
+    gap: 20px;
+}
+
+#formCivilization {
+    display: flex;
+    flex-direction: column;
+    /* flex: 1; */
+}
+
+#formCivilizationImage {
+    display: flex;
+    /* flex: 3; */
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .containerEditMain {
@@ -10,9 +28,9 @@
     background-color: white;
     width: 55%;
     display: flex;
-    margin-right: auto;
+    /* margin-right: auto;
     margin-left: auto;
-    margin-top: 15px;
+    margin-top: 15px; */
     height: auto;
     border-radius: 15px;
     flex-direction: column;
@@ -20,73 +38,73 @@
 
 }
 
-
 .labelEdit {
-    display:inline-block ;
-    margin-right: 10px;
- }
-
-.InputEdit {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-    border-radius: 5px;
-    border: 2px solid black;
-    margin-left: 10px;
+    margin-bottom: 5px;
 }
 
-.containerEdit {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 90%;
-    width: 95%;
+.InputEdit {
+    /* justify-content: center; */
+    /* width: 300px; */
+    /* border-radius: 5px; */
+    /* border: 2px solid black; */
+    /* font-size: 15px; */
+    /* border-radius: 15px; */
+    /* text-align: center; */
+
+    /* width: 300px; */
+    /* border-radius: 5px; */
+    /* border: 2px solid black; */
+    /* font-size: 15px; */
+    /* border-radius: 15px; */
+    /* text-align: center; */
+    background-color: var(--input-color);
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    /* display: flex; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* width: 300px; */
+    height: 40px;
+    text-align: center;
+}
+
+.buttonTable {
+    height: 30px;
+}
+
+.containerInformationEdit {
+    /* height: 90%; */
+    width: 1200px;
     max-width: 1800px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
-    border: 2px solid #ffffff;
+    border: var(--border-card);
+    padding: 25px;
+    min-width: 800px;
+    
+    /* display: flex; */
+    /* margin-top: 50px; */
+    /* margin-bottom: 50px; */
 }
 
-.containerEdit2 {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 90%;
+.containerEditPages {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: center;
+    
 }
 
-.containerEdit3 {
-
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-
-}
-
-.containerEdit4 {
-    background-color: rgb(255, 255, 255);
-}
-
-.containerEdit5 {
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-}
-
-.containerEdit6 {
-    height: 90%;
-    width: 95%;
-    max-width: 1800px;
-    background-color: rgb(255, 255, 255);
-}
-.btn-edit{
+.btn-edit {
     align-items: center;
     justify-content: center;
     display: flex;
-    margin: 8px;
-    margin-right: auto;
+    /* margin: 8px;
+    margin-right: auto; */
     color: var(--primary-color);
     border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
@@ -94,31 +112,187 @@
     height: 40px;
     box-shadow: var(--shadow-color-position);
 }
-.btn-edit:hover{
+
+.btn-edit:hover {
     background-color: var(--primary-color);
     color: var(--main-bg-color);
     box-shadow: var(--shadow-color-position);
     cursor: pointer;
-    
+
 }
+
 .editTable {
-    margin-left: 15px;
+    /* margin-left: 15px; */
     width: 100%;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     text-align: center;
 }
+
 .editTable-heading {
     background-color: var(--main-bg-color);
     color: var(--primary-color);
     font-weight: bold;
 }
+.labelEdit1{
+    border-bottom: 3px solid #000000;
+
+}
+
 .editTable td {
+    width: 120px;
+    height: 25px;
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
+    padding: 5px;
 
 }
+
 .editTable tr:nth-child(even) {
     background: rgba(81, 73, 87, 1);
     color: var(--primary-color);
+}
+
+.imgEdit {
+    /* width: 250px; */
+    height: 250px;
+    width: 100%;
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--input-color);
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.imgEdit img {
+    height: 100%;
+    /* flex: 1; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.InputDesc {
+    height: 100px;
+    border-radius: var(--border-radius-big-box);
+    background-color: var(--input-color);
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.configImgEdit{
+    width: 50px;
+    height: 50px;
+}
+#tableHistory td tr{
+    width: 150px;
+    height: 150px;
+}
+.divFormStartEdit{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    flex: 2;
+}
+
+.divFormCivilizationEdit {
+    /* flex: 1; */
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+
+.editTable th, tr, td{
+    width: 100px;
+    height: 100px;
+}
+/* 
+
+.editTable img{
+    width: 100px;
+    height: 100px;
+} */
+
+.imagePreviewHistory {
+    width: 100px;
+    height: 100px;
+}
+
+.formdivh2{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+#formHistory2{
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.formedit_H{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+#formgallery, .cadastre{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.divformgallery{
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+#civi_gallery{
+    width: 400px;
+}
+
+.buttontable_H{
+    cursor: pointer;
+}
+
+
+.InputFormEdit {
+    background-color: var(--input-color);
+    border: none;
+    font-size: 15px;
+    border-radius: 15px;
+    height: 40px;
+    padding-left: 8px;
+}
+
+.container_eventH{
+    display: flex;
+    gap: 25px;
+}
+
+.yearevent{
+    flex: 1;
+}
+
+.nameevent{
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.descevent{
+    display: flex;
+    flex-direction: column;
+}
+
+.container_result{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }

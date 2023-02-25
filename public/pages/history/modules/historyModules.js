@@ -63,7 +63,7 @@ export function createEventCard(civilizationName, event) {
 
     //Criação do aside com figura e legenda
     const eventAside = createElement("aside", "eventAside");
-    const eventFigure = createElement("figure", "eventFigure");
+    const eventFigure = createElement("figure", "historyEventFigure");
     const eventImage = createElement("img", "eventImage");
     eventImage.src = `../../../uploads/${event.event_image}`;
     eventImage.alt = event.event_image_label;
