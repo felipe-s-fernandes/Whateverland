@@ -64,7 +64,7 @@ export default async function RenderCivilizationsPage(regionId) {
     regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
     
     const simbolMap = createElement("div", "simbolMap");
-    simbolMap.innerHTML = `<img src="../../uploads/${nameArchive}" alt="">`;
+    simbolMap.innerHTML = `<img class="imageSimbolMap" src="../../uploads/${nameArchive}" alt="">`;
     // const map = createMap(allRegions);
 
     const pageCiv = createElement("div", "pageCiv");

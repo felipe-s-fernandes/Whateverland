@@ -1,36 +1,35 @@
 /* Conteinar da página */
 .pageCiv{
+    animation-name: moveMargin;
+    animation-duration: 1s;
     display: flex;
-    width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    /* animation-name: moveMap;
-    animation-duration: 2s; */
+    margin-right: 400px;
+}
+
+/* Div que contém a imagem de simbolo da região */
+.simbolMap {
+    height: 80%;
+    animation-name: scaleSimbol;
+    animation-duration: 1s;
+}
+
+/* Imagem do simbolo da região */
+.imageSimbolMap {
+    height: 100%;
+    width: 100%;
 }
 
 .tbody_civ {
     background-color: var(--main-bg-color)
 }
 
-.regionSelect {
-    position: fixed;
-    /* right: 400px; */
-    animation-name: moveMap;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-}
-
-/* .symbolBody{
-    width: 1000px;
-    height: 75%;
-} */
-
+/* Table onde contém todas as civilizações */
 .regionCivilizationsGeneral {
     width: 90%;
-    /* box-shadow: var(--shadow-color-position); */
     border-radius: 25px;
-    /* border: var(--border-card); */
     box-shadow: 1px 4px 10px 0 black;
 }
 
@@ -45,7 +44,6 @@
     justify-content: space-around;
     border-radius: 30px 0px 0px 30px;
     position: fixed;
-    /* top: 0; */
     right: -400px;
     width: 400px;
     height: 90%;
@@ -63,7 +61,6 @@
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
     padding: 5%;
-    /* margin: 15px; */
     box-shadow: 1px 4px 10px 0 black;
 }
 
@@ -85,12 +82,7 @@
     border: none;
     border-color: none;
     color: var(--primary-color);
-    /* vertical-align: text-top; */
     text-align: center;
-    /* padding: 5px; */
-    /* border: var(--border-card);
-    box-shadow: 1px 4px 10px 0 black; */
-    /* color: red; */
 }
 
 .td_civilLogo1, .td_civilLogo2, .td_civilLogo3 {
@@ -109,23 +101,6 @@
     text-align: center;
     vertical-align: text-top;
 }
-
-
-/* .symbolMap{
-    position: relative;
-    left: 100px;
-    top: 50px;
-    width: 600px;
-    height: 600px;
-} */
-
-/* .symbolimg{
-    position: relative;
-    left: -350px;
-    top: -150px;
-    width: 300px;
-    height: 300px;
-} */
 
 .regionResumTitle{
     border-bottom: 1px solid black;
@@ -243,19 +218,20 @@
     }
 }
 
-@keyframes moveMap{
+@keyframes moveMargin{
     0%{
         margin-right: 0;
-        /* margin-left: auto; */
-        /* right: 400px; */
     }
     100% {
         margin-right: 400px;
-        /* margin-right: auto; */
-        /* left:0px */
-        margin-bottom: 300px;
     }
-    to {
-        transform: scale(1.5);
+}
+
+@keyframes scaleSimbol{
+    0%{
+        transform: scale(0.3);
+    }
+    100% {
+        transform: scale(1);
     }
 }
