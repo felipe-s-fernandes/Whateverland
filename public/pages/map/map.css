@@ -1,7 +1,38 @@
+.mapDiv {
+    overflow: hidden;
+    transform: rotate(-25deg);
+}
+
 .mapDiv path:hover {
     cursor: pointer;
     fill: #d6d6d6;
 }
+
+.mapDiv path {
+    border: 1px solid red;
+}
+
+.regionInfoBox {
+    position: absolute;
+    z-index: 9999;
+    max-width: 100px;
+    max-height: 100px;
+    border: 100px;
+    pointer-events: none;
+}
+
+.regionInfoFigure {
+    width: 100%;
+}
+
+.regionInfoFigure img {
+    width: 100%;
+}
+
+.regionInfoName {
+    text-align: center;
+}
+
 
 /* .mapDiv {
     position: fixed;
