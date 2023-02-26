@@ -38,6 +38,7 @@ export default async function RenderStartPage(civilizationId) {
     const civilization = civilizationObject.civilization[0];
 
     const container = createElement("section", "container");
+    container.id="startPageContainer";
 
     const navBar = await createNavBar("start", civilizationId);
     const startPageDiv = createStartPage(startPage, civilization);

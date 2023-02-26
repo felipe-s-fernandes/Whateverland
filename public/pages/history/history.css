@@ -151,12 +151,11 @@
 
 .eventTitle {
     margin-left: 0px;
-
     font-size: 1.5em;
     font-weight: 600;
     line-height: 35px;
-    vertical-align: middle;
     border-bottom: 3px solid #000000;
+    vertical-align: middle;
 }
 
 .eventParagraph {

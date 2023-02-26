@@ -151,7 +151,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                 form.religion.value,
                 form.governo.value,
                 form.desc.value
-            );
+            )};
 
         // Renderização da imagem prévia de visualização
         // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");

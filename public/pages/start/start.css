@@ -5,9 +5,88 @@ body {
     justify-content: center;
 }
 
+#startPageContainer {
+    width: 100vw;
+    height: 100vh;
+}
+
+#containerInformation {
+    display: flex;
+    max-height: 70vh;
+    height: fit-content;
+    flex-direction: row;    
+}
+
 .asideContent {
+    height: 100%;
+    width: 2400px;
+    min-width: fit-content;
+    overflow: auto;
     color: var(--primary-color);
-    min-width: 25%;
+    background-color: var(--main-bg-color);
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.sectionAside {
+    border-top-left-radius: 15px;
+    padding: 10px 10px 5px 10px;
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.1);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.civilizationName {
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 35px;
+}
+
+.imgDiv {
+    max-width: fit-content;
+}
+
+.civilizationShield {
+    width: 130px;
+    height: 150px;
+}
+
+.infoArticle {
+    padding: 20px 15px 5px 20px;
+    border-bottom-left-radius: 15px;
+}
+
+.info {
+    padding-bottom: 8px;
+}
+
+.mainContent {
+    padding: 36px 30px 30px 30px;
+    overflow: auto;
+    width: 400%;
+}
+
+.mainTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 35px;
+    border-bottom: 3px solid #000;
+}
+
+.mainText {
+    padding: 15px 0px 15px 0px;
+    font-size: 1.1em;
+    line-height: 21px;
+    text-align: justify;
+}
+
+/* .asideContent {
+    color: var(--primary-color);
+    width: 140vw;
+    min-width: fit-content;
     border-radius: 15px 0 0 15px;
 }
 
@@ -40,6 +119,7 @@ body {
     display: block;
     padding: 6%;
     background-color: #3D3444;
+    height: 52.7%;
     border-bottom-left-radius: 15px;
 }
 
@@ -51,6 +131,8 @@ body {
 
 .mainContent {
     border-radius: 0 15px 15px 0;
+    overflow: auto;
+    height: 97%;
 }
 
 .mainTitle {
@@ -73,4 +155,5 @@ body {
 
 #containerInformation {
     display: flex;
-}
+    height: 43vh;
+} */
