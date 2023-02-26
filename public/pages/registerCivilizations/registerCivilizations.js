@@ -152,7 +152,7 @@ function regionsSelect(array) {
 function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
-    const tableBody = createElement("tbody", "table");
+    const tableBody = createElement("tbody", "tableBodyRegister");
 
     // Título da tabela
     tableBody.innerHTML = `
@@ -171,13 +171,13 @@ function renderTable(array) {
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
-        const line = createElement("tr", "table");
+        const line = createElement("tr", "tableLineColumnRegister");
 
-        const column1 = createElement("td", "table");
-        const column2 = createElement("td", "table");
-        const column3 = createElement("td", "table");
-        const column4 = createElement("td", "table");
-        const column5 = createElement("td", "table");
+        const column1 = createElement("td", "tableColumnRegister");
+        const column2 = createElement("td", "tableColumnRegister");
+        const column3 = createElement("td", "tableColumnRegister");
+        const column4 = createElement("td", "tableColumnRegister");
+        const column5 = createElement("td", "tableColumnRegister");
 
         line.appendChild(column1);
         line.appendChild(column2);

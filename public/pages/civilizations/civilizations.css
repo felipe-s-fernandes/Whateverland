@@ -13,7 +13,7 @@
     position: fixed;
     /* right: 400px; */
     animation-name: moveMap;
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-fill-mode: forwards;
 }
 
@@ -49,6 +49,7 @@
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-name: showSidebar;
+    z-index: 1;
 }
 
 .c{
@@ -76,22 +77,35 @@
     text-align: center;
 }
 
-.regionCivilizationsGeneral th, tr, td {
+.regionCivilizationsGeneral .td_civilLogo1 {
     border: none;
     border-color: none;
-    vertical-align: middle;
+    color: var(--primary-color);
+    /* vertical-align: text-top; */
     text-align: center;
+    /* padding: 5px; */
     /* border: var(--border-card);
     box-shadow: 1px 4px 10px 0 black; */
     /* color: red; */
 }
 
-.regionCivilizationsGeneral > th, tr, td {
-    border: none;
-    border-color: none;
-    vertical-align: middle;
-    /* color: red; */
+.td_civilLogo1, .td_civilLogo2, .td_civilLogo3 {
+    padding: 5px;
+    text-align: center;
+    color: var(--primary-color);
 }
+
+.td_buttonleft, .td_buttonright {
+    vertical-align: middle;
+    color: var(--primary-color);
+}
+
+.td_civilName1, .td_civilName2, .td_civilName3 {
+    color: var(--primary-color);
+    text-align: center;
+    vertical-align: text-top;
+}
+
 
 /* .symbolMap{
     position: relative;
@@ -168,7 +182,7 @@
 
 .civilLogo1, .civilLogo2, .civilLogo3{
     margin-top: 20px;
-    width: 100px;
+    width: 85px;
     height: 100px;
     cursor: pointer;
 }
@@ -235,6 +249,7 @@
         margin-right: 400px;
         /* margin-right: auto; */
         /* left:0px */
+        margin-bottom: 300px;
     }
     to {
         transform: scale(1.5);

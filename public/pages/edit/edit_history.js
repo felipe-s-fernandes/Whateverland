@@ -229,13 +229,13 @@ function renderTable(array) {
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
-        const line = createElement("tr", "table");
+        const line = createElement("tr", "trEdit");
 
-        const column1 = createElement("td", "table");
-        const column2 = createElement("td", "table");
-        const column3 = createElement("td", "table");
-        const column4 = createElement("td", "table");
-        const column5 = createElement("td", "table");
+        const column1 = createElement("td", "tdEdit");
+        const column2 = createElement("td", "tdEdit");
+        const column3 = createElement("td", "tdEdit");
+        const column4 = createElement("td", "tdEdit");
+        const column5 = createElement("td", "tdEdit");
         
         line.appendChild(column1);
         line.appendChild(column2);
