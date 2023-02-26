@@ -5,12 +5,13 @@
     height: 100vh;
     justify-content: center;
     align-items: center;
-    animation-name: moveMap;
-    animation-duration: 2s;
+    /* animation-name: moveMap;
+    animation-duration: 2s; */
 }
 
 .regionSelect {
     position: fixed;
+    /* right: 400px; */
     animation-name: moveMap;
     animation-duration: 2s;
     animation-fill-mode: forwards;
@@ -79,6 +80,7 @@
     border: none;
     border-color: none;
     vertical-align: middle;
+    text-align: center;
     /* border: var(--border-card);
     box-shadow: 1px 4px 10px 0 black; */
     /* color: red; */
@@ -225,8 +227,16 @@
 
 @keyframes moveMap{
     0%{
+        margin-right: 0;
+        /* margin-left: auto; */
+        /* right: 400px; */
     }
     100% {
         margin-right: 400px;
+        /* margin-right: auto; */
+        /* left:0px */
+    }
+    to {
+        transform: scale(1.5);
     }
 }
