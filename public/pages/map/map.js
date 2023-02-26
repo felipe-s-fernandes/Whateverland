@@ -1,5 +1,5 @@
 //@author {Felipe Fernandes}
-import { createElement } from "../../modules/modules.js";
+import { createElement, createAdminMenu } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
@@ -22,35 +22,28 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
-    const loginButton = createElement("button", "roundButton");
+    const searchAndMenu = createElement("div", "searchAndMenu");
 
-    if (document.cookie.includes("session")) {
-        const registerButton = createElement("button", "backButton");
-        registerButton.innerText = "EDITOR DE ARTIGOS";
-        registerButton.onclick = () => {
-            redirectTo("/register");
-        };
-        container.appendChild(registerButton);
+    const mainSearchBar = createElement("div", "mainSearchBar");
+    const searchInput = createElement("input", "searchInput");
+    searchInput.type = "text";
+    searchInput.placeholder = "Busque um artigo...";
 
-        const logoutImg = createElement("img", "logoutImg");
-        logoutImg.src = "../../uploads/logout.svg";
-        loginButton.appendChild(logoutImg);
+    const editButton = createElement("button", "roundButton");
+    const editImg = createElement("img", "editImg");
+    editImg.src = "../../uploads/edit.svg";
+    editButton.appendChild(editImg);
+    editButton.onclick = () => {
+        redirectTo("/register");
+    };
 
-        loginButton.onclick = async () => {
-            await HTTPRequest("/login", "DELETE");
-            redirectTo("/map");
-        };
-    } else {
-        const loginImg = createElement("img", "loginImg");
-        loginImg.src = "../../uploads/login.svg";
-        loginButton.appendChild(loginImg);
-        // loginButton.innerText = "LOGIN";
-        loginButton.onclick = () => {
-            redirectTo("/login");
-        };
-    }
+    const adminMenu = createAdminMenu();
 
-    container.appendChild(loginButton);
+    searchAndMenu.appendChild(mainSearchBar);
+    searchAndMenu.appendChild(adminMenu);
+    searchAndMenu.appendChild(editButton);
+
+    container.appendChild(searchAndMenu);
 
     //root.appendChild(container);
     const response = {

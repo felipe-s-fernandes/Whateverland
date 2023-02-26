@@ -114,7 +114,27 @@ body {
     box-shadow: var(--shadow-color-position);
     border: none;
     border-radius: 25px;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 2px;
 }
+
+.searchButton {
+    min-height: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    max-height: 45px;
+    margin-right: 2px;
+}
+
+.navBar .roundButton {
+    min-width: 50px;
+}
+
+.logoutImg, .editImg {
+    width: 25px;
+}
+
 
 .roundButton:hover {
     cursor: pointer;
@@ -202,7 +222,6 @@ header {
     height: 90%;
     width: 500px;
     border-radius: 50px;
-
     margin: 3px;
 }
 
@@ -211,13 +230,16 @@ header {
     width: 100%;
     background-color: #a8a8a8;
     border: none;
-    color: #e1e1e1;
+    color: #4b4b4b;
     margin-left: 20px;
+
+    font-size: 16px;
 }
 
 .smallSearchBar input:focus,
 .smallSearchBar input:active {
     border: none;
+    outline: none;
 }
 
 .smallSearchBar svg {
