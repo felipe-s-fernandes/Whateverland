@@ -1,6 +1,20 @@
+.mapContainer {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2.5%;
+}
+
 .mapDiv {
     overflow: hidden;
+    height: 60%;
+    max-width: 1400px;
+}
+
+.mapDiv svg {
     transform: rotate(-25deg);
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .mapDiv path:hover {
@@ -9,24 +23,43 @@
 }
 
 .mapDiv path {
-    border: 1px solid red;
+    box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.25);
 }
 
 .regionInfoBox {
     position: absolute;
     z-index: 9999;
-    max-width: 100px;
-    max-height: 100px;
     border: 100px;
     pointer-events: none;
 }
 
+.regionInfoBox {
+    opacity: 0;
+    animation-name: fade-in-from-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-in-from-bottom {
+    from {
+      opacity: 0;
+      margin-bottom: 0px;
+    }
+    to {
+      opacity: 1;
+      margin-bottom: 10px;
+    }
+  }
+
 .regionInfoFigure {
     width: 100%;
+    height: 100%;
 }
 
 .regionInfoFigure img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .regionInfoName {

@@ -100,6 +100,31 @@ body {
     transform: rotate(180deg);
 }
 
+.roundButton {
+
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 50px;
+
+    background: var(--primary-color);
+    box-shadow: var(--shadow-color-position);
+    border: none;
+    border-radius: 25px;
+}
+
+.roundButton:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+}
+
+.roundButton:active {
+    background-color: #a8a8a8;
+}
+
 header {
     /* margin: auto; */
     max-width: 1200px;
