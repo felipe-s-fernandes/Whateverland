@@ -3,7 +3,7 @@
 
 import renderPage from "./modules/galleryModules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
-import { renderTextTitle, passPage } from "./modules/galleryModules.js";
+import { renderTextTitle, imagesGallery } from "./modules/galleryModules.js";
 import { createNavBar, createBackButton } from "../../modules/modules.js";
 
 export default async function RenderGalleryPage(civilizationId) {
@@ -50,7 +50,7 @@ export default async function RenderGalleryPage(civilizationId) {
 
             // Rendereização dos elementos variáveis da página
             renderTextTitle(nome);
-            passPage(images);
+            imagesGallery(images);
         },
     };
 
