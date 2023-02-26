@@ -151,7 +151,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                 form.religion.value,
                 form.governo.value,
                 form.desc.value
-            );
+            )};
 
             result.textContent = "Os dados da civilização foram alterados com sucesso!";
             // Renderização da imagem

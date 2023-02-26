@@ -2,28 +2,6 @@
 import { createElement } from "../../../modules/modules.js";
 
 export default function createStartPage(startPages, civilizations) {
-    /* startPages = [
-        {
-            start_page_id: 456,
-            official_name: "Erebonia",
-            localization: "Região de Zenuria",
-            capital: "Heimdallr",
-            religion: "Igreja Septiana",
-            government: "Monarquia constitucional (provável ditadura)",
-            paragraph: "Parágrafo placeholder",
-            deleted: false,
-        }
-    ] */
-
-    /* let civilizations = [
-        {
-            civilization_id: 1,
-            region_id: 0,
-            start_page_id: 456,
-            civilization_name: "Erebonia",
-        }
-    ] */
-
     const object = startPages;
 
     const object2 = civilizations;
