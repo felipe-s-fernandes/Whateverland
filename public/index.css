@@ -37,7 +37,7 @@ body {
     /* margin-bottom: 50px; */
     height: 90%;
     width: 95%;
-    max-width: 1800px;
+    max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
