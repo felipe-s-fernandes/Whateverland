@@ -55,7 +55,7 @@ function addImage(uploadImage) {
 
 export function renderTextTitle(name) {
     const textTitle = document.querySelector("#textTitle");
-    textTitle.innerHTML = `GALERIA DE IMAGENS DE ${name}`;
+    textTitle.innerHTML = `GALERIA DE IMAGENS ${name}`;
     return textTitle;
 }
 

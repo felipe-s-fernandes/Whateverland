@@ -5,10 +5,7 @@ import imgRequest from "../../modules/imgRequest.js";
 import { createElement } from "../../modules/modules.js";
 
 // Requisição padrão para renderização dos inputs do dados da civilização
-export async function renderInputCivilization(
-    idCivilization,
-    idHTML,
-    objectProperty
+export async function renderInputCivilization(idCivilization, idHTML, objectProperty
 ) {
     const input = document.querySelector(`#${idHTML}`);
 
@@ -20,11 +17,7 @@ export async function renderInputCivilization(
 }
 
 // Requisição padrão para renderização das imagens da civilização
-export async function renderInputImageCivilization(
-    idCivilization,
-    idHTML,
-    objectProperty
-) {
+export async function renderInputImageCivilization(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
 
     const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
@@ -32,6 +25,13 @@ export async function renderInputImageCivilization(
     const objectValue = object.civilization[0][objectProperty];
 
     console.log(objectValue);
+    console.dir(input);
+
+    // Quando a imagem não for encontrada será exibida a padrão do site
+    input.addEventListener('error', function() {
+        input.src = '../../uploads/default_image.jpg';
+        return;
+    })
 
     input.src = "../../uploads/" + objectValue;
 }
@@ -47,7 +47,6 @@ export function previewImageCivilization(idHTMLImage) {
         reader.readAsDataURL(file);
         reader.onload = function () {
             imgPreview.src = reader.result;
-            // inputImg.src = "../../uploads/" + reader.result;
         };
     });
 }
@@ -101,16 +100,7 @@ async function editImageCivilization(formData) {
 }
 
 // Requisição para página inicial da civilização
-async function editStartPage(
-    idCivilization,
-    clocalization,
-    coriname,
-    ctitle,
-    ccap,
-    creligion,
-    cgov,
-    cdesc
-) {
+async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc) {
     const result = document.querySelector("#resultstart");
     await HTTPRequest(`/start/edit`, "PATCH", {
         civilization_id: idCivilization,

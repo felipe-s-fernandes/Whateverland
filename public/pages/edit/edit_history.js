@@ -8,6 +8,22 @@ import imgRequest from "../../modules/imgRequest.js";
 // Variável global para guardar momentaneamente o id do evento
 let eventId;
 
+// Pré-visualização da imagem inserida pelo usuário
+export function previewImageEventHistory(idHTMLImage) {
+    const imgPreview = document.querySelector(`#${idHTMLImage}`);
+    const inputFile = document.querySelector("#img_pg_history");
+
+    inputFile.addEventListener("change", (event) => {
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function() {
+            imgPreview.src = reader.result;
+        }
+    })
+}
+
+
 // ***Requisições***
 
 // Requisição GET para renderizar a tabela com todos os eventos
@@ -20,41 +36,6 @@ export async function reqRenderTableHistory(civilizationId) {
     }
 
     renderTable(historyObject.history_events);
-}
-
-
-// Pré-visualização da imagem inserida pelo usuário
-export function previewImageEventHistory(idHTMLImage) {
-    const imgPreview = document.querySelector(`#${idHTMLImage}`);
-    const inputFile = document.querySelector("#img_pg_history");
-
-    inputFile.addEventListener("change", (event) => {
-        const file = event.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function() {
-            imgPreview.src = reader.result;
-            // inputImg.src = "../../uploads/" + reader.result;
-        }
-    })
-}
-// Função de requisição de preenchimento dos inputs
-// export async function renderInputImageEventHistory(idCivilization, idHTML, objectProperty, i) {
-//     const input = document.querySelector(`#${idHTML}`);
-
-//     const object = await HTTPRequest(`/history/${idCivilization}`, "GET");
-//     const objectValue = object.history_events[i][objectProperty];
-
-//     eventId = object.history_events[i].event;
-//     console.log(eventId);
-    
-//     console.log(objectValue);
-//     input.src = "../../uploads/" + objectValue;
-// }
-
-function inputRender(object, idHTML, objectProperty) {
-    const input = document.querySelector(`#${idHTML}`);
-    input.value = object[objectProperty];        
 }
 
 // Requisição DELETE para excluir evento de história
@@ -110,13 +91,6 @@ export function eventFormHistory(civilizationId) {
             formData.append("event_year", form.yearh.value);
             formData.append("event_image_label", form.legendh.value);
             formData.append("event_paragraph", form.desch.value);
-
-            // historyObject.event,
-            // historyObject.event_year,
-            // historyObject.event_title,
-            // historyObject.event_image,
-            // historyObject.event_image_label,
-            // historyObject.event_paragraph,
             
             if(isNaN(form.yearh.value) || form.yearh.value == ""){
                 result.textContent = 'Preencha o campo "Ano do evento"! (Apenas com números!)';
@@ -196,6 +170,12 @@ export function eventFormHistory(civilizationId) {
 
 // ***Renderizações dinâmicas na página***
 
+// Inserindo informações de edição nos inputs
+function inputRender(object, idHTML, objectProperty) {
+    const input = document.querySelector(`#${idHTML}`);
+    input.value = object[objectProperty];        
+}
+
 // Alimentação dos inputs na página
 async function editEventsHistory(object) {
     const button = document.querySelector("#buttonHistory");
@@ -204,22 +184,19 @@ async function editEventsHistory(object) {
     const image = document.querySelector("#imageEvent");
     image.src = "../../uploads/" + object.event_image;
 
+    // Quando a imagem não for encontrada será exibida a padrão do site
+    image.addEventListener('error', function() {
+        image.src = '../../uploads/default_image_history.jpg';
+        return;
+    })
+
     eventId = object.event;
 
     // Importando valores do objeto para os inputs
     inputRender(object, "name_pg_history", "event_title");
     inputRender(object, "year_pg_history", "event_year");
-    // inputRender(object, "img_pg_history", "event_image");
     inputRender(object, "legend_pg_history", "event_image_label");
     inputRender(object, "desc_pg_history", "event_paragraph");
-    // inputRender(object, "imageEvent", "event_image");
-
-    // historyObject.event,
-    // historyObject.event_year,
-    // historyObject.event_title,
-    // historyObject.event_image,
-    // historyObject.event_image_label,
-    // historyObject.event_paragraph,
 }
 
 // Renderização da tabela que recebe o array de dados
@@ -245,7 +222,7 @@ function renderTable(array) {
 
         column1.innerHTML = `${array[i].event_year}`;
         column2.innerHTML = `${array[i].event_title}`;
-        column3.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Prévia de imagem do evento">`;
+        column3.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Imagem do evento não cadastrada">`;
         column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 

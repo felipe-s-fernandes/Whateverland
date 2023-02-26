@@ -167,8 +167,9 @@
     justify-content: center;
     align-items: center;
     background-color: var(--input-color);
-    border-radius: 15px;
+    /* border-radius: 15px; */
     margin-bottom: 10px;
+    filter: var(--shadow-image);
 }
 
 .imgEdit img {
@@ -209,7 +210,7 @@
     /* flex: 1; */
     display: flex;
     flex-direction: column;
-    width: 400px;
+    width: 300px;
 }
 
 .editTable th, .trEdit, .tdEdit{
@@ -278,7 +279,7 @@
 
 .container_eventH{
     display: flex;
-    gap: 25px;
+    /* gap: 25px; */
 }
 
 .yearevent{

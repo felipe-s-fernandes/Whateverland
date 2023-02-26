@@ -47,10 +47,13 @@ export function eventFormGallery(civilizationId) {
         formData.append("civilization_id", civilizationId);
         formData.append("gallery_image_title", form.civi_gallery.value);
 
+        // Validação dos inputs
         if( form.civi_gallery.value == ""){
             result.textContent = "Digite uma legenda para a imagem!";
+            
         }else if(file.files[0] == null){
             result.textContent = "Insira a imagem!";
+
         }else{
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
             await imgRequest(`/gallery/`, "POST", formData);
