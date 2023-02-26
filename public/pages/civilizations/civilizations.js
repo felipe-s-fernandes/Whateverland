@@ -21,6 +21,8 @@ export default async function RenderCivilizationsPage(regionId) {
     // Objeto da região clicada 
     const region = regions.filter((region) => region.region_id == regionId)[0]
     // region.id = "regionCivilization";
+    
+    const nameArchive = region.region_image;
 
     const civNameArray = [];
     const civImgArray = [];
@@ -60,7 +62,9 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const regionSelect = createElement("div", "regionSelect");
     regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
-
+    
+    const simbolMap = createElement("div", "simbolMap");
+    simbolMap.innerHTML = `<img src="../../uploads/${nameArchive}" alt="">`;
     // const map = createMap(allRegions);
 
     const pageCiv = createElement("div", "pageCiv");
@@ -85,7 +89,8 @@ export default async function RenderCivilizationsPage(regionId) {
     // pageCiv.appendChild(symbolBody);
     // pageCiv.appendChild(createMap(region));
     pageCiv.appendChild(regionBody);
-    pageCiv.appendChild(regionSelect);
+    pageCiv.appendChild(simbolMap);
+    // pageCiv.appendChild(regionSelect);
 
     // symbolBody.appendChild(symbolContainer);
     // symbolContainer.appendChild(symbolMap);
