@@ -1,6 +1,6 @@
 .mapDiv path:hover {
     cursor: pointer;
-    fill: white;
+    fill: #d6d6d6;
 }
 
 /* .mapDiv {

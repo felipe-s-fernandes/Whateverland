@@ -59,7 +59,7 @@ export default async function RenderCivilizationsPage(regionId) {
     }
 
     const regionSelect = createElement("div", "regionSelect");
-    regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
+    regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
 
     // const map = createMap(allRegions);
 

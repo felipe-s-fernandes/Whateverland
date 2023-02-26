@@ -58,7 +58,7 @@ export default async function RenderMap(data) {
 
 async function createMap(regions) {
     const map = createElement("div", "mapDiv");
-    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400"></svg>`;
+    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400"></svg>`;
 
     regions.forEach((region) => {
         map.firstChild.innerHTML += region.region_path;

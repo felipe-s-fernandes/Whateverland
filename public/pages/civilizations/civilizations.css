@@ -9,6 +9,10 @@
     animation-duration: 2s; */
 }
 
+.tbody_civ {
+    background-color: var(--main-bg-color)
+}
+
 .regionSelect {
     position: fixed;
     /* right: 400px; */
