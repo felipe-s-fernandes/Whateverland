@@ -22,6 +22,8 @@ export async function reqDeleteImage(imageId, civilizationId) {
     const result = document.querySelector("#resultgallery");
     await HTTPRequest(`/gallery/${imageId}`, "DELETE");
 
+
+    result.textContent = "Imagem excluída!";
     const table = document.querySelector("#tableGallery");
     table.innerHTML = "";
     await reqRenderTableGallery(civilizationId);
@@ -45,14 +47,20 @@ export function eventFormGallery(civilizationId) {
         formData.append("civilization_id", civilizationId);
         formData.append("gallery_image_title", form.civi_gallery.value);
 
+        if( form.civi_gallery.value == ""){
+            result.textContent = "Digite uma legenda para a imagem!";
+        }else if(file.files[0] == null){
+            result.textContent = "Insira a imagem!";
+        }else{
         // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        await imgRequest(`/gallery/`, "POST", formData);
+            await imgRequest(`/gallery/`, "POST", formData);
+            result.textContent = "Imagem adicionada com sucesso!";
+            // Renderização da tabela
+            reqRenderTableGallery(civilizationId);
 
-        // Renderização da tabela
-        reqRenderTableGallery(civilizationId);
-
-        const imageLegend = document.querySelector("#civi_gallery");
-        imageLegend.value = "";
+            const imageLegend = document.querySelector("#civi_gallery");
+            imageLegend.value = "";
+        }
     });
 }
 
@@ -63,19 +71,19 @@ async function renderTable(array) {
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
-        const line = createElement("tr", "table");
+        const line = createElement("tr", "trEdit");
 
-        const column1 = createElement("td", "table");
-        const column2 = createElement("td", "table");
-        const column3 = createElement("td", "table");
+        const column1 = createElement("td", "tdEdit");
+        const column2 = createElement("td", "tdEdit");
+        const column3 = createElement("td", "tdEdit");
 
         line.appendChild(column1);
         line.appendChild(column2);
         line.appendChild(column3);
 
         column1.innerHTML = `${array[i].gallery_image_title}`;
-        column2.innerHTML = `<img src="../../uploads/${array[i].gallery_image_id}" alt="Prévia da imagem">`;
-        column3.innerHTML = `<img src="../../uploads/excluir.png" alt="Ícone de excluir">`;
+        column2.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].gallery_image_id}" alt="Prévia da imagem">`;
+        column3.innerHTML = `<img class="buttontable_H" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
         column3.addEventListener("click", async () =>

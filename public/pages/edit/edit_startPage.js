@@ -153,6 +153,10 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                 form.desc.value
             )};
 
+            result.textContent = "Os dados da civilização foram alterados com sucesso!";
+            // Renderização da imagem
+            renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
+        }
         // Renderização da imagem prévia de visualização
         // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
     });

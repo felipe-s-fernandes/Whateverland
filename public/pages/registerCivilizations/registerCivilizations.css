@@ -16,19 +16,19 @@
     font-weight: bold;
 }
 
-.registerTable tr {
+.registerTable .tableLineColumnRegister {
     height: 50px;
     width: 100%;
 }
 
-.registerTable td {
+.registerTable .tableColumnRegister {
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
 
 }
 
-.registerTable tr:nth-child(even) {
+.registerTable .tableLineColumnRegister:nth-child(even) {
     background: rgba(81, 73, 87, 1);
     color: var(--primary-color);
 }
