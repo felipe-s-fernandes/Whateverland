@@ -5,7 +5,11 @@ import imgRequest from "../../modules/imgRequest.js";
 import { createElement } from "../../modules/modules.js";
 
 // Requisição padrão para renderização dos inputs do dados da civilização
-export async function renderInputCivilization(idCivilization, idHTML, objectProperty) {
+export async function renderInputCivilization(
+    idCivilization,
+    idHTML,
+    objectProperty
+) {
     const input = document.querySelector(`#${idHTML}`);
 
     const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
@@ -16,7 +20,11 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
 }
 
 // Requisição padrão para renderização das imagens da civilização
-export async function renderInputImageCivilization(idCivilization, idHTML, objectProperty) {
+export async function renderInputImageCivilization(
+    idCivilization,
+    idHTML,
+    objectProperty
+) {
     const input = document.querySelector(`#${idHTML}`);
 
     const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
@@ -37,11 +45,11 @@ export function previewImageCivilization(idHTMLImage) {
         const file = event.target.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(file);
-        reader.onload = function() {
+        reader.onload = function () {
             imgPreview.src = reader.result;
             // inputImg.src = "../../uploads/" + reader.result;
-        }
-    })
+        };
+    });
 }
 
 // Requisição padrão para inptus da página inicial do artigo
@@ -86,15 +94,23 @@ function regionsSelect(array) {
 // Requisição para edição de imagem da civilização
 async function editImageCivilization(formData) {
     const result = document.querySelector("#resultstart");
-    
+
     await imgRequest(`/civilizations/edit`, "PATCH", formData);
     result.textContent = "Os dados da civilização foram alterados com sucesso!";
     console.log("Dados da civilização (nome e imagem) alterados!");
-    
 }
 
 // Requisição para página inicial da civilização
-async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc ) {
+async function editStartPage(
+    idCivilization,
+    clocalization,
+    coriname,
+    ctitle,
+    ccap,
+    creligion,
+    cgov,
+    cdesc
+) {
     const result = document.querySelector("#resultstart");
     await HTTPRequest(`/start/edit`, "PATCH", {
         civilization_id: idCivilization,
@@ -104,7 +120,7 @@ async function editStartPage(idCivilization, clocalization, coriname, ctitle, cc
         religion: creligion,
         government: cgov,
         title: ctitle,
-        paragraph: cdesc
+        paragraph: cdesc,
     });
     result.textContent = "Os dados da civilização foram alterados com sucesso!";
     console.log("Dados da civilização alterados! (informações gerais)");
@@ -113,50 +129,59 @@ async function editStartPage(idCivilization, clocalization, coriname, ctitle, cc
 export function eventFormCivilizationAndStartPage(idCivilization) {
     const form = document.querySelector("#formEditCivilizationAndStartPage");
     const result = document.querySelector("#resultstart");
-    form.addEventListener("submit", async (e) => {
-        // const civil_name = document.querySelector("#name_pg_start");
-        // const civil_origin_name = document.querySelector("#origin_pg_start");
-        // const civil_title = document.querySelector("#titlename_pg_start");
-        // const civil_capital = document.querySelector("#cap_pg_start");
-        // const civil_religion = document.querySelector("#religion_pg_start");
-        // const civil_gov = document.querySelector("#gov_pg_start");
-        // const civil_desc = document.querySelector("#desc_pg_start");
+    form.addEventListener(
+        "submit",
+        async (e) => {
+            // const civil_name = document.querySelector("#name_pg_start");
+            // const civil_origin_name = document.querySelector("#origin_pg_start");
+            // const civil_title = document.querySelector("#titlename_pg_start");
+            // const civil_capital = document.querySelector("#cap_pg_start");
+            // const civil_religion = document.querySelector("#religion_pg_start");
+            // const civil_gov = document.querySelector("#gov_pg_start");
+            // const civil_desc = document.querySelector("#desc_pg_start");
 
-        e.preventDefault();
+            e.preventDefault();
 
-        // Upload da imagem
-        const formData = new FormData();
-        const file = document.querySelector("#img_pg_adm");
-        formData.append("file", file.files[0]);
+            // Upload da imagem
+            const formData = new FormData();
+            const file = document.querySelector("#img_pg_adm");
+            formData.append("file", file.files[0]);
 
-        formData.append("civilization_id", idCivilization);
+            formData.append("civilization_id", idCivilization);
 
-        const regionId = document.querySelector("#id_region_start").value
-        formData.append("region_id", regionId);
+            const regionId = document.querySelector("#id_region_start").value;
+            formData.append("region_id", regionId);
 
-        formData.append("civilization_name", form.nameCivilization.value);
-        
-        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-        if(form.nameCivilization.value == ""){
-            result.textContent = 'Preencha o campo "Nome da civilização!"';
-        }else{
-            await editImageCivilization(formData);
+            formData.append("civilization_name", form.nameCivilization.value);
 
-            await editStartPage(
-                idCivilization,
-                form.nameregion.value,
-                form.originName.value,
-                form.titulo.value,
-                form.capital.value,
-                form.religion.value,
-                form.governo.value,
-                form.desc.value
-            )};
+            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+            if (form.nameCivilization.value == "") {
+                result.textContent = 'Preencha o campo "Nome da civilização!"';
+            } else {
+                await editImageCivilization(formData);
 
-            result.textContent = "Os dados da civilização foram alterados com sucesso!";
+                await editStartPage(
+                    idCivilization,
+                    form.nameregion.value,
+                    form.originName.value,
+                    form.titulo.value,
+                    form.capital.value,
+                    form.religion.value,
+                    form.governo.value,
+                    form.desc.value
+                );
+            }
+
+            result.textContent =
+                "Os dados da civilização foram alterados com sucesso!";
             // Renderização da imagem
-            renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
+            renderInputImageCivilization(
+                idCivilization,
+                "imageCivilization",
+                "civilization_image"
+            );
+        }
         // Renderização da imagem prévia de visualização
         // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
-    });
+    );
 }

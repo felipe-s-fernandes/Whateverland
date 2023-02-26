@@ -48,8 +48,8 @@ export default async function RenderMap(data) {
     const response = {
         page: container,
         object: null,
-        addEvents: function () {
-            console.log("Event listeners");
+        addEvents: () => {
+            addRegionInfo(regions);
         },
     };
 
@@ -69,4 +69,44 @@ async function createMap(regions) {
     });
 
     return map;
+}
+
+function addRegionInfo(regions) {
+    const paths = document.querySelectorAll("path");
+
+    paths.forEach((path) => {
+        path.addEventListener("mouseover", (event) => {
+            const body = document.querySelector("#root");
+
+            const regionId = event.target.dataset.region_id;
+            const region = regions.filter(
+                (region) => region.region_id == regionId
+            )[0];
+
+            const regionInfoBox = createElement("div", "regionInfoBox");
+
+            const regionFigure = createElement("figure", "regionInfoFigure");
+            const img = createElement("img", "regionInfoImg");
+            img.src = `../../uploads/` + region.region_image;
+            regionFigure.appendChild(img);
+
+            const regionName = createElement("p", "regionInfoName");
+            regionName.innerText = region.region_name;
+
+            regionInfoBox.appendChild(regionFigure);
+            regionInfoBox.appendChild(regionName);
+
+            const rect = event.target.getBoundingClientRect();
+
+            regionInfoBox.style.top = (rect.top + rect.bottom) / 2 - 50 + "px";
+            regionInfoBox.style.left = (rect.left + rect.right) / 2 - 50 + "px";
+
+            body.appendChild(regionInfoBox);
+        });
+
+        path.addEventListener("mouseleave", () => {
+            const regionInfoBox = document.querySelector(".regionInfoBox");
+            regionInfoBox.remove();
+        });
+    });
 }
