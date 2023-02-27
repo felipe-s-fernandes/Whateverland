@@ -1,6 +1,20 @@
+.mapContainer {
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    margin: 0px 2.5%;
+}
+
 .mapDiv {
     overflow: hidden;
+    height: 65%;
+    max-width: 1400px;
+}
+
+.mapDiv svg {
     transform: rotate(-25deg);
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .mapDiv path:hover {
@@ -9,34 +23,122 @@
 }
 
 .mapDiv path {
-    border: 1px solid red;
+    box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.25);
 }
 
 .regionInfoBox {
     position: absolute;
     z-index: 9999;
-    max-width: 100px;
-    max-height: 100px;
-    border: 100px;
+    width: 140px;
     pointer-events: none;
+    
 }
+
+.regionInfoBox {
+    opacity: 0;
+    animation-name: fade-in-from-bottom;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-in-from-bottom {
+    from {
+      opacity: 0;
+      margin-bottom: 0px;
+    }
+    to {
+        opacity: 1;
+        margin-bottom: 10px;
+    }
+  }
 
 .regionInfoFigure {
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .regionInfoFigure img {
-    width: 100%;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .regionInfoName {
+    margin-top: 5px;
+    padding: 10px;
+    
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    height: 40px;
+    width: 140px;
+    
+    background: var(--primary-color);
+    box-shadow: var(--shadow-color-position);
+    border: none;
+    border-radius: 25px;
+    
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9em;
+    letter-spacing: 0.285em;
+    text-transform: uppercase;
+}
+
+.searchAndMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 95%;
+}
+
+.mainSearchBar {
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    background-color: #a8a8a8;
+    height: 55px;
+    width: 100%;
+    min-width: 250px;
+    max-width: 700px;
+    border-radius: 50px;
+    padding: 2px 0px;
+    box-shadow: 0px 2px 3px 2px rgba(0, 0, 0, 0.25);
+}
+
+.mainSearchBar input {
+    margin: 3px;
+    width: 100%;
+    background-color: #a8a8a8;
+    border: none;
+    color: #4b4b4b;
+    margin-left: 20px;
+
+    font-size: 18px;
+    font-style: italic;
+    letter-spacing: 0.05em;
     text-align: center;
 }
 
+.mainSearchBar input:focus,
+.mainSearchBar input:active {
+    border: none;
+    outline: none;
+}
 
-/* .mapDiv {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-} */
+.searchAndMenu .roundButton {
+    margin: 0px 5px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.mainSearchBar .roundButton {
+    box-shadow: none;
+    margin: 2px;
+}
+

@@ -19,7 +19,12 @@
 
     /* BackGround claro*/
     --light-color: #b2b2b230;
-    /* Começa a produzir daqui pra baixo as variáveis */    
+    
+    /* Cor de sombra das imagens */
+    --shadow-image: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    /* Variável para movimento das núvens */
+    /* --i: 1; */
 }
 
 * {
@@ -93,6 +98,51 @@ body {
     height: 25px;
     width: 25px;
     transform: rotate(180deg);
+}
+
+.roundButton {
+
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 50px;
+
+    background: var(--primary-color);
+    box-shadow: var(--shadow-color-position);
+    border: none;
+    border-radius: 25px;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 2px;
+}
+
+.searchButton {
+    min-height: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    max-height: 45px;
+    margin-right: 2px;
+}
+
+.navBar .roundButton {
+    min-width: 50px;
+}
+
+.logoutImg, .editImg {
+    width: 25px;
+}
+
+
+.roundButton:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+}
+
+.roundButton:active {
+    background-color: #a8a8a8;
 }
 
 header {
@@ -172,7 +222,6 @@ header {
     height: 90%;
     width: 500px;
     border-radius: 50px;
-
     margin: 3px;
 }
 
@@ -181,13 +230,16 @@ header {
     width: 100%;
     background-color: #a8a8a8;
     border: none;
-    color: #e1e1e1;
+    color: #4b4b4b;
     margin-left: 20px;
+
+    font-size: 16px;
 }
 
 .smallSearchBar input:focus,
 .smallSearchBar input:active {
     border: none;
+    outline: none;
 }
 
 .smallSearchBar svg {
@@ -234,6 +286,33 @@ header {
 
     font-size: 15px;
 }
+
+.hoverBox {
+    position: absolute;
+    z-index: 9999;
+    font-weight: 600;
+
+    width: 100px;
+    padding: 7px;
+    text-align: center;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 1px solid #B2B2B2;
+    box-shadow: var(--shadow-color-position);
+}
+
+.hoverBox::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 15px solid var(--primary-color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    z-index: 1;
+  }
 
 /* width */
 ::-webkit-scrollbar {

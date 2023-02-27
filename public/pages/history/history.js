@@ -3,6 +3,7 @@ import {
     createElement,
     createBackButton,
     createNavBar,
+    displayOnHover,
 } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import { createEventsBar, createEventCard } from "./modules/historyModules.js";
@@ -55,6 +56,7 @@ export default async function RenderHistoryPage(civilizationId) {
         object: null,
         addEvents: function () {
             addEventListeners(civilization, history);
+            displayOnHover();
         },
     };
 

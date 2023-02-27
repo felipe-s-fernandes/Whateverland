@@ -67,6 +67,7 @@ export function renderEditStaticCivilizationAndStart() {
 
 export function renderEditStaticHistory() {
     const page = createElement("div", "containerInformationEdit");
+    const defaultImage = "../../uploads/default_image_history.jpg"
 
     page.innerHTML = `
     <div class="formedit_H">
@@ -77,7 +78,7 @@ export function renderEditStaticHistory() {
             <div class="divFormCivilizationEdit">
                 <label class="labelEdit" for="img_pg_history">Imagem do evento:</label>
                 <div class="imgEdit">
-                <img class="labelEdit" src="" alt="Imagem não encontrada" id="imageEvent">
+                <img class="labelEdit" src="${defaultImage}" alt="Imagem não encontrada" id="imageEvent">
                 </div>
                 <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" /></br>
 
