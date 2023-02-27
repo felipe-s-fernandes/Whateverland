@@ -79,7 +79,7 @@
 .containerInformationEdit {
     /* height: 90%; */
     width: 95%;
-    max-width: 1800px;
+    max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
@@ -260,6 +260,7 @@
     display: flex;
     gap: 25px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #civi_gallery{
@@ -283,6 +284,7 @@
 .container_eventH{
     display: flex;
     gap: 25px;
+    flex-wrap: wrap;
 }
 
 /* .yearevent{
