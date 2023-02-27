@@ -32,10 +32,13 @@
 }
 
 body {
-       background-image:url(../uploads/backgroundImg.png) ;
+    /* background-image:url(../uploads/backgroundImg.png) ; */
+    background-image: url(../uploads/mountain-peak.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
 }
 
 /* Card grande onde contém todas as informações */
