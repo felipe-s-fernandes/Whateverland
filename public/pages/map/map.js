@@ -1,5 +1,5 @@
 //@author {Felipe Fernandes}
-import { createElement, createAdminMenu } from "../../modules/modules.js";
+import { createElement, createSearchAndMenu } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
@@ -22,26 +22,7 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
-    const searchAndMenu = createElement("div", "searchAndMenu");
-
-    const mainSearchBar = createElement("div", "mainSearchBar");
-    const searchInput = createElement("input", "searchInput");
-    searchInput.type = "text";
-    searchInput.placeholder = "Busque um artigo...";
-
-    const editButton = createElement("button", "roundButton");
-    const editImg = createElement("img", "editImg");
-    editImg.src = "../../uploads/edit.svg";
-    editButton.appendChild(editImg);
-    editButton.onclick = () => {
-        redirectTo("/register");
-    };
-
-    const adminMenu = createAdminMenu();
-
-    searchAndMenu.appendChild(mainSearchBar);
-    searchAndMenu.appendChild(adminMenu);
-    searchAndMenu.appendChild(editButton);
+    const searchAndMenu = createSearchAndMenu();
 
     container.appendChild(searchAndMenu);
 
@@ -59,7 +40,7 @@ export default async function RenderMap(data) {
 
 async function createMap(regions) {
     const map = createElement("div", "mapDiv");
-    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="800" height="800"></svg>`;
+    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="1400" height="1400"></svg>`;
 
     regions.forEach((region) => {
         map.firstChild.innerHTML += region.region_path;

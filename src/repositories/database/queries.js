@@ -143,6 +143,14 @@ const deleteGalleryImage = `
     WHERE image_unique_id = $1;
 `;
 
+// Busca civilizações.
+const searchCivilization = `
+    SELECT *
+    FROM civilizations
+    INNER JOIN start_pages ON civilizations.civilization_id = start_pages.civilization_id
+    WHERE civilizations.civilization_name ILIKE $1;
+`;
+
 // Objeto com todas as constantes.
 const query = {
     getCivilizations: getCivilizations,
@@ -167,6 +175,7 @@ const query = {
     deleteCivilization: deleteCivilization,
     deleteHistoryEvent: deleteHistoryEvent,
     deleteGalleryImage: deleteGalleryImage,
+    searchCivilization: searchCivilization,
 };
 
 export default query;

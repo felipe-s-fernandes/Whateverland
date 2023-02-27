@@ -30,9 +30,24 @@ const patchStart = async (startObject) => {
     }
 };
 
+const searchStart = async (string) => {
+    // Padronizar a resposta
+
+    try {
+        const repoResponse = await startRepository.searchStart(
+            "%" + string + "%"
+        );
+        return repoResponse;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const startServices = {
     getStart: getStart,
     patchStart: patchStart,
+    searchStart: searchStart,
 };
 
 export default startServices;

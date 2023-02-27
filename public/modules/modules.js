@@ -70,6 +70,9 @@ export async function createNavBar(page, civilizationId) {
     const searchImg = createElement("img", "searchImg");
     searchImg.src = "../uploads/search.svg";
     searchButton.appendChild(searchImg);
+    searchButton.onclick = () => {
+        searchArticle();
+    };
 
     smallSearchBar.appendChild(searchInput);
     smallSearchBar.appendChild(searchButton);
@@ -94,13 +97,6 @@ export function createAdminMenu() {
     const loginButton = createElement("button", "roundButton");
 
     if (document.cookie.includes("session")) {
-        /* const registerButton = createElement("button", "backButton");
-        registerButton.innerText = "EDITOR DE ARTIGOS";
-        registerButton.onclick = () => {
-            redirectTo("/register");
-        };
-        container.appendChild(registerButton); */
-
         const logoutImg = createElement("img", "logoutImg");
         logoutImg.src = "../uploads/logout.svg";
         loginButton.appendChild(logoutImg);
@@ -119,4 +115,47 @@ export function createAdminMenu() {
         };
     }
     return loginButton;
+}
+
+export function createSearchAndMenu() {
+    const searchAndMenu = createElement("div", "searchAndMenu");
+
+    const mainSearchBar = createElement("div", "mainSearchBar");
+    const searchInput = createElement("input", "searchInput");
+    searchInput.type = "text";
+    searchInput.placeholder = "Busque um artigo...";
+
+    const searchButton = createElement("button", "roundButton");
+    searchButton.classList.add("searchButton");
+    const searchImg = createElement("img", "searchImg");
+    searchImg.src = "../uploads/search.svg";
+    searchButton.appendChild(searchImg);
+    searchButton.onclick = () => {
+        searchArticle();
+    };
+
+    mainSearchBar.appendChild(searchInput);
+    mainSearchBar.appendChild(searchButton);
+
+    const adminMenu = createAdminMenu();
+
+    searchAndMenu.appendChild(mainSearchBar);
+    searchAndMenu.appendChild(adminMenu);
+
+    if (document.cookie.includes("session")) {
+        const editButton = createElement("button", "roundButton");
+        const editImg = createElement("img", "editImg");
+        editImg.src = "../uploads/edit.svg";
+        editButton.appendChild(editImg);
+        editButton.onclick = () => {
+            redirectTo("/register");
+        };
+        searchAndMenu.appendChild(editButton);
+    }
+    return searchAndMenu;
+}
+
+function searchArticle() {
+    const searchString = document.querySelector(".searchInput").value;
+    redirectTo("/search", searchString);
 }

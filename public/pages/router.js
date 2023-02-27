@@ -8,6 +8,7 @@ import RenderGalleryPage from "./gallery/gallery.js";
 import RenderRegisterCivilizations from "./registerCivilizations/registerCivilizations.js";
 import RenderEditPage from "./edit/edit.js";
 import RenderLoginPage from "./login/login.js";
+import RenderSearchPage from "./search/search.js";
 
 export default function getPagesRouter() {
     const pagesRouter = {
@@ -20,6 +21,7 @@ export default function getPagesRouter() {
         "/register": RenderRegisterCivilizations,
         "/login": RenderLoginPage,
         "/edit": RenderEditPage,
+        "/search": RenderSearchPage,
         getPage: function (url, data) {
             return this[url](data);
         },
