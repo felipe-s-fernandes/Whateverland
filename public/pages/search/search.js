@@ -10,7 +10,8 @@ import {
 import redirectTo from "../../modules/redirect.js";
 
 export default async function RenderSearchPage(string) {
-    const container = createElement("section", "searchContainer");
+    const container = createElement("section", "container");
+    container.id="searchContainer";
 
     const searchAndMenu = createSearchAndMenu();
 
