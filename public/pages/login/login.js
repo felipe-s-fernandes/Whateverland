@@ -44,6 +44,8 @@ function createLoginForm() {
 
 function addLogin() {
     const loginButton = document.querySelector("#enter");
+    const usernameInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#senha");
 
     loginButton.onclick = async () => {
         const username = document.querySelector("#email").value;
@@ -57,4 +59,18 @@ function addLogin() {
         console.log(result);
         redirectTo("/map");
     };
+
+    usernameInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            loginButton.click();
+        }
+    });
+
+    passwordInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            loginButton.click();
+        }
+    });
 }
