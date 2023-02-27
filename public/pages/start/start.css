@@ -13,8 +13,8 @@ body {
 #containerInformation {
     display: flex;
     max-height: 70vh;
-    height: fit-content;
-    flex-direction: row;    
+ height: fit-content;  
+ flex-direction: row;    
 }
 
 .asideContent {
@@ -30,7 +30,7 @@ body {
 
 .sectionAside {
     border-top-left-radius: 15px;
-    padding: 10px 10px 5px 10px;
+    padding: 10px 10px 30px 10px;
     display: flex;
     background-color: rgba(255, 255, 255, 0.1);
     flex-direction: column;
@@ -55,12 +55,17 @@ body {
 }
 
 .infoArticle {
-    padding: 20px 15px 5px 20px;
+    padding: 25px 15px 0px 20px;
     border-bottom-left-radius: 15px;
+}
+
+.infoTitle {
+    font-size: 1.2em;
 }
 
 .info {
     padding-bottom: 8px;
+    font-size: 1.1em;
 }
 
 .mainContent {

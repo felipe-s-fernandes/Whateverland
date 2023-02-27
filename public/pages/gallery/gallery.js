@@ -31,6 +31,7 @@ export default async function RenderGalleryPage(civilizationId) {
     // Vai ter que refatorar esse código para não dá problema quando unir os arquivos
     const container = document.createElement("div");
     container.classList.add("container");
+    container.id="galleryContainer";
 
     const navBar = await createNavBar("gallery", civilizationId);
     const backButton = createBackButton();
