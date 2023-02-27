@@ -33,26 +33,32 @@ export function clouds() {
 
     // Nuvens
     const allClouds = createElement("div", "containerClouds")
+    
+    // const cloud5 = createElement("img", "clouds5");
+    // cloud3.style.setProperty('--i', '8');
+    // cloud3.src = "../../uploads/cloud5.png";
+    // allClouds.appendChild(cloud5);
 
-    const cloud1 = createElement("img", "clouds");
+    const cloud1 = createElement("img", "clouds1");
     cloud1.style.setProperty('--i', '1');
     cloud1.src = "../../uploads/cloud1.png";
     allClouds.appendChild(cloud1);
     
-    const cloud2 = createElement("img", "clouds");
+    const cloud4 = createElement("img", "clouds4");
+    cloud4.style.setProperty('--i', '9');
+    cloud4.src = "../../uploads/cloud4.png";
+    allClouds.appendChild(cloud4);
+
+    const cloud2 = createElement("img", "clouds2");
     cloud2.style.setProperty('--i', '3');
     cloud2.src = "../../uploads/cloud2.png";
     allClouds.appendChild(cloud2);
     
-    const cloud3 = createElement("img", "clouds");
+    const cloud3 = createElement("img", "clouds3");
     cloud3.style.setProperty('--i', '6');
     cloud3.src = "../../uploads/cloud3.png";
     allClouds.appendChild(cloud3);
     
-    const cloud4 = createElement("img", "clouds");
-    cloud4.style.setProperty('--i', '9');
-    cloud4.src = "../../uploads/cloud4.png";
-    allClouds.appendChild(cloud4);
 
     return allClouds;    
 }
