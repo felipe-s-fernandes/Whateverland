@@ -39,7 +39,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <input class="InputFormEdit" type="text" name="originName" id="origin_pg_start" /></br>
 
 
-                    <label class="labelEdit" for="titlename_pg_start">Nome da Região</label>
+                    <label class="labelEdit" for="titlename_pg_start">Localização</label>
                     <input class="InputFormEdit" type="text" name="nameregion" id="name_region_start" /></br>
 
                     <label class="labelEdit" for="cap_pg_start">Capital</label>
@@ -67,7 +67,7 @@ export function renderEditStaticCivilizationAndStart() {
 
 export function renderEditStaticHistory() {
     const page = createElement("div", "containerInformationEdit");
-    const defaultImage = "../../uploads/default_image_history.jpg"
+    const defaultImage = "../../uploads/default_image_history.jpg";
 
     page.innerHTML = `
     <div class="formedit_H">

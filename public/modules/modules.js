@@ -154,10 +154,7 @@ export function createSearchAndMenu() {
     mainSearchBar.appendChild(searchInput);
     mainSearchBar.appendChild(searchButton);
 
-    const adminMenu = createAdminMenu();
-
     searchAndMenu.appendChild(mainSearchBar);
-    searchAndMenu.appendChild(adminMenu);
 
     if (document.cookie.includes("session")) {
         const editButton = createElement("button", "roundButton");
@@ -171,6 +168,10 @@ export function createSearchAndMenu() {
         editButton.dataset.text = "EDITOR DE ARTIGOS";
         searchAndMenu.appendChild(editButton);
     }
+
+    const adminMenu = createAdminMenu();
+    searchAndMenu.appendChild(adminMenu);
+
     return searchAndMenu;
 }
 
