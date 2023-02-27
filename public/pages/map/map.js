@@ -85,12 +85,12 @@ function addRegionInfo(regions) {
 
             const rect = event.target.getBoundingClientRect();
 
-            const maxDimensions = 120;
+            const maxDimensions = 140;
             regionInfoBox.style.maxHeight = maxDimensions + "px";
             regionInfoBox.style.maxWidth = maxDimensions + "px";
 
             regionInfoBox.style.top =
-                (rect.top + rect.bottom - maxDimensions) / 2 + "px";
+                (rect.top + rect.bottom - maxDimensions - 70) / 2 + "px";
             regionInfoBox.style.left =
                 (rect.left + rect.right - maxDimensions) / 2 + "px";
 

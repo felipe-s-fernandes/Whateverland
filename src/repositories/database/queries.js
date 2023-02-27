@@ -145,9 +145,9 @@ const deleteGalleryImage = `
 
 // Busca civilizações.
 const searchCivilization = `
-    SELECT *
+    SELECT civilizations.civilization_id, civilizations.civilization_name, civilizations.civilization_image, start_pages.paragraph
     FROM civilizations
-    INNER JOIN start_pages ON civilizations.civilization_id = start_pages.civilization_id
+    FULL JOIN start_pages ON civilizations.civilization_id = start_pages.civilization_id
     WHERE civilizations.civilization_name ILIKE $1;
 `;
 

@@ -22,6 +22,7 @@ export default async function RenderStartPage(civilizationId) {
                 capital: "default capital",
                 religion: "default religion",
                 government: "default government",
+                title: "default title",
                 paragraph: "default paragraph",
                 deleted: false,
             },
