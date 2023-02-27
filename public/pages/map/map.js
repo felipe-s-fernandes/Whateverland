@@ -1,5 +1,9 @@
 //@author {Felipe Fernandes}
-import { createElement, createSearchAndMenu } from "../../modules/modules.js";
+import {
+    createElement,
+    createSearchAndMenu,
+    displayOnHover,
+} from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
@@ -32,6 +36,7 @@ export default async function RenderMap(data) {
         object: null,
         addEvents: () => {
             addRegionInfo(regions);
+            displayOnHover();
         },
     };
 

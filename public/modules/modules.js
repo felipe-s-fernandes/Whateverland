@@ -95,6 +95,7 @@ export async function createNavBar(page, civilizationId) {
 
 export function createAdminMenu() {
     const loginButton = createElement("button", "roundButton");
+    loginButton.classList.add("hoverTarget");
 
     if (document.cookie.includes("session")) {
         const logoutImg = createElement("img", "logoutImg");
@@ -105,6 +106,7 @@ export function createAdminMenu() {
             await HTTPRequest("/login", "DELETE");
             redirectTo("/map");
         };
+        loginButton.dataset.text = "LOGOUT";
     } else {
         const loginImg = createElement("img", "loginImg");
         loginImg.src = "../uploads/login.svg";
@@ -113,6 +115,7 @@ export function createAdminMenu() {
         loginButton.onclick = () => {
             redirectTo("/login");
         };
+        loginButton.dataset.text = "LOGIN";
     }
     return loginButton;
 }
@@ -144,12 +147,14 @@ export function createSearchAndMenu() {
 
     if (document.cookie.includes("session")) {
         const editButton = createElement("button", "roundButton");
+        editButton.classList.add("hoverTarget");
         const editImg = createElement("img", "editImg");
         editImg.src = "../uploads/edit.svg";
         editButton.appendChild(editImg);
         editButton.onclick = () => {
             redirectTo("/register");
         };
+        editButton.dataset.text = "EDITOR DE ARTIGOS";
         searchAndMenu.appendChild(editButton);
     }
     return searchAndMenu;
@@ -158,4 +163,28 @@ export function createSearchAndMenu() {
 function searchArticle() {
     const searchString = document.querySelector(".searchInput").value;
     redirectTo("/search", searchString);
+}
+
+export function displayOnHover() {
+    const elements = document.querySelectorAll(".hoverTarget");
+
+    elements.forEach((element) => {
+        element.addEventListener("mouseenter", () => {
+            const hoverBox = createElement("p", "hoverBox");
+            hoverBox.innerText = element.dataset.text;
+            const body = document.querySelector("#root");
+
+            const rect = element.getBoundingClientRect();
+            console.log(rect);
+
+            hoverBox.style.top = rect.top + rect.height + 15 + "px";
+            hoverBox.style.left = rect.left + rect.width / 2 - 50 + "px";
+
+            body.appendChild(hoverBox);
+        });
+
+        element.addEventListener("mouseleave", () => {
+            document.querySelector(".hoverBox").remove();
+        });
+    });
 }

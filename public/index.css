@@ -287,6 +287,33 @@ header {
     font-size: 15px;
 }
 
+.hoverBox {
+    position: absolute;
+    z-index: 9999;
+    font-weight: 600;
+
+    width: 100px;
+    padding: 7px;
+    text-align: center;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 1px solid #B2B2B2;
+    box-shadow: var(--shadow-color-position);
+}
+
+.hoverBox::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 15px solid var(--primary-color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    z-index: 1;
+  }
+
 /* width */
 ::-webkit-scrollbar {
     width: 17px;
