@@ -74,6 +74,13 @@ export async function createNavBar(page, civilizationId) {
         searchArticle();
     };
 
+    searchInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            searchButton.click();
+        }
+    });
+
     smallSearchBar.appendChild(searchInput);
     smallSearchBar.appendChild(searchButton);
 
@@ -136,6 +143,13 @@ export function createSearchAndMenu() {
     searchButton.onclick = () => {
         searchArticle();
     };
+
+    searchInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            searchButton.click();
+        }
+    });
 
     mainSearchBar.appendChild(searchInput);
     mainSearchBar.appendChild(searchButton);

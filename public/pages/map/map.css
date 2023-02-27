@@ -40,18 +40,18 @@
     animation-duration: 0.5s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
-  }
+}
   
-  @keyframes fade-in-from-bottom {
+@keyframes fade-in-from-bottom {
     from {
-      opacity: 0;
-      margin-bottom: 0px;
+        opacity: 0;
+        margin-bottom: 0px;
     }
     to {
         opacity: 1;
         margin-bottom: 10px;
     }
-  }
+}
 
 .regionInfoFigure {
     width: 100%;
@@ -95,6 +95,8 @@
     align-items: center;
     max-width: 1000px;
     width: 95%;
+
+    margin-top: 20px;
 }
 
 .mainSearchBar {

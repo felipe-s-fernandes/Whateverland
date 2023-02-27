@@ -153,7 +153,8 @@
     }
 }
 
-.clouds {
+.clouds1 {
+    margin-bottom: 250px;
     position: absolute;
     /* position: fixed; */
     /* width: 100%; */
@@ -163,3 +164,42 @@
     overflow-x: hidden;
     animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
+.clouds2 {
+   margin-bottom: 0px;
+   position: absolute;
+   /* position: fixed; */
+   /* width: 100%; */
+   bottom: -600px;
+   /* display: inline-block; */
+   /* overflow: hidden; */
+   overflow-x: hidden;
+    animation: moveClouds calc(8s * var(--i)) linear infinite;
+}
+.clouds3 {
+    margin-bottom: 250px;
+    position: absolute;
+    /* position: fixed; */
+    /* width: 100%; */
+    bottom: -600px;
+    /* display: inline-block; */
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    animation: moveClouds calc(8s * var(--i)) linear infinite;
+}
+.clouds4 {
+   margin-bottom: 100px;
+    position: absolute;
+    /* position: fixed; */
+    /* width: 100%; */
+    bottom: -600px;
+    /* display: inline-block; */
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    animation: moveClouds calc(8s * var(--i)) linear infinite;
+}
+@keyframes lights {
+    0%{
+        background-image: linear-gradient(45deg, white, yellow);
+    }
+}
+
