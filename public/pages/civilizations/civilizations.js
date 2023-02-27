@@ -12,16 +12,16 @@ export default async function RenderCivilizationsPage(regionId) {
 
     // const regionObject = await HTTPRequest(`/regions/${regionId}`, "GET");
     // const region = regionObject.region[0];
-    
+
     // Renderização do mapa
     const regionObject = await HTTPRequest(`/regions/`, "GET");
-    
+
     // Array com todas as regiões
     const regions = regionObject.regions;
-    // Objeto da região clicada 
-    const region = regions.filter((region) => region.region_id == regionId)[0]
+    // Objeto da região clicada
+    const region = regions.filter((region) => region.region_id == regionId)[0];
     // region.id = "regionCivilization";
-    
+
     const nameArchive = region.region_image;
 
     const civNameArray = [];
@@ -42,27 +42,27 @@ export default async function RenderCivilizationsPage(regionId) {
         territorio: "../../uploads/silbr.png",
         civilizations: civNameArray,
         logos: civImgArray,
-        id: civIdArray
+        id: civIdArray,
     };
 
     function createMap(region) {
         const map = createElement("div", "mapDiv2");
         map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400"></svg>`;
-    
+
         regions.forEach((region) => {
             map.firstChild.innerHTML += region.region_path;
         });
-    
+
         map.firstChild.childNodes.forEach((path, index) => {
             path.id = "region" + regions[index].region_id;
         });
-    
+
         return map;
     }
 
     const regionSelect = createElement("div", "regionSelect");
     regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
-    
+
     const simbolMap = createElement("div", "simbolMap");
     simbolMap.innerHTML = `<img class="imageSimbolMap" src="../../uploads/${nameArchive}" alt="">`;
     // const map = createMap(allRegions);
@@ -101,7 +101,7 @@ export default async function RenderCivilizationsPage(regionId) {
     // regionBody.classList.toggle('show');
     regionBody.appendChild(container_regionTitle);
     regionBody.appendChild(regionResum);
-    
+
     // window.addEventListener('popstate', () => {
     //     regionBody.classList.add('show');
     //     // const sidebar = regionBody;
@@ -111,7 +111,7 @@ export default async function RenderCivilizationsPage(regionId) {
     //     // const sidebar = document.querySelector('.sidebar');
     //     regionBody.classList.add('show');
     // });
-      
+
     // window.addEventListener('hashchange', function(event) {
     // // const sidebar = document.querySelector('.sidebar');
     // regionBody.classList.add('show');
@@ -131,7 +131,10 @@ export default async function RenderCivilizationsPage(regionId) {
     regionText.textContent = example.resumo;
 
     //Criando a tabela das civilizações: -----------------------------------------------
-    const regionCivilizations = createElement("table", "regionCivilizationsGeneral");
+    const regionCivilizations = createElement(
+        "table",
+        "regionCivilizationsGeneral"
+    );
     regionBody.appendChild(regionCivilizations);
 
     const thead_civ = createElement("thead", "thead_civ");
@@ -195,8 +198,8 @@ export default async function RenderCivilizationsPage(regionId) {
 
     let i_civil = 0;
     civilLogo1.dataset.id = example.id[i_civil];
-    civilLogo2.dataset.id = example.id[(i_civil+1)];
-    civilLogo3.dataset.id = example.id[(i_civil+2)];
+    civilLogo2.dataset.id = example.id[i_civil + 1];
+    civilLogo3.dataset.id = example.id[i_civil + 2];
 
     civilLogo1.src = example.logos[0];
     civilLogo2.src = example.logos[1];
@@ -208,22 +211,17 @@ export default async function RenderCivilizationsPage(regionId) {
 
     img_left.style.display = "none";
 
-     
-    if(i_civil >= example.id.length){
-
+    if (i_civil >= example.id.length) {
         civilLogo1.style.opacity = "0";
     }
-    
-    if(i_civil+1 >= example.id.length){
 
+    if (i_civil + 1 >= example.id.length) {
         civilLogo2.style.opacity = "0";
     }
 
-    if(i_civil+2 >= example.id.length){
-
+    if (i_civil + 2 >= example.id.length) {
         civilLogo3.style.opacity = "0";
     }
-
 
     td_buttonleft.addEventListener("click", function () {
         img_left.style.display = "none";
@@ -246,18 +244,18 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
         civilLogo1.dataset.id = example.id[i_civil];
-        civilLogo2.dataset.id = example.id[(i_civil+1)];
-        civilLogo3.dataset.id = example.id[(i_civil+2)];
+        civilLogo2.dataset.id = example.id[i_civil + 1];
+        civilLogo3.dataset.id = example.id[i_civil + 2];
 
-        if(i_civil >= example.id.length){
+        if (i_civil >= example.id.length) {
             civilLogo1.style.opacity = "0";
         }
-        
-        if(i_civil+1 >= example.id.length){
+
+        if (i_civil + 1 >= example.id.length) {
             civilLogo2.style.opacity = "0";
         }
-    
-        if(i_civil+2 >= example.id.length){
+
+        if (i_civil + 2 >= example.id.length) {
             civilLogo3.style.opacity = "0";
         }
     });
@@ -283,22 +281,32 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo2.src = example.logos[i_civil + 1];
         civilLogo3.src = example.logos[i_civil + 2];
         civilLogo1.dataset.id = example.id[i_civil];
-        civilLogo2.dataset.id = example.id[(i_civil+1)];
-        civilLogo3.dataset.id = example.id[(i_civil+2)];
+        civilLogo2.dataset.id = example.id[i_civil + 1];
+        civilLogo3.dataset.id = example.id[i_civil + 2];
 
-        if(i_civil >= example.id.length){
+        if (i_civil >= example.id.length) {
             civilLogo1.style.opacity = "0";
         }
-        
-        if(i_civil+1 >= example.id.length){
+
+        if (i_civil + 1 >= example.id.length) {
             civilLogo2.style.opacity = "0";
         }
-    
-        if(i_civil+2 >= example.id.length){
+
+        if (i_civil + 2 >= example.id.length) {
             civilLogo3.style.opacity = "0";
         }
     });
 
+    //IMAGENS QUEBRADAS
+    civilLogo1.onerror = () => {
+        civilLogo1.src = "../../uploads/default_image.jpg";
+    };
+    civilLogo2.onerror = () => {
+        civilLogo2.src = "../../uploads/default_image.jpg";
+    };
+    civilLogo3.onerror = () => {
+        civilLogo3.src = "../../uploads/default_image.jpg";
+    };
 
     //MODIFICAR
     civilLogo1.addEventListener("click", async () => {
@@ -322,8 +330,6 @@ export default async function RenderCivilizationsPage(regionId) {
         object: null,
         addEvents: function () {
             // Efeito de a sidebar aparecer na lateral
-            
-
             // console.log(regionId);
             // const regionSelect2 = document.querySelector(`#region${regionId}`);
             // regionSelect2.style.fill = "white";

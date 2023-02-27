@@ -17,7 +17,7 @@ export default async function RenderHistoryPage(civilizationId) {
             {
                 event: null,
                 civilization_id: civilizationId,
-                event_year: null,
+                event_year: "No year",
                 event_title: "No title",
                 event_image: "",
                 event_image_label: "No image",
