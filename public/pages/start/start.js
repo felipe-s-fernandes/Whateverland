@@ -3,6 +3,7 @@ import {
     createElement,
     createBackButton,
     createNavBar,
+    displayOnHover,
 } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import createStartPage from "./modules/startModules.js";
@@ -21,6 +22,7 @@ export default async function RenderStartPage(civilizationId) {
                 capital: "default capital",
                 religion: "default religion",
                 government: "default government",
+                title: "default title",
                 paragraph: "default paragraph",
                 deleted: false,
             },
@@ -38,7 +40,7 @@ export default async function RenderStartPage(civilizationId) {
     const civilization = civilizationObject.civilization[0];
 
     const container = createElement("section", "container");
-    container.id="startPageContainer";
+    container.id = "startPageContainer";
 
     const navBar = await createNavBar("start", civilizationId);
     const startPageDiv = createStartPage(startPage, civilization);
@@ -53,7 +55,7 @@ export default async function RenderStartPage(civilizationId) {
         page: container,
         object: object,
         addEvents: () => {
-            console.log("eventos");
+            displayOnHover();
         },
     };
 

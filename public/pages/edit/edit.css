@@ -8,6 +8,8 @@
 #containerFormEditStartPage {
     display: flex;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #formCivilization {
@@ -76,16 +78,15 @@
 
 .containerInformationEdit {
     /* height: 90%; */
-    width: 1200px;
-    max-width: 1800px;
+    width: 95%;
+    max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
     padding: 25px;
-    min-width: 800px;
-    
+    /* min-width: 800px; */
     /* display: flex; */
     /* margin-top: 50px; */
     /* margin-bottom: 50px; */
@@ -233,6 +234,8 @@
     display: flex;
     width: 100%;
     gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #formHistory2{
@@ -257,6 +260,7 @@
     display: flex;
     gap: 25px;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 #civi_gallery{
@@ -279,13 +283,14 @@
 
 .container_eventH{
     display: flex;
-    /* gap: 25px; */
+    gap: 25px;
+    flex-wrap: wrap;
 }
 
-.yearevent{
+/* .yearevent{
     flex: 1;
 }
-
+ */
 .nameevent{
     display: flex;
     flex-direction: column;

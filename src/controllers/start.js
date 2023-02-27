@@ -104,9 +104,46 @@ const patchStart = async (req, res) => {
     }
 };
 
+const searchStart = async (req, res) => {
+    console.log(TAG, "searchStart() from " + req.connection.remoteAddress);
+    console.time("searchStart()");
+    // Precisa tratar algum input? Sim
+
+    //fetch("http://localhost:8080/start/search/:string")
+    const string = req.params.string;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await startServices.searchStart(string);
+
+        response.message = `Search results for '${string}' retrieved successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("searchStart()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("searchStart()");
+    }
+};
+
 const startController = {
     getStart: getStart,
     patchStart: patchStart,
+    searchStart: searchStart,
 };
 
 export default startController;

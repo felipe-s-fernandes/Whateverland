@@ -1,5 +1,9 @@
 //@author {Felipe Fernandes}
-import { createElement } from "../../modules/modules.js";
+import {
+    createElement,
+    createSearchAndMenu,
+    displayOnHover,
+} from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 
@@ -10,6 +14,7 @@ export default async function RenderMap(data) {
     console.log(regions);
 
     const container = createElement("section", "container");
+    container.classList.add("mapContainer");
     const mapDiv = await createMap(regions);
 
     console.log(mapDiv);
@@ -21,28 +26,9 @@ export default async function RenderMap(data) {
 
     container.appendChild(mapDiv);
 
-    const loginButton = createElement("button", "backButton");
-    if (document.cookie.includes("session")) {
-        const registerButton = createElement("button", "backButton");
-        registerButton.innerText = "EDITOR DE ARTIGOS";
-        registerButton.onclick = () => {
-            redirectTo("/register");
-        };
-        container.appendChild(registerButton);
+    const searchAndMenu = createSearchAndMenu();
 
-        loginButton.innerText = "LOGOUT";
-        loginButton.onclick = async () => {
-            await HTTPRequest("/login", "DELETE");
-            redirectTo("/map");
-        };
-    } else {
-        loginButton.innerText = "LOGIN";
-        loginButton.onclick = () => {
-            redirectTo("/login");
-        };
-    }
-
-    container.appendChild(loginButton);
+    container.appendChild(searchAndMenu);
 
     //root.appendChild(container);
     const response = {
@@ -50,6 +36,7 @@ export default async function RenderMap(data) {
         object: null,
         addEvents: () => {
             addRegionInfo(regions);
+            displayOnHover();
         },
     };
 
@@ -58,7 +45,7 @@ export default async function RenderMap(data) {
 
 async function createMap(regions) {
     const map = createElement("div", "mapDiv");
-    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400"></svg>`;
+    map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="1400" height="1400"></svg>`;
 
     regions.forEach((region) => {
         map.firstChild.innerHTML += region.region_path;
@@ -98,8 +85,14 @@ function addRegionInfo(regions) {
 
             const rect = event.target.getBoundingClientRect();
 
-            regionInfoBox.style.top = (rect.top + rect.bottom) / 2 - 50 + "px";
-            regionInfoBox.style.left = (rect.left + rect.right) / 2 - 50 + "px";
+            const maxDimensions = 140;
+            regionInfoBox.style.maxHeight = maxDimensions + "px";
+            regionInfoBox.style.maxWidth = maxDimensions + "px";
+
+            regionInfoBox.style.top =
+                (rect.top + rect.bottom - maxDimensions - 70) / 2 + "px";
+            regionInfoBox.style.left =
+                (rect.left + rect.right - maxDimensions) / 2 + "px";
 
             body.appendChild(regionInfoBox);
         });

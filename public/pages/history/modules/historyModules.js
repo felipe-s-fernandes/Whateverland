@@ -7,12 +7,14 @@ export function createEventsBar(events) {
     const innerEventsBar = createElement("div", "innerEventsBar");
 
     events.forEach((event, index) => {
-        const yearButton = createElement("button", "yearButton");
-        yearButton.innerText = event.event_year;
-        yearButton.dataset.event_id = event.event;
-        innerEventsBar.appendChild(yearButton);
+        if (event.event !== null) {
+            const yearButton = createElement("button", "yearButton");
+            yearButton.innerText = event.event_year;
+            yearButton.dataset.event_id = event.event;
+            innerEventsBar.appendChild(yearButton);
 
-        if (index === 0) yearButton.classList.add("clickedYearButton");
+            if (index === 0) yearButton.classList.add("clickedYearButton");
+        }
     });
 
     const leftButton = createElement("button", "yearsNavButton");
@@ -66,6 +68,9 @@ export function createEventCard(civilizationName, event) {
     const eventFigure = createElement("figure", "historyEventFigure");
     const eventImage = createElement("img", "eventImage");
     eventImage.src = `../../../uploads/${event.event_image}`;
+    eventImage.onerror = () => {
+        eventImage.src = `../../../uploads/default_image_history.jpg`;
+    };
     eventImage.alt = event.event_image_label;
     eventFigure.appendChild(eventImage);
 

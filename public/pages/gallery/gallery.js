@@ -4,7 +4,11 @@
 import renderPage from "./modules/galleryModules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import { renderTextTitle, imagesGallery } from "./modules/galleryModules.js";
-import { createNavBar, createBackButton } from "../../modules/modules.js";
+import {
+    createNavBar,
+    createBackButton,
+    displayOnHover,
+} from "../../modules/modules.js";
 
 export default async function RenderGalleryPage(civilizationId) {
     // Requisição ao banco de dados para obter a galeria de uma civilização
@@ -51,6 +55,7 @@ export default async function RenderGalleryPage(civilizationId) {
             // Rendereização dos elementos variáveis da página
             renderTextTitle(nome);
             imagesGallery(images);
+            displayOnHover();
         },
     };
 

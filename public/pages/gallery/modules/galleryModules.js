@@ -24,12 +24,12 @@ export default function renderPage() {
     // buttonRight.id = "right";
     containerImages.id = "containerImages";
     textTitle.id = "textTitle";
-    
+
     // Inseerção dos elementos fixos no HTML
     // contentButtonsAndImages.appendChild(buttonLeft);
     // contentButtonsAndImages.appendChild(containerImages);
     // contentButtonsAndImages.appendChild(buttonRight);
-    
+
     // Inserção dos elementos variáveis no HTML
     contentBox.appendChild(textTitle);
     contentBox.appendChild(containerImages);
@@ -45,6 +45,9 @@ function addImage(uploadImage) {
     const figuraCaption = createElement("figcaption", "textImage");
 
     image.src = `../../../uploads/${uploadImage.gallery_image_id}`;
+    image.onerror = () => {
+        image.src = "../../../uploads/default_image.jpg";
+    };
     figuraCaption.innerText = uploadImage.gallery_image_title;
 
     figure.appendChild(image);
@@ -68,22 +71,22 @@ export function renderTextTitle(name) {
 //     const maxImages = 6;
 
 //     let currentPage = 0;
-    
+
 //     let primaryElement = currentPage * maxImages;
 //     let lastElement = primaryElement + maxImages - 1;
 
 //     if (currentPage == 0) {
-//         buttonLeft.style.display = "none";                
+//         buttonLeft.style.display = "none";
 //     }
 
 //     buttonRight.style.display = "block";
 
 //     if (array.length - 1 <= lastElement) {
-//         buttonRight.style.display = "none";        
+//         buttonRight.style.display = "none";
 //     }
 
 //     displayElements(array);
-    
+
 //     function displayElements(array) {
 
 //         containerImages.innerHTML = "";
@@ -97,19 +100,19 @@ export function renderTextTitle(name) {
 //             const element = array[i];
 
 //             if (i >= primaryElement && i <= lastElement) {
-//                 containerImages.appendChild(addImage(element));     
+//                 containerImages.appendChild(addImage(element));
 //                 if (i == lastElement) {
-//                     i = array.length;                    
-//                 }                         
+//                     i = array.length;
+//                 }
 //             }
 //         }
 //     }
-    
+
 //     buttonLeft.addEventListener("click", () => {
-        
+
 //         if (currentPage === 1) {
 //             buttonLeft.style.display = "none";
-//             buttonRight.style.display = "block";                                
+//             buttonRight.style.display = "block";
 //         } else {
 //             buttonLeft.style.display = "block";
 //             buttonRight.style.display = "block";
@@ -118,13 +121,13 @@ export function renderTextTitle(name) {
 //         console.log(currentPage);
 //         displayElements(array);
 //     })
-    
+
 //     buttonRight.addEventListener("click", () => {
-        
+
 //         if (lastElement + maxImages > array.length - 1) {
 //             buttonRight.style.display = "none";
 //             buttonLeft.style.display = "block";
-            
+
 //         } else {
 //             buttonLeft.style.display = "block";
 //             buttonRight.style.display = "block";
