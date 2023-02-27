@@ -39,7 +39,7 @@ export function renderEditStaticCivilizationAndStart() {
                     <input class="InputFormEdit" type="text" name="originName" id="origin_pg_start" /></br>
 
 
-                    <label class="labelEdit" for="titlename_pg_start">Nome da Região</label>
+                    <label class="labelEdit" for="titlename_pg_start">Localização</label>
                     <input class="InputFormEdit" type="text" name="nameregion" id="name_region_start" /></br>
 
                     <label class="labelEdit" for="cap_pg_start">Capital</label>
@@ -67,7 +67,7 @@ export function renderEditStaticCivilizationAndStart() {
 
 export function renderEditStaticHistory() {
     const page = createElement("div", "containerInformationEdit");
-    const defaultImage = "../../uploads/default_image_history.jpg"
+    const defaultImage = "../../uploads/default_image_history.jpg";
 
     page.innerHTML = `
     <div class="formedit_H">
@@ -128,28 +128,27 @@ export function renderEditStaticHistory() {
 }
 
 export function renderEditStaticGallery() {
-    const page = createElement("div", "page");
+    const page = createElement("div", "containerInformationEdit");
 
     page.innerHTML = `
-        <div class="containerInformationEdit">
         <h2 class="titleEdit">Galeria</h2>
         <div class="formedit_H">
-                <form class="cadastre" id="formGallery">
-                    <div class="divformgallery">
-                        <div>            
-                            <label class="labelEdit" for="civi_gallery">Legenda da imagem:</label>
-                            <input class="InputFormEdit" type="text" id="civi_gallery" name="civi_gallery" /></br>
-                        </div>  
-                        <div>  
-                            <label class="labelEdit" for="img_gallery">Imagem:</label>
-                            <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" /></br>
-                        </div>  
-                    </div> 
-                    <div class="container_result">
-                        <button class ="btn-edit" type="submit" id="include_gallery">Adicionar Imagem</button>
-                        <div id="resultgallery"></div>
-                    </div>
-                </form>
+            <form class="cadastre" id="formGallery">
+                <div class="divformgallery">
+                    <div>            
+                        <label class="labelEdit" for="civi_gallery">Legenda da imagem:</label>
+                        <input class="InputFormEdit" type="text" id="civi_gallery" name="civi_gallery" /></br>
+                    </div>  
+                    <div>  
+                        <label class="labelEdit" for="img_gallery">Imagem:</label>
+                        <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" /></br>
+                    </div>  
+                </div> 
+                <div class="container_result">
+                    <button class ="btn-edit" type="submit" id="include_gallery">Adicionar Imagem</button>
+                    <div id="resultgallery"></div>
+                </div>
+            </form>
             <table class="editTable">
                 <thead>
                     <tr id="table-heading">
@@ -161,7 +160,6 @@ export function renderEditStaticGallery() {
                 <tbody id="tableGallery"></tbody>
             </table>
         </div>
-    </div>
     `;
     return page;
 }

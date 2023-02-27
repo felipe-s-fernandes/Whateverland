@@ -51,6 +51,9 @@ export default function createStartPage(startPages, civilizations) {
     mainText.innerHTML = object.paragraph;
 
     civilizationShield.src = "../../uploads/" + object2.civilization_image;
+    civilizationShield.onerror = () => {
+        civilizationShield.src = "../../uploads/default_image.jpg";
+    };
     civilizationName.innerHTML = object2.civilization_name;
 
     // Excluir em breve

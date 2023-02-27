@@ -62,6 +62,9 @@ async function searchResults(string) {
         const resultFigure = createElement("figure", "resultFigure");
         const resultImg = createElement("img", "resultImg");
         resultImg.src = "../../uploads/" + civilization.civilization_image;
+        resultImg.onerror = () => {
+            resultImg.src = `../../uploads/default_image.jpg`;
+        };
         resultFigure.appendChild(resultImg);
 
         const resultArticle = createElement("article", "resultArticle");
