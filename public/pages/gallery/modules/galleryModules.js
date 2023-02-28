@@ -6,7 +6,9 @@ export default function renderPage() {
     // Criação de elementos HTML
     const contentBox = createElement("div", "containerInformation");
     contentBox.id = "contentBox";
-    const textTitle = createElement("h1", "textTitle");
+    const textTitle = createElement("h1", "patternCardTitle");
+    textTitle.id="textTitle";
+
     // const contentButtonsAndImages = createElement("div", "contentButtonsAndImages");
     const containerImages = createElement("div", "containerImagesGallery");
 

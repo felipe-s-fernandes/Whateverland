@@ -55,6 +55,7 @@ export function createEventCard(civilizationName, event) {
     eventCard.id = "eventCard";
 
     const cardTitle = createElement("p", "patternCardTitle");
+    cardTitle.id="cardTitle";
     cardTitle.innerText =
         `eventos históricos de ${civilizationName}`.toUpperCase();
 
@@ -87,6 +88,7 @@ export function createEventCard(civilizationName, event) {
     eventTitle.innerText = event.event_year + " - " + event.event_title;
 
     const eventParagraph = createElement("p", "patternText");
+    eventParagraph.id="eventParagraph";
     eventParagraph.innerText = event.event_paragraph;
 
     eventArticle.appendChild(eventTitle);
