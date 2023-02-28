@@ -4,12 +4,13 @@ config();
 
 export default async function authenticate(req, res, next) {
     try {
-        const cookieName = req.body.username;
+        const username = req.body.username;
         console.log(req.body);
         const decodedJwt = jwtLib.verify(
-            req.cookies[cookieName],
+            req.cookies[username],
             process.env.JWTSECRET
         );
+        req.username = decodedJwt.username;
         next();
     } catch (err) {
         res.status(403).json({

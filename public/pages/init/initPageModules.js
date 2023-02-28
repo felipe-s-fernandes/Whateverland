@@ -1,7 +1,7 @@
 //@author {Anderson Lima}
 
+
 import { createElement } from "../../../modules/modules.js";
-// import CreateEventStateChange from "../../modules/event-url.js";
 
 export function renderButtonExplore() {
     const buttonInit = createElement("button", "buttonInit");
@@ -12,19 +12,15 @@ export function renderButtonExplore() {
 }
 
 export function renderLogo() {
-    // const containerLogo = createElement("div", "containerLogo");
     const containerLogoAndWelcome = createElement("div", "divLogoAndWelcome");
     const welcome = createElement("span", "logo");
     const logoImage = createElement("img", "logoImage");
-
-    
     
     welcome.innerHTML = "Seja bem-vindo";
     logoImage.src = "../../uploads/logo.png";
 
     containerLogoAndWelcome.appendChild(welcome);
     containerLogoAndWelcome.appendChild(logoImage);
-    // containerLogo.appendChild(containerLogoAndWelcome);
 
     return containerLogoAndWelcome;
 }
@@ -33,11 +29,6 @@ export function clouds() {
 
     // Nuvens
     const allClouds = createElement("div", "containerClouds")
-    
-    // const cloud5 = createElement("img", "clouds5");
-    // cloud3.style.setProperty('--i', '8');
-    // cloud3.src = "../../uploads/cloud5.png";
-    // allClouds.appendChild(cloud5);
 
     const cloud1 = createElement("img", "clouds1");
     cloud1.style.setProperty('--i', '1');
@@ -59,6 +50,5 @@ export function clouds() {
     cloud3.src = "../../uploads/cloud3.png";
     allClouds.appendChild(cloud3);
     
-
     return allClouds;    
 }

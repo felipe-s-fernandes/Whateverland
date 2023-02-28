@@ -61,7 +61,6 @@ function addLogin() {
         };
 
         const result = await HTTPRequest("/login", "POST", credentials);
-        console.log(result);
 
         if (result.status === true) {
             localStorage.setItem("username", result.username);
