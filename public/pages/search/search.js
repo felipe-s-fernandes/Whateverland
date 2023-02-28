@@ -14,11 +14,13 @@ export default async function RenderSearchPage(string) {
     container.id="searchContainer";
 
     const searchAndMenu = createSearchAndMenu();
+    searchAndMenu.id="searchPageMenu";
 
     const searchResultsSection = createElement(
         "section",
-        "searchResultsSection"
+        "containerInformation"
     );
+    searchResultsSection.id="searchResultsSection";
 
     //Título da busca com string pesquisada
     const searchResultsTitle = createElement("h2", "searchResultsTitle");
@@ -69,9 +71,9 @@ async function searchResults(string) {
 
         const resultArticle = createElement("article", "resultArticle");
 
-        const resultTitle = createElement("h3", "resultTitle");
+        const resultTitle = createElement("h3", "patternTextTitle");
         resultTitle.innerText = civilization.civilization_name;
-        const resultParagraph = createElement("p", "resultParagraph");
+        const resultParagraph = createElement("p", "patternText");
         resultParagraph.innerText = civilization.paragraph;
 
         resultArticle.appendChild(resultTitle);
