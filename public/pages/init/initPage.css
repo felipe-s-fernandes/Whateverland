@@ -1,21 +1,11 @@
 .contentBox {
-    /* height: 90vh;
-    width: 90vw; */
     display: flex;
     flex-direction: column;
-    /* box-sizing: border-box; */
     padding: 10px;
-
     height: 90%;
     max-width: 1200px;
     width: 95%;
-
     box-sizing: border-box;
-    /* position: absolute;
-    width: 1203px;
-    height: 559px;
-    left: 114px;
-    top: 84px; */
     background: #FFFFFF;
     border: 2px solid #B2B2B2;
     box-shadow: 4px 0px 10px 4px rgba(0, 0, 0, 0.5);
@@ -35,63 +25,7 @@
     max-height: 100vh;
 }
 
-/* .textTitle {
-    font-family: 'Roboto';
-    font-style: normal;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 19px;
-    text-transform: uppercase;
-    text-align: left;
-    letter-spacing: 0.095em;
-    
-    color: #878787;
-    
-    mix-blend-mode: normal;
-    font-size: 10px;
-
-    /* position: absolute;
-    width: 263px;
-    height: 19px;
-    left: 68px;
-    top: 93px; */
-    /* identical to box height */
-
-    /* display: flex; */
-    /* align-items: center; 
-}*/
-
-/* .arrowButton {
-    height: 25px;
-} */
-
-/* .contentButtonsAndImages {
-    display: flex;
-    align-items: center;
-    min-height: 95%;
-    min-width: 100%;
-    justify-content: space-between;
-} */
-
-/* .contentImage {
-    width:280px;
-    height:200px;
-    background-color: white;
-    margin: 20px;
-    text-align: center;
-
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-} */
-
-
-/* .image {
-    object-fit: cover;
-    height: 100%;
-    max-width: 100%;
-} */
-
 .logoImage {
-    /* height: 150px; */
     width: 70%;
 }
 
@@ -117,7 +51,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* height: 100%; */
 
 }
 
@@ -132,11 +65,6 @@
 
 /* Estilização das nuvens */
 .containerClouds {
-    /* animation: moveClouds 8s linear infinite; */
-    /* overflow-y: hidden; */
-    /* z-index: -1; */
-    /* width: 100%; */
-    /* height: 100%; */
     width: 100%;
     max-width: 100%;
     max-height: 100%;
@@ -157,50 +85,28 @@
 .clouds1 {
     margin-bottom: 250px;
     position: absolute;
-    /* position: fixed; */
-    /* width: 100%; */
     bottom: -600px;
-    /* display: inline-block; */
-    /* overflow: hidden; */
     overflow-x: hidden;
     animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
 .clouds2 {
    margin-bottom: 0px;
    position: absolute;
-   /* position: fixed; */
-   /* width: 100%; */
    bottom: -600px;
-   /* display: inline-block; */
-   /* overflow: hidden; */
    overflow-x: hidden;
-    animation: moveClouds calc(8s * var(--i)) linear infinite;
+   animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
 .clouds3 {
     margin-bottom: 250px;
     position: absolute;
-    /* position: fixed; */
-    /* width: 100%; */
     bottom: -600px;
-    /* display: inline-block; */
-    /* overflow: hidden; */
     overflow-x: hidden;
     animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
 .clouds4 {
    margin-bottom: 100px;
     position: absolute;
-    /* position: fixed; */
-    /* width: 100%; */
     bottom: -600px;
-    /* display: inline-block; */
-    /* overflow: hidden; */
     overflow-x: hidden;
     animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
-@keyframes lights {
-    0%{
-        background-image: linear-gradient(45deg, white, yellow);
-    }
-}
-

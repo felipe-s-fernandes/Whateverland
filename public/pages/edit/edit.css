@@ -2,7 +2,6 @@
     font-size: 20px;
     border-bottom: 3px solid #000000;
     margin-bottom: 25px;
-
 }
 
 #containerFormEditStartPage {
@@ -15,12 +14,10 @@
 #formCivilization {
     display: flex;
     flex-direction: column;
-    /* flex: 1; */
 }
 
 #formCivilizationImage {
     display: flex;
-    /* flex: 3; */
     flex-direction: column;
     justify-content: space-around;
 }
@@ -30,9 +27,6 @@
     background-color: white;
     width: 55%;
     display: flex;
-    /* margin-right: auto;
-    margin-left: auto;
-    margin-top: 15px; */
     height: auto;
     border-radius: 15px;
     flex-direction: column;
@@ -46,28 +40,10 @@
 }
 
 .InputEdit {
-    /* justify-content: center; */
-    /* width: 300px; */
-    /* border-radius: 5px; */
-    /* border: 2px solid black; */
-    /* font-size: 15px; */
-    /* border-radius: 15px; */
-    /* text-align: center; */
-
-    /* width: 300px; */
-    /* border-radius: 5px; */
-    /* border: 2px solid black; */
-    /* font-size: 15px; */
-    /* border-radius: 15px; */
-    /* text-align: center; */
     background-color: var(--input-color);
     border: none;
     font-size: 15px;
     border-radius: 15px;
-    /* display: flex; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* width: 300px; */
     height: 40px;
     text-align: center;
 }
@@ -77,7 +53,6 @@
 }
 
 .containerInformationEdit {
-    /* height: 90%; */
     width: 95%;
     max-width: 1200px;
     background: var(--primary-color);
@@ -86,10 +61,6 @@
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
     padding: 25px;
-    /* min-width: 800px; */
-    /* display: flex; */
-    /* margin-top: 50px; */
-    /* margin-bottom: 50px; */
 }
 
 .containerEditPages {
@@ -104,8 +75,6 @@
     align-items: center;
     justify-content: center;
     display: flex;
-    /* margin: 8px;
-    margin-right: auto; */
     color: var(--primary-color);
     border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
@@ -123,9 +92,7 @@
 }
 
 .editTable {
-    /* margin-left: 15px; */
     width: 100%;
-    /* margin-top: 50px; */
     text-align: center;
 }
 
@@ -145,12 +112,10 @@
 }
 
 .editTable .tdEdit {
-    /* width: 120px; */
     height: 80px;
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
-    /* padding: 5px; */
 
 }
 
@@ -160,22 +125,18 @@
 }
 
 .imgEdit {
-    /* width: 250px; */
     height: 250px;
     width: 100%;
-    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: var(--input-color);
-    /* border-radius: 15px; */
     margin-bottom: 10px;
     filter: var(--shadow-image);
 }
 
 .imgEdit img {
     height: 100%;
-    /* flex: 1; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -218,7 +179,6 @@
 }
 
 .divFormCivilizationEdit {
-    /* flex: 1; */
     display: flex;
     flex-direction: column;
     width: 300px;
@@ -228,15 +188,8 @@
     width: 100px;
     height: 100px;
 }
-/* 
-
-.editTable img{
-    width: 100px;
-    height: 100px;
-} */
 
 .imagePreviewHistory {
-    /* width: 100px; */
     height: 100%;
 }
 
@@ -293,10 +246,6 @@
     flex-wrap: wrap;
 }
 
-/* .yearevent{
-    flex: 1;
-}
- */
 .nameevent{
     display: flex;
     flex-direction: column;
@@ -319,7 +268,3 @@
     justify-content: space-between;
     gap: 10px;
 }
-
-/* .gambiarraContainer .roundButton {
-    margin-top: 40px;
-} */

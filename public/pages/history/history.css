@@ -128,6 +128,10 @@
     flex-wrap: wrap;
 }
 
+#cardTitle{
+margin-bottom: 10px;
+}
+
 .eventAside {
     width: 30%;
     min-width: 200px;
@@ -150,6 +154,11 @@
 
 .eventArticle {
     width: 70%;
+    padding: 0 20px 20px 20px;
+}
+
+#eventParagraph {
+    overflow: auto;
 }
 
 /* .eventTitle {

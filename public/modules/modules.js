@@ -1,6 +1,7 @@
 //@author {Felipe Fernandes}
 import redirectTo from "./redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
+import checkCookie from "./check-cookie.js";
 
 export function createElement(htmlElement, className) {
     const element = document.createElement(htmlElement);
@@ -94,7 +95,7 @@ export async function createNavBar(page, civilizationId) {
 
     const adminMenu = createAdminMenu();
 
-    if (document.cookie.includes("session")) {
+    if (checkCookie(localStorage.getItem("username"))) {
         const editButton = createElement("button", "roundButton");
         editButton.classList.add("hoverTarget");
         const editImg = createElement("img", "editImg");
@@ -125,15 +126,16 @@ export function createAdminMenu() {
     const loginButton = createElement("button", "roundButton");
     loginButton.classList.add("hoverTarget");
 
-    if (document.cookie.includes("session")) {
+    if (checkCookie(localStorage.getItem("username"))) {
         const logoutImg = createElement("img", "logoutImg");
         logoutImg.src = "../uploads/logout.svg";
         loginButton.appendChild(logoutImg);
 
         loginButton.onclick = async () => {
             toggleButton(loginButton);
-            await HTTPRequest("/login", "DELETE");
-            toggleButton(loginButton);
+            await HTTPRequest("/login", "DELETE", {
+                username: localStorage.getItem("username"),
+            });
             redirectTo("/map");
         };
         loginButton.dataset.text = "LOGOUT";
@@ -180,7 +182,7 @@ export function createSearchAndMenu() {
 
     searchAndMenu.appendChild(mainSearchBar);
 
-    if (document.cookie.includes("session")) {
+    if (checkCookie(localStorage.getItem("username"))) {
         const editButton = createElement("button", "roundButton");
         editButton.classList.add("hoverTarget");
         const editImg = createElement("img", "editImg");
@@ -214,7 +216,6 @@ export function displayOnHover() {
             const body = document.querySelector("#root");
 
             const rect = element.getBoundingClientRect();
-            console.log(rect);
 
             hoverBox.style.top = rect.top + rect.height + 15 + "px";
             hoverBox.style.left = rect.left + rect.width / 2 - 50 + "px";

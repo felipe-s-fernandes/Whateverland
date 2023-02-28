@@ -63,7 +63,8 @@ function addLogin() {
         const result = await HTTPRequest("/login", "POST", credentials);
         console.log(result);
 
-        if (result) {
+        if (result.status === true) {
+            localStorage.setItem("username", result.username);
             redirectTo("/map");
         } else {
             alert("Informações incorretas!");
