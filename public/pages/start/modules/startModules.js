@@ -26,8 +26,8 @@ export default function createStartPage(startPages, civilizations) {
     const infoTitleGov = createElement("h2", "infoTitle");
     const infoGov = createElement("p", "info");
     const mainContent = createElement("main", "mainContent");
-    const mainTitle = createElement("h2", "mainTitle");
-    const mainText = createElement("p", "mainText");
+    const mainTitle = createElement("h2", "patternTextTitle");
+    const mainText = createElement("p", "patternText");
 
     /*     const dados = document.querySelectorAll(".info");
     dados.forEach((dado) => {

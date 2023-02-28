@@ -48,8 +48,8 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    padding-bottom: 15px;
+    gap: 25px;
+    padding-bottom: 25px;
 }
 
 /* Card grande onde contém todas as informações */
@@ -66,6 +66,7 @@ body {
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
+    overflow: hidden;
 }
 
 .backButton {
@@ -283,10 +284,10 @@ header {
     border: none;
     font-size: 15px;
     border-radius: 15px;
-    display: flex;
+   /*  display: flex;
     margin-left: auto;
-    margin-right: auto;
-    width: 300px;
+    margin-right: auto; */
+    /* width: 300px; */
     height: 40px;
     text-align: center;
 }
@@ -294,14 +295,13 @@ header {
 .mainSelect {
     text-align: center;
     background-color: var(--input-color);
-    width: 304px;
+    /* width: 304px; */
     height: 42px;
-    display: flex;
+    /* display: flex;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     border-radius: var(--border-radius-big-box);
     border: none;
-
     font-size: 15px;
 }
 
@@ -348,5 +348,26 @@ header {
     background: #B2B2B2;
     border-radius: var(--border-radius-big-box);
   }
+
+  .patternTextTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 35px;
+    border-bottom: 3px solid #000;
+  }
+
+  .patternText {
+    padding: 15px 0px 15px 0px;
+    font-size: 1.1em;
+    line-height: 21px;
+    text-align: justify;
+  }
+
+  .patternCardTitle {
+    margin-bottom: 10px;
+    font-size: 1em;
+    color: #878787;
+}
+
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */

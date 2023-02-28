@@ -6,7 +6,7 @@ export default async function RenderLoginPage(data) {
     const loginForm = createLoginForm();
     const backButton = createBackButton();
 
-    const container = createElement("div", "loginPage");
+    const container = createElement("div", "container");
     container.appendChild(loginForm);
     container.appendChild(backButton);
 

@@ -1,11 +1,11 @@
 /* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
 
 /* #galleryContainer {
-    display: flex;
-    flex-direction: column;
+     display: flex; 
+    flex-direction: column; 
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 100vh; 
 } */
 
 .eventFigure {
@@ -17,10 +17,11 @@
 }
 
 #contentBox {
-    padding: 18px 30px 0px 21px;
-    overflow: auto;
-    height: 70vh;
-    position: relative;
+    flex-direction: column;
+    padding: 18px 0px 0px 21px;
+    overflow: hidden;
+   /*  height: 70vh; */
+    /* position: relative; */
 }
 
 /* #contentBox::after {
@@ -44,6 +45,7 @@
     line-height: 35px;
     vertical-align: middle;
     border-bottom: 3px solid #000000;
+    margin-right: 50px;
 }
 
 .arrowButton {
@@ -70,14 +72,15 @@
 
 .containerImagesGallery {
    /*  height: 100%; */
-   height: auto;
+   /* height: auto; */
     width: 100%;
     padding: 20px 0px 0px 0px;
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    position: relative;
+   /*  position: relative; */
+   overflow: auto;
 }
 
 .image {

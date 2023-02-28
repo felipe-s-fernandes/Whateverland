@@ -91,7 +91,8 @@
 } */
 
 .logoImage {
-    height: 150px;
+    /* height: 150px; */
+    width: 70%;
 }
 
 .textImage {

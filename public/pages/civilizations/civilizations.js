@@ -127,7 +127,7 @@ export default async function RenderCivilizationsPage(regionId) {
     regionResum.appendChild(regionText);
 
     regionTitle.textContent = example.nome;
-    regionResumTitle.textContent = "Resumo:";
+    regionResumTitle.textContent = "Resumo";
     regionText.textContent = example.resumo;
 
     //Criando a tabela das civilizações: -----------------------------------------------
@@ -149,7 +149,7 @@ export default async function RenderCivilizationsPage(regionId) {
     const civilTitle = createElement("th", "civilTitle"); // Título da tabela ("Civilizações:")
     tr_head_civ.appendChild(civilTitle);
     civilTitle.colSpan = 5;
-    civilTitle.textContent = "Civilizações:";
+    civilTitle.textContent = "Civilizações";
 
     const tr_logos_civ = createElement("tr", "tr_logos_civ"); //linha da tabela com os logos das civilizações
     tbody_civ.appendChild(tr_logos_civ);
