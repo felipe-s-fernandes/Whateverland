@@ -16,6 +16,7 @@ export function createBackButton() {
 
     button.innerHTML = arrow + "<p>VOLTAR AO MAPA</p>";
     button.onclick = () => {
+        toggleButton(button);
         redirectTo("/map");
     };
     return button;
@@ -34,18 +35,21 @@ export async function createNavBar(page, civilizationId) {
     const startButton = createElement("button", "navButton");
     startButton.innerText = "INICIAL";
     startButton.onclick = () => {
+        toggleButton(startButton);
         redirectTo("/start", civilizationId);
     };
 
     const historyButton = createElement("button", "navButton");
     historyButton.innerText = "HISTÓRIA";
     historyButton.onclick = () => {
+        toggleButton(historyButton);
         redirectTo("/history", civilizationId);
     };
 
     const galleryButton = createElement("button", "navButton");
     galleryButton.innerText = "GALERIA";
     galleryButton.onclick = () => {
+        toggleButton(galleryButton);
         redirectTo("/gallery", civilizationId);
     };
 
@@ -71,6 +75,7 @@ export async function createNavBar(page, civilizationId) {
     searchImg.src = "../uploads/search.svg";
     searchButton.appendChild(searchImg);
     searchButton.onclick = () => {
+        toggleButton(searchButton);
         searchArticle();
     };
 
@@ -110,7 +115,9 @@ export function createAdminMenu() {
         loginButton.appendChild(logoutImg);
 
         loginButton.onclick = async () => {
+            toggleButton(loginButton);
             await HTTPRequest("/login", "DELETE");
+            toggleButton(loginButton);
             redirectTo("/map");
         };
         loginButton.dataset.text = "LOGOUT";
@@ -141,6 +148,7 @@ export function createSearchAndMenu() {
     searchImg.src = "../uploads/search.svg";
     searchButton.appendChild(searchImg);
     searchButton.onclick = () => {
+        toggleButton(searchButton);
         searchArticle();
     };
 
@@ -202,4 +210,8 @@ export function displayOnHover() {
             document.querySelector(".hoverBox").remove();
         });
     });
+}
+
+export function toggleButton(button) {
+    button.disabled = !button.disabled;
 }

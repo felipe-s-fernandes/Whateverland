@@ -41,6 +41,10 @@ body {
     height: 100vh;
 }
 
+button:disabled {
+    cursor: auto !important;
+}
+
 /* Card grande onde contém todas as informações */
 .containerInformation {
     margin-top: 50px;

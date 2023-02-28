@@ -1,4 +1,8 @@
-import { createElement, createBackButton } from "../../modules/modules.js";
+import {
+    createElement,
+    createBackButton,
+    toggleButton,
+} from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import redirectTo from "../../modules/redirect.js";
 
@@ -48,16 +52,23 @@ function addLogin() {
     const passwordInput = document.querySelector("#senha");
 
     loginButton.onclick = async () => {
+        toggleButton(loginButton);
         const username = document.querySelector("#email").value;
         const password = document.querySelector("#senha").value;
         const credentials = {
             username: username,
             password: password,
         };
-        console.log(credentials);
+
         const result = await HTTPRequest("/login", "POST", credentials);
         console.log(result);
-        redirectTo("/map");
+
+        if (result) {
+            redirectTo("/map");
+        } else {
+            alert("Informações incorretas!");
+            toggleButton(loginButton);
+        }
     };
 
     usernameInput.addEventListener("keyup", (event) => {

@@ -19,10 +19,21 @@ export default async function RenderMap(data) {
 
     console.log(mapDiv);
 
-    mapDiv.addEventListener("click", async (event) => {
+    const mapClickEvent = async (event) => {
+        mapDiv.removeEventListener("click", mapClickEvent);
+        event.target.style.cursor = "wait";
         const regionId = event.target.dataset.region_id;
-        redirectTo("/civilizations", regionId);
-    });
+
+        try {
+            redirectTo("/civilizations", regionId);
+        } catch (error) {
+            console.log(error);
+            event.target.style.cursor = "auto";
+            mapDiv.addEventListener("click", mapClickEvent);
+        }
+    };
+
+    mapDiv.addEventListener("click", mapClickEvent);
 
     container.appendChild(mapDiv);
 

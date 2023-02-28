@@ -1,13 +1,17 @@
 //@Autor {Ed Wilson}
-import { createElement } from "../../modules/modules.js";
+import { createElement, toggleButton } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import redirectTo from "../../modules/redirect.js";
 
 export default async function RenderCivilizationsPage(regionId) {
-    const civilizationsObject = await HTTPRequest(
+    let civilizationsObject = await HTTPRequest(
         `/civilizations/by_region/${regionId}`,
         "GET"
     );
+
+    if (civilizationsObject === null)
+        civilizationsObject = { civilizations: [] };
+
     const civilizations = civilizationsObject.civilizations;
 
     // const regionObject = await HTTPRequest(`/regions/${regionId}`, "GET");
@@ -38,27 +42,11 @@ export default async function RenderCivilizationsPage(regionId) {
         nome: region.region_name,
         resumo: region.region_summary,
         brasao: "../../uploads/" + region.region_image,
-        //ajustar posteriormente
         territorio: "../../uploads/silbr.png",
         civilizations: civNameArray,
         logos: civImgArray,
         id: civIdArray,
     };
-
-    function createMap(region) {
-        const map = createElement("div", "mapDiv2");
-        map.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="pink" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400"></svg>`;
-
-        regions.forEach((region) => {
-            map.firstChild.innerHTML += region.region_path;
-        });
-
-        map.firstChild.childNodes.forEach((path, index) => {
-            path.id = "region" + regions[index].region_id;
-        });
-
-        return map;
-    }
 
     const regionSelect = createElement("div", "regionSelect");
     regionSelect.innerHTML = `<svg baseprofile="tiny" stroke="black" stroke-linecap="round" stroke-linejoin="round" stroke-width=".2" version="1.2" fill="white" xmlns="http://www.w3.org/2000/svg" viewBox="935 260 270 195" width="540" height="400">${region.region_path}</svg>`;
@@ -81,6 +69,8 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const exit_civilPage = createElement("div", "exit_civilPage");
     exit_civilPage.addEventListener("click", () => {
+        exit_civilPage.style.pointerEvetns = "none";
+        exit_civilPage.style.cursor = "wait";
         redirectTo("/map");
     });
 
@@ -310,16 +300,22 @@ export default async function RenderCivilizationsPage(regionId) {
 
     //MODIFICAR
     civilLogo1.addEventListener("click", async () => {
+        civilLogo1.style.pointerEvents = "none";
+        civilLogo1.style.cursor = "wait";
         const civilizationId = civilLogo1.dataset.id;
         redirectTo("/start", civilizationId);
     });
 
     civilLogo2.addEventListener("click", async () => {
+        civilLogo2.style.pointerEvents = "none";
+        civilLogo2.style.cursor = "wait";
         const civilizationId = civilLogo2.dataset.id;
         redirectTo("/start", civilizationId);
     });
 
     civilLogo3.addEventListener("click", async () => {
+        civilLogo3.style.pointerEvents = "none";
+        civilLogo3.style.cursor = "wait";
         const civilizationId = civilLogo3.dataset.id;
         redirectTo("/start", civilizationId);
     });
