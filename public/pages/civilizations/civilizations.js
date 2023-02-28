@@ -213,15 +213,26 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo3.style.opacity = "0";
     }
 
+
+    if (civNameArray.length < 4) {
+        img_right.style.display = "none";
+        img_left.style.display = "none";
+        img_right.disabled = true;
+        img_left.disabled = true;
+    }else{
+        img_left.disabled = false;
+        img_right.disabled = false;
+    }
+
     td_buttonleft.addEventListener("click", function () {
         img_left.style.display = "none";
         if (i_civil > 3) {
             img_left.style.display = "block";
         }
-        if (i_civil > 0) {
+        if (i_civil > 0 && civNameArray.length>3) {
             i_civil = i_civil - 3;
+            img_right.style.display = "block";
         }
-        img_right.style.display = "block";
         civilLogo1.style.opacity = "1";
         civilLogo2.style.opacity = "1";
         civilLogo3.style.opacity = "1";
@@ -255,10 +266,11 @@ export default async function RenderCivilizationsPage(regionId) {
         if (i_civil < civNameArray.length - 6) {
             img_right.style.display = "block";
         }
-        if (i_civil < civNameArray.length - 3) {
+        if (i_civil < civNameArray.length - 3 && civNameArray.length>3) {
             i_civil = i_civil + 3;
+            img_left.style.display = "block";
         }
-        img_left.style.display = "block";
+  
         civilLogo1.style.opacity = "1";
         civilLogo2.style.opacity = "1";
         civilLogo3.style.opacity = "1";
