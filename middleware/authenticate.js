@@ -4,8 +4,10 @@ config();
 
 export default async function authenticate(req, res, next) {
     try {
+        const cookieName = req.body.username;
+        console.log(req.body);
         const decodedJwt = jwtLib.verify(
-            req.cookies.session,
+            req.cookies[cookieName],
             process.env.JWTSECRET
         );
         next();

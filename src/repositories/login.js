@@ -10,7 +10,8 @@ const postSession = async (username) => {
             [username]
         );
 
-        return response[0].password_hash;
+        if (response.length === 0) return ""; //Caso usuário não exista
+        return response[0].password_hash; // Caso usuário exista
     } catch (error) {
         console.log(TAG, "error caught");
         throw error;
