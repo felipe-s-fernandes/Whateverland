@@ -89,15 +89,31 @@ export async function createNavBar(page, civilizationId) {
     smallSearchBar.appendChild(searchInput);
     smallSearchBar.appendChild(searchButton);
 
+    const roundButtonsDiv = createElement("div", "roundButtonsDiv");
+    roundButtonsDiv.appendChild(smallSearchBar);
+
     const adminMenu = createAdminMenu();
+
+    if (document.cookie.includes("session")) {
+        const editButton = createElement("button", "roundButton");
+        editButton.classList.add("hoverTarget");
+        const editImg = createElement("img", "editImg");
+        editImg.src = "../uploads/edit.svg";
+        editButton.appendChild(editImg);
+        editButton.onclick = () => {
+            redirectTo("/register");
+        };
+        editButton.dataset.text = "EDITOR DE ARTIGOS";
+        roundButtonsDiv.appendChild(editButton);
+    }
+    roundButtonsDiv.appendChild(adminMenu);
 
     navButtons.appendChild(startButton);
     navButtons.appendChild(historyButton);
     navButtons.appendChild(galleryButton);
 
     nav.appendChild(navButtons);
-    nav.appendChild(smallSearchBar);
-    nav.appendChild(adminMenu);
+    nav.appendChild(roundButtonsDiv);
 
     header.appendChild(whateverlandLogo);
     header.appendChild(nav);

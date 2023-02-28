@@ -69,7 +69,7 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const exit_civilPage = createElement("div", "exit_civilPage");
     exit_civilPage.addEventListener("click", () => {
-        exit_civilPage.style.pointerEvetns = "none";
+        exit_civilPage.style.pointerEvents = "none";
         exit_civilPage.style.cursor = "wait";
         redirectTo("/map");
     });
