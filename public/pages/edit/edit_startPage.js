@@ -2,10 +2,13 @@
 
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import imgRequest from "../../modules/imgRequest.js";
-import { createElement } from "../../modules/modules.js";
+import { createElement, toggleButton } from "../../modules/modules.js";
 
 // Requisição padrão para renderização dos inputs do dados da civilização
-export async function renderInputCivilization(idCivilization, idHTML, objectProperty
+export async function renderInputCivilization(
+    idCivilization,
+    idHTML,
+    objectProperty
 ) {
     const input = document.querySelector(`#${idHTML}`);
 
@@ -17,7 +20,11 @@ export async function renderInputCivilization(idCivilization, idHTML, objectProp
 }
 
 // Requisição padrão para renderização das imagens da civilização
-export async function renderInputImageCivilization(idCivilization, idHTML, objectProperty) {
+export async function renderInputImageCivilization(
+    idCivilization,
+    idHTML,
+    objectProperty
+) {
     const input = document.querySelector(`#${idHTML}`);
 
     const object = await HTTPRequest(`/civilizations/${idCivilization}`, "GET");
@@ -28,10 +35,10 @@ export async function renderInputImageCivilization(idCivilization, idHTML, objec
     console.dir(input);
 
     // Quando a imagem não for encontrada será exibida a padrão do site
-    input.addEventListener('error', function() {
-        input.src = '../../uploads/default_image.jpg';
+    input.addEventListener("error", function () {
+        input.src = "../../uploads/default_image.jpg";
         return;
-    })
+    });
 
     input.src = "../../uploads/" + objectValue;
 }
@@ -100,7 +107,16 @@ async function editImageCivilization(formData) {
 }
 
 // Requisição para página inicial da civilização
-async function editStartPage(idCivilization, clocalization, coriname, ctitle, ccap, creligion, cgov, cdesc) {
+async function editStartPage(
+    idCivilization,
+    clocalization,
+    coriname,
+    ctitle,
+    ccap,
+    creligion,
+    cgov,
+    cdesc
+) {
     const result = document.querySelector("#resultstart");
     await HTTPRequest(`/start/edit`, "PATCH", {
         civilization_id: idCivilization,
@@ -118,10 +134,14 @@ async function editStartPage(idCivilization, clocalization, coriname, ctitle, cc
 
 export function eventFormCivilizationAndStartPage(idCivilization) {
     const form = document.querySelector("#formEditCivilizationAndStartPage");
+    const submitButton = document.querySelector("#edit");
     const result = document.querySelector("#resultstart");
+
     form.addEventListener(
         "submit",
         async (e) => {
+            toggleButton(submitButton);
+            result.textContent = "";
             // const civil_name = document.querySelector("#name_pg_start");
             // const civil_origin_name = document.querySelector("#origin_pg_start");
             // const civil_title = document.querySelector("#titlename_pg_start");
@@ -148,28 +168,33 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
             if (form.nameCivilization.value == "") {
                 result.textContent = 'Preencha o campo "Nome da civilização!"';
             } else {
-                await editImageCivilization(formData);
+                const response = await editImageCivilization(formData);
 
-                await editStartPage(
-                    idCivilization,
-                    form.nameregion.value,
-                    form.originName.value,
-                    form.titulo.value,
-                    form.capital.value,
-                    form.religion.value,
-                    form.governo.value,
-                    form.desc.value
-                );
+                if (response !== null) {
+                    await editStartPage(
+                        idCivilization,
+                        form.nameregion.value,
+                        form.originName.value,
+                        form.titulo.value,
+                        form.capital.value,
+                        form.religion.value,
+                        form.governo.value,
+                        form.desc.value
+                    );
+                    result.textContent =
+                        "Os dados da civilização foram alterados com sucesso!";
+                    // Renderização da imagem
+                    renderInputImageCivilization(
+                        idCivilization,
+                        "imageCivilization",
+                        "civilization_image"
+                    );
+                } else {
+                    result.textContent =
+                        "Erro na edição dos dados da civilização.";
+                }
             }
-
-            result.textContent =
-                "Os dados da civilização foram alterados com sucesso!";
-            // Renderização da imagem
-            renderInputImageCivilization(
-                idCivilization,
-                "imageCivilization",
-                "civilization_image"
-            );
+            toggleButton(submitButton);
         }
         // Renderização da imagem prévia de visualização
         // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");

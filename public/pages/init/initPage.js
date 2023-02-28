@@ -1,5 +1,5 @@
 //@Autor {Anderson Lima}
-import { createElement } from "../../modules/modules.js";
+import { createElement, toggleButton } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import { renderButtonExplore, renderLogo, clouds } from "./initPageModules.js";
 
@@ -9,13 +9,17 @@ export default async function RenderInitPage(data) {
     const buttonInit = renderButtonExplore();
 
     buttonInit.onclick = () => {
+        toggleButton(buttonInit);
         redirectTo("/map");
     };
 
     const container = createElement("div", "containerPageInit");
     // container.classList.add("containerPageInit");
 
-    const containerlogoAndButton = createElement("div", "divLogoAndWelcomeAndButton");
+    const containerlogoAndButton = createElement(
+        "div",
+        "divLogoAndWelcomeAndButton"
+    );
     containerlogoAndButton.appendChild(renderLogo());
     containerlogoAndButton.appendChild(buttonInit);
 

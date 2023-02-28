@@ -1,6 +1,6 @@
 // @Autor { Anderson Lima }
 
-import { createElement } from "../../modules/modules.js";
+import { createElement, toggleButton } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import imgRequest from "../../modules/imgRequest.js";
 
@@ -22,7 +22,6 @@ export async function reqDeleteImage(imageId, civilizationId) {
     const result = document.querySelector("#resultgallery");
     await HTTPRequest(`/gallery/${imageId}`, "DELETE");
 
-
     result.textContent = "Imagem excluída!";
     const table = document.querySelector("#tableGallery");
     table.innerHTML = "";
@@ -32,9 +31,10 @@ export async function reqDeleteImage(imageId, civilizationId) {
 // Formulário de preenchimento
 export function eventFormGallery(civilizationId) {
     const form = document.querySelector("#formGallery");
+    const button = document.querySelector("#include_gallery");
     const result = document.querySelector("#resultgallery");
     form.addEventListener("submit", async (e) => {
-        
+        toggleButton(button);
         e.preventDefault();
 
         const formData = new FormData();
@@ -48,22 +48,26 @@ export function eventFormGallery(civilizationId) {
         formData.append("gallery_image_title", form.civi_gallery.value);
 
         // Validação dos inputs
-        if( form.civi_gallery.value == ""){
+        if (form.civi_gallery.value == "") {
             result.textContent = "Digite uma legenda para a imagem!";
-            
-        }else if(file.files[0] == null){
+        } else if (file.files[0] == null) {
             result.textContent = "Insira a imagem!";
+        } else {
+            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+            const response = await imgRequest(`/gallery/`, "POST", formData);
 
-        }else{
-        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-            await imgRequest(`/gallery/`, "POST", formData);
-            result.textContent = "Imagem adicionada com sucesso!";
-            // Renderização da tabela
-            reqRenderTableGallery(civilizationId);
+            if (response !== null) {
+                result.textContent = "Imagem adicionada com sucesso!";
+                // Renderização da tabela
+                reqRenderTableGallery(civilizationId);
 
-            const imageLegend = document.querySelector("#civi_gallery");
-            imageLegend.value = "";
+                const imageLegend = document.querySelector("#civi_gallery");
+                imageLegend.value = "";
+            } else {
+                result.textContent = "Erro na adição da imagem.";
+            }
         }
+        toggleButton(button);
     });
 }
 
@@ -89,9 +93,14 @@ async function renderTable(array) {
         column3.innerHTML = `<img class="buttontable_H" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column3.addEventListener("click", async () =>
-            reqDeleteImage(array[i].image_unique_id, array[i].civilization_id)
-        );
+        column3.addEventListener("click", async () => {
+            if (window.confirm("Deseja realmente excluir a imagem?")) {
+                await reqDeleteImage(
+                    array[i].image_unique_id,
+                    array[i].civilization_id
+                );
+            }
+        });
 
         tableBody.appendChild(line);
     }

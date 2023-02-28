@@ -10,10 +10,10 @@ export default async function RenderRegisterCivilizations(data) {
     container.classList.add("container");
     container.id = "registerCivilizationContainer";
 
-    // Renderização da página vazia
-    container.appendChild(renderStaticPage());
     // Renderização do botão de voltar
     container.appendChild(createBackButton());
+    // Renderização da página vazia
+    container.appendChild(renderStaticPage());
 
     const response = {
         page: container,
@@ -196,12 +196,28 @@ function renderTable(array) {
         column5.innerHTML = `<img class="excluirImg" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", () =>
-            redirectEditPage(array[i].civilization_id)
-        );
-        column5.addEventListener("click", () =>
-            deleteCivilization(array[i].civilization_id)
-        );
+        column4.addEventListener("click", async () => {
+            column4.style.pointerEvents = "none";
+            column4.style.cursor = "wait";
+            await redirectEditPage(array[i].civilization_id);
+        });
+
+        column5.addEventListener("click", async () => {
+            column5.style.pointerEvents = "none";
+            column5.style.cursor = "wait";
+
+            if (
+                window.confirm(
+                    "Deseja realmente excluir a civilização " +
+                        array[i].civilization_name +
+                        " ?"
+                )
+            ) {
+                await deleteCivilization(array[i].civilization_id);
+            }
+            column5.style.pointerEvents = "auto";
+            column5.style.cursor = "auto";
+        });
 
         table.appendChild(line);
     }

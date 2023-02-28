@@ -307,3 +307,13 @@
     align-items: center;
     gap: 8px;
 }
+
+.gambiarraContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.gambiarraContainer .roundButton {
+    margin-top: 40px;
+}
