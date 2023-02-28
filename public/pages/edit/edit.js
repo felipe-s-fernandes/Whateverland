@@ -28,6 +28,7 @@ import {
 
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "containerEditPages");
+    /* container.id="containerEditPages"; */
 
     const gambiarraContainer = createElement("div", "gambiarraContainer");
 
