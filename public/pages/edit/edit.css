@@ -145,12 +145,12 @@
 }
 
 .editTable .tdEdit {
-    width: 120px;
-    height: 25px;
+    /* width: 120px; */
+    height: 80px;
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
-    padding: 5px;
+    /* padding: 5px; */
 
 }
 
@@ -207,6 +207,16 @@
     flex: 2;
 }
 
+.containerLegendImage {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.containerInputImage {
+    flex: 2;
+}
+
 .divFormCivilizationEdit {
     /* flex: 1; */
     display: flex;
@@ -226,8 +236,8 @@
 } */
 
 .imagePreviewHistory {
-    width: 100px;
-    height: 100px;
+    /* width: 100px; */
+    height: 100%;
 }
 
 .formdivh2{
@@ -261,10 +271,6 @@
     gap: 25px;
     align-items: center;
     flex-wrap: wrap;
-}
-
-#civi_gallery{
-    width: 400px;
 }
 
 .buttontable_H{
