@@ -1,6 +1,8 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
+import checkCivilization from "../repositories/database/check-civilization.js";
+import checkUser from "../repositories/database/check-user.js";
 import galleryServices from "../services/gallery.js";
 
 const TAG = "Gallery Controller: ";
@@ -75,6 +77,13 @@ const postGallery = async (req, res) => {
     }
 
     const civilizationId = galleryObject.civilization_id;
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     // Padronizar a resposta
     const response = {
@@ -125,6 +134,15 @@ const deleteGallery = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const imageId = req.params.imageid;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    const civilizationId = await checkCivilization(imageId, "gallery");
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     // Padronizar a resposta
     const response = {

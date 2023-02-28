@@ -1,6 +1,7 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
+import checkUser from "../repositories/database/check-user.js";
 import startServices from "../services/start.js";
 
 const TAG = "Start Controller: ";
@@ -60,6 +61,14 @@ const patchStart = async (req, res) => {
     // Precisa tratar algum input? Não sei ainda
     const civilizationId = req.body.civilization_id;
     const startObject = req.body;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     //fetch("http://localhost:8080/start/:id")
 
