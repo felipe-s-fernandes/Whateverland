@@ -145,12 +145,12 @@
 }
 
 .editTable .tdEdit {
-    width: 120px;
-    height: 25px;
+    /* width: 120px; */
+    height: 80px;
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
-    padding: 5px;
+    /* padding: 5px; */
 
 }
 
@@ -236,8 +236,8 @@
 } */
 
 .imagePreviewHistory {
-    width: 100px;
-    height: 100px;
+    /* width: 100px; */
+    height: 100%;
 }
 
 .formdivh2{
