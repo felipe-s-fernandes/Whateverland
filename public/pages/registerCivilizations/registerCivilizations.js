@@ -213,10 +213,15 @@ function renderTable(array) {
                         " ?"
                 )
             ) {
-                await deleteCivilization(array[i].civilization_id);
+                try {
+                    await deleteCivilization(array[i].civilization_id);
+                } catch (error) {
+                    console.error(error);
+                } finally {
+                    column5.style.pointerEvents = "auto";
+                    column5.style.cursor = "auto";
+                }
             }
-            column5.style.pointerEvents = "auto";
-            column5.style.cursor = "auto";
         });
 
         table.appendChild(line);
