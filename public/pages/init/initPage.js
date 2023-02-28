@@ -4,7 +4,6 @@ import redirectTo from "../../modules/redirect.js";
 import { renderButtonExplore, renderLogo, clouds } from "./initPageModules.js";
 
 // Requisição ao servidor de banco de dados
-
 export default async function RenderInitPage(data) {
     const buttonInit = renderButtonExplore();
 
@@ -14,7 +13,6 @@ export default async function RenderInitPage(data) {
     };
 
     const container = createElement("div", "containerPageInit");
-    // container.classList.add("containerPageInit");
 
     const containerlogoAndButton = createElement(
         "div",
@@ -25,8 +23,6 @@ export default async function RenderInitPage(data) {
 
     container.appendChild(containerlogoAndButton);
     container.appendChild(clouds());
-
-    // container.appendChild(page);
 
     const response = {
         page: container,

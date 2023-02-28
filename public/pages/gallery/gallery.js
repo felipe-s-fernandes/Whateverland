@@ -4,11 +4,7 @@
 import renderPage from "./modules/galleryModules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import { renderTextTitle, imagesGallery } from "./modules/galleryModules.js";
-import {
-    createNavBar,
-    createBackButton,
-    displayOnHover,
-} from "../../modules/modules.js";
+import { createNavBar, createBackButton, displayOnHover } from "../../modules/modules.js";
 
 export default async function RenderGalleryPage(civilizationId) {
     // Requisição ao banco de dados para obter a galeria de uma civilização
@@ -40,19 +36,10 @@ export default async function RenderGalleryPage(civilizationId) {
     container.appendChild(page);
     container.appendChild(backButton);
 
-    // Página de teste
-    // const testePage = document.querySelector("#rootGallery");
-    // console.log(testePage);
-    // testePage.appendChild(navBar);
-    // testePage.appendChild(page);
-    // testePage.appendChild(backButton);
-
     const response = {
         page: container,
         object: null,
         addEvents: function () {
-            // console.log("Adiciona eventos");
-
             // Rendereização dos elementos variáveis da página
             renderTextTitle(nome);
             imagesGallery(images);
