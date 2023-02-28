@@ -92,16 +92,6 @@
     text-transform: uppercase;
 }
 
-.searchAndMenu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1000px;
-    width: 95%;
-
-    margin-top: 20px;
-}
-
 .mainSearchBar {
     z-index: 0;
     display: flex;

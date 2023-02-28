@@ -380,5 +380,13 @@ header {
     color: #878787;
 }
 
+.searchAndMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 95%;
+    margin-top: 20px;
+}
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */
