@@ -83,13 +83,13 @@ export function renderEditStaticHistory() {
                 <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgh" id="img_pg_history" /></br>
 
                 <label class="labelEdit" for="legend_pg_history">Legenda da imagem:</label>
-                <input class="InputEdit" type="text" name="legendh" id="legend_pg_history" /></br>
+                <input class="InputEdit" type="text" name="legendh" id="legend_pg_history""/></br>
             </div> 
             <div class="divFormStartEdit">
                 <div class="container_eventH">
                     <div class="yearevent">
                         <label class="labelEdit" for="year_pg_history">Ano do evento:</label>
-                        <input class="InputFormEdit" type="text" name="yearh" id="year_pg_history" /></br>
+                        <input class="InputFormEdit" type="text" name="yearh" id="year_pg_history" maxlength="6"/></br>
                     </div>
                     <div class="nameevent">
                         <label class="labelEdit"  for="name_pg_history">Título do evento:</label>

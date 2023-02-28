@@ -198,7 +198,7 @@ async function editEventsHistory(object) {
     // Quando a imagem não for encontrada será exibida a padrão do site
     image.addEventListener("error", function () {
         image.src = "../../uploads/default_image_history.jpg";
-        return;
+        //return;
     });
 
     eventId = object.event;
@@ -232,8 +232,6 @@ function renderTable(array) {
         line.appendChild(column3);
         line.appendChild(column4);
         line.appendChild(column5);
-
-        console.log(array[i].event_image);
 
         column1.innerHTML = `${array[i].event_year}`;
         column2.innerHTML = `${array[i].event_title}`;
