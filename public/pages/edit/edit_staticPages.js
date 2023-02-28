@@ -1,6 +1,5 @@
 // @autor { Ed Wilson }
 // Coautor { Anderson Lima }
-// @Coautor { Felipe Fernades }
 
 import { createElement } from "../../modules/modules.js";
 

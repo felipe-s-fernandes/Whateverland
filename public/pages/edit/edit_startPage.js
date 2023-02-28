@@ -144,13 +144,6 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
         async (e) => {
             toggleButton(submitButton);
             result.textContent = "";
-            // const civil_name = document.querySelector("#name_pg_start");
-            // const civil_origin_name = document.querySelector("#origin_pg_start");
-            // const civil_title = document.querySelector("#titlename_pg_start");
-            // const civil_capital = document.querySelector("#cap_pg_start");
-            // const civil_religion = document.querySelector("#religion_pg_start");
-            // const civil_gov = document.querySelector("#gov_pg_start");
-            // const civil_desc = document.querySelector("#desc_pg_start");
 
             e.preventDefault();
 
@@ -198,7 +191,5 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
             }
             toggleButton(submitButton);
         }
-        // Renderização da imagem prévia de visualização
-        // renderInputImageCivilization(idCivilization, "imageCivilization", "civilization_image");
     );
 }
