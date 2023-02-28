@@ -1,5 +1,6 @@
 // @autor { Ed Wilson }
 // Coautor { Anderson Lima }
+// @Coautor { Felipe Fernades }
 
 import { createElement } from "../../modules/modules.js";
 
@@ -135,11 +136,11 @@ export function renderEditStaticGallery() {
         <div class="formedit_H">
             <form class="cadastre" id="formGallery">
                 <div class="divformgallery">
-                    <div>            
+                    <div class="containerLegendImage">            
                         <label class="labelEdit" for="civi_gallery">Legenda da imagem:</label>
                         <input class="InputFormEdit" type="text" id="civi_gallery" name="civi_gallery" /></br>
                     </div>  
-                    <div>  
+                    <div class="containerInputImage">  
                         <label class="labelEdit" for="img_gallery">Imagem:</label>
                         <input type="file" accept="image/jpg, image/jpeg, image/png, image/bmp, image/webp" name="imgedith" id="img_gallery" name="img_gallery" /></br>
                     </div>  

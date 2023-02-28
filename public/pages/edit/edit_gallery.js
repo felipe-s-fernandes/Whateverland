@@ -1,4 +1,6 @@
 // @Autor { Anderson Lima }
+// Coautor {Ed Wilson}
+// @Coautor { Felipe Fernades }
 
 import { createElement, toggleButton } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";

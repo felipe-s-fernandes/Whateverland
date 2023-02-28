@@ -1,4 +1,6 @@
-// @autor { Anderson Lima }
+// @Autor { Anderson Lima }
+// Coautor {Ed Wilson}
+// @Coautor { Felipe Fernades }
 
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import imgRequest from "../../modules/imgRequest.js";

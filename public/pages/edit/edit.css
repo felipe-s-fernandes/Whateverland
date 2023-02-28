@@ -97,7 +97,7 @@
     gap: 20px;
     flex-direction: column;
     align-items: center;
-    
+    padding: 25px 0;
 }
 
 .btn-edit {
@@ -207,6 +207,16 @@
     flex: 2;
 }
 
+.containerLegendImage {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.containerInputImage {
+    flex: 2;
+}
+
 .divFormCivilizationEdit {
     /* flex: 1; */
     display: flex;
@@ -263,10 +273,6 @@
     flex-wrap: wrap;
 }
 
-#civi_gallery{
-    width: 400px;
-}
-
 .buttontable_H{
     cursor: pointer;
 }
@@ -314,6 +320,6 @@
     gap: 10px;
 }
 
-.gambiarraContainer .roundButton {
+/* .gambiarraContainer .roundButton {
     margin-top: 40px;
-}
+} */
