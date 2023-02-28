@@ -21,14 +21,11 @@ export default async function RenderMap(data) {
 
     const mapClickEvent = async (event) => {
         mapDiv.removeEventListener("click", mapClickEvent);
-        event.target.style.cursor = "wait";
         const regionId = event.target.dataset.region_id;
 
-        try {
+        if (!isNaN(regionId)) {
             redirectTo("/civilizations", regionId);
-        } catch (error) {
-            console.log(error);
-            event.target.style.cursor = "auto";
+        } else {
             mapDiv.addEventListener("click", mapClickEvent);
         }
     };

@@ -31,19 +31,9 @@ export default async function RenderEditPage(civilizationId) {
 
     const gambiarraContainer = createElement("div", "gambiarraContainer");
 
-    const editButton = createElement("button", "roundButton");
-    editButton.classList.add("hoverTarget");
-    const editImg = createElement("img", "editImg");
-    editImg.src = "../../uploads/edit.svg";
-    editButton.appendChild(editImg);
-    editButton.onclick = () => {
-        redirectTo("/register");
-    };
-    editButton.dataset.text = "EDITOR DE ARTIGOS";
-
     const backButton = createBackButton();
     gambiarraContainer.appendChild(backButton);
-    gambiarraContainer.appendChild(editButton);
+    gambiarraContainer.appendChild(createEditButton());
 
     container.appendChild(gambiarraContainer);
 
@@ -59,7 +49,11 @@ export default async function RenderEditPage(civilizationId) {
     const galleryEditTable = renderEditStaticGallery();
     container.appendChild(galleryEditTable);
 
-    container.appendChild(gambiarraContainer.cloneNode(true));
+    const gambiarraContainerBottom = createElement("div", "gambiarraContainer");
+    gambiarraContainerBottom.appendChild(createBackButton());
+    gambiarraContainerBottom.appendChild(createEditButton());
+
+    container.appendChild(gambiarraContainerBottom);
 
     const response = {
         page: container,
@@ -117,4 +111,17 @@ export default async function RenderEditPage(civilizationId) {
     };
 
     return response;
+}
+
+function createEditButton() {
+    const editButton = createElement("button", "roundButton");
+    editButton.classList.add("hoverTarget");
+    const editImg = createElement("img", "editImg");
+    editImg.src = "../../uploads/edit.svg";
+    editButton.appendChild(editImg);
+    editButton.onclick = () => {
+        redirectTo("/register");
+    };
+    editButton.dataset.text = "EDITOR DE ARTIGOS";
+    return editButton;
 }
