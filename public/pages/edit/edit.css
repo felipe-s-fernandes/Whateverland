@@ -207,6 +207,16 @@
     flex: 2;
 }
 
+.containerLegendImage {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.containerInputImage {
+    flex: 2;
+}
+
 .divFormCivilizationEdit {
     /* flex: 1; */
     display: flex;
@@ -261,10 +271,6 @@
     gap: 25px;
     align-items: center;
     flex-wrap: wrap;
-}
-
-#civi_gallery{
-    width: 400px;
 }
 
 .buttontable_H{
