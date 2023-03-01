@@ -2,7 +2,7 @@
 // CoAutor {Felipe Fernandes}
 
 import express from "express";
-import authenticate from "../../middleware/authenticate.js";
+import authenticate from "../middleware/authenticate.js";
 const startRouter = express.Router();
 import startController from "../controllers/start.js";
 

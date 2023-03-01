@@ -3,7 +3,6 @@ import jwtLib from "jsonwebtoken";
 export default async function authenticate(req, res, next) {
     try {
         const username = req.body.username;
-        console.log(req);
         const decodedJwt = jwtLib.verify(
             req.cookies[username],
             process.env.JWTSECRET

@@ -1,7 +1,7 @@
 import express from "express";
 const civilizationsRouter = express.Router();
 import upload from "./multer.js";
-import authenticate from "../../middleware/authenticate.js";
+import authenticate from "../middleware/authenticate.js";
 import civilizationsController from "../controllers/civilizations.js";
 
 civilizationsRouter.get(

@@ -6,7 +6,6 @@ const pagesRoutes = getPagesRouter();
 
 //inicia
 const pageObject = await pagesRoutes.getPage("/");
-console.log(pageObject);
 root.innerHTML = "";
 root.appendChild(pageObject.page);
 pageObject.addEvents();

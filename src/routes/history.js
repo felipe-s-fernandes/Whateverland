@@ -4,7 +4,7 @@ import upload from "./multer.js";
 import express from "express";
 const historyRouter = express.Router();
 import historyController from "../controllers/history.js";
-import authenticate from "../../middleware/authenticate.js";
+import authenticate from "../middleware/authenticate.js";
 
 historyRouter.get("/:civilizationid", historyController.getHistory);
 
