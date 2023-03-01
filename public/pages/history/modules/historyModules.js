@@ -59,8 +59,6 @@ export function createEventCard(civilizationName, event) {
     cardTitle.innerText =
         `eventos históricos de ${civilizationName}`.toUpperCase();
 
-    console.log(cardTitle);
-
     //section com aside e article
     const cardSection = createElement("section", "eventCardSection");
 

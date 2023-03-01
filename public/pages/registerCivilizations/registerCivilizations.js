@@ -19,7 +19,6 @@ export default async function RenderRegisterCivilizations(data) {
         page: container,
         object: null,
         addEvents: function () {
-            // console.log("Adiciona eventos");
 
             // Criação do evento de formulário
             eventForm();

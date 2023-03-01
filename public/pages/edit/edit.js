@@ -59,7 +59,6 @@ export default async function RenderEditPage(civilizationId) {
         page: container,
         object: null,
         addEvents: function () {
-            console.log("Event listeners");
 
             // Requisições para prenchimento de Inputs de nome da civilização e página inicial do artigo
             reqRenderRegions();
