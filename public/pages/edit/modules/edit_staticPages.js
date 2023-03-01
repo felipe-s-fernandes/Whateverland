@@ -104,7 +104,8 @@ export function renderEditStaticHistory() {
 
             </div>
             <div class="container_result">
-                <button type="submit" class ="btn-edit" id="buttonHistory">Adicionar Evento</button>
+                <button type="submit" class ="btn-edit" id="buttonHistory">Adicionar evento</button>
+                <button class="btn-edit" id="buttonCancelEditHistory">Cancelar</button>
                 <div id="resulthistory"></div>
             </div>
         </form>
