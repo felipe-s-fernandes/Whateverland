@@ -392,5 +392,23 @@ header {
     width: 95%;
     margin-top: 20px;
 }
+
+@media screen and (max-width:930px) {
+    .header {
+        height: 203px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .whateverlandLogo {
+        height: 49%;
+    }
+
+    .navBar {
+        height: auto;
+        flex-direction: column-reverse;
+        border-radius: var(--border-radius-big-box);
+    }
+}
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */
