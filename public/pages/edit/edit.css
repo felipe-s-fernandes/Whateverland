@@ -48,6 +48,10 @@
     text-align: center;
 }
 
+#buttonCancelEditHistory {
+    display: none;
+}
+
 .buttonTable {
     height: 30px;
 }

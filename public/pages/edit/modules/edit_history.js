@@ -24,6 +24,42 @@ export function previewImageEventHistory(idHTMLImage) {
     });
 }
 
+function buttonCancel() {
+    // Selecionando o formulário de edição da história
+    const form = document.querySelector("#formHistory");
+
+    // Exibindo botão de cancelar para o usuário
+    const buttonCancel = document.querySelector("#buttonCancelEditHistory");
+    buttonCancel.style.display = "block";
+
+    // Evento de botão de cancelar para limpeza dos inputs e esconder os botões
+    buttonCancel.addEventListener("click", (e) => {
+        buttonCancel.style.display = "none";
+        e.preventDefault();        
+        // Limpeza de todos os inputs
+        const inputs = form.querySelectorAll('input[type="text"]');
+        inputs.forEach((element) => (element.value = ""));
+
+        // Habilitação do botão de adicionar evento
+        const button = document.querySelector("#buttonHistory");
+        button.innerText = "Adicionar evento";
+
+        // Exibindo imagem padrão do evento ao usuário
+        const image = document.querySelector("#imageEvent");
+        image.src = "../../uploads/default_image_history.jpg";
+
+        // Limpeza do textArea
+        const textArea = form.querySelector("textarea");
+        textArea.value = "";
+
+        // Limpeza do inputFile
+        const inputFile = form.querySelector('input[type="file"]')
+        inputFile.value = "";
+        
+        return;
+    });
+}
+
 // ***Requisições***
 
 // Requisição GET para renderizar a tabela com todos os eventos
@@ -45,7 +81,7 @@ export async function reqDeleteEvent(event, civilizationId) {
     const result = document.querySelector("#resulthistory");
     result.textContent = "";
     const button = document.querySelector("#buttonHistory");
-    button.innerText = "Adicionar Evento";
+    button.innerText = "Adicionar evento";
 
     // Limpeza de todos os inputs ao adicionar um evento
     const form = document.querySelector("#formHistory");
@@ -83,7 +119,7 @@ export function eventFormHistory(civilizationId) {
         result.textContent = "";
         e.preventDefault();
 
-        if (button.innerText == "Adicionar Evento") {
+        if (button.innerText == "Adicionar evento") {
             // Upload da imagem
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
@@ -142,7 +178,10 @@ export function eventFormHistory(civilizationId) {
             }
         }
 
-        if (button.innerText == "Editar Evento") {
+        if (button.innerText == "Editar evento") {
+            const buttonCancel = document.querySelector("#buttonCancelEditHistory");
+            buttonCancel.style.display = "none";
+
             // Upload da imagem
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
@@ -182,7 +221,7 @@ export function eventFormHistory(civilizationId) {
 
                     const image = form.querySelector("img");
                     image.src = "../../../uploads/default_image_history.jpg";
-                    button.innerText = "Adicionar Evento";
+                    button.innerText = "Adicionar evento";
                     await reqRenderTableHistory(civilizationId);
                 } catch (error) {
                     console.error(error);
@@ -209,7 +248,9 @@ function inputRender(object, idHTML, objectProperty) {
 // Alimentação dos inputs na página
 async function editEventsHistory(object) {
     const button = document.querySelector("#buttonHistory");
-    button.innerText = "Editar Evento";
+    button.innerText = "Editar evento";
+
+    buttonCancel();
 
     const image = document.querySelector("#imageEvent");
     image.src = "../../uploads/" + object.event_image;
