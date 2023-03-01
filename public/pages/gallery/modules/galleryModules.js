@@ -52,6 +52,14 @@ export function imagesGallery(array) {
 
     containerImages.innerHTML = "";
 
+    // Condição quando não é encontrado imagens
+    if (array.length == 0) {
+        const textNoImage = createElement("p", "patternText");
+        textNoImage.innerText = "Não contém imagens cadastradas";
+
+        containerImages.appendChild(textNoImage);    
+    }
+
     // Percorrendo apenas os itens máximos por página
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
