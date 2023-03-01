@@ -35,7 +35,7 @@ function buttonCancel() {
     // Evento de botão de cancelar para limpeza dos inputs e esconder os botões
     buttonCancel.addEventListener("click", (e) => {
         buttonCancel.style.display = "none";
-        e.preventDefault();        
+        e.preventDefault();
         // Limpeza de todos os inputs
         const inputs = form.querySelectorAll('input[type="text"]');
         inputs.forEach((element) => (element.value = ""));
@@ -46,16 +46,16 @@ function buttonCancel() {
 
         // Exibindo imagem padrão do evento ao usuário
         const image = document.querySelector("#imageEvent");
-        image.src = "../../uploads/default_image_history.jpg";
+        image.src = "../../../uploads/default_image_history.jpg";
 
         // Limpeza do textArea
         const textArea = form.querySelector("textarea");
         textArea.value = "";
 
         // Limpeza do inputFile
-        const inputFile = form.querySelector('input[type="file"]')
+        const inputFile = form.querySelector('input[type="file"]');
         inputFile.value = "";
-        
+
         return;
     });
 }
@@ -92,7 +92,11 @@ export async function reqDeleteEvent(event, civilizationId) {
     textArea.value = "";
 
     const image = form.querySelector("img");
-    image.src = "";
+    image.src = "../../../default_image_history.jpg";
+
+    // Limpeza do inputFile
+    const inputFile = form.querySelector('input[type="file"]');
+    inputFile.value = "";
 
     await HTTPRequest(`/history/${event}`, "DELETE");
     result.textContent = "O evento foi excluido!";
@@ -163,7 +167,13 @@ export function eventFormHistory(civilizationId) {
                         textArea.value = "";
 
                         const image = form.querySelector("img");
-                        image.src = "";
+                        image.src =
+                            "../../../uploads/default_image_history.jpg";
+
+                        // Limpeza do inputFile
+                        const inputFile =
+                            form.querySelector('input[type="file"]');
+                        inputFile.value = "";
 
                         await reqRenderTableHistory(civilizationId);
                     } else {
@@ -179,7 +189,9 @@ export function eventFormHistory(civilizationId) {
         }
 
         if (button.innerText == "Editar evento") {
-            const buttonCancel = document.querySelector("#buttonCancelEditHistory");
+            const buttonCancel = document.querySelector(
+                "#buttonCancelEditHistory"
+            );
             buttonCancel.style.display = "none";
 
             // Upload da imagem
@@ -221,6 +233,11 @@ export function eventFormHistory(civilizationId) {
 
                     const image = form.querySelector("img");
                     image.src = "../../../uploads/default_image_history.jpg";
+
+                    // Limpeza do inputFile
+                    const inputFile = form.querySelector('input[type="file"]');
+                    inputFile.value = "";
+
                     button.innerText = "Adicionar evento";
                     await reqRenderTableHistory(civilizationId);
                 } catch (error) {
@@ -253,11 +270,11 @@ async function editEventsHistory(object) {
     buttonCancel();
 
     const image = document.querySelector("#imageEvent");
-    image.src = "../../uploads/" + object.event_image;
+    image.src = "../../../uploads/" + object.event_image;
 
     // Quando a imagem não for encontrada será exibida a padrão do site
     image.addEventListener("error", function () {
-        image.src = "../../uploads/default_image_history.jpg";
+        image.src = "../../../uploads/default_image_history.jpg";
         //return;
     });
 
@@ -301,7 +318,8 @@ function renderTable(array) {
 
         // Função para inserir imagem padrão de visualização caso a imagem do evento não seja encontrada
         column3.firstChild.onerror = () => {
-            column3.firstChild.src = "../../uploads/default_image_history.jpg";
+            column3.firstChild.src =
+                "../../../uploads/default_image_history.jpg";
         };
 
         // Eventos de editar e deletar dados da tabela

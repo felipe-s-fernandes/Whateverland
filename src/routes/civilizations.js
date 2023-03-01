@@ -11,7 +11,11 @@ civilizationsRouter.get(
 civilizationsRouter.get("/all", civilizationsController.getAllCivilizations);
 civilizationsRouter.get("/:id", civilizationsController.getCivilizationById);
 
-civilizationsRouter.post("/", civilizationsController.postCivilization);
+civilizationsRouter.post(
+    "/",
+    authenticate,
+    civilizationsController.postCivilization
+);
 
 civilizationsRouter.patch(
     "/edit",
