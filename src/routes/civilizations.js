@@ -20,7 +20,6 @@ civilizationsRouter.patch(
     civilizationsController.patchCivilization
 );
 
-//Rota privilegiada (fase de testes)
 civilizationsRouter.delete(
     "/:id",
     authenticate,

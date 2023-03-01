@@ -1,5 +1,4 @@
 import express from "express";
-//import pagesRouter from "./routes/pages.js";
 import startRouter from "./routes/start.js";
 import historyRouter from "./routes/history.js";
 import galleryRouter from "./routes/gallery.js";
