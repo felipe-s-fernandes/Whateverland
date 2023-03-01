@@ -15,8 +15,8 @@ civilizationsRouter.post("/", civilizationsController.postCivilization);
 
 civilizationsRouter.patch(
     "/edit",
-    authenticate,
     upload.single("file"),
+    authenticate,
     civilizationsController.patchCivilization
 );
 

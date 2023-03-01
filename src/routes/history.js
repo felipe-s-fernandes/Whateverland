@@ -17,8 +17,8 @@ historyRouter.post(
 
 historyRouter.patch(
     "/edit",
-    authenticate,
     upload.single("file"),
+    authenticate,
     historyController.patchHistory
 );
 

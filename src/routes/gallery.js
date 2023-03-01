@@ -11,8 +11,8 @@ galleryRouter.get("/:civilizationid", galleryController.getGallery);
 
 galleryRouter.post(
     "/",
-    authenticate,
     upload.single("file"),
+    authenticate,
     galleryController.postGallery
 );
 

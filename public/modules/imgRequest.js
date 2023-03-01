@@ -4,7 +4,6 @@ export default async function imgRequest(url, method, formData) {
     const HOST_PORT = window.location.host;
 
     const username = localStorage.getItem("username") || null;
-
     formData.append("username", username);
 
     const object = {
