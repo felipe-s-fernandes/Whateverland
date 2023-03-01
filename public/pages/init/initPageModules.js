@@ -14,7 +14,7 @@ export function renderLogo() {
     const containerLogo = createElement("div", "divLogo");
     // const welcome = createElement("span", "logo");
     const logoImage = createElement("img", "logoImage");
-    
+
     // welcome.innerHTML = "Seja bem-vindo a";
     logoImage.src = "../../uploads/logo.png";
 
@@ -26,8 +26,7 @@ export function renderLogo() {
 
 // Nuvens
 export function clouds() {
-
-    const allClouds = createElement("div", "containerClouds")
+    const allClouds = createElement("div", "containerClouds");
 
     const cloud1 = createElement("img", "clouds");
     cloud1.style.setProperty('--i', '1');
@@ -48,6 +47,6 @@ export function clouds() {
     cloud3.style.setProperty('--i', '6');
     cloud3.src = "../../uploads/cloud3.png";
     allClouds.appendChild(cloud3);
-    
-    return allClouds;    
+
+    return allClouds;
 }
