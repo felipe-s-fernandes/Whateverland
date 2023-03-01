@@ -1,17 +1,6 @@
-.contentBox {
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    height: 90%;
-    max-width: 1200px;
-    width: 95%;
-    box-sizing: border-box;
-    background: #FFFFFF;
-    border: 2px solid #B2B2B2;
-    box-shadow: 4px 0px 10px 4px rgba(0, 0, 0, 0.5);
-    border-radius: 15px;
-}
+/* @Autor: { Anderson Lima } */
 
+/* Container de toda a página */
 .containerPageInit {
     width: 100vw;
     overflow-x: hidden;
@@ -25,38 +14,25 @@
     max-height: 100vh;
 }
 
+/* Container da imagem da logo */
+.divLogo {
+    position: relative;
+    text-align: center;
+}
 
+/* Imagem da logo */
 .logoImage {
     width: 70%;
 }
 
-.textImage {
-    text-align: center;
-}
-
-.divSite {
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Estilização do hover do botão */
 .buttonInit:hover {
     background: #bcbcbc;
     cursor: pointer;
 }
 
-.divLogo {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center; */
-    /* justify-content: center; */
-    position: relative;
-    text-align: center;
-}
-
-.divLogoAndWelcomeAndButton {
+/* Container da logo e do botão */
+.divLogoAndButton {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +41,7 @@
     z-index: 1;
 }
 
-/* Estilização das nuvens */
+/* Container onde contém todas as nuvens */
 .containerClouds {
     width: 100%;
     max-width: 100%;
@@ -74,7 +50,16 @@
     position: fixed;
 }
 
+/* Estilização das nuvens */
+.clouds {
+    margin-bottom: 250px;
+    position: absolute;
+    bottom: -600px;
+    overflow-x: hidden;
+    animation: moveClouds calc(8s * var(--i)) linear infinite;
+}
 
+/* Animação das nuvens */
 @keyframes moveClouds {
     0% {
         transform: translateX(-100%);
@@ -82,33 +67,4 @@
     100% {
         transform: translateX(100%);
     }
-}
-
-.clouds1 {
-    margin-bottom: 250px;
-    position: absolute;
-    bottom: -600px;
-    overflow-x: hidden;
-    animation: moveClouds calc(8s * var(--i)) linear infinite;
-}
-.clouds2 {
-   margin-bottom: 0px;
-   position: absolute;
-   bottom: -600px;
-   overflow-x: hidden;
-   animation: moveClouds calc(8s * var(--i)) linear infinite;
-}
-.clouds3 {
-    margin-bottom: 250px;
-    position: absolute;
-    bottom: -600px;
-    overflow-x: hidden;
-    animation: moveClouds calc(8s * var(--i)) linear infinite;
-}
-.clouds4 {
-   margin-bottom: 100px;
-    position: absolute;
-    bottom: -600px;
-    overflow-x: hidden;
-    animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
