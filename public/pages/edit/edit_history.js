@@ -240,6 +240,12 @@ function renderTable(array) {
         column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
+
+        // Função para inserir imagem padrão de visualização caso a imagem do evento não seja encontrada
+        column3.firstChild.onerror = () => {
+            column3.firstChild.src = "../../uploads/default_image_history.jpg";
+        }
+
         // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", async () =>
             editEventsHistory(array[i])
