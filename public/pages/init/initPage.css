@@ -25,6 +25,7 @@
     max-height: 100vh;
 }
 
+
 .logoImage {
     width: 70%;
 }
@@ -46,12 +47,13 @@
     cursor: pointer;
 }
 
-.divLogoAndWelcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+.divLogo {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* justify-content: center; */
+    position: relative;
+    text-align: center;
 }
 
 .divLogoAndWelcomeAndButton {

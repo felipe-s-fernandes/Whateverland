@@ -11,18 +11,21 @@ export function renderButtonExplore() {
 }
 
 export function renderLogo() {
-    const containerLogoAndWelcome = createElement("div", "divLogoAndWelcome");
+    const containerLogo = createElement("div", "divLogo");
+    // const welcome = createElement("span", "logo");
     const logoImage = createElement("img", "logoImage");
 
+    // welcome.innerHTML = "Seja bem-vindo a";
     logoImage.src = "../../uploads/logo.png";
 
-    containerLogoAndWelcome.appendChild(logoImage);
+    // containerLogoAndWelcome.appendChild(welcome);
+    containerLogo.appendChild(logoImage);
 
-    return containerLogoAndWelcome;
+    return containerLogo;
 }
 
+// Nuvens
 export function clouds() {
-    // Nuvens
     const allClouds = createElement("div", "containerClouds");
 
     const cloud1 = createElement("img", "clouds1");
