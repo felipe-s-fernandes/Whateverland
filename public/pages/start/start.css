@@ -49,7 +49,7 @@
 
 .infoArticle {
     padding: 20px 15px 0px 20px;
-    border-bottom-left-radius: 15px;
+    /* border-bottom-left-radius: 15px; */
 }
 
 .infoTitle {
@@ -74,6 +74,24 @@
     text-align: justify;
 }
 
+@media screen and (max-width: 736px) {
+    #containerInformation {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .asideContent {
+        width: 100%;
+        height: fit-content;
+        border-bottom-left-radius: 0;
+        overflow: unset;
+    }
+    
+    .mainContent {
+        width: auto;
+        overflow: unset;
+    }
+}
 /* .asideContent {
     color: var(--primary-color);
     width: 140vw;
