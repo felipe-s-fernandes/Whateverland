@@ -248,6 +248,7 @@ header {
     align-items: center;
     background-color: #a8a8a8;
     height: 90%;
+    width: 85%;
     min-width: 250px;
     border-radius: 50px;
     margin: 3px;
@@ -409,6 +410,12 @@ header {
         flex-direction: column-reverse;
         border-radius: var(--border-radius-big-box);
     }
+    .roundButtonsDiv {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+}
 }
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */
