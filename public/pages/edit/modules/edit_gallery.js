@@ -56,17 +56,28 @@ export function eventFormGallery(civilizationId) {
             result.textContent = "Insira a imagem!";
         } else {
             // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-            const response = await imgRequest(`/gallery/`, "POST", formData);
+            try {
+                const response = await imgRequest(
+                    `/gallery/`,
+                    "POST",
+                    formData
+                );
 
-            if (response !== null) {
-                result.textContent = "Imagem adicionada com sucesso!";
-                // Renderização da tabela
-                reqRenderTableGallery(civilizationId);
+                if (response !== null) {
+                    result.textContent = "Imagem adicionada com sucesso!";
+                    // Renderização da tabela
+                    reqRenderTableGallery(civilizationId);
 
-                const imageLegend = document.querySelector("#civi_gallery");
-                imageLegend.value = "";
-            } else {
-                result.textContent = "Erro na adição da imagem.";
+                    const imageLegend = document.querySelector("#civi_gallery");
+                    imageLegend.value = "";
+                } else {
+                    result.textContent = "Erro na adição da imagem.";
+                }
+            } catch (error) {
+                console.error(error);
+                alert(
+                    "Você não possui autorização para editar essa civilização!"
+                );
             }
         }
         toggleButton(button);
@@ -97,10 +108,17 @@ async function renderTable(array) {
         // Eventos de editar e deletar dados da tabela
         column3.addEventListener("click", async () => {
             if (window.confirm("Deseja realmente excluir a imagem?")) {
-                await reqDeleteImage(
-                    array[i].image_unique_id,
-                    array[i].civilization_id
-                );
+                try {
+                    await reqDeleteImage(
+                        array[i].image_unique_id,
+                        array[i].civilization_id
+                    );
+                } catch (error) {
+                    console.error(error);
+                    alert(
+                        "Você não possui autorização para editar essa civilização!"
+                    );
+                }
             }
         });
 

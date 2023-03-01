@@ -133,7 +133,11 @@ const patchHistory = async (req, res) => {
 
     //Gambiarra para fazer verificação dos usuários;
     const adminId = await checkUser(req.username);
-    const civilizationId = historyObject.civilization_id;
+    const civilizationId = await checkCivilization(
+        historyObject.event,
+        "history"
+    );
+    // const civilizationId = historyObject.civilization_id;
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
         console.timeEnd("patchHistory()");

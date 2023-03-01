@@ -19,7 +19,6 @@ export default async function RenderRegisterCivilizations(data) {
         page: container,
         object: null,
         addEvents: function () {
-
             // Criação do evento de formulário
             eventForm();
 
@@ -216,6 +215,9 @@ function renderTable(array) {
                     await deleteCivilization(array[i].civilization_id);
                 } catch (error) {
                     console.error(error);
+                    alert(
+                        "Você não possui autorização para excluir essa civilização!"
+                    );
                 } finally {
                     column5.style.pointerEvents = "auto";
                     column5.style.cursor = "auto";

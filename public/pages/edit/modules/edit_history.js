@@ -107,30 +107,37 @@ export function eventFormHistory(civilizationId) {
             } else if (form.nameh.value == "") {
                 result.textContent = "Adicione um nome ao evento!";
             } else {
-                const response = await imgRequest(
-                    `/history/`,
-                    "POST",
-                    formData
-                );
+                try {
+                    const response = await imgRequest(
+                        `/history/`,
+                        "POST",
+                        formData
+                    );
+                    if (response !== null) {
+                        result.textContent =
+                            'Evento "' +
+                            form.nameh.value +
+                            '" adicionado com sucesso!';
+                        // Limpa todos os campos do formulário de história
+                        const inputs =
+                            form.querySelectorAll('input[type="text"]');
+                        inputs.forEach((element) => (element.value = ""));
 
-                if (response !== null) {
-                    result.textContent =
-                        'Evento "' +
-                        form.nameh.value +
-                        '" adicionado com sucesso!';
-                    // Limpa todos os campos do formulário de história
-                    const inputs = form.querySelectorAll('input[type="text"]');
-                    inputs.forEach((element) => (element.value = ""));
+                        const textArea = form.querySelector("textarea");
+                        textArea.value = "";
 
-                    const textArea = form.querySelector("textarea");
-                    textArea.value = "";
+                        const image = form.querySelector("img");
+                        image.src = "";
 
-                    const image = form.querySelector("img");
-                    image.src = "";
-
-                    await reqRenderTableHistory(civilizationId);
-                } else {
-                    result.textContent = "Evento não inserido!";
+                        await reqRenderTableHistory(civilizationId);
+                    } else {
+                        result.textContent = "Evento não inserido!";
+                    }
+                } catch (error) {
+                    console.error(error);
+                    alert(
+                        "Você não possui autorização para editar essa civilização!"
+                    );
                 }
             }
         }
@@ -158,22 +165,31 @@ export function eventFormHistory(civilizationId) {
             } else if (form.nameh.value == "") {
                 result.textContent = "Adicione um nome ao evento!";
             } else {
-                await imgRequest(`/history/edit`, "PATCH", formData);
+                try {
+                    await imgRequest(`/history/edit`, "PATCH", formData);
 
-                result.textContent =
-                    'Evento "' + form.nameh.value + '" alterado com sucesso!';
+                    result.textContent =
+                        'Evento "' +
+                        form.nameh.value +
+                        '" alterado com sucesso!';
 
-                // Limpa todos os campos do formulário de história
-                const inputs = form.querySelectorAll('input[type="text"]');
-                inputs.forEach((element) => (element.value = ""));
+                    // Limpa todos os campos do formulário de história
+                    const inputs = form.querySelectorAll('input[type="text"]');
+                    inputs.forEach((element) => (element.value = ""));
 
-                const textArea = form.querySelector("textarea");
-                textArea.value = "";
+                    const textArea = form.querySelector("textarea");
+                    textArea.value = "";
 
-                const image = form.querySelector("img");
-                image.src = "";
-                button.innerText = "Adicionar Evento";
-                await reqRenderTableHistory(civilizationId);
+                    const image = form.querySelector("img");
+                    image.src = "../../../uploads/default_image_history.jpg";
+                    button.innerText = "Adicionar Evento";
+                    await reqRenderTableHistory(civilizationId);
+                } catch (error) {
+                    console.error(error);
+                    alert(
+                        "Você não possui autorização para editar essa civilização!"
+                    );
+                }
             }
         }
         toggleButton(button);
@@ -242,11 +258,10 @@ function renderTable(array) {
         column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
-
         // Função para inserir imagem padrão de visualização caso a imagem do evento não seja encontrada
         column3.firstChild.onerror = () => {
             column3.firstChild.src = "../../uploads/default_image_history.jpg";
-        }
+        };
 
         // Eventos de editar e deletar dados da tabela
         column4.addEventListener("click", async () =>
@@ -258,7 +273,17 @@ function renderTable(array) {
                     `Deseja realmente excluir o evento ${array[i].event_title} ?`
                 )
             ) {
-                await reqDeleteEvent(array[i].event, array[i].civilization_id);
+                try {
+                    await reqDeleteEvent(
+                        array[i].event,
+                        array[i].civilization_id
+                    );
+                } catch (error) {
+                    console.error(error);
+                    alert(
+                        "Você não possui autorização para editar essa civilização!"
+                    );
+                }
             }
         });
 

@@ -103,7 +103,11 @@ function regionsSelect(array) {
 async function editImageCivilization(formData) {
     const result = document.querySelector("#resultstart");
 
-    await imgRequest(`/civilizations/edit`, "PATCH", formData);
+    try {
+        await imgRequest(`/civilizations/edit`, "PATCH", formData);
+    } catch (error) {
+        throw error;
+    }
     result.textContent = "Os dados da civilização foram alterados com sucesso!";
     console.log("Dados da civilização (nome e imagem) alterados!");
 }
@@ -139,30 +143,29 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
     const submitButton = document.querySelector("#edit");
     const result = document.querySelector("#resultstart");
 
-    form.addEventListener(
-        "submit",
-        async (e) => {
-            toggleButton(submitButton);
-            result.textContent = "";
+    form.addEventListener("submit", async (e) => {
+        toggleButton(submitButton);
+        result.textContent = "";
 
-            e.preventDefault();
+        e.preventDefault();
 
-            // Upload da imagem
-            const formData = new FormData();
-            const file = document.querySelector("#img_pg_adm");
-            formData.append("file", file.files[0]);
+        // Upload da imagem
+        const formData = new FormData();
+        const file = document.querySelector("#img_pg_adm");
+        formData.append("file", file.files[0]);
 
-            formData.append("civilization_id", idCivilization);
+        formData.append("civilization_id", idCivilization);
 
-            const regionId = document.querySelector("#id_region_start").value;
-            formData.append("region_id", regionId);
+        const regionId = document.querySelector("#id_region_start").value;
+        formData.append("region_id", regionId);
 
-            formData.append("civilization_name", form.nameCivilization.value);
+        formData.append("civilization_name", form.nameCivilization.value);
 
-            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
-            if (form.nameCivilization.value == "") {
-                result.textContent = 'Preencha o campo "Nome da civilização!"';
-            } else {
+        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+        if (form.nameCivilization.value == "") {
+            result.textContent = 'Preencha o campo "Nome da civilização!"';
+        } else {
+            try {
                 const response = await editImageCivilization(formData);
 
                 if (response !== null) {
@@ -188,8 +191,13 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                     result.textContent =
                         "Erro na edição dos dados da civilização.";
                 }
+            } catch (error) {
+                console.error(error);
+                alert(
+                    "Você não possui autorização para editar essa civilização!"
+                );
             }
-            toggleButton(submitButton);
         }
-    );
+        toggleButton(submitButton);
+    });
 }
