@@ -201,7 +201,7 @@
     justify-content: center;
 }
 
-#formHistory2{
+#formHistory{
     display: flex;
     flex-direction: column;
     gap: 0px;
