@@ -107,6 +107,7 @@
     text-align: center;
     vertical-align: text-top;
     padding-bottom: 5px;
+    word-break: break-all;
 }
 
 .regionResumTitle{
