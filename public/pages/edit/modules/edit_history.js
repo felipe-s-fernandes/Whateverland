@@ -2,9 +2,9 @@
 // Coautor {Ed Wilson}
 // @Coautor { Felipe Fernades }
 
-import { createElement, toggleButton } from "../../modules/modules.js";
-import HTTPRequest from "../../modules/HTTPRequest.js";
-import imgRequest from "../../modules/imgRequest.js";
+import { createElement, toggleButton } from "../../../modules/modules.js";
+import HTTPRequest from "../../../modules/HTTPRequest.js";
+import imgRequest from "../../../modules/imgRequest.js";
 
 // Variável global para guardar momentaneamente o id do evento
 let eventId;
@@ -47,7 +47,8 @@ export async function reqDeleteEvent(event, civilizationId) {
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Adicionar Evento";
 
-    const form = document.querySelector("#formHistory2");
+    // Limpeza de todos os inputs ao adicionar um evento
+    const form = document.querySelector("#formHistory");
     const inputs = form.querySelectorAll('input[type="text"]');
     inputs.forEach((element) => (element.value = ""));
 
@@ -71,8 +72,9 @@ export async function reqDeleteEvent(event, civilizationId) {
 
 // ***Eventos***
 
+// Evento de formulário
 export function eventFormHistory(civilizationId) {
-    const form = document.querySelector("#formHistory2");
+    const form = document.querySelector("#formHistory");
     const button = document.querySelector("#buttonHistory");
     const result = document.querySelector("#resulthistory");
 

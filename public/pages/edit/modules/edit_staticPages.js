@@ -1,7 +1,7 @@
 // @autor { Ed Wilson }
 // Coautor { Anderson Lima }
 
-import { createElement } from "../../modules/modules.js";
+import { createElement } from "../../../modules/modules.js";
 
 export function renderEditStaticCivilizationAndStart() {
     const page = createElement("div", "containerInformationEdit");
@@ -72,7 +72,7 @@ export function renderEditStaticHistory() {
     page.innerHTML = `
     <div class="formedit_H">
         
-        <form id="formHistory2" class="cadastre">
+        <form id="formHistory" class="cadastre">
         <h2 class="titleEdit">História</h2>
             <div class="formdivh2">
             <div class="divFormCivilizationEdit">

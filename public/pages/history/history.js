@@ -83,7 +83,6 @@ function addEventListeners(civilization, history) {
                 civilization.civilization_name,
                 clickedHistory[0]
             );
-            console.log(newEventCard);
 
             eventCard.replaceWith(newEventCard);
         });

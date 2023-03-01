@@ -2,9 +2,9 @@
 // Coautor {Ed Wilson}
 // @Coautor { Felipe Fernades }
 
-import { createElement, toggleButton } from "../../modules/modules.js";
-import HTTPRequest from "../../modules/HTTPRequest.js";
-import imgRequest from "../../modules/imgRequest.js";
+import { createElement, toggleButton } from "../../../modules/modules.js";
+import HTTPRequest from "../../../modules/HTTPRequest.js";
+import imgRequest from "../../../modules/imgRequest.js";
 
 // ***Requisições***
 
