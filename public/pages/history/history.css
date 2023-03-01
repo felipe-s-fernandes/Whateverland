@@ -126,6 +126,7 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: auto;
 }
 
 #cardTitle{
@@ -135,10 +136,15 @@ margin-bottom: 10px;
 .eventAside {
     width: 30%;
     min-width: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .historyEventFigure {
-    width: 100%;
+    /* width: 100%; */
+    width: fit-content;
+    height: fit-content;
     padding: 15px;
 }
 
