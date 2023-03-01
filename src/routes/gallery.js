@@ -3,7 +3,7 @@
 
 import express from "express";
 import upload from "./multer.js";
-import authenticate from "../../middleware/authenticate.js";
+import authenticate from "../middleware/authenticate.js";
 const galleryRouter = express.Router();
 import galleryController from "../controllers/gallery.js";
 
