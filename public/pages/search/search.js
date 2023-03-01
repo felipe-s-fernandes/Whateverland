@@ -11,16 +11,16 @@ import redirectTo from "../../modules/redirect.js";
 
 export default async function RenderSearchPage(string) {
     const container = createElement("section", "container");
-    container.id="searchContainer";
+    container.id = "searchContainer";
 
     const searchAndMenu = createSearchAndMenu();
-    searchAndMenu.id="searchPageMenu";
+    searchAndMenu.id = "searchPageMenu";
 
     const searchResultsSection = createElement(
         "section",
         "containerInformation"
     );
-    searchResultsSection.id="searchResultsSection";
+    searchResultsSection.id = "searchResultsSection";
 
     //Título da busca com string pesquisada
     const searchResultsTitle = createElement("h2", "searchResultsTitle");
@@ -87,5 +87,27 @@ async function searchResults(string) {
         searchResultsDiv.appendChild(resultCard);
     });
 
+    if (civilizations.length === 0) {
+        searchResultsDiv.appendChild(createNotFound());
+    }
+
     return searchResultsDiv;
+}
+
+function createNotFound() {
+    const notFoundDiv = createElement("div", "notFoundDiv");
+
+    const notFoundImg = createElement("img", "notFoundImg");
+    notFoundImg.src = "../../uploads/not-found.webp";
+    const notFoundFigure = createElement("figure", "notFoundFigure");
+    notFoundFigure.appendChild(notFoundImg);
+
+    const notFoundText = createElement("p", "notFoundText");
+    notFoundText.innerText =
+        "Ops, parece que não conseguimos encontrar o que você está procurando...";
+
+    notFoundDiv.appendChild(notFoundFigure);
+    notFoundDiv.appendChild(notFoundText);
+
+    return notFoundDiv;
 }
