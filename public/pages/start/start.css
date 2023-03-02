@@ -53,13 +53,13 @@
 }
 
 .mainContent {
-    padding: 36px 30px 30px 30px;
+    padding: 36px 30px 15px 30px;
     overflow: auto;
     width: 400%;
 }
 
 .mainText {
-    padding: 15px 0px 15px 0px;
+    padding: 15px 0px 5px 0px;
     font-size: 1.1em;
     line-height: 21px;
     text-align: justify;
