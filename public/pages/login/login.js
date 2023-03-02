@@ -1,4 +1,8 @@
-import { createElement, createBackButton } from "../../modules/modules.js";
+import {
+    createElement,
+    createBackButton,
+    toggleButton,
+} from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import redirectTo from "../../modules/redirect.js";
 
@@ -6,7 +10,7 @@ export default async function RenderLoginPage(data) {
     const loginForm = createLoginForm();
     const backButton = createBackButton();
 
-    const container = createElement("div", "loginPage");
+    const container = createElement("div", "container");
     container.appendChild(loginForm);
     container.appendChild(backButton);
 
@@ -44,17 +48,40 @@ function createLoginForm() {
 
 function addLogin() {
     const loginButton = document.querySelector("#enter");
+    const usernameInput = document.querySelector("#email");
+    const passwordInput = document.querySelector("#senha");
 
     loginButton.onclick = async () => {
+        toggleButton(loginButton);
         const username = document.querySelector("#email").value;
         const password = document.querySelector("#senha").value;
         const credentials = {
             username: username,
             password: password,
         };
-        console.log(credentials);
+
         const result = await HTTPRequest("/login", "POST", credentials);
-        console.log(result);
-        redirectTo("/map");
+
+        if (result.status === true) {
+            localStorage.setItem("username", result.username);
+            redirectTo("/map");
+        } else {
+            alert("Informações incorretas!");
+            toggleButton(loginButton);
+        }
     };
+
+    usernameInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            loginButton.click();
+        }
+    });
+
+    passwordInput.addEventListener("keyup", (event) => {
+        const keyCode = event.keyCode;
+        if (keyCode === 13) {
+            loginButton.click();
+        }
+    });
 }

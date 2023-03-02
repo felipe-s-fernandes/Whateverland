@@ -1,11 +1,13 @@
 /* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
 
-.container {
+/* .container {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+} */
+
 #eventCard{
+    flex-direction: column;
     padding: 10px;
 }
 
@@ -14,6 +16,7 @@
     align-items: center;
     overflow: hidden;
     border-radius: 50px;
+    max-height: 60px;
 }
 
 .innerEventsBar {
@@ -75,7 +78,7 @@
 }
 
 .yearButton {
-    background-color: white;
+    background-color: var(--primary-color);
     min-width: 135px;
     border: none;
     
@@ -90,7 +93,7 @@
 }
 
 .clickedYearButton {
-    color: white;
+    color: var(--primary-color);
     background-color: rgba(61, 52, 68, 0.9);
 }
 .yearButton:hover {
@@ -102,8 +105,8 @@
     background-color: rgba(115, 98, 128, 0.9);
 }
 
-.eventCard {
-    background-color: white;
+/* .eventCard {
+    background-color: var(--primary-color);
     max-width: 1200px;
     width: 95%;
     padding: 25px;
@@ -111,27 +114,37 @@
     border-radius: 15px;
     border: 2px solid #B2B2B2;
     box-shadow: 4px 0px 10px 4px rgba(0, 0, 0, 0.5);
-}
+} */
 
-.eventCardTitle {
+/* .eventCardTitle {
     margin-bottom: 10px;
     font-size: 1em;
     color: #878787;
-}
+} */
 
 .eventCardSection {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: auto;
+}
+
+#cardTitle{
+margin-bottom: 10px;
 }
 
 .eventAside {
     width: 30%;
     min-width: 200px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .historyEventFigure {
-    width: 100%;
+    /* width: 100%; */
+    width: fit-content;
+    height: fit-content;
     padding: 15px;
 }
 
@@ -147,25 +160,28 @@
 
 .eventArticle {
     width: 70%;
+    padding: 0 20px 20px 20px;
 }
 
-.eventTitle {
-    margin-left: 0px;
+#eventParagraph {
+    overflow: auto;
+}
 
+/* .eventTitle {
+    margin-left: 0px;
     font-size: 1.5em;
     font-weight: 600;
     line-height: 35px;
-    vertical-align: middle;
     border-bottom: 3px solid #000000;
-}
+    vertical-align: middle;
+} */
 
-.eventParagraph {
+/* .eventParagraph {
     padding: 15px 0px 15px 0px;
-
     font-size: 1.1em;
     line-height: 21px;
     text-align: justify;
-}
+} */
 
 @media screen and (max-width: 736px) {
     .eventArticle {

@@ -1,13 +1,14 @@
 .registerTable {
-    width: 96%;
-   margin: 20px 0 0 15px;
+    width: 100%;
+   /* margin: 20px 0 0 15px; */
     text-align: center;
 }
 
-#container {
-    background-color: var(--main-bg-color);
-    height: 100vh;
-    width: 100vw;
+#registerCivilizationContainer {
+    /* background-color: var(--main-bg-color); */
+   /*  height: 100vh;
+    width: 100vw; */
+    padding: 25px 0;
 }
 
 #table-heading {
@@ -16,19 +17,19 @@
     font-weight: bold;
 }
 
-.registerTable tr {
+.registerTable .tableLineColumnRegister {
     height: 50px;
     width: 100%;
 }
 
-.registerTable td {
+.registerTable .tableColumnRegister {
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
 
 }
 
-.registerTable tr:nth-child(even) {
+.registerTable .tableLineColumnRegister:nth-child(even) {
     background: rgba(81, 73, 87, 1);
     color: var(--primary-color);
 }
@@ -52,21 +53,43 @@
 
 .TitleForm {
     color: #000000;
-    margin: 10px;
+    /* margin: 10px; */
 }
 
-.input-box {
-    margin: 30px;
+#formRegisterCivilizations {
+    display: flex;
+    flex-direction: column;
 }
+
+.containerRegister {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.containerInputsRegisterCivilization {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.containerFormAndTable {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    overflow: hidden;
+}
+
+/* .input-box {
+    margin: 30px;
+} */
 
 #username-input {
-    display: inline-block;
-    margin-left: 6%;
-    margin-right: 2%;
+    flex: 1;
 }
 
 #regions {
-    display: inline-block;
+    flex: 1;
 }
 
 .cadastrar {
@@ -76,13 +99,12 @@
     border-color: none;
     border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
-    display: flex;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    align-items: center;
-    justify-content: center;
-
+    /* display: flex; */
+    /* margin-top: 20px; */
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
 .cadastrar:hover {
@@ -92,21 +114,23 @@
     cursor: pointer;
 }
 
-.registerContainer {
-    margin-top: 50px;
-    margin-bottom: 50px;
+#registerContainer {
+    /* margin-top: 50px;
     height: 70vh;   
-    width: 95%;
+    width: 100%;
     max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
+    overflow: auto; */
+    flex-direction: column;
     overflow: auto;
+    padding: 25px;
 }
 
 #section-lista {
-    width: 800px;
-    display: table-cell;
-}
+   width: 100%;
+   overflow: auto;
+} 

@@ -12,14 +12,19 @@
     --border-card: 2px solid #B2B2B2;
     
     /* Cor Principal */
-    --main-bg-color: #3D3444;
+    --main-bg-color: rgb(61, 52, 68);
     
     /* Cor dos inputs */
     --input-color: #D9D9D9;
 
     /* BackGround claro*/
     --light-color: #b2b2b230;
-    /* Começa a produzir daqui pra baixo as variáveis */    
+    
+    /* Cor de sombra das imagens */
+    --shadow-image: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+    /* Variável para movimento das núvens */
+    /* --i: 1; */
 }
 
 * {
@@ -27,26 +32,53 @@
 }
 
 body {
-    height: 100%;
-    background-color: var(--main-bg-color);
+    /* background-image:url(../uploads/backgroundImg.png) ; */
+    background-image: url(../uploads/mountain-peak.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.whateverlandLogo {
+    height: 180%;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding-bottom: 25px;
+}
+
+button:disabled {
+    cursor: auto !important;
 }
 
 /* Card grande onde contém todas as informações */
 .containerInformation {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    height: 90%;
+    /* margin-top: 50px; */
+    /* margin-bottom: 50px; */
+    /* height: 90%; */
+    display: flex;
+    flex: 1;
     width: 95%;
-    max-width: 1800px;
+    max-width: 1200px;
     background: var(--primary-color);
     border: var(--border-card);
     box-shadow: var(--shadow-color-position);
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
+    overflow: hidden;
 }
 
 .backButton {
-    margin-top: 40px;
+    /* margin-top: 40px; */
     padding: 20px;
 
     background-color: var(--primary-color);
@@ -95,13 +127,58 @@ body {
     transform: rotate(180deg);
 }
 
+.roundButton {
+
+    background-color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 50px;
+    width: 50px;
+
+    background: var(--primary-color);
+    box-shadow: var(--shadow-color-position);
+    border: none;
+    border-radius: 25px;
+
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-right: 2px;
+}
+
+.searchButton {
+    min-height: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    max-height: 45px;
+    margin-right: 2px;
+}
+
+.navBar .roundButton {
+    min-width: 50px;
+}
+
+.logoutImg, .editImg {
+    width: 25px;
+}
+
+
+.roundButton:hover {
+    cursor: pointer;
+    background-color: #d6d6d6;
+}
+
+.roundButton:active {
+    background-color: #a8a8a8;
+}
+
 header {
-    margin: auto;
+    /* margin: auto; */
     max-width: 1200px;
     width: 95%;
     height: 55px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #whateverlandLogo {
@@ -147,6 +224,7 @@ header {
 .clickedNavButton {
     color: var(--primary-color);
     background-color: rgba(61, 52, 68, 0.9);
+    pointer-events: none;
 }
 
 .navButton:hover {
@@ -170,9 +248,9 @@ header {
     align-items: center;
     background-color: #a8a8a8;
     height: 90%;
-    width: 500px;
+    width: 85%;
+    min-width: 250px;
     border-radius: 50px;
-
     margin: 3px;
 }
 
@@ -181,13 +259,16 @@ header {
     width: 100%;
     background-color: #a8a8a8;
     border: none;
-    color: #e1e1e1;
+    color: #4b4b4b;
     margin-left: 20px;
+
+    font-size: 16px;
 }
 
 .smallSearchBar input:focus,
 .smallSearchBar input:active {
     border: none;
+    outline: none;
 }
 
 .smallSearchBar svg {
@@ -208,15 +289,20 @@ header {
     background-color: #d6d6d6;
 }
 
+.roundButtonsDiv {
+    display: flex;
+    height: 100%;
+}
+
 .mainInput {
     background-color: var(--input-color);
     border: none;
     font-size: 15px;
     border-radius: 15px;
-    display: flex;
+   /*  display: flex;
     margin-left: auto;
-    margin-right: auto;
-    width: 300px;
+    margin-right: auto; */
+    /* width: 300px; */
     height: 40px;
     text-align: center;
 }
@@ -224,16 +310,42 @@ header {
 .mainSelect {
     text-align: center;
     background-color: var(--input-color);
-    width: 304px;
+    /* width: 304px; */
     height: 42px;
-    display: flex;
+    /* display: flex;
     margin-left: auto;
-    margin-right: auto;
+    margin-right: auto; */
     border-radius: var(--border-radius-big-box);
     border: none;
-
     font-size: 15px;
 }
+
+.hoverBox {
+    position: absolute;
+    z-index: 9999;
+    font-weight: 600;
+
+    width: 100px;
+    padding: 7px;
+    text-align: center;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    border: 1px solid #B2B2B2;
+    box-shadow: var(--shadow-color-position);
+}
+
+.hoverBox::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom: 15px solid var(--primary-color);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    z-index: 1;
+  }
 
 /* width */
 ::-webkit-scrollbar {
@@ -251,5 +363,59 @@ header {
     background: #B2B2B2;
     border-radius: var(--border-radius-big-box);
   }
+
+  .patternTextTitle {
+    font-size: 1.5em;
+    font-weight: 600;
+    line-height: 35px;
+    border-bottom: 3px solid #000;
+  }
+
+  .patternText {
+    padding: 15px 0px 15px 0px;
+    font-size: 1.1em;
+    line-height: 21px;
+    text-align: justify;
+  }
+
+  .patternCardTitle {
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 1em;
+    color: #878787;
+}
+
+.searchAndMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    width: 95%;
+    margin-top: 20px;
+}
+
+@media screen and (max-width:930px) {
+    .header {
+        height: 203px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .whateverlandLogo {
+        height: 49%;
+    }
+
+    .navBar {
+        height: auto;
+        flex-direction: column-reverse;
+        border-radius: var(--border-radius-big-box);
+    }
+    .roundButtonsDiv {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+}
+}
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */

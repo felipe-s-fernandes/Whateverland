@@ -10,18 +10,16 @@ const postSession = async (req, res) => {
     console.time("postSession()");
     // Precisa tratar algum input? Não sei
 
-    /* {
-        username: "felipe",
-        plainTextPassword: "123",
-    } */
-
     const username = req.body.username;
     const plainTextPassword = req.body.password;
 
     // Padronizar a resposta
     const response = {
         message: "",
-        data: null,
+        data: {
+            status: false,
+            username: null,
+        },
         error: null,
     };
 
@@ -31,12 +29,14 @@ const postSession = async (req, res) => {
             username,
             plainTextPassword
         );
-        response.data = serviceResponse;
+        response.data.status = serviceResponse;
+        response.data.username = username;
 
         if (serviceResponse) {
             const jwt = jwtLib.sign({ username }, process.env.JWTSECRET);
-            res.cookie("session", jwt);
+            res.cookie(username, jwt);
             response.message = `User ${username} logged in successfully.`;
+
             res.status(200).send(response);
         } else {
             response.message = `Username or password invalid.`;
@@ -60,6 +60,8 @@ const deleteSession = (req, res) => {
     console.log(TAG, "deleteSession() from " + req.connection.remoteAddress);
     console.time("deleteSession()");
 
+    const username = req.body.username;
+
     // Padronizar a resposta
     const response = {
         message: "",
@@ -68,7 +70,7 @@ const deleteSession = (req, res) => {
     };
 
     try {
-        res.clearCookie("session");
+        res.clearCookie(username);
         response.message = "Cookie cleared successfully.";
         response.data = true;
         res.status(200).json(response);

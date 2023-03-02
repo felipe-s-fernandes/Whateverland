@@ -6,33 +6,19 @@ export default function renderPage() {
     // Criação de elementos HTML
     const contentBox = createElement("div", "containerInformation");
     contentBox.id = "contentBox";
-    const textTitle = createElement("h1", "textTitle");
-    const contentButtonsAndImages = createElement("div", "contentButtonsAndImages");
-    const containerImages = createElement("div", "containerImages");
+    const textTitle = createElement("h1", "patternCardTitle");
+    textTitle.id="textTitle";
 
-    const buttonLeft = createElement("img", "arrowButton");
-    const buttonRight = createElement("img", "arrowButton");
+    const containerImages = createElement("div", "containerImagesGallery");
 
     // ***Conteúdo fixo da página HTML***
 
-    // Imagens dos itens fixos
-    buttonLeft.src = "../../../uploads/arrow-left.png";
-    buttonRight.src = "../../../uploads/arrow-right.png";
-
-    // Identicação dos botões
-    buttonLeft.id = "left";
-    buttonRight.id = "right";
     containerImages.id = "containerImages";
     textTitle.id = "textTitle";
-    
-    // Inseerção dos elementos fixos no HTML
-    contentButtonsAndImages.appendChild(buttonLeft);
-    contentButtonsAndImages.appendChild(containerImages);
-    contentButtonsAndImages.appendChild(buttonRight);
-    
+
     // Inserção dos elementos variáveis no HTML
     contentBox.appendChild(textTitle);
-    contentBox.appendChild(contentButtonsAndImages);
+    contentBox.appendChild(containerImages);
 
     return contentBox;
 }
@@ -44,6 +30,9 @@ function addImage(uploadImage) {
     const figuraCaption = createElement("figcaption", "textImage");
 
     image.src = `../../../uploads/${uploadImage.gallery_image_id}`;
+    image.onerror = () => {
+        image.src = "../../../uploads/default_image.jpg";
+    };
     figuraCaption.innerText = uploadImage.gallery_image_title;
 
     figure.appendChild(image);
@@ -54,83 +43,26 @@ function addImage(uploadImage) {
 
 export function renderTextTitle(name) {
     const textTitle = document.querySelector("#textTitle");
-    textTitle.innerHTML = `GALERIA DE IMAGENS DE ${name}`;
+    textTitle.innerHTML = `GALERIA DE IMAGENS ${name}`;
     return textTitle;
 }
 
-export function passPage(array) {
+export function imagesGallery(array) {
     const containerImages = document.querySelector("#containerImages");
 
-    const buttonLeft = document.querySelector("#left");
-    const buttonRight = document.querySelector("#right");
+    containerImages.innerHTML = "";
 
-    const maxImages = 6;
+    // Condição quando não é encontrado imagens
+    if (array.length == 0) {
+        const textNoImage = createElement("p", "patternText");
+        textNoImage.innerText = "Não contém imagens cadastradas";
 
-    let currentPage = 0;
-    
-    let primaryElement = currentPage * maxImages;
-    let lastElement = primaryElement + maxImages - 1;
-
-    if (currentPage == 0) {
-        buttonLeft.style.display = "none";                
+        containerImages.appendChild(textNoImage);    
     }
 
-    buttonRight.style.display = "block";
-
-    if (array.length - 1 <= lastElement) {
-        buttonRight.style.display = "none";        
+    // Percorrendo apenas os itens máximos por página
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        containerImages.appendChild(addImage(element));
     }
-
-    displayElements(array);
-    
-    function displayElements(array) {
-
-        containerImages.innerHTML = "";
-
-        // Posições no array
-        primaryElement = currentPage * maxImages;
-        lastElement = primaryElement + maxImages - 1;
-
-        // Percorrendo apenas os itens máximos por página
-        for (let i = 0; i < array.length; i++) {
-            const element = array[i];
-
-            if (i >= primaryElement && i <= lastElement) {
-                containerImages.appendChild(addImage(element));     
-                if (i == lastElement) {
-                    i = array.length;                    
-                }                         
-            }
-        }
-    }
-    
-    buttonLeft.addEventListener("click", () => {
-        
-        if (currentPage === 1) {
-            buttonLeft.style.display = "none";
-            buttonRight.style.display = "block";                                
-        } else {
-            buttonLeft.style.display = "block";
-            buttonRight.style.display = "block";
-        }
-        currentPage--;
-        console.log(currentPage);
-        displayElements(array);
-    })
-    
-    buttonRight.addEventListener("click", () => {
-        
-        if (lastElement + maxImages > array.length - 1) {
-            buttonRight.style.display = "none";
-            buttonLeft.style.display = "block";
-            
-        } else {
-            buttonLeft.style.display = "block";
-            buttonRight.style.display = "block";
-        }
-
-        currentPage++;
-        console.log(lastElement);
-        displayElements(array);
-    })
 }

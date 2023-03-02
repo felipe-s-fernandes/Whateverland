@@ -1,5 +1,6 @@
 // Author {Felipe Fernandes}
 
+import checkUser from "../repositories/database/check-user.js";
 import civilzationsServices from "../services/civilizations.js";
 
 const TAG = "Civilizations Controller: ";
@@ -215,6 +216,15 @@ const patchCivilization = async (req, res) => {
 
     const civilizationId = civilizationObject.civilization_id;
 
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
+
     // Padronizar a resposta
     const response = {
         message: "",
@@ -267,6 +277,14 @@ const deleteCivilization = async (req, res) => {
     // Precisa tratar algum input? Sim
 
     const civilizationId = req.params.id;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     // Padronizar a resposta
     const response = {

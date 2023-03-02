@@ -1,6 +1,8 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
+import checkCivilization from "../repositories/database/check-civilization.js";
+import checkUser from "../repositories/database/check-user.js";
 import galleryServices from "../services/gallery.js";
 
 const TAG = "Gallery Controller: ";
@@ -61,20 +63,22 @@ const postGallery = async (req, res) => {
     console.time("postGallery()");
     // Precisa tratar algum input? Não sei
 
-    /* {
-        "gallery_image_id": "imagem_aleatoria.png",
-        "civilization_id": 10,
-        "gallery_image_title": "Teste resenha"
-    } */
     const galleryObject = req.body;
+
+    const civilizationId = galleryObject.civilization_id;
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     if (!req.file || req.file.size === 0) {
         res.status(400).send("Please upload a file");
     } else {
         galleryObject.gallery_image_id = req.file.filename;
     }
-
-    const civilizationId = galleryObject.civilization_id;
 
     // Padronizar a resposta
     const response = {
@@ -125,6 +129,15 @@ const deleteGallery = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const imageId = req.params.imageid;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    const civilizationId = await checkCivilization(imageId, "gallery");
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
 
     // Padronizar a resposta
     const response = {

@@ -7,12 +7,14 @@ export function createEventsBar(events) {
     const innerEventsBar = createElement("div", "innerEventsBar");
 
     events.forEach((event, index) => {
-        const yearButton = createElement("button", "yearButton");
-        yearButton.innerText = event.event_year;
-        yearButton.dataset.event_id = event.event;
-        innerEventsBar.appendChild(yearButton);
+        if (event.event !== null) {
+            const yearButton = createElement("button", "yearButton");
+            yearButton.innerText = event.event_year;
+            yearButton.dataset.event_id = event.event;
+            innerEventsBar.appendChild(yearButton);
 
-        if (index === 0) yearButton.classList.add("clickedYearButton");
+            if (index === 0) yearButton.classList.add("clickedYearButton");
+        }
     });
 
     const leftButton = createElement("button", "yearsNavButton");
@@ -52,11 +54,10 @@ export function createEventCard(civilizationName, event) {
     const eventCard = createElement("div", "containerInformation");
     eventCard.id = "eventCard";
 
-    const cardTitle = createElement("p", "eventCardTitle");
+    const cardTitle = createElement("p", "patternCardTitle");
+    cardTitle.id="cardTitle";
     cardTitle.innerText =
         `eventos históricos de ${civilizationName}`.toUpperCase();
-
-    console.log(cardTitle);
 
     //section com aside e article
     const cardSection = createElement("section", "eventCardSection");
@@ -66,6 +67,9 @@ export function createEventCard(civilizationName, event) {
     const eventFigure = createElement("figure", "historyEventFigure");
     const eventImage = createElement("img", "eventImage");
     eventImage.src = `../../../uploads/${event.event_image}`;
+    eventImage.onerror = () => {
+        eventImage.src = `../../../uploads/default_image_history.jpg`;
+    };
     eventImage.alt = event.event_image_label;
     eventFigure.appendChild(eventImage);
 
@@ -78,10 +82,11 @@ export function createEventCard(civilizationName, event) {
     //Criação do article com título e parágrafos
     const eventArticle = createElement("article", "eventArticle");
 
-    const eventTitle = createElement("h3", "eventTitle");
+    const eventTitle = createElement("h3", "patternTextTitle");
     eventTitle.innerText = event.event_year + " - " + event.event_title;
 
-    const eventParagraph = createElement("p", "eventParagraph");
+    const eventParagraph = createElement("p", "patternText");
+    eventParagraph.id="eventParagraph";
     eventParagraph.innerText = event.event_paragraph;
 
     eventArticle.appendChild(eventTitle);

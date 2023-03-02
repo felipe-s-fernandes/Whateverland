@@ -1,24 +1,28 @@
 //@Autor {Anderson Lima}
-import { createElement } from "../../modules/modules.js";
+import { createElement, toggleButton } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
-import { renderButtonExplore, renderLogo } from "./initPageModules.js";
+import { renderButtonExplore, renderLogo, clouds } from "./initPageModules.js";
 
 // Requisição ao servidor de banco de dados
-
 export default async function RenderInitPage(data) {
     const buttonInit = renderButtonExplore();
 
     buttonInit.onclick = () => {
+        toggleButton(buttonInit);
         redirectTo("/map");
     };
 
-    const page = createElement("div", "divSite");
-    page.appendChild(renderLogo());
-    page.appendChild(buttonInit);
+    const container = createElement("div", "containerPageInit");
 
-    const container = document.createElement("div");
-    container.classList.add("containerPage");
-    container.appendChild(page);
+    const containerlogoAndButton = createElement(
+        "div",
+        "divLogoAndButton"
+    );
+    containerlogoAndButton.appendChild(renderLogo());
+    containerlogoAndButton.appendChild(buttonInit);
+
+    container.appendChild(containerlogoAndButton);
+    container.appendChild(clouds());
 
     const response = {
         page: container,

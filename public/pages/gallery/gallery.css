@@ -1,5 +1,13 @@
 /* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
 
+/* #galleryContainer {
+     display: flex; 
+    flex-direction: column; 
+    align-items: center;
+    width: 100vw;
+    height: 100vh; 
+} */
+
 .eventFigure {
     width: 100px;
 }
@@ -9,12 +17,25 @@
 }
 
 #contentBox {
-    margin-top: 50px;
-    padding: 10px;
-
+    flex-direction: column;
+    padding: 10px 0px 0px 10px;
+    overflow: hidden;
+   /*  height: 70vh; */
+    /* position: relative; */
 }
 
-.textTitle {
+/* #contentBox::after {
+    content: "";
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    } */
+    
+/* .textTitle {
     text-transform: uppercase;
     margin-top: 8px;
     margin-right: 8px;
@@ -24,7 +45,8 @@
     line-height: 35px;
     vertical-align: middle;
     border-bottom: 3px solid #000000;
-}
+    margin-right: 50px;
+} */
 
 .arrowButton {
     height: 25px;
@@ -48,14 +70,17 @@
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
-.containerImages {
-    height: 100%;
+.containerImagesGallery {
+   /*  height: 100%; */
+   /* height: auto; */
     width: 100%;
-    padding: 20px;
+    /* padding-top: 20px; */
     box-sizing: border-box;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+   /*  position: relative; */
+   overflow: auto;
 }
 
 .image {

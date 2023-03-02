@@ -8,19 +8,17 @@ import redirectTo from "../../modules/redirect.js";
 export default async function RenderRegisterCivilizations(data) {
     const container = document.createElement("div");
     container.classList.add("container");
-    container.id = "container";
+    container.id = "registerCivilizationContainer";
 
-    // Renderização da página vazia
-    container.appendChild(renderStaticPage());
     // Renderização do botão de voltar
     container.appendChild(createBackButton());
+    // Renderização da página vazia
+    container.appendChild(renderStaticPage());
 
     const response = {
         page: container,
         object: null,
         addEvents: function () {
-            // console.log("Adiciona eventos");
-
             // Criação do evento de formulário
             eventForm();
 
@@ -77,25 +75,29 @@ async function deleteCivilization(idCivilization) {
 
 // Renderização da página estática do HTML
 function renderStaticPage() {
-    const page = createElement("div", "page");
+    const page = createElement("div", "containerInformation");
+    page.id = "registerContainer";
 
     page.innerHTML = `
-        <div class="registerContainer">
-            <div class="container">
-                <h2 class="TitleForm">FORMULÁRIO DE CADASTRO DE CIVILIZAÇÕES</h2>
-                <p>Para inserir civilizações na lista, preencha os dados abaixo:</p>
-            </div>
-            <form id="form" class="input-box">
-                <input type="text" name="nome" id="username-input" class="mainInput" placeholder="insira o nome da civilização" autocomplete="off">
-                <select name="regions" id="regions" class="mainSelect" >
-                    <option value="" selected disabled >- escolha uma região -</option>
-                </select>
-                </br><input type="submit" value="Cadastrar" id="cadastrar" class="cadastrar"></br>
+        <h2 class="patternTextTitle">FORMULÁRIO DE CADASTRO DE CIVILIZAÇÕES</h2>
+        <div class="containerFormAndTable">
+            <form id="formRegisterCivilizations" class="input-box">
+                <p class="patternText">Para inserir civilizações na lista, preencha os dados abaixo:</p>
+                <div class="containerRegister">
+                    <div class="containerInputsRegisterCivilization">
+                        <input type="text" name="nome" id="username-input" class="mainInput" placeholder="insira o nome da civilização" autocomplete="off">
+                        <select name="regions" id="regions" class="mainSelect" >
+                            <option value="" selected disabled >- escolha uma região -</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Cadastrar" id="cadastrar" class="cadastrar">
+                </div>
             </form>
+            
             <section id="section-lista">
-                <div class="container">
+                <div>
                     <h2 class="TitleForm">LISTA DE CIVILIZAÇÕES CADASTRADAS POR REGIÃO</h2>
-                    <p>Abaixo, você pode ver, editar ou remover as civilizações registradas.</p>
+                    <p class="patternText">Abaixo, você pode ver, editar ou remover as civilizações registradas.</p>
                 </div>
                 <table class="registerTable" ></table>
             </section>
@@ -109,7 +111,7 @@ function renderStaticPage() {
 
 // Formulário de preenchimento
 function eventForm() {
-    const form = document.querySelector("#form");
+    const form = document.querySelector("#formRegisterCivilizations");
 
     form.addEventListener("submit", async (e) => {
         // Seleção dos inputs de HTML
@@ -152,7 +154,7 @@ function regionsSelect(array) {
 function renderTable(array) {
     const table = document.querySelector("table");
     table.innerHTML = "";
-    const tableBody = createElement("tbody", "table");
+    const tableBody = createElement("tbody", "tableBodyRegister");
 
     // Título da tabela
     tableBody.innerHTML = `
@@ -171,13 +173,13 @@ function renderTable(array) {
 
     // Criação das colunas e linhas no HTML
     for (let i = 0; i < array.length; i++) {
-        const line = createElement("tr", "table");
+        const line = createElement("tr", "tableLineColumnRegister");
 
-        const column1 = createElement("td", "table");
-        const column2 = createElement("td", "table");
-        const column3 = createElement("td", "table");
-        const column4 = createElement("td", "table");
-        const column5 = createElement("td", "table");
+        const column1 = createElement("td", "tableColumnRegister");
+        const column2 = createElement("td", "tableColumnRegister");
+        const column3 = createElement("td", "tableColumnRegister");
+        const column4 = createElement("td", "tableColumnRegister");
+        const column5 = createElement("td", "tableColumnRegister");
 
         line.appendChild(column1);
         line.appendChild(column2);
@@ -192,12 +194,36 @@ function renderTable(array) {
         column5.innerHTML = `<img class="excluirImg" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
         // Eventos de editar e deletar dados da tabela
-        column4.addEventListener("click", () =>
-            redirectEditPage(array[i].civilization_id)
-        );
-        column5.addEventListener("click", () =>
-            deleteCivilization(array[i].civilization_id)
-        );
+        column4.addEventListener("click", async () => {
+            column4.style.pointerEvents = "none";
+            column4.style.cursor = "wait";
+            await redirectEditPage(array[i].civilization_id);
+        });
+
+        column5.addEventListener("click", async () => {
+            column5.style.pointerEvents = "none";
+            column5.style.cursor = "wait";
+
+            if (
+                window.confirm(
+                    "Deseja realmente excluir a civilização " +
+                        array[i].civilization_name +
+                        " ?"
+                )
+            ) {
+                try {
+                    await deleteCivilization(array[i].civilization_id);
+                } catch (error) {
+                    console.error(error);
+                    alert(
+                        "Você não possui autorização para excluir essa civilização!"
+                    );
+                } finally {
+                    column5.style.pointerEvents = "auto";
+                    column5.style.cursor = "auto";
+                }
+            }
+        });
 
         table.appendChild(line);
     }

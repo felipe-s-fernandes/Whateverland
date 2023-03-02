@@ -1,36 +1,40 @@
 /* Conteinar da página */
 .pageCiv{
+    animation-name: moveMargin;
+    animation-duration: 1s;
     display: flex;
-    width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
-    animation-name: moveMap;
-    animation-duration: 2s;
+    margin-right: 400px;
 }
 
-.regionSelect {
-    position: fixed;
-    animation-name: moveMap;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
+/* Div que contém a imagem de simbolo da região */
+.simbolMap {
+    height: 70vh;
+    animation-name: scaleSimbol;
+    animation-duration: 1s;
 }
 
-/* .symbolBody{
-    width: 1000px;
-    height: 75%;
-} */
+/* Imagem do simbolo da região */
+.imageSimbolMap {
+    height: 100%;
+    /* width: 100%; */
+}
 
+.tbody_civ {
+    background-color: var(--main-bg-color)
+}
+
+/* Table onde contém todas as civilizações */
 .regionCivilizationsGeneral {
-    width: 90%;
-    /* box-shadow: var(--shadow-color-position); */
+    width: 100%;
     border-radius: 25px;
-    /* border: var(--border-card); */
     box-shadow: 1px 4px 10px 0 black;
 }
 
 /* Sidebar */
-.regionBody{
+.regionBody {
     box-shadow: var(--shadow-color-position);
     box-shadow: 1px 4px 10px 0 black;
     background-color: var(--main-bg-color);
@@ -40,30 +44,32 @@
     justify-content: space-around;
     border-radius: 30px 0px 0px 30px;
     position: fixed;
-    /* top: 0; */
     right: -400px;
-    width: 400px;
+    width: 375px;
     height: 90%;
     visibility: hidden;
     animation-duration: 1s;
     animation-fill-mode: forwards;
     animation-name: showSidebar;
+    z-index: 1;
+    padding: 10px 10px;
+    gap: 25px;
 }
 
-.c{
+.c {
     background-color: var(--primary-color);
-    width: 90%;
-    height: 45%;
+    width: 100%;
+    /* height: 45%; */
     border-radius: var(--border-radius-big-box);
     border: var(--border-card);
     padding: 5%;
-    /* margin: 15px; */
     box-shadow: 1px 4px 10px 0 black;
+    flex: 1;
 }
 
 .regionCivilizations{
     background-color: #3c3745;
-    width: 90%;
+    width: 100%;
     height: 35%;
     border-radius: 5%;
     border-collapse: initial;
@@ -75,37 +81,34 @@
     text-align: center;
 }
 
-.regionCivilizationsGeneral th, tr, td {
+.regionCivilizationsGeneral .td_civilLogo1 {
     border: none;
     border-color: none;
-    vertical-align: middle;
-    /* border: var(--border-card);
-    box-shadow: 1px 4px 10px 0 black; */
-    /* color: red; */
+    color: var(--primary-color);
+    text-align: center;
 }
 
-.regionCivilizationsGeneral > th, tr, td {
-    border: none;
-    border-color: none;
-    vertical-align: middle;
-    /* color: red; */
+.td_civilLogo1, .td_civilLogo2, .td_civilLogo3 {
+    height: 90px;
+    width: 115px;
+    padding: 5px;
+    text-align: center;
+    color: var(--primary-color);
 }
 
-/* .symbolMap{
-    position: relative;
-    left: 100px;
-    top: 50px;
-    width: 600px;
-    height: 600px;
-} */
+.td_buttonleft, .td_buttonright {
+    vertical-align: middle;
+    color: var(--primary-color);
+    width: 31px;
+}
 
-/* .symbolimg{
-    position: relative;
-    left: -350px;
-    top: -150px;
-    width: 300px;
-    height: 300px;
-} */
+.td_civilName1, .td_civilName2, .td_civilName3 {
+    color: var(--primary-color);
+    text-align: center;
+    vertical-align: text-top;
+    padding-bottom: 5px;
+    word-break: break-all;
+}
 
 .regionResumTitle{
     border-bottom: 1px solid black;
@@ -130,10 +133,16 @@
     color: rgb(255, 255, 255); 
 }
 
-.pageCiv th,.pageCiv tr,.pageCiv td{
+/* .pageCiv th,.pageCiv tr,.pageCiv td{
     width: 30px;
     height: 30px;
+} */
+
+.tr_logos_civ {
+    height: 70px;
 }
+
+
 
 .td_names_v0 {
     border-bottom-left-radius: 15px;
@@ -152,11 +161,14 @@
     /* margin-top: 20px; */
 }
 
-.civilTitle{
+.civilTitle {
     width: 100%;
-    line-height: 60px;
+    line-height: 200%;
     border-top-right-radius: 5% 25%;
     border-top-left-radius: 5% 25%;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
 }
 
 .img_right, .img_left{
@@ -164,10 +176,11 @@
     height: 30px;
 }
 
-.civilLogo1, .civilLogo2, .civilLogo3{
-    margin-top: 20px;
-    width: 100px;
-    height: 100px;
+.civilLogo1, .civilLogo2, .civilLogo3 {
+    /* width: 85px; */
+    /* width: 100%; */
+    height: 100%;
+    max-width: 100%;
     cursor: pointer;
 }
 
@@ -180,7 +193,7 @@
     /* margin: 20px 0px 0px 20px; */
     border-radius: 100%;
     position: absolute;
-    left: 20px;
+    left: 15px;
     cursor: pointer;
     /* animation-name: showSidebar;
     animation-duration: 3s; */
@@ -223,10 +236,20 @@
     }
 }
 
-@keyframes moveMap{
+@keyframes moveMargin{
     0%{
+        margin-right: 0;
     }
     100% {
         margin-right: 400px;
+    }
+}
+
+@keyframes scaleSimbol{
+    0%{
+        transform: scale(0.3);
+    }
+    100% {
+        transform: scale(1);
     }
 }

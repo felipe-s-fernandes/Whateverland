@@ -2,28 +2,6 @@
 import { createElement } from "../../../modules/modules.js";
 
 export default function createStartPage(startPages, civilizations) {
-    /* startPages = [
-        {
-            start_page_id: 456,
-            official_name: "Erebonia",
-            localization: "Região de Zenuria",
-            capital: "Heimdallr",
-            religion: "Igreja Septiana",
-            government: "Monarquia constitucional (provável ditadura)",
-            paragraph: "Parágrafo placeholder",
-            deleted: false,
-        }
-    ] */
-
-    /* let civilizations = [
-        {
-            civilization_id: 1,
-            region_id: 0,
-            start_page_id: 456,
-            civilization_name: "Erebonia",
-        }
-    ] */
-
     const object = startPages;
 
     const object2 = civilizations;
@@ -37,19 +15,19 @@ export default function createStartPage(startPages, civilizations) {
     const civilizationName = createElement("h1", "civilizationName");
     const civilizationShield = createElement("img", "civilizationShield");
     const infoArticle = createElement("article", "infoArticle");
-    const infoTitleOfcName = createElement("h2", "infoTitleOfcName");
+    const infoTitleOfcName = createElement("h2", "infoTitle");
     const infoOfcName = createElement("p", "info");
-    const infoTitleLocal = createElement("h2", "infoTitleLocal");
+    const infoTitleLocal = createElement("h2", "infoTitle");
     const infoLocal = createElement("p", "info");
-    const infoTitleCapital = createElement("h2", "infoTitleCapital");
+    const infoTitleCapital = createElement("h2", "infoTitle");
     const infoCapital = createElement("p", "info");
-    const infoTitleReligion = createElement("h2", "infoTitleReligion");
+    const infoTitleReligion = createElement("h2", "infoTitle");
     const infoReligion = createElement("p", "info");
-    const infoTitleGov = createElement("h2", "infoTitleGov");
+    const infoTitleGov = createElement("h2", "infoTitle");
     const infoGov = createElement("p", "info");
     const mainContent = createElement("main", "mainContent");
-    const mainTitle = createElement("h2", "mainTitle");
-    const mainText = createElement("p", "mainText");
+    const mainTitle = createElement("h2", "patternTextTitle");
+    const mainText = createElement("p", "patternText");
 
     /*     const dados = document.querySelectorAll(".info");
     dados.forEach((dado) => {
@@ -73,6 +51,9 @@ export default function createStartPage(startPages, civilizations) {
     mainText.innerHTML = object.paragraph;
 
     civilizationShield.src = "../../uploads/" + object2.civilization_image;
+    civilizationShield.onerror = () => {
+        civilizationShield.src = "../../uploads/default_image.jpg";
+    };
     civilizationName.innerHTML = object2.civilization_name;
 
     // Excluir em breve

@@ -69,9 +69,31 @@ const patchStart = async (startObject) => {
         throw error;
     }
 };
+
+const searchStart = async (string) => {
+    try {
+        const response = {
+            search_results: null,
+        };
+
+        // Banco de dados real
+        const searchResults = await connectDb(query.searchCivilization, [
+            string,
+        ]);
+
+        response.search_results = searchResults;
+
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught");
+        throw error;
+    }
+};
+
 const startRepository = {
     getStart: getStart,
     patchStart: patchStart,
+    searchStart: searchStart,
 };
 
 export default startRepository;

@@ -1,6 +1,7 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
+import checkUser from "../repositories/database/check-user.js";
 import startServices from "../services/start.js";
 
 const TAG = "Start Controller: ";
@@ -61,6 +62,14 @@ const patchStart = async (req, res) => {
     const civilizationId = req.body.civilization_id;
     const startObject = req.body;
 
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchCivilization()");
+        return;
+    }
+
     //fetch("http://localhost:8080/start/:id")
 
     // Padronizar a resposta
@@ -104,9 +113,46 @@ const patchStart = async (req, res) => {
     }
 };
 
+const searchStart = async (req, res) => {
+    console.log(TAG, "searchStart() from " + req.connection.remoteAddress);
+    console.time("searchStart()");
+    // Precisa tratar algum input? Sim
+
+    //fetch("http://localhost:8080/start/search/:string")
+    const string = req.params.string;
+
+    // Padronizar a resposta
+    const response = {
+        message: "",
+        data: null,
+        error: null,
+    };
+
+    try {
+        // Chama o método do Service
+        const serviceResponse = await startServices.searchStart(string);
+
+        response.message = `Search results for '${string}' retrieved successfully.`;
+        response.data = serviceResponse;
+
+        res.status(200).send(response);
+        console.timeEnd("searchStart()");
+    } catch (error) {
+        console.log(TAG, "error caught");
+
+        response.message = "Internal server error";
+        response.data = null;
+        response.error = `${error}`;
+
+        res.status(500).json(response);
+        console.timeEnd("searchStart()");
+    }
+};
+
 const startController = {
     getStart: getStart,
     patchStart: patchStart,
+    searchStart: searchStart,
 };
 
 export default startController;

@@ -10,7 +10,14 @@ export default async function HTTPRequest(url, method, body = null) {
     };
 
     if (body !== null) {
+        body.username =
+            body.username || localStorage.getItem("username") || null;
         object.body = JSON.stringify(body);
+    }
+
+    if (method === "DELETE") {
+        const username = { username: localStorage.getItem("username") || null };
+        object.body = JSON.stringify(username);
     }
 
     const response = await fetch(`http://${HOST_PORT}${url}`, object);

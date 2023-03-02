@@ -1,6 +1,8 @@
 // Autor {Anderson Lima}
 // CoAutor {Felipe Fernandes}
 
+import checkCivilization from "../repositories/database/check-civilization.js";
+import checkUser from "../repositories/database/check-user.js";
 import historyServices from "../services/history.js";
 
 const TAG = "History Controller: ";
@@ -63,13 +65,21 @@ const postHistory = async (req, res) => {
 
     const historyObject = req.body;
 
+    const civilizationId = historyObject.civilization_id;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("postHistory()");
+        return;
+    }
+
     if (!req.file || req.file.size === 0) {
         historyObject.event_image = "default_event_image.png";
     } else {
         historyObject.event_image = req.file.filename;
     }
-
-    const civilizationId = historyObject.civilization_id;
 
     // Padronizar a resposta
     const response = {
@@ -121,6 +131,19 @@ const patchHistory = async (req, res) => {
 
     const historyObject = req.body;
 
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    const civilizationId = await checkCivilization(
+        historyObject.event,
+        "history"
+    );
+    // const civilizationId = historyObject.civilization_id;
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("patchHistory()");
+        return;
+    }
+
     if (!req.file || req.file.size === 0) {
         historyObject.event_image = null;
     } else {
@@ -164,6 +187,16 @@ const deleteHistory = async (req, res) => {
 
     //fetch("http://localhost:8080/history/:id")
     const eventId = req.params.eventid;
+
+    //Gambiarra para fazer verificação dos usuários;
+    const adminId = await checkUser(req.username);
+    const civilizationId = await checkCivilization(eventId, "history");
+    console.log(adminId, civilizationId);
+    if (adminId > 3 && civilizationId < 70) {
+        res.status(403).send("403: Forbidden");
+        console.timeEnd("deleteHistory()");
+        return;
+    }
 
     // Padronizar a resposta
     const response = {
