@@ -14,7 +14,7 @@ export function renderEditStaticCivilizationAndStart() {
                 <div class="divFormCivilizationEdit">
                     <div id="formCivilization">
                         <label class="labelEdit"  for="name_pg_start">Civilização</label>
-                        <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start"  /></br>
+                        <input class="InputEdit" type="text" name="nameCivilization" id="name_pg_start" maxlength="20"  /></br>
 
                         <label class="labelEdit" for="titlename_pg_start">Nome da Região</label>
                         <select class="InputEdit" name="idregion" id="id_region_start"></select></br>

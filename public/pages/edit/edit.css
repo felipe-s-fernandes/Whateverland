@@ -24,11 +24,11 @@
 
 .containerEditMain {
     padding: 20px;
-    background-color: white;
+    background-color: var(--primary-color);
     width: 55%;
     display: flex;
     height: auto;
-    border-radius: 15px;
+    border-radius: var(--border-radius-big-box);
     flex-direction: column;
     box-sizing: border-box;
 
@@ -43,7 +43,7 @@
     background-color: var(--input-color);
     border: none;
     font-size: 15px;
-    border-radius: 15px;
+    border-radius: var(--border-radius-big-box);
     height: 40px;
     text-align: center;
 }
@@ -92,7 +92,6 @@
     color: var(--main-bg-color);
     box-shadow: var(--shadow-color-position);
     cursor: pointer;
-
 }
 
 .editTable {
@@ -112,7 +111,6 @@
 
 .labelEdit1{
     border-bottom: 3px solid #000000;
-
 }
 
 .editTable .tdEdit {
@@ -120,7 +118,6 @@
     text-align: center;
     vertical-align: middle;
     background: rgba(81, 73, 87, 0.138);
-
 }
 
 .editTable .trEdit:nth-child(even) {
@@ -140,7 +137,6 @@
 }
 
 .imgEdit img {
-    /* height: 100%; */
     max-width: 100%;
     max-height: 100%;
     display: flex;
@@ -150,7 +146,7 @@
 }
 
 .InputDesc {
-    /* height: 100px; */
+    height: 130px;
     max-width: 99%;
     border-radius: var(--border-radius-big-box);
     background-color: var(--input-color);
@@ -160,14 +156,20 @@
     padding: 8px;
 }
 
+#desc_pg_history {
+    height: 265px;
+}
+
 .configImgEdit{
     width: 50px;
     height: 50px;
 }
+
 #tableHistory td tr{
     width: 150px;
     height: 150px;
 }
+
 .divFormStartEdit{
     display: flex;
     width: 100%;
@@ -237,7 +239,6 @@
 .buttontable_H{
     cursor: pointer;
 }
-
 
 .InputFormEdit {
     background-color: var(--input-color);

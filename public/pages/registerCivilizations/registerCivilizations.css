@@ -1,13 +1,9 @@
 .registerTable {
     width: 100%;
-   /* margin: 20px 0 0 15px; */
     text-align: center;
 }
 
 #registerCivilizationContainer {
-    /* background-color: var(--main-bg-color); */
-   /*  height: 100vh;
-    width: 100vw; */
     padding: 25px 0;
 }
 
@@ -53,7 +49,6 @@
 
 .TitleForm {
     color: #000000;
-    /* margin: 10px; */
 }
 
 #formRegisterCivilizations {
@@ -80,10 +75,6 @@
     overflow: hidden;
 }
 
-/* .input-box {
-    margin: 30px;
-} */
-
 #username-input {
     flex: 1;
 }
@@ -99,12 +90,6 @@
     border-color: none;
     border-radius: var(--border-radius-big-box);
     background-color: var(--main-bg-color);
-    /* display: flex; */
-    /* margin-top: 20px; */
-    /* margin-left: auto; */
-    /* margin-right: auto; */
-    /* align-items: center; */
-    /* justify-content: center; */
 }
 
 .cadastrar:hover {
@@ -115,16 +100,6 @@
 }
 
 #registerContainer {
-    /* margin-top: 50px;
-    height: 70vh;   
-    width: 100%;
-    max-width: 1200px;
-    background: var(--primary-color);
-    border: var(--border-card);
-    box-shadow: var(--shadow-color-position);
-    border-radius: var(--border-radius-big-box);
-    border: var(--border-card);
-    overflow: auto; */
     flex-direction: column;
     overflow: auto;
     padding: 25px;

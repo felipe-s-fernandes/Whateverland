@@ -85,7 +85,7 @@ function renderStaticPage() {
                 <p class="patternText">Para inserir civilizações na lista, preencha os dados abaixo:</p>
                 <div class="containerRegister">
                     <div class="containerInputsRegisterCivilization">
-                        <input type="text" name="nome" id="username-input" class="mainInput" placeholder="insira o nome da civilização" autocomplete="off">
+                        <input type="text" name="nome" id="username-input" class="mainInput" placeholder="insira o nome da civilização" autocomplete="off" maxlength="20">
                         <select name="regions" id="regions" class="mainSelect" >
                             <option value="" selected disabled >- escolha uma região -</option>
                         </select>

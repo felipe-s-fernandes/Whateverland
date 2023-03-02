@@ -1,13 +1,5 @@
-/* PÁGINA INÚTIL POR FAVOR NÃO REPLICAR! SERÁ DELETADA DEPOIS */
-
-/* .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-} */
-
 #eventCard{
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
 }
 
@@ -53,17 +45,18 @@
     border-radius: 500px;
     border: none;
     box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.25);
-
 }
 
 .yearsNavButton:hover {
     cursor: pointer;
     background-color: #d6d6d6;
 }
+
 .scrollEnd {
     background-color: #bebebe;
     cursor:default;
 }
+
 .scrollEnd path {
     fill: white;
 }
@@ -96,6 +89,7 @@
     color: var(--primary-color);
     background-color: rgba(61, 52, 68, 0.9);
 }
+
 .yearButton:hover {
     background-color: #8a818b;
     cursor: pointer;
@@ -105,46 +99,38 @@
     background-color: rgba(115, 98, 128, 0.9);
 }
 
-/* .eventCard {
-    background-color: var(--primary-color);
-    max-width: 1200px;
-    width: 95%;
-    padding: 25px;
-
-    border-radius: 15px;
-    border: 2px solid #B2B2B2;
-    box-shadow: 4px 0px 10px 4px rgba(0, 0, 0, 0.5);
-} */
-
-/* .eventCardTitle {
-    margin-bottom: 10px;
-    font-size: 1em;
-    color: #878787;
-} */
-
 .eventCardSection {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     overflow: auto;
+    width: 70%;
 }
 
 #cardTitle{
 margin-bottom: 10px;
 }
 
-.eventAside {
+.mainAside {
+    display: flex;
+    flex-direction: column;
     width: 30%;
+}
+
+.eventAside {
+    width: 100%;
     min-width: 200px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
 .historyEventFigure {
-    /* width: 100%; */
     width: fit-content;
     height: fit-content;
+    display: flex;
+    justify-content: center;
     padding: 15px;
 }
 
@@ -159,32 +145,31 @@ margin-bottom: 10px;
 }
 
 .eventArticle {
-    width: 70%;
-    padding: 0 20px 20px 20px;
+    width: 100%;
+    padding: 0 20px 10px 20px;
 }
 
 #eventParagraph {
     overflow: auto;
 }
 
-/* .eventTitle {
-    margin-left: 0px;
-    font-size: 1.5em;
-    font-weight: 600;
-    line-height: 35px;
-    border-bottom: 3px solid #000000;
-    vertical-align: middle;
-} */
-
-/* .eventParagraph {
-    padding: 15px 0px 15px 0px;
-    font-size: 1.1em;
-    line-height: 21px;
-    text-align: justify;
-} */
-
 @media screen and (max-width: 736px) {
+    #eventCard {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .mainAside {
+        width: 100%;
+    }
+
     .eventArticle {
         width: 100%;
+        padding: 0 10px 10px 10px;
+    }
+
+    .eventCardSection {
+        width: 100%;
+        overflow: unset;
     }
 }
