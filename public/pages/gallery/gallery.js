@@ -1,5 +1,4 @@
 //@Autor {Anderson Lima}
-// coautor {Felipe Fernandes}
 
 import renderPage from "./modules/galleryModules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
@@ -29,6 +28,7 @@ export default async function RenderGalleryPage(civilizationId) {
     container.classList.add("container");
     container.id="galleryContainer";
 
+    // Botões da navbar e de voltar ao mapa
     const navBar = await createNavBar("gallery", civilizationId);
     const backButton = createBackButton();
 
