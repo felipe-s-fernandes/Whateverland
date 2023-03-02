@@ -10,7 +10,7 @@ import {
     renderEditStaticCivilizationAndStart,
     renderEditStaticHistory,
     renderEditStaticGallery,
-} from "./edit_staticPages.js";
+} from "./modules/edit_staticPages.js";
 import {
     renderInputStart,
     renderInputCivilization,
@@ -18,13 +18,13 @@ import {
     reqRenderRegions,
     renderInputImageCivilization,
     previewImageCivilization,
-} from "./edit_startPage.js";
-import { reqRenderTableGallery, eventFormGallery } from "./edit_gallery.js";
+} from "./modules/edit_startPage.js";
+import { reqRenderTableGallery, eventFormGallery } from "./modules/edit_gallery.js";
 import {
     reqRenderTableHistory,
     eventFormHistory,
     previewImageEventHistory,
-} from "./edit_history.js";
+} from "./modules/edit_history.js";
 
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "containerEditPages");
@@ -59,7 +59,6 @@ export default async function RenderEditPage(civilizationId) {
         page: container,
         object: null,
         addEvents: function () {
-            console.log("Event listeners");
 
             // Requisições para prenchimento de Inputs de nome da civilização e página inicial do artigo
             reqRenderRegions();

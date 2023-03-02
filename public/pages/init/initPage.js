@@ -16,7 +16,7 @@ export default async function RenderInitPage(data) {
 
     const containerlogoAndButton = createElement(
         "div",
-        "divLogoAndWelcomeAndButton"
+        "divLogoAndButton"
     );
     containerlogoAndButton.appendChild(renderLogo());
     containerlogoAndButton.appendChild(buttonInit);

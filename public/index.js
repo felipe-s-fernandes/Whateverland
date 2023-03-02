@@ -1,12 +1,9 @@
 //@Autor {Felipe Fernandes}
 import getPagesRouter from "./pages/router.js";
 const root = document.querySelector("#root");
-//const objRotas = GeraObjComRotas();
 const pagesRoutes = getPagesRouter();
 
-//inicia
 const pageObject = await pagesRoutes.getPage("/");
-console.log(pageObject);
 root.innerHTML = "";
 root.appendChild(pageObject.page);
 pageObject.addEvents();

@@ -26,9 +26,13 @@ export function createBackButton() {
 export async function createNavBar(page, civilizationId) {
     const header = createElement("header", "header");
 
-    const whateverlandLogo = createElement("h2");
-    whateverlandLogo.innerText = "whateverland";
-    whateverlandLogo.id = "whateverlandLogo";
+    const whateverlandLogo = createElement("img", "whateverlandLogo");
+    whateverlandLogo.src = "../uploads/logo.png";
+    whateverlandLogo.style.cursor = "pointer";
+    whateverlandLogo.addEventListener("click", () => {
+        whateverlandLogo.style.cursor = "wait";
+        redirectTo("/");
+    });
 
     const nav = createElement("nav", "navBar");
     const navButtons = createElement("div", "navButtons");

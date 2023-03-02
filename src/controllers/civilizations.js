@@ -218,6 +218,7 @@ const patchCivilization = async (req, res) => {
 
     //Gambiarra para fazer verificação dos usuários;
     const adminId = await checkUser(req.username);
+
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
         console.timeEnd("patchCivilization()");

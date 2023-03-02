@@ -20,7 +20,6 @@ export const getRegions = async (req, res) => {
 
         response.message = "Success";
         response.data = serviceResponse;
-        // console.log(response.data);
 
         res.status(200).json(response);
         console.timeEnd("getRegions()");

@@ -41,6 +41,10 @@ body {
     height: 100vh;
 }
 
+.whateverlandLogo {
+    height: 180%;
+}
+
 .container {
     width: 100vw;
     height: 100vh;
@@ -48,7 +52,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 40px;
     padding-bottom: 25px;
 }
 
@@ -174,7 +178,7 @@ header {
     width: 95%;
     height: 55px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 }
 
 #whateverlandLogo {
@@ -244,6 +248,7 @@ header {
     align-items: center;
     background-color: #a8a8a8;
     height: 90%;
+    width: 85%;
     min-width: 250px;
     border-radius: 50px;
     margin: 3px;
@@ -387,6 +392,30 @@ header {
     max-width: 1000px;
     width: 95%;
     margin-top: 20px;
+}
+
+@media screen and (max-width:930px) {
+    .header {
+        height: 203px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .whateverlandLogo {
+        height: 49%;
+    }
+
+    .navBar {
+        height: auto;
+        flex-direction: column-reverse;
+        border-radius: var(--border-radius-big-box);
+    }
+    .roundButtonsDiv {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        justify-content: center;
+}
 }
 /* Estilização geral */
 /* Começa a produzir daqui pra baixo Pedro */

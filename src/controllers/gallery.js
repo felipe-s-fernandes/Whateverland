@@ -63,18 +63,7 @@ const postGallery = async (req, res) => {
     console.time("postGallery()");
     // Precisa tratar algum input? Não sei
 
-    /* {
-        "gallery_image_id": "imagem_aleatoria.png",
-        "civilization_id": 10,
-        "gallery_image_title": "Teste resenha"
-    } */
     const galleryObject = req.body;
-
-    if (!req.file || req.file.size === 0) {
-        res.status(400).send("Please upload a file");
-    } else {
-        galleryObject.gallery_image_id = req.file.filename;
-    }
 
     const civilizationId = galleryObject.civilization_id;
     //Gambiarra para fazer verificação dos usuários;
@@ -83,6 +72,12 @@ const postGallery = async (req, res) => {
         res.status(403).send("403: Forbidden");
         console.timeEnd("patchCivilization()");
         return;
+    }
+
+    if (!req.file || req.file.size === 0) {
+        res.status(400).send("Please upload a file");
+    } else {
+        galleryObject.gallery_image_id = req.file.filename;
     }
 
     // Padronizar a resposta

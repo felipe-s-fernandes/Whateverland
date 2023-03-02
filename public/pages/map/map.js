@@ -11,13 +11,9 @@ export default async function RenderMap(data) {
     const regionsObject = await HTTPRequest("/regions", "GET");
     const regions = regionsObject.regions;
 
-    console.log(regions);
-
     const container = createElement("section", "container");
     container.classList.add("mapContainer");
     const mapDiv = await createMap(regions);
-
-    console.log(mapDiv);
 
     const mapClickEvent = async (event) => {
         mapDiv.removeEventListener("click", mapClickEvent);

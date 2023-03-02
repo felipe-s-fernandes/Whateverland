@@ -65,12 +65,6 @@ const postHistory = async (req, res) => {
 
     const historyObject = req.body;
 
-    if (!req.file || req.file.size === 0) {
-        historyObject.event_image = "default_event_image.png";
-    } else {
-        historyObject.event_image = req.file.filename;
-    }
-
     const civilizationId = historyObject.civilization_id;
 
     //Gambiarra para fazer verificação dos usuários;
@@ -79,6 +73,12 @@ const postHistory = async (req, res) => {
         res.status(403).send("403: Forbidden");
         console.timeEnd("postHistory()");
         return;
+    }
+
+    if (!req.file || req.file.size === 0) {
+        historyObject.event_image = "default_event_image.png";
+    } else {
+        historyObject.event_image = req.file.filename;
     }
 
     // Padronizar a resposta
@@ -130,11 +130,14 @@ const patchHistory = async (req, res) => {
     // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
-    const eventId = historyObject.event;
 
     //Gambiarra para fazer verificação dos usuários;
     const adminId = await checkUser(req.username);
-    const civilizationId = historyObject.civilization_id;
+    const civilizationId = await checkCivilization(
+        historyObject.event,
+        "history"
+    );
+    // const civilizationId = historyObject.civilization_id;
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
         console.timeEnd("patchHistory()");

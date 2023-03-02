@@ -236,8 +236,6 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo1.style.opacity = "1";
         civilLogo2.style.opacity = "1";
         civilLogo3.style.opacity = "1";
-        console.log(i_civil);
-        console.log(example.civilizations[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
         td_civilName2.textContent = example.civilizations[i_civil + 1];
         td_civilName3.textContent = example.civilizations[i_civil + 2];
@@ -274,8 +272,6 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo1.style.opacity = "1";
         civilLogo2.style.opacity = "1";
         civilLogo3.style.opacity = "1";
-        console.log(i_civil);
-        console.log(example.logos[i_civil]);
         td_civilName1.textContent = example.civilizations[i_civil];
         td_civilName2.textContent = example.civilizations[i_civil + 1];
         td_civilName3.textContent = example.civilizations[i_civil + 2];
@@ -337,12 +333,7 @@ export default async function RenderCivilizationsPage(regionId) {
         page: pageCiv,
         object: null,
         addEvents: function () {
-            // Efeito de a sidebar aparecer na lateral
-            // console.log(regionId);
-            // const regionSelect2 = document.querySelector(`#region${regionId}`);
-            // regionSelect2.style.fill = "white";
-            // console.log(regionSelect2);
-            // console.log("Evento civilizations page");
+            console.log("Evento civilizations page");
         },
     };
 

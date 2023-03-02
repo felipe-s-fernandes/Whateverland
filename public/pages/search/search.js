@@ -54,8 +54,6 @@ async function searchResults(string) {
     const object = await HTTPRequest("/start/search/" + string, "GET");
     const civilizations = object.search_results;
 
-    console.log(object);
-
     const searchResultsDiv = createElement("div", "searchResultsDiv");
 
     civilizations.forEach((civilization) => {
