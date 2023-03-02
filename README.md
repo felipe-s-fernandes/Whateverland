@@ -16,8 +16,8 @@ O projeto Whateverland consiste em uma Single Page Application (SPA) em JavaScri
 - Framework Node.js com Express para a criação da aplicação web.
 
 ## Autores
-- Felipe Fernandes | github.com/felipe-s-fernandes
-- Anderson Lima    | github.com/andersondaalpha
-- Jônatas Gomes    | github.com/JhonesJGL
-- Pedro Mendes     | github.com/PedroMCarvalho
-- Ed Wilson        | github.com/EdWilsonsj
+- [Felipe Fernandes](github.com/felipe-s-fernandes)
+- [Anderson Lima](github.com/andersondaalpha)
+- [Jônatas Gomes](github.com/JhonesJGL)
+- [Pedro Mendes](github.com/PedroMCarvalho)
+- [Ed Wilson](github.com/EdWilsonsj)
