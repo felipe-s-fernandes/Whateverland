@@ -9,9 +9,3 @@ export const pool = new pg.Pool({
     password: process.env.PGPASSWORD,
     port: process.env.PGPORT,
 });
-
-// PGUSER=urqnqcoz
-// PGDATABASE=urqnqcoz
-// PGHOST=babar.db.elephantsql.com
-// PGPASSWORD=MYE_1gHFtLU5W-E79ldjHv-bNk4OzBD6
-// PGPORT=5432
