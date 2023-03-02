@@ -1,12 +1,4 @@
-/* #startPageContainer {
-    width: 100vw;
-    height: 100vh;
-} */
-
-#containerInformation {
-    /* display: flex; */
-    /* max-height: 70vh;
- height: fit-content;  */ 
+#containerInformation { 
     flex-direction: row; 
 }
 
@@ -48,8 +40,7 @@
 }
 
 .infoArticle {
-    padding: 20px 15px 0px 20px;
-    border-bottom-left-radius: 15px;
+    padding: 10px 15px 0px 20px;
 }
 
 .infoTitle {
@@ -74,77 +65,22 @@
     text-align: justify;
 }
 
-/* .asideContent {
-    color: var(--primary-color);
-    width: 140vw;
-    min-width: fit-content;
-    border-radius: 15px 0 0 15px;
-}
+@media screen and (max-width: 736px) {
+    #containerInformation {
+        flex-direction: column;
+        overflow-y: auto;
+    }
 
-.sectionAside {
-    background-color: #3D3444;
-    opacity: 0.9;
-    border-top-left-radius: 15px;
+    .asideContent {
+        width: 100%;
+        height: fit-content;
+        border-bottom-left-radius: 0;
+        overflow: unset;
+    }
+    
+    .mainContent {
+        width: auto;
+        overflow: unset;
+        padding: 15px 15px 5px 15px;
+    }
 }
-
-.civilizationName {
-    font-size: 18px;
-    margin-bottom: 5px;
-    text-align: center;
-    padding: 15px;
-}
-
-.imgDiv {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 15px;
-}
-
-.civilizationShield {
-    position: relative;
-    width: 150px;
-    height: 170px;
-}
-
-.infoArticle {
-    display: block;
-    padding: 6%;
-    background-color: #3D3444;
-    height: 52.7%;
-    border-bottom-left-radius: 15px;
-}
-
-.info {
-    position: relative;
-    font-size: 14px;
-    margin-bottom: 15px;
-}
-
-.mainContent {
-    border-radius: 0 15px 15px 0;
-    overflow: auto;
-    height: 97%;
-}
-
-.mainTitle {
-    margin-top: 8px;
-    margin-right: 8px;
-    margin-left: 11px;
-    font-size: 1.5em;
-    font-weight: 600;
-    line-height: 35px;
-    vertical-align: middle;
-    border-bottom: 3px solid #000000;
-}
-
-.mainText {
-    margin: 0 25px;
-    font-size: 14px;
-    padding-top: 5px;
-    word-spacing: 3px;
-}
-
-#containerInformation {
-    display: flex;
-    height: 43vh;
-} */
