@@ -92,7 +92,7 @@ export async function reqDeleteEvent(event, civilizationId) {
     textArea.value = "";
 
     const image = form.querySelector("img");
-    image.src = "../../../default_image_history.jpg";
+    image.src = "../../../uploads/default_image_history.jpg";
 
     // Limpeza do inputFile
     const inputFile = form.querySelector('input[type="file"]');
