@@ -63,6 +63,7 @@ export function createEventCard(civilizationName, event) {
     const cardSection = createElement("section", "eventCardSection");
 
     //Criação do aside com figura e legenda
+    const mainAside = createElement("aside", "mainAside");
     const eventAside = createElement("aside", "eventAside");
     const eventFigure = createElement("figure", "historyEventFigure");
     const eventImage = createElement("img", "eventImage");
@@ -76,8 +77,12 @@ export function createEventCard(civilizationName, event) {
     const eventFigureLabel = createElement("p", "eventFigureLabel");
     eventFigureLabel.innerText = event.event_image_label;
 
+    /* eventAside.appendChild(cardTitle); */
     eventAside.appendChild(eventFigure);
     eventAside.appendChild(eventFigureLabel);
+
+    mainAside.appendChild(cardTitle);
+    mainAside.appendChild(eventAside);
 
     //Criação do article com título e parágrafos
     const eventArticle = createElement("article", "eventArticle");
@@ -92,11 +97,12 @@ export function createEventCard(civilizationName, event) {
     eventArticle.appendChild(eventTitle);
     eventArticle.appendChild(eventParagraph);
 
-    cardSection.appendChild(eventAside);
+    /* cardSection.appendChild(eventAside); */
     cardSection.appendChild(eventArticle);
 
     //União de tudo
-    eventCard.appendChild(cardTitle);
+    /* eventCard.appendChild(cardTitle); */
+    eventCard.appendChild(mainAside);
     eventCard.appendChild(cardSection);
 
     return eventCard;

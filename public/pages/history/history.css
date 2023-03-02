@@ -7,7 +7,7 @@
 } */
 
 #eventCard{
-    flex-direction: column;
+    flex-direction: row;
     padding: 10px;
 }
 
@@ -127,17 +127,25 @@
     justify-content: center;
     flex-wrap: wrap;
     overflow: auto;
+    width: 70%;
 }
 
 #cardTitle{
 margin-bottom: 10px;
 }
 
-.eventAside {
+.mainAside {
+    display: flex;
+    flex-direction: column;
     width: 30%;
+}
+
+.eventAside {
+    width: 100%;
     min-width: 200px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -145,6 +153,8 @@ margin-bottom: 10px;
     /* width: 100%; */
     width: fit-content;
     height: fit-content;
+    display: flex;
+    justify-content: center;
     padding: 15px;
 }
 
@@ -159,8 +169,8 @@ margin-bottom: 10px;
 }
 
 .eventArticle {
-    width: 70%;
-    padding: 0 20px 20px 20px;
+    width: 100%;
+    padding: 0 20px 10px 20px;
 }
 
 #eventParagraph {
@@ -184,7 +194,22 @@ margin-bottom: 10px;
 } */
 
 @media screen and (max-width: 736px) {
+    #eventCard {
+        flex-direction: column;
+        overflow-y: auto;
+    }
+
+    .mainAside {
+        width: 100%;
+    }
+
     .eventArticle {
         width: 100%;
+        padding: 0 10px 10px 10px;
+    }
+
+    .eventCardSection {
+        width: 100%;
+        overflow: unset;
     }
 }
