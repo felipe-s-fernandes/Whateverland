@@ -1,12 +1,12 @@
 // @Autor { Anderson Lima }
-// Coautor {Ed Wilson}
+// @Coautor {Ed Wilson}
 // @Coautor { Felipe Fernades }
 
 import HTTPRequest from "../../../modules/HTTPRequest.js";
 import imgRequest from "../../../modules/imgRequest.js";
 import { createElement, toggleButton } from "../../../modules/modules.js";
 
-// Requisição padrão para renderização dos inputs do dados da civilização
+// Render civilization data inputs
 export async function renderInputCivilization(
     idCivilization,
     idHTML,
@@ -21,7 +21,7 @@ export async function renderInputCivilization(
     input.value = objectValue;
 }
 
-// Requisição padrão para renderização das imagens da civilização
+// Render civilization image inputs
 export async function renderInputImageCivilization(
     idCivilization,
     idHTML,
@@ -36,7 +36,6 @@ export async function renderInputImageCivilization(
     console.log(objectValue);
     console.dir(input);
 
-    // Quando a imagem não for encontrada será exibida a padrão do site
     input.addEventListener("error", function () {
         input.src = "../../uploads/default_image.jpg";
         return;
@@ -45,7 +44,7 @@ export async function renderInputImageCivilization(
     input.src = "../../uploads/" + objectValue;
 }
 
-// Pré-visualização da imagem inserida pelo usuário
+// Image input preview
 export function previewImageCivilization(idHTMLImage) {
     const imgPreview = document.querySelector(`#${idHTMLImage}`);
     const inputFile = document.querySelector("#img_pg_adm");
@@ -60,7 +59,7 @@ export function previewImageCivilization(idHTMLImage) {
     });
 }
 
-// Requisição padrão para inptus da página inicial do artigo
+// Render start page input data
 export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
 
@@ -71,35 +70,30 @@ export async function renderInputStart(idCivilization, idHTML, objectProperty) {
     input.value = objectValue;
 }
 
-// Requisição de renderização das regiões
+// Request regions for data rendering in html select
 export async function reqRenderRegions() {
-    // Array de objetos com todas as regiões
     const regionObject = await HTTPRequest(`/regions`, "GET");
-
-    // Inserindo o resultado da pesquisa em um select da página HTML
     regionsSelect(regionObject.regions);
 }
 
-// Select com todas as regiões
+// Select with all regions
 function regionsSelect(array) {
     const regionSelect = document.querySelector("#id_region_start");
 
-    // Inserindo todas as regiões em um select
     array.forEach((element) => {
         regionSelect.appendChild(selectRegions(element));
     });
 
-    // Criação do elemento select HTML com todas as regiões
     function selectRegions(ObjectRegion) {
         const option = createElement("option", "option");
         option.value = ObjectRegion.region_id;
-        option.innerHTML = ObjectRegion.region_name;
+        option.innerText = ObjectRegion.region_name;
 
         return option;
     }
 }
 
-// Requisição para edição de imagem da civilização
+// Patch image request
 async function editImageCivilization(formData) {
     const result = document.querySelector("#resultstart");
 
@@ -112,7 +106,7 @@ async function editImageCivilization(formData) {
     console.log("Dados da civilização (nome e imagem) alterados!");
 }
 
-// Requisição para página inicial da civilização
+// Patch start page request
 async function editStartPage(
     idCivilization,
     clocalization,
@@ -149,7 +143,6 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
 
         e.preventDefault();
 
-        // Upload da imagem
         const formData = new FormData();
         const file = document.querySelector("#img_pg_adm");
         formData.append("file", file.files[0]);
@@ -161,7 +154,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
 
         formData.append("civilization_name", form.nameCivilization.value);
 
-        // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+        // Input validation
         if (form.nameCivilization.value == "") {
             result.textContent = 'Preencha o campo "Nome da civilização!"';
         } else {
@@ -181,7 +174,7 @@ export function eventFormCivilizationAndStartPage(idCivilization) {
                     );
                     result.textContent =
                         "Os dados da civilização foram alterados com sucesso!";
-                    // Renderização da imagem
+
                     renderInputImageCivilization(
                         idCivilization,
                         "imageCivilization",

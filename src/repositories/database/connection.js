@@ -15,8 +15,6 @@ export async function connectDb(query, arrayColumns) {
         client.release();
         return result.rows;
     } catch (error) {
-        // Tem que tratar o erro aqui
-        //console.log(error);
         await client.query("ROLLBACK");
         client.release();
         throw error;

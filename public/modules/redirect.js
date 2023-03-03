@@ -1,3 +1,5 @@
+//@Autor {Felipe Fernandes}
+
 import CreateEventStateChange from "./event-url.js";
 
 export default function redirectTo(url, data = null) {

@@ -10,19 +10,18 @@ const TAG = "Gallery Controller: ";
 const getGallery = async (req, res) => {
     console.log(TAG, "getGallery() from " + req.connection.remoteAddress);
     console.time("getGallery()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/gallery/:id")
     const civilizationId = req.params.civilizationid;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -36,7 +35,7 @@ const getGallery = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await galleryServices.getGallery(
             civilizationId
         );
@@ -61,12 +60,11 @@ const getGallery = async (req, res) => {
 const postGallery = async (req, res) => {
     console.log(TAG, "postGallery() from " + req.connection.remoteAddress);
     console.time("postGallery()");
-    // Precisa tratar algum input? Não sei
 
     const galleryObject = req.body;
 
     const civilizationId = galleryObject.civilization_id;
-    //Gambiarra para fazer verificação dos usuários;
+    //Super-user verification
     const adminId = await checkUser(req.username);
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
@@ -80,14 +78,14 @@ const postGallery = async (req, res) => {
         galleryObject.gallery_image_id = req.file.filename;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -101,7 +99,7 @@ const postGallery = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await galleryServices.postGallery(
             galleryObject
         );
@@ -126,11 +124,10 @@ const postGallery = async (req, res) => {
 const deleteGallery = async (req, res) => {
     console.log(TAG, "deleteGallery() from " + req.connection.remoteAddress);
     console.time("deleteGallery()");
-    // Precisa tratar algum input? Não sei
 
     const imageId = req.params.imageid;
 
-    //Gambiarra para fazer verificação dos usuários;
+    //Super-user verification
     const adminId = await checkUser(req.username);
     const civilizationId = await checkCivilization(imageId, "gallery");
     if (adminId > 3 && civilizationId < 70) {
@@ -139,7 +136,7 @@ const deleteGallery = async (req, res) => {
         return;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -147,7 +144,7 @@ const deleteGallery = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await galleryServices.deleteGallery(imageId);
 
         response.message = `Gallery entry with id ${imageId} deleted successfully.`;

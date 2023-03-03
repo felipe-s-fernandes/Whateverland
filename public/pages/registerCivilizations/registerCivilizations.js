@@ -4,7 +4,7 @@ import { createBackButton, createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import redirectTo from "../../modules/redirect.js";
 
-// Renderizzação total da página
+// Renderização total da página
 export default async function RenderRegisterCivilizations(data) {
     const container = document.createElement("div");
     container.classList.add("container");
@@ -144,7 +144,7 @@ function regionsSelect(array) {
     function selectRegions(ObjectRegion) {
         const option = createElement("option", "option");
         option.value = ObjectRegion.region_id;
-        option.innerHTML = ObjectRegion.region_name;
+        option.innerText = ObjectRegion.region_name;
 
         return option;
     }
@@ -187,9 +187,9 @@ function renderTable(array) {
         line.appendChild(column4);
         line.appendChild(column5);
 
-        column1.innerHTML = `${array[i].civilization_id}`;
-        column2.innerHTML = `${array[i].civilization_name}`;
-        column3.innerHTML = `${array[i].region_name}`;
+        column1.innerText = `${array[i].civilization_id}`;
+        column2.innerText = `${array[i].civilization_name}`;
+        column3.innerText = `${array[i].region_name}`;
         column4.innerHTML = `<img class="editarImg" src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img class="excluirImg" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 

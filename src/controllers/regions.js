@@ -5,9 +5,8 @@ const TAG = "Regions Controller: ";
 export const getRegions = async (req, res) => {
     console.log(TAG, "getRegions() from " + req.connection.remoteAddress);
     console.time("getRegions()");
-    // Precisa tratar algum input? Não
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -15,7 +14,7 @@ export const getRegions = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await regionsServices.getRegions();
 
         response.message = "Success";
@@ -38,9 +37,8 @@ export const getRegions = async (req, res) => {
 export const getRegionById = async (req, res) => {
     console.log(TAG, "getRegionById() from " + req.connection.remoteAddress);
     console.time("getRegionById()");
-    // Precisa tratar algum input? Sim
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -61,7 +59,7 @@ export const getRegionById = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await regionsServices.getRegionById(regionId);
 
         response.message = `Region ${regionId} retrieved successfully.`;

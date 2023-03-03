@@ -29,13 +29,6 @@ export default function createStartPage(startPages, civilizations) {
     const mainTitle = createElement("h2", "patternTextTitle");
     const mainText = createElement("p", "patternText");
 
-    /*     const dados = document.querySelectorAll(".info");
-    dados.forEach((dado) => {
-        const textarea = createElement("textarea", "editField");
-        textarea.innerText = dado.innerText;
-        dado.replaceWith(textarea);
-    })
- */
     // Fixed content
     infoTitleOfcName.innerHTML = "Nome oficial";
     infoTitleLocal.innerHTML = "Localização";
@@ -43,22 +36,20 @@ export default function createStartPage(startPages, civilizations) {
     infoTitleReligion.innerHTML = "Religião";
     infoTitleGov.innerHTML = "Forma de Governo";
 
-    infoOfcName.innerHTML = object.official_name;
-    infoLocal.innerHTML = object.localization;
-    infoCapital.innerHTML = object.capital;
-    infoReligion.innerHTML = object.religion;
-    infoGov.innerHTML = object.government;
-    mainText.innerHTML = object.paragraph;
+    infoOfcName.innerText = object.official_name;
+    infoLocal.innerText = object.localization;
+    infoCapital.innerText = object.capital;
+    infoReligion.innerText = object.religion;
+    infoGov.innerText = object.government;
+    mainText.innerText = object.paragraph;
 
     civilizationShield.src = "../../uploads/" + object2.civilization_image;
     civilizationShield.onerror = () => {
         civilizationShield.src = "../../uploads/default_image.jpg";
     };
-    civilizationName.innerHTML = object2.civilization_name;
+    civilizationName.innerText = object2.civilization_name;
 
-    // Excluir em breve
-
-    mainTitle.innerHTML = object.title;
+    mainTitle.innerText = object.title;
 
     // Element import
     imgDiv.appendChild(civilizationShield);

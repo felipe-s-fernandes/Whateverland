@@ -19,7 +19,10 @@ import {
     renderInputImageCivilization,
     previewImageCivilization,
 } from "./modules/edit_startPage.js";
-import { reqRenderTableGallery, eventFormGallery } from "./modules/edit_gallery.js";
+import {
+    reqRenderTableGallery,
+    eventFormGallery,
+} from "./modules/edit_gallery.js";
 import {
     reqRenderTableHistory,
     eventFormHistory,
@@ -29,16 +32,13 @@ import {
 export default async function RenderEditPage(civilizationId) {
     const container = createElement("div", "containerEditPages");
 
-    const gambiarraContainer = createElement("div", "gambiarraContainer");
+    const auxButtons = createElement("div", "auxButtons");
 
     const backButton = createBackButton();
-    gambiarraContainer.appendChild(backButton);
-    gambiarraContainer.appendChild(createEditButton());
+    auxButtons.appendChild(backButton);
+    auxButtons.appendChild(createEditButton());
 
-    container.appendChild(gambiarraContainer);
-
-    // const startTitleEditTable = renderEditStaticStartTitle();
-    // container.appendChild(startTitleEditTable);
+    container.appendChild(auxButtons);
 
     const startEditTable = renderEditStaticCivilizationAndStart();
     container.appendChild(startEditTable);
@@ -49,18 +49,17 @@ export default async function RenderEditPage(civilizationId) {
     const galleryEditTable = renderEditStaticGallery();
     container.appendChild(galleryEditTable);
 
-    const gambiarraContainerBottom = createElement("div", "gambiarraContainer");
-    gambiarraContainerBottom.appendChild(createBackButton());
-    gambiarraContainerBottom.appendChild(createEditButton());
+    const auxButtonsBottom = createElement("div", "auxButtons");
+    auxButtonsBottom.appendChild(createBackButton());
+    auxButtonsBottom.appendChild(createEditButton());
 
-    container.appendChild(gambiarraContainerBottom);
+    container.appendChild(auxButtonsBottom);
 
     const response = {
         page: container,
         object: null,
         addEvents: function () {
-
-            // Requisições para prenchimento de Inputs de nome da civilização e página inicial do artigo
+            // Input data requests for civilizations form
             reqRenderRegions();
             renderInputCivilization(
                 civilizationId,
@@ -96,12 +95,12 @@ export default async function RenderEditPage(civilizationId) {
             renderInputStart(civilizationId, "desc_pg_start", "paragraph");
             eventFormCivilizationAndStartPage(civilizationId);
 
-            // Requisições para prenchimento dos Inputs da página história
+            // Input data requests for history form
             reqRenderTableHistory(civilizationId);
             eventFormHistory(civilizationId);
             previewImageEventHistory("imageEvent");
 
-            // Requisições para prenchimento da tabela de galeria
+            // Input data requests for gallery form
             reqRenderTableGallery(civilizationId);
             eventFormGallery(civilizationId);
 

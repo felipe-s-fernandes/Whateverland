@@ -3,7 +3,6 @@ import { createElement, toggleButton } from "../../modules/modules.js";
 import redirectTo from "../../modules/redirect.js";
 import { renderButtonExplore, renderLogo, clouds } from "./initPageModules.js";
 
-// Requisição ao servidor de banco de dados
 export default async function RenderInitPage(data) {
     const buttonInit = renderButtonExplore();
 
@@ -14,10 +13,7 @@ export default async function RenderInitPage(data) {
 
     const container = createElement("div", "containerPageInit");
 
-    const containerlogoAndButton = createElement(
-        "div",
-        "divLogoAndButton"
-    );
+    const containerlogoAndButton = createElement("div", "divLogoAndButton");
     containerlogoAndButton.appendChild(renderLogo());
     containerlogoAndButton.appendChild(buttonInit);
 

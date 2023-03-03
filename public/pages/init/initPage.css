@@ -1,6 +1,5 @@
 /* @Autor: { Anderson Lima } */
 
-/* Container de toda a página */
 .containerPageInit {
     width: 100vw;
     overflow-x: hidden;
@@ -14,24 +13,20 @@
     max-height: 100vh;
 }
 
-/* Container da imagem da logo */
 .divLogo {
     position: relative;
     text-align: center;
 }
 
-/* Imagem da logo */
 .logoImage {
     width: 70%;
 }
 
-/* Estilização do hover do botão */
 .buttonInit:hover {
     background: #bcbcbc;
     cursor: pointer;
 }
 
-/* Container da logo e do botão */
 .divLogoAndButton {
     display: flex;
     flex-direction: column;
@@ -41,7 +36,6 @@
     z-index: 1;
 }
 
-/* Container onde contém todas as nuvens */
 .containerClouds {
     width: 100%;
     max-width: 100%;
@@ -50,7 +44,6 @@
     position: fixed;
 }
 
-/* Estilização das nuvens */
 .clouds {
     margin-bottom: 250px;
     position: absolute;
@@ -59,7 +52,7 @@
     animation: moveClouds calc(8s * var(--i)) linear infinite;
 }
 
-/* Animação das nuvens */
+/* Cloud animation */
 @keyframes moveClouds {
     0% {
         transform: translateX(-100%);

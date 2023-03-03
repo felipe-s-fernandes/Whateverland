@@ -5,7 +5,7 @@ import startRepository from "../repositories/start.js";
 const TAG = "Start Service: ";
 
 const getStart = async (civilizationId) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await startRepository.getStart(
@@ -19,7 +19,7 @@ const getStart = async (civilizationId) => {
 };
 
 const patchStart = async (startObject) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await startRepository.patchStart(startObject);
@@ -31,7 +31,7 @@ const patchStart = async (startObject) => {
 };
 
 const searchStart = async (string) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await startRepository.searchStart(

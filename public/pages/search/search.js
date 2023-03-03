@@ -1,6 +1,5 @@
-//@author {Pedro Mendes}
-/* import { page } from "./modules/searchModules.js";
-page(); */
+//@author { Felipe Fernandes }
+
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import {
     createElement,
@@ -22,11 +21,9 @@ export default async function RenderSearchPage(string) {
     );
     searchResultsSection.id = "searchResultsSection";
 
-    //Título da busca com string pesquisada
     const searchResultsTitle = createElement("h2", "searchResultsTitle");
     searchResultsTitle.innerText = `Resultados para '${string}':`;
 
-    //Div com os cards das civilizações encontradas
     const searchResultsDiv = await searchResults(string);
 
     searchResultsSection.appendChild(searchResultsTitle);

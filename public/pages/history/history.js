@@ -50,7 +50,6 @@ export default async function RenderHistoryPage(civilizationId) {
     container.appendChild(eventCard);
     container.appendChild(backButton);
 
-    //root.appendChild(container);
     const response = {
         page: container,
         object: null,

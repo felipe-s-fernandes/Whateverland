@@ -1,4 +1,4 @@
-//@author {Felipe Fernandes}
+//@Author {Felipe Fernandes}
 import redirectTo from "./redirect.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import checkCookie from "./check-cookie.js";

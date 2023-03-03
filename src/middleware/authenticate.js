@@ -1,3 +1,4 @@
+//@Autor {Felipe Fernandes}
 import jwtLib from "jsonwebtoken";
 
 export default async function authenticate(req, res, next) {

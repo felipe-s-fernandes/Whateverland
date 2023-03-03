@@ -13,7 +13,7 @@ const getAllCivilizations = async () => {
 };
 
 const getCivilizations = async (regionId) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await civilizationsRepository.getCivilizations(
@@ -27,7 +27,7 @@ const getCivilizations = async (regionId) => {
 };
 
 const getCivilizationById = async (civilizationId) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await civilizationsRepository.getCivilizationById(

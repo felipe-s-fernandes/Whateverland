@@ -11,7 +11,6 @@ const getStart = async (civilizationId) => {
             start_page: null,
         };
 
-        // Banco de dados real
         const civilizationResponse = await connectDb(query.getStart, [
             civilizationId,
         ]);
@@ -34,20 +33,18 @@ const patchStart = async (startObject) => {
             start_page_id: null,
         };
 
-        // Banco de dados real
-        //Verifica a existência da civilização
         await connectDb(query.getCivilizationById, [
             startObject.civilizationId,
         ]);
 
-        //Procura uma instância de página inicial de civilização no banco:
+        // Looks for an instance of a start page for the required civilization in the database
         const getStartResponse = await connectDb(query.getStart, [
             startObject.civilization_id,
         ]);
         console.log(getStartResponse);
         response.start_page_id = getStartResponse.start_page_id;
 
-        // Caso não exista uma instância de página inicial, uma nova é criada:
+        // If there's no start page, a new one is created
         if (getStartResponse.length < 1) {
             await connectDb(query.postStartPage, [startObject.civilization_id]);
         }
@@ -76,7 +73,6 @@ const searchStart = async (string) => {
             search_results: null,
         };
 
-        // Banco de dados real
         const searchResults = await connectDb(query.searchCivilization, [
             string,
         ]);

@@ -11,9 +11,8 @@ const getAllCivilizations = async (req, res) => {
         "getAllCivilizations() from " + req.connection.remoteAddress
     );
     console.time("getAllCivilizations()");
-    // Precisa tratar algum input? Não
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -21,7 +20,7 @@ const getAllCivilizations = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse =
             await civilzationsServices.getAllCivilizations();
 
@@ -45,17 +44,17 @@ const getAllCivilizations = async (req, res) => {
 const getCivilizations = async (req, res) => {
     console.log(TAG, "getCivilizations() from " + req.connection.remoteAddress);
     console.time("getCivilizations()");
-    // Precisa tratar algum input? Sim
+
     const regionId = req.params.id;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(regionId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -69,7 +68,7 @@ const getCivilizations = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await civilzationsServices.getCivilizations(
             regionId
         );
@@ -97,19 +96,18 @@ const getCivilizationById = async (req, res) => {
         "getCivilizationById() from " + req.connection.remoteAddress
     );
     console.time("getCivilizationById()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/civilizations/:id")
     const civilizationId = req.params.id;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -123,7 +121,7 @@ const getCivilizationById = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await civilzationsServices.getCivilizationById(
             civilizationId
         );
@@ -148,20 +146,19 @@ const getCivilizationById = async (req, res) => {
 const postCivilization = async (req, res) => {
     console.log(TAG, "postCivilization() from " + req.connection.remoteAddress);
     console.time("postCivilization()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/civilizations/:id")
     const regionId = req.body.region_id;
     const civilizationName = req.body.civilization_name;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(regionId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -175,7 +172,7 @@ const postCivilization = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await civilzationsServices.postCivilization(
             regionId,
             civilizationName
@@ -204,7 +201,6 @@ const patchCivilization = async (req, res) => {
         "patchCivilization() from " + req.connection.remoteAddress
     );
     console.time("patchCivilization()");
-    // Precisa tratar algum input? Não sei
 
     const civilizationObject = req.body;
 
@@ -216,7 +212,7 @@ const patchCivilization = async (req, res) => {
 
     const civilizationId = civilizationObject.civilization_id;
 
-    //Gambiarra para fazer verificação dos usuários;
+    // Super-user validation;
     const adminId = await checkUser(req.username);
 
     if (adminId > 3 && civilizationId < 70) {
@@ -225,14 +221,14 @@ const patchCivilization = async (req, res) => {
         return;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -246,7 +242,7 @@ const patchCivilization = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await civilzationsServices.patchCivilization(
             civilizationObject
         );
@@ -274,11 +270,10 @@ const deleteCivilization = async (req, res) => {
         "deleteCivilization() from " + req.connection.remoteAddress
     );
     console.time("deleteCivilization()");
-    // Precisa tratar algum input? Sim
 
     const civilizationId = req.params.id;
 
-    //Gambiarra para fazer verificação dos usuários;
+    // Super-user validation;
     const adminId = await checkUser(req.username);
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
@@ -286,14 +281,14 @@ const deleteCivilization = async (req, res) => {
         return;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -307,7 +302,7 @@ const deleteCivilization = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await civilzationsServices.deleteCivilization(
             civilizationId
         );

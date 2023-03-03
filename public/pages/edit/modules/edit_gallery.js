@@ -1,21 +1,18 @@
 // @Autor { Anderson Lima }
-// Coautor {Ed Wilson}
+// @Coautor {Ed Wilson}
 // @Coautor { Felipe Fernades }
 
 import { createElement, toggleButton } from "../../../modules/modules.js";
 import HTTPRequest from "../../../modules/HTTPRequest.js";
 import imgRequest from "../../../modules/imgRequest.js";
 
-// ***Requisições***
+// ***Requests***
 
-// Requisição GET para renderizar a tabela a tabela
 export async function reqRenderTableGallery(civilizationId) {
     const galleryObject = await HTTPRequest(
         `/gallery/${civilizationId}`,
         "GET"
     );
-
-    console.log(galleryObject);
 
     await renderTable(galleryObject.gallery);
 }
@@ -30,7 +27,7 @@ export async function reqDeleteImage(imageId, civilizationId) {
     await reqRenderTableGallery(civilizationId);
 }
 
-// Formulário de preenchimento
+// Creating form
 export function eventFormGallery(civilizationId) {
     const form = document.querySelector("#formGallery");
     const button = document.querySelector("#include_gallery");
@@ -42,20 +39,20 @@ export function eventFormGallery(civilizationId) {
         const formData = new FormData();
         const file = document.querySelector("#img_gallery");
 
-        // Adiciona a imagem ao FormData
+        // Adds image file to formData
         formData.append("file", file.files[0]);
 
-        // Adiciona o título da imagem
+        // Adds image title to formData
         formData.append("civilization_id", civilizationId);
         formData.append("gallery_image_title", form.civi_gallery.value);
 
-        // Validação dos inputs
+        // Input validation
         if (form.civi_gallery.value == "") {
             result.textContent = "Digite uma legenda para a imagem!";
         } else if (file.files[0] == null) {
             result.textContent = "Insira a imagem!";
         } else {
-            // Requisitando para o servidor cadastrar o nova civilização no banco de dados
+            // Trying to patch the civilization
             try {
                 const response = await imgRequest(
                     `/gallery/`,
@@ -65,7 +62,7 @@ export function eventFormGallery(civilizationId) {
 
                 if (response !== null) {
                     result.textContent = "Imagem adicionada com sucesso!";
-                    // Renderização da tabela
+
                     reqRenderTableGallery(civilizationId);
 
                     const imageLegend = document.querySelector("#civi_gallery");
@@ -84,12 +81,11 @@ export function eventFormGallery(civilizationId) {
     });
 }
 
-// Renderização da tabela que recebe o array de dados
 async function renderTable(array) {
     const tableBody = document.querySelector("#tableGallery");
     tableBody.innerHTML = "";
 
-    // Criação das colunas e linhas no HTML
+    // Creating table lines
     for (let i = 0; i < array.length; i++) {
         const line = createElement("tr", "trEdit");
 
@@ -101,11 +97,11 @@ async function renderTable(array) {
         line.appendChild(column2);
         line.appendChild(column3);
 
-        column1.innerHTML = `${array[i].gallery_image_title}`;
+        column1.innerText = `${array[i].gallery_image_title}`;
         column2.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].gallery_image_id}" alt="Prévia da imagem">`;
         column3.innerHTML = `<img class="buttontable_H" src="../../uploads/excluir.png" alt="Ícone de excluir">`;
 
-        // Eventos de editar e deletar dados da tabela
+        // Patch and delete events
         column3.addEventListener("click", async () => {
             if (window.confirm("Deseja realmente excluir a imagem?")) {
                 try {

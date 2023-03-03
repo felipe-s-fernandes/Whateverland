@@ -9,7 +9,6 @@ const getAllCivilizations = async () => {
             civilizations: null,
         };
 
-        //Banco de dados real
         const civilizationsResponse = await connectDb(
             query.getAllCivilizations
         );
@@ -29,7 +28,6 @@ const getCivilizations = async (regionId) => {
             civilizations: null,
         };
 
-        // Banco de dados real
         const civilizationsResponse = await connectDb(query.getCivilizations, [
             regionId,
         ]);

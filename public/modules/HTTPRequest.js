@@ -1,3 +1,4 @@
+//@Autor {Felipe Fernandes}
 export default async function HTTPRequest(url, method, body = null) {
     const HOST_PORT = window.location.host;
 

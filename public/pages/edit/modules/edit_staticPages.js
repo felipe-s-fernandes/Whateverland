@@ -1,5 +1,5 @@
-// @autor { Ed Wilson }
-// Coautor { Anderson Lima }
+// @Author { Ed Wilson }
+// @Coauthor { Anderson Lima }
 
 import { createElement } from "../../../modules/modules.js";
 

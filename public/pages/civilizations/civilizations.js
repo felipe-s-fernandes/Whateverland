@@ -1,5 +1,5 @@
 //@Autor {Ed Wilson}
-import { createElement, toggleButton } from "../../modules/modules.js";
+import { createElement } from "../../modules/modules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import redirectTo from "../../modules/redirect.js";
 
@@ -14,17 +14,12 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const civilizations = civilizationsObject.civilizations;
 
-    // const regionObject = await HTTPRequest(`/regions/${regionId}`, "GET");
-    // const region = regionObject.region[0];
-
-    // Renderização do mapa
     const regionObject = await HTTPRequest(`/regions/`, "GET");
 
-    // Array com todas as regiões
+    // Array with all the regions
     const regions = regionObject.regions;
-    // Objeto da região clicada
+    // Object with the clicked region
     const region = regions.filter((region) => region.region_id == regionId)[0];
-    // region.id = "regionCivilization";
 
     const nameArchive = region.region_image;
 
@@ -53,13 +48,8 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const simbolMap = createElement("div", "simbolMap");
     simbolMap.innerHTML = `<img class="imageSimbolMap" src="../../uploads/${nameArchive}" alt="">`;
-    // const map = createMap(allRegions);
 
     const pageCiv = createElement("div", "pageCiv");
-    // const symbolBody = createElement("div", "symbolBody");
-    // const symbolContainer = createElement("div", "symbolContainer");
-    // const symbolMap = createElement("img", "symbolMap");
-    // const symbolimg = createElement("img", "symbolimg");
     const regionBody = createElement("div", "regionBody");
     const regionResum = createElement("div", "c");
     const regionTitle = createElement("h1", "regionTitle");
@@ -76,36 +66,10 @@ export default async function RenderCivilizationsPage(regionId) {
 
     const exitimg_civilPage = createElement("img", "exitimg_civilPage");
 
-    // pageCiv.appendChild(symbolBody);
-    // pageCiv.appendChild(createMap(region));
     pageCiv.appendChild(regionBody);
     pageCiv.appendChild(simbolMap);
-    // pageCiv.appendChild(regionSelect);
-
-    // symbolBody.appendChild(symbolContainer);
-    // symbolContainer.appendChild(symbolMap);
-    // symbolContainer.appendChild(symbolimg);
-    // symbolMap.src = example.territorio;
-    // symbolimg.src = example.brasao;
-
-    // regionBody.classList.toggle('show');
     regionBody.appendChild(container_regionTitle);
     regionBody.appendChild(regionResum);
-
-    // window.addEventListener('popstate', () => {
-    //     regionBody.classList.add('show');
-    //     // const sidebar = regionBody;
-    // });
-
-    // window.addEventListener('popstate', function(event) {
-    //     // const sidebar = document.querySelector('.sidebar');
-    //     regionBody.classList.add('show');
-    // });
-
-    // window.addEventListener('hashchange', function(event) {
-    // // const sidebar = document.querySelector('.sidebar');
-    // regionBody.classList.add('show');
-    // });
 
     container_regionTitle.appendChild(exit_civilPage);
     container_regionTitle.appendChild(regionTitle);
@@ -120,7 +84,7 @@ export default async function RenderCivilizationsPage(regionId) {
     regionResumTitle.textContent = "Resumo";
     regionText.textContent = example.resumo;
 
-    //Criando a tabela das civilizações: -----------------------------------------------
+    //Creating civilizations table
     const regionCivilizations = createElement(
         "table",
         "regionCivilizationsGeneral"
@@ -136,12 +100,12 @@ export default async function RenderCivilizationsPage(regionId) {
     const tr_head_civ = createElement("tr", "tr_head_civ");
     thead_civ.appendChild(tr_head_civ);
 
-    const civilTitle = createElement("th", "civilTitle"); // Título da tabela ("Civilizações:")
+    const civilTitle = createElement("th", "civilTitle");
     tr_head_civ.appendChild(civilTitle);
     civilTitle.colSpan = 5;
     civilTitle.textContent = "Civilizações";
 
-    const tr_logos_civ = createElement("tr", "tr_logos_civ"); //linha da tabela com os logos das civilizações
+    const tr_logos_civ = createElement("tr", "tr_logos_civ");
     tbody_civ.appendChild(tr_logos_civ);
 
     const td_buttonleft = createElement("td", "td_buttonleft");
@@ -155,10 +119,10 @@ export default async function RenderCivilizationsPage(regionId) {
     const td_buttonright = createElement("td", "td_buttonright");
     tr_logos_civ.appendChild(td_buttonright);
 
-    const img_left = createElement("img", "img_left"); //botão esquerda
+    const img_left = createElement("img", "img_left");
     td_buttonleft.appendChild(img_left);
     img_left.src = "../../uploads/left.png";
-    const img_right = createElement("img", "img_right"); //botão direita
+    const img_right = createElement("img", "img_right");
     td_buttonright.appendChild(img_right);
     img_right.src = "../../uploads/right.png";
 
@@ -172,7 +136,7 @@ export default async function RenderCivilizationsPage(regionId) {
     td_civilLogo3.appendChild(civilLogo3);
     civilLogo3.src = example.logos[2];
 
-    const tr_names_civ = createElement("tr", "tr_names_civ"); //linha da tabela com os nomes das civilizações
+    const tr_names_civ = createElement("tr", "tr_names_civ");
     tbody_civ.appendChild(tr_names_civ);
 
     const td_names_v0 = createElement("td", "td_names_v0");
@@ -213,13 +177,12 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo3.style.opacity = "0";
     }
 
-
     if (civNameArray.length < 4) {
         img_right.style.display = "none";
         img_left.style.display = "none";
         img_right.disabled = true;
         img_left.disabled = true;
-    }else{
+    } else {
         img_left.disabled = false;
         img_right.disabled = false;
     }
@@ -229,7 +192,7 @@ export default async function RenderCivilizationsPage(regionId) {
         if (i_civil > 3) {
             img_left.style.display = "block";
         }
-        if (i_civil > 0 && civNameArray.length>3) {
+        if (i_civil > 0 && civNameArray.length > 3) {
             i_civil = i_civil - 3;
             img_right.style.display = "block";
         }
@@ -264,11 +227,11 @@ export default async function RenderCivilizationsPage(regionId) {
         if (i_civil < civNameArray.length - 6) {
             img_right.style.display = "block";
         }
-        if (i_civil < civNameArray.length - 3 && civNameArray.length>3) {
+        if (i_civil < civNameArray.length - 3 && civNameArray.length > 3) {
             i_civil = i_civil + 3;
             img_left.style.display = "block";
         }
-  
+
         civilLogo1.style.opacity = "1";
         civilLogo2.style.opacity = "1";
         civilLogo3.style.opacity = "1";
@@ -295,7 +258,7 @@ export default async function RenderCivilizationsPage(regionId) {
         }
     });
 
-    //IMAGENS QUEBRADAS
+    //Fixing broken images
     civilLogo1.onerror = () => {
         civilLogo1.src = "../../uploads/default_image.jpg";
     };
@@ -306,7 +269,6 @@ export default async function RenderCivilizationsPage(regionId) {
         civilLogo3.src = "../../uploads/default_image.jpg";
     };
 
-    //MODIFICAR
     civilLogo1.addEventListener("click", async () => {
         civilLogo1.style.pointerEvents = "none";
         civilLogo1.style.cursor = "wait";
@@ -328,7 +290,6 @@ export default async function RenderCivilizationsPage(regionId) {
         redirectTo("/start", civilizationId);
     });
 
-    // Código de Felipe Fernandes
     const response = {
         page: pageCiv,
         object: null,

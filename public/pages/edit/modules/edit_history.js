@@ -1,15 +1,15 @@
 // @Autor { Anderson Lima }
-// Coautor {Ed Wilson}
+// @Coautor {Ed Wilson}
 // @Coautor { Felipe Fernades }
 
 import { createElement, toggleButton } from "../../../modules/modules.js";
 import HTTPRequest from "../../../modules/HTTPRequest.js";
 import imgRequest from "../../../modules/imgRequest.js";
 
-// Variável global para guardar momentaneamente o id do evento
+// Global variable that stores the clicked eventId
 let eventId;
 
-// Pré-visualização da imagem inserida pelo usuário
+// Preview of the selected image
 export function previewImageEventHistory(idHTMLImage) {
     const imgPreview = document.querySelector(`#${idHTMLImage}`);
     const inputFile = document.querySelector("#img_pg_history");
@@ -25,34 +25,33 @@ export function previewImageEventHistory(idHTMLImage) {
 }
 
 function buttonCancel() {
-    // Selecionando o formulário de edição da história
     const form = document.querySelector("#formHistory");
 
-    // Exibindo botão de cancelar para o usuário
+    // Shows the cancel button
     const buttonCancel = document.querySelector("#buttonCancelEditHistory");
     buttonCancel.style.display = "block";
 
-    // Evento de botão de cancelar para limpeza dos inputs e esconder os botões
+    // Cancel button event that clears all inputs
     buttonCancel.addEventListener("click", (e) => {
         buttonCancel.style.display = "none";
         e.preventDefault();
-        // Limpeza de todos os inputs
+
         const inputs = form.querySelectorAll('input[type="text"]');
         inputs.forEach((element) => (element.value = ""));
 
-        // Habilitação do botão de adicionar evento
+        // Enabling add history event button
         const button = document.querySelector("#buttonHistory");
         button.innerText = "Adicionar evento";
 
-        // Exibindo imagem padrão do evento ao usuário
+        // Renders default image
         const image = document.querySelector("#imageEvent");
         image.src = "../../../uploads/default_image_history.jpg";
 
-        // Limpeza do textArea
+        // Clears textarea
         const textArea = form.querySelector("textarea");
         textArea.value = "";
 
-        // Limpeza do inputFile
+        // Clears file input
         const inputFile = form.querySelector('input[type="file"]');
         inputFile.value = "";
 
@@ -60,9 +59,8 @@ function buttonCancel() {
     });
 }
 
-// ***Requisições***
+// ***Requests***
 
-// Requisição GET para renderizar a tabela com todos os eventos
 export async function reqRenderTableHistory(civilizationId) {
     const historyObject = await HTTPRequest(
         `/history/${civilizationId}`,
@@ -76,14 +74,14 @@ export async function reqRenderTableHistory(civilizationId) {
     renderTable(historyObject.history_events);
 }
 
-// Requisição DELETE para excluir evento de história
+// DELETE history request
 export async function reqDeleteEvent(event, civilizationId) {
     const result = document.querySelector("#resulthistory");
     result.textContent = "";
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Adicionar evento";
 
-    // Limpeza de todos os inputs ao adicionar um evento
+    // Clears all inputs when a new history event is added
     const form = document.querySelector("#formHistory");
     const inputs = form.querySelectorAll('input[type="text"]');
     inputs.forEach((element) => (element.value = ""));
@@ -94,7 +92,7 @@ export async function reqDeleteEvent(event, civilizationId) {
     const image = form.querySelector("img");
     image.src = "../../../uploads/default_image_history.jpg";
 
-    // Limpeza do inputFile
+    // Clears file input
     const inputFile = form.querySelector('input[type="file"]');
     inputFile.value = "";
 
@@ -108,11 +106,9 @@ export async function reqDeleteEvent(event, civilizationId) {
     console.log("Dados do evento excluidos!");
 }
 
-// Requisição padrão para renderização das imagens dos eventos da civilização
+// ***History Events***
 
-// ***Eventos***
-
-// Evento de formulário
+// History events form
 export function eventFormHistory(civilizationId) {
     const form = document.querySelector("#formHistory");
     const button = document.querySelector("#buttonHistory");
@@ -124,13 +120,12 @@ export function eventFormHistory(civilizationId) {
         e.preventDefault();
 
         if (button.innerText == "Adicionar evento") {
-            // Upload da imagem
+            // Image upload
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
 
             console.log(form.nameh.value);
 
-            // Parassagem de parâmetros para o Multer
             formData.append("file", file.files[0]);
             formData.append("civilization_id", civilizationId);
             formData.append("event_title", form.nameh.value);
@@ -158,7 +153,7 @@ export function eventFormHistory(civilizationId) {
                             'Evento "' +
                             form.nameh.value +
                             '" adicionado com sucesso!';
-                        // Limpa todos os campos do formulário de história
+                        //Clearing all inputs
                         const inputs =
                             form.querySelectorAll('input[type="text"]');
                         inputs.forEach((element) => (element.value = ""));
@@ -170,7 +165,6 @@ export function eventFormHistory(civilizationId) {
                         image.src =
                             "../../../uploads/default_image_history.jpg";
 
-                        // Limpeza do inputFile
                         const inputFile =
                             form.querySelector('input[type="file"]');
                         inputFile.value = "";
@@ -194,12 +188,10 @@ export function eventFormHistory(civilizationId) {
             );
             buttonCancel.style.display = "none";
 
-            // Upload da imagem
+            // Image upload
             const formData = new FormData();
             const file = document.querySelector("#img_pg_history");
 
-            // Passagem de parâmetros para o Multer
-            console.log(eventId);
             formData.append("file", file.files[0]);
             formData.append("event", eventId);
             formData.append("event_title", form.nameh.value);
@@ -224,7 +216,6 @@ export function eventFormHistory(civilizationId) {
                         form.nameh.value +
                         '" alterado com sucesso!';
 
-                    // Limpa todos os campos do formulário de história
                     const inputs = form.querySelectorAll('input[type="text"]');
                     inputs.forEach((element) => (element.value = ""));
 
@@ -234,7 +225,6 @@ export function eventFormHistory(civilizationId) {
                     const image = form.querySelector("img");
                     image.src = "../../../uploads/default_image_history.jpg";
 
-                    // Limpeza do inputFile
                     const inputFile = form.querySelector('input[type="file"]');
                     inputFile.value = "";
 
@@ -249,20 +239,19 @@ export function eventFormHistory(civilizationId) {
             }
         }
         toggleButton(button);
-        // Renderização da tabela
         await reqRenderTableHistory(civilizationId);
     });
 }
 
-// ***Renderizações dinâmicas na página***
+// ***Dynamic rendering of the page***
 
-// Inserindo informações de edição nos inputs
+// Inserting edit information on the inputs
 function inputRender(object, idHTML, objectProperty) {
     const input = document.querySelector(`#${idHTML}`);
     input.value = object[objectProperty];
 }
 
-// Alimentação dos inputs na página
+// Feeds inputs around the page
 async function editEventsHistory(object) {
     const button = document.querySelector("#buttonHistory");
     button.innerText = "Editar evento";
@@ -272,15 +261,14 @@ async function editEventsHistory(object) {
     const image = document.querySelector("#imageEvent");
     image.src = "../../../uploads/" + object.event_image;
 
-    // Quando a imagem não for encontrada será exibida a padrão do site
+    // Default image rendering
     image.addEventListener("error", function () {
         image.src = "../../../uploads/default_image_history.jpg";
-        //return;
     });
 
     eventId = object.event;
 
-    // Importando valores do objeto para os inputs
+    // Updating inputs with object entries
     inputRender(object, "name_pg_history", "event_title");
     inputRender(object, "year_pg_history", "event_year");
     inputRender(object, "legend_pg_history", "event_image_label");
@@ -310,8 +298,8 @@ function renderTable(array) {
         line.appendChild(column4);
         line.appendChild(column5);
 
-        column1.innerHTML = `${array[i].event_year}`;
-        column2.innerHTML = `${array[i].event_title}`;
+        column1.innerText = `${array[i].event_year}`;
+        column2.innerText = `${array[i].event_title}`;
         column3.innerHTML = `<img class="imagePreviewHistory" src="../../uploads/${array[i].event_image}" alt="Prévia da imagem do evento histórico">`;
         column4.innerHTML = `<img class="buttontable_H"src="../../uploads/lapis.png" alt="Ícone de editar">`;
         column5.innerHTML = `<img class="buttontable_H"src="../../uploads/excluir.png" alt="Ícone de excluir">`;

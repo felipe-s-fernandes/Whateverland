@@ -10,19 +10,18 @@ const TAG = "History Controller: ";
 const getHistory = async (req, res) => {
     console.log(TAG, "getHistory() from " + req.connection.remoteAddress);
     console.time("getHistory()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/history/:id")
     const civilizationId = req.params.civilizationid;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -36,7 +35,7 @@ const getHistory = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await historyServices.getHistory(
             civilizationId
         );
@@ -61,13 +60,12 @@ const getHistory = async (req, res) => {
 const postHistory = async (req, res) => {
     console.log(TAG, "postHistory() from " + req.connection.remoteAddress);
     console.time("postHistory()");
-    // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
 
     const civilizationId = historyObject.civilization_id;
 
-    //Gambiarra para fazer verificação dos usuários;
+    // Super-user valitation
     const adminId = await checkUser(req.username);
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
@@ -81,14 +79,14 @@ const postHistory = async (req, res) => {
         historyObject.event_image = req.file.filename;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -102,7 +100,7 @@ const postHistory = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await historyServices.postHistory(
             historyObject
         );
@@ -127,17 +125,16 @@ const postHistory = async (req, res) => {
 const patchHistory = async (req, res) => {
     console.log(TAG, "patchHistory() from " + req.connection.remoteAddress);
     console.time("patchHistory()");
-    // Precisa tratar algum input? Não sei
 
     const historyObject = req.body;
 
-    //Gambiarra para fazer verificação dos usuários;
+    // Super-user valitation
     const adminId = await checkUser(req.username);
     const civilizationId = await checkCivilization(
         historyObject.event,
         "history"
     );
-    // const civilizationId = historyObject.civilization_id;
+
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
         console.timeEnd("patchHistory()");
@@ -150,7 +147,7 @@ const patchHistory = async (req, res) => {
         historyObject.event_image = req.file.filename;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -158,7 +155,7 @@ const patchHistory = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await historyServices.patchHistory(
             historyObject
         );
@@ -183,12 +180,11 @@ const patchHistory = async (req, res) => {
 const deleteHistory = async (req, res) => {
     console.log(TAG, "deleteHistory() from " + req.connection.remoteAddress);
     console.time("deleteHistory()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/history/:id")
     const eventId = req.params.eventid;
 
-    //Gambiarra para fazer verificação dos usuários;
+    // Super-user valitation
     const adminId = await checkUser(req.username);
     const civilizationId = await checkCivilization(eventId, "history");
     console.log(adminId, civilizationId);
@@ -198,14 +194,14 @@ const deleteHistory = async (req, res) => {
         return;
     }
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(eventId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -219,7 +215,7 @@ const deleteHistory = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await historyServices.deleteHistory(eventId);
 
         response.message = `History event with id ${eventId} deleted successfully.`;

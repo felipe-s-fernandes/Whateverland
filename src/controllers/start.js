@@ -9,19 +9,17 @@ const TAG = "Start Controller: ";
 const getStart = async (req, res) => {
     console.log(TAG, "getStart() from " + req.connection.remoteAddress);
     console.time("getStart()");
-    // Precisa tratar algum input? Sim
 
-    //fetch("http://localhost:8080/start/:id")
     const civilizationId = req.params.civilizationid;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -35,7 +33,7 @@ const getStart = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await startServices.getStart(civilizationId);
 
         response.message = `Start page for civilization with id ${civilizationId} retrieved successfully.`;
@@ -58,11 +56,11 @@ const getStart = async (req, res) => {
 const patchStart = async (req, res) => {
     console.log(TAG, "patchStart() from " + req.connection.remoteAddress);
     console.time("patchStart()");
-    // Precisa tratar algum input? Não sei ainda
+
     const civilizationId = req.body.civilization_id;
     const startObject = req.body;
 
-    //Gambiarra para fazer verificação dos usuários;
+    //Super-user verification
     const adminId = await checkUser(req.username);
     if (adminId > 3 && civilizationId < 70) {
         res.status(403).send("403: Forbidden");
@@ -72,14 +70,14 @@ const patchStart = async (req, res) => {
 
     //fetch("http://localhost:8080/start/:id")
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
         error: null,
     };
 
-    //Verifica se foi informado um ID válido
+    // Verifies if the input is valid
     if (isNaN(civilizationId)) {
         console.log(TAG, "Parameter isNaN");
 
@@ -93,7 +91,7 @@ const patchStart = async (req, res) => {
     }
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await startServices.patchStart(startObject);
 
         response.message = `Start page for civilization with id ${civilizationId} edited successfully.`;
@@ -116,12 +114,11 @@ const patchStart = async (req, res) => {
 const searchStart = async (req, res) => {
     console.log(TAG, "searchStart() from " + req.connection.remoteAddress);
     console.time("searchStart()");
-    // Precisa tratar algum input? Sim
 
     //fetch("http://localhost:8080/start/search/:string")
     const string = req.params.string;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,
@@ -129,7 +126,7 @@ const searchStart = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await startServices.searchStart(string);
 
         response.message = `Search results for '${string}' retrieved successfully.`;

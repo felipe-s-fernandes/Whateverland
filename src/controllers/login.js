@@ -8,12 +8,11 @@ const TAG = "Login Controller: ";
 const postSession = async (req, res) => {
     console.log(TAG, "postSession() from " + req.connection.remoteAddress);
     console.time("postSession()");
-    // Precisa tratar algum input? Não sei
 
     const username = req.body.username;
     const plainTextPassword = req.body.password;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: {
@@ -24,7 +23,7 @@ const postSession = async (req, res) => {
     };
 
     try {
-        // Chama o método do Service
+        // Call to service
         const serviceResponse = await loginServices.postSession(
             username,
             plainTextPassword
@@ -62,7 +61,7 @@ const deleteSession = (req, res) => {
 
     const username = req.body.username;
 
-    // Padronizar a resposta
+    // Standardize response
     const response = {
         message: "",
         data: null,

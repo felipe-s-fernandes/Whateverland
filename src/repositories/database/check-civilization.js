@@ -1,3 +1,4 @@
+//@Autor {Felipe Fernandes}
 import { connectDb } from "./connection.js";
 
 export default async function checkCivilization(id, type) {

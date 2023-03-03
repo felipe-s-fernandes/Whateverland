@@ -3,32 +3,33 @@
 import renderPage from "./modules/galleryModules.js";
 import HTTPRequest from "../../modules/HTTPRequest.js";
 import { renderTextTitle, imagesGallery } from "./modules/galleryModules.js";
-import { createNavBar, createBackButton, displayOnHover } from "../../modules/modules.js";
+import {
+    createNavBar,
+    createBackButton,
+    displayOnHover,
+} from "../../modules/modules.js";
 
 export default async function RenderGalleryPage(civilizationId) {
-    // Requisição ao banco de dados para obter a galeria de uma civilização
+    // Gallery object request
     const object = await HTTPRequest(`/gallery/${civilizationId}`, "GET");
 
-    // Requisição ao banco de dados para obter o objeto que contém o nome da civilização
+    // Civilization object request
     const civilizationObject = await HTTPRequest(
         `/civilizations/${civilizationId}`,
         "GET"
     );
     const civilization = civilizationObject.civilization[0];
 
-    // Informações recebidas do banco de dados
     const images = object.gallery;
     const nome = civilization.civilization_name;
 
-    // Renderização dos elementos estáticos do HTML
+    // Static HTML elements rendering
     const page = renderPage();
 
-    // Vai ter que refatorar esse código para não dá problema quando unir os arquivos
     const container = document.createElement("div");
     container.classList.add("container");
-    container.id="galleryContainer";
+    container.id = "galleryContainer";
 
-    // Botões da navbar e de voltar ao mapa
     const navBar = await createNavBar("gallery", civilizationId);
     const backButton = createBackButton();
 
@@ -40,7 +41,7 @@ export default async function RenderGalleryPage(civilizationId) {
         page: container,
         object: null,
         addEvents: function () {
-            // Rendereização dos elementos variáveis da página
+            // Page dynamic content rendering
             renderTextTitle(nome);
             imagesGallery(images);
             displayOnHover();

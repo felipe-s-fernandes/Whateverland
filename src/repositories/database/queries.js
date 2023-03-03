@@ -1,5 +1,6 @@
-// Autor: { Anderson Lima }
-// Co-author: {Jônatas Gomes}
+// Autor: { Jônatas Gomes }
+// Co-author: {Anderson Lima}
+// Co-author: {Felipe Fernandes}
 
 // Pega todas as regiões e seus dados.
 const getRegions = `

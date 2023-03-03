@@ -2,11 +2,10 @@ import regionsRepository from "../repositories/regions.js";
 const TAG = "Regions Service: ";
 
 const getRegions = async () => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await regionsRepository.getRegions();
-        // console.log(repoResponse);
         return repoResponse;
     } catch (error) {
         console.log(TAG, "error caught");
@@ -15,7 +14,7 @@ const getRegions = async () => {
 };
 
 const getRegionById = async (regionId) => {
-    // Padronizar a resposta
+    // Standardize response
 
     try {
         const repoResponse = await regionsRepository.getRegionById(
